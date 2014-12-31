@@ -17,6 +17,7 @@ var dothething = function() {
         var compare = function(choice1, choice2) {
             if (choice1 === choice2) {
                 return "The result is a tie!";
+                console.log('It is a Tie!');
             } else if (choice1 === "rock" || choice1 === "Rock") {
                 if (choice2 === "Scissors") {
                     return "You win!";
