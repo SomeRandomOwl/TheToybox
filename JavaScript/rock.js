@@ -1,3 +1,4 @@
+var dothething = function(){
 var userChoice = prompt("Do you choose rock, paper or scissors?")
 var computerChoice = Math.random()
 
@@ -8,7 +9,9 @@ if (computerChoice >= 0 && computerChoice <= 0.33) {
 } else {
     computerChoice = "Scissors";
 }
-console.log('The Computer Chooses:' + " " + computerChoice);
+
+
+
 
 var compare = function(choice1, choice2) {
     if (choice1 === choice2) {
@@ -33,19 +36,13 @@ var compare = function(choice1, choice2) {
         }
     }
 }
-var dothething = function() {
-    if (userChoice === null || userChoice !== "rock" || userChoice !== "Rock" || userChoice !== "paper" || userChoice !== "Paper" || userChoice !== "scissors" || userChoice !== "Scissors") {
-        return "You have to make a choice!";
-        var userChoice = prompt("Do you choose rock, paper or scissors?");
-        dothething();
-    }
-    var inform = confirm('The Computer Chooses:' + " " + computerChoice)
-    if (inform === true) {
-        var results = compare(userChoice, computerChoice);
-        alert(results)
-    } else {
-        console.log('error');
-    }
+var inform = confirm('The Computer Chooses:' + " " + computerChoice)
+if (inform === true) {
+    var results = compare(userChoice, computerChoice);
+    alert(results)
+} else {
+    console.log('error');
+}
 }
 //This does something
 dothething()

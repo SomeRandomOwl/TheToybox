@@ -86,9 +86,9 @@ function filter_files($files) {
             && substr($file, -4) != '.php' # PHP scripts
             && substr($file, -4) != '.settings' #To hide sensitive data
             && substr($file, -4) != '.ftpquota' #To hide ftp Things
-            && substr($file, -4) != '.html'
-            && substr($file, -4) != '.sublime-project'
-            && substr($file, -4) != '.sublime-workspace';
+            && substr($file, -4) != '*.html'
+            && substr($file, -4) != '*.sublime-project'
+            && substr($file, -4) != '*.sublime-workspace';
     });
 }
 
