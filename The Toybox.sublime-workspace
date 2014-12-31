@@ -35,6 +35,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "JavaScript/gamethinggy.js",
+			"settings":
+			{
+				"buffer_size": 1327,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "Packages/Haskell/Haskell.sublime-build",
 	"command_palette":
@@ -73,7 +81,8 @@
 	[
 		"/E/Sublime Projects/TheToybox",
 		"/E/Sublime Projects/TheToybox/JavaScript",
-		"/E/Sublime Projects/TheToybox/JavaScript/JSCommandexamples"
+		"/E/Sublime Projects/TheToybox/JavaScript/JSCommandexamples",
+		"/E/Sublime Projects/The Tasty Pi"
 	],
 	"file_history":
 	[
@@ -118,7 +127,7 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -152,14 +161,45 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "JavaScript/gamethinggy.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1327,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								342,
+								342
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 34.0
+		"height": 23.0
 	},
 	"input":
 	{

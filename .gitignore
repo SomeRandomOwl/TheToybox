@@ -7,7 +7,7 @@ Desktop.ini
 ftpsync.settings
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
-.sublime-workspace
+*.sublime-workspace
 # Windows Installer files
 *.cab
 *.msi
@@ -16,7 +16,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
+*.sublime-project
 # =========================
 # Operating System Files
 # =========================
