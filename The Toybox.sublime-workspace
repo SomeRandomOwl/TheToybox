@@ -36,28 +36,11 @@
 	"buffers":
 	[
 		{
-			"file": "JavaScript/rock.js",
+			"file": ".gitignore",
 			"settings":
 			{
-				"buffer_size": 1710,
-				"line_ending": "Windows",
-				"name": "var userChoice = prompt( \"Do you choose rock, pape"
-			}
-		},
-		{
-			"file": "JavaScript/scratchpad.js",
-			"settings":
-			{
-				"buffer_size": 951,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 1731,
-				"line_ending": "Unix"
+				"buffer_size": 616,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -95,12 +78,18 @@
 	},
 	"expanded_folders":
 	[
-		"/E/Sublime Projects/The Toybox",
-		"/E/Sublime Projects/The Toybox/JavaScript",
-		"/E/Sublime Projects/The Toybox/JavaScript/JSCommandexamples"
+		"/E/Sublime Projects/TheToybox",
+		"/E/Sublime Projects/TheToybox/JavaScript",
+		"/E/Sublime Projects/TheToybox/JavaScript/JSCommandexamples"
 	],
 	"file_history":
 	[
+		"/E/Sublime Projects/TheToybox/index.html",
+		"/E/Sublime Projects/TheToybox/JavaScript/JSCommandexamples/ftpsync.settings",
+		"/E/Sublime Projects/TheToybox/JavaScript/ftpsync.settings",
+		"/E/Sublime Projects/TheToybox/ftpsync.settings",
+		"/E/Sublime Projects/TheToybox/JavaScript/scratchpad.js",
+		"/E/Sublime Projects/TheToybox/JavaScript/rock.js",
 		"/E/Sublime Projects/The Toybox/JavaScript/JSCommandexamples/rock.js",
 		"/E/Bronylug.com/public_html/php.ini",
 		"/E/The Toybox/filelist.php",
@@ -167,98 +156,35 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "JavaScript/rock.js",
+					"file": ".gitignore",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1710,
+						"buffer_size": 616,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1710,
-								1710
+								175,
+								175
 							]
 						],
 						"settings":
 						{
-							"auto_name": "var userChoice = prompt( \"Do you choose rock, pape",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "JavaScript/scratchpad.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 951,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								951
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1731,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1568,
-								1568
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 630.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
 					"type": "text"
 				}
 			]
