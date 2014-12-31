@@ -7,8 +7,7 @@ Desktop.ini
 ftpsync.settings
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
-.sublime-project
-.ftpquota
+
 # Windows Installer files
 *.cab
 *.msi
