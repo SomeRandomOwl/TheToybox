@@ -1,0 +1,349 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cons",
+				"console.log('$0');"
+			],
+			[
+				"log",
+				"console.log('$0');"
+			],
+			[
+				"subst",
+				"substring(${0:indexA})	String"
+			],
+			[
+				"alert",
+				"alert(${0:message})	Window"
+			],
+			[
+				"els",
+				"else if()"
+			],
+			[
+				"if",
+				"if()"
+			],
+			[
+				"print",
+				"window.print()	Window"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "JavaScript/rock.js",
+			"settings":
+			{
+				"buffer_size": 1710,
+				"line_ending": "Windows",
+				"name": "var userChoice = prompt( \"Do you choose rock, pape"
+			}
+		},
+		{
+			"file": "JavaScript/scratchpad.js",
+			"settings":
+			{
+				"buffer_size": 951,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 1731,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 311.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"Shut up with your santext",
+			"Why do you exist!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/Sublime Projects/The Toybox",
+		"/E/Sublime Projects/The Toybox/JavaScript",
+		"/E/Sublime Projects/The Toybox/JavaScript/JSCommandexamples"
+	],
+	"file_history":
+	[
+		"/E/Sublime Projects/The Toybox/JavaScript/JSCommandexamples/rock.js",
+		"/E/Bronylug.com/public_html/php.ini",
+		"/E/The Toybox/filelist.php",
+		"/E/The Toybox/JavaScript/index.php",
+		"/E/The Toybox/JavaScript/JSCommandexamples/index.php",
+		"/E/The Toybox/index.html",
+		"/E/The Toybox/JavaScript/gamethinggy.js",
+		"/E/The Toybox/JavaScript/JSCommandexamples/CommandEx.js",
+		"/E/The Toybox/JavaScript/scratchpad.js",
+		"/E/The Toybox/JS/JS Command examples/index.php",
+		"/E/The Toybox/JS/JS Command examples/CommandEx.js",
+		"/E/The Toybox/ftpsync.settings",
+		"/E/The Toybox/JS/scratchpad.js",
+		"/E/The Toybox/JS/modulations.js",
+		"/E/Stuff/Applications/Program Files/SublimeText/Data/Packages/User/Preferences.sublime-settings",
+		"/E/Stuff/Applications/Program Files/SublimeText/Data/Packages/JsFormat/JsFormat.sublime-settings",
+		"/E/The Toybox/JS/index.html",
+		"/E/The Toybox/JS/filelist.php",
+		"/E/Bronylug.com/public_html/p/news/index.html",
+		"/E/The Toybox/JS/ftpsync.settings",
+		"/E/The Toybox/JS/PadScratch.js",
+		"/E/Bronylug.com/public_html/mobile/index.html",
+		"/E/Stuff/Applications/Program Files/SublimeText/Data/Packages/User/Distraction Free.sublime-settings",
+		"/E/Bronylug.com/ftpsync.settings",
+		"/E/Stuff/Applications/Program Files/SublimeText/Data/Packages/User/FTPSync.sublime-settings",
+		"/E/Stuff/Applications/Program Files/SublimeText/Data/Packages/FTPSync/FTPSync.sublime-settings",
+		"/E/Stuff/Applications/Program Files/SublimeText/Data/Packages/User/Package Control.sublime-settings",
+		"/E/Stuff/Applications/Program Files/SublimeText/Data/Packages/Package Control/Package Control.sublime-settings",
+		"/E/Stuff/Applications/Program Files/SublimeText/Data/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"extension",
+			"mysq",
+			"\")"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "JavaScript/rock.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1710,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1710,
+								1710
+							]
+						],
+						"settings":
+						{
+							"auto_name": "var userChoice = prompt( \"Do you choose rock, pape",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "JavaScript/scratchpad.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 951,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								951
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1731,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1568,
+								1568
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 630.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "The Toybox.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"E:\\Sublime Projects\\The Tasty Pi\\The Tasty Pi.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 266.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
