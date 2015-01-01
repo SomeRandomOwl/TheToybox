@@ -37,3 +37,5 @@ for (var i = 0; i <= 10; i++) {
 }
 //Arrays
 var junkData = ["Eddie Murphy", 49, "peanuts", 31];
+//Array .push
+junkData.push("More Junk")
