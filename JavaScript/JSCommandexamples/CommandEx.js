@@ -35,3 +35,5 @@ for (var i = 10; i >= 0; i--) {
 for (var i = 0; i <= 10; i++) {
 	console.log(i);
 }
+//Arrays
+var junkData = ["Eddie Murphy", 49, "peanuts", 31];
