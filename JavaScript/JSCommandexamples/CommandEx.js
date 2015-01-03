@@ -1,33 +1,33 @@
 //String
-"I am a string"
+"I am a string";
 //Numbers 
-1234.1234
+1234.1234;
 //booleans 
-1 < 2
-true
-false
+1 < 2;
+true;
+false;
 //compairesons
-1 < 2
-2 > 1
-1 === 1
-1 !== 2
-1 <= 2
-2 >= 1
+1 < 2;
+2 > 1;
+1 === 1;
+1 !== 2;
+1 <= 2;
+2 >= 1;
 	//modulo
-42 % 2
-	//string length
+42 % 2;
+//string length
 	"string".length
-	//substrings
-	"substrings".substring(0, 4)
-	//Console.log
-console.log("I log things")
-	//variables
-var meep == "meep"
-	//Functions
+//substrings
+	"substrings".substring(0, 4);
+//Console.log
+console.log("I log things");
+//variables
+var meep == "meep";
+//Functions
 var func = function(thing) {
-		return "I Do Things"
+		return "I Do Things";
 	}
-	//For Loops
+//For Loops
 for (var i = 10; i >= 0; i--) {
 	console.log(i);
 }
@@ -38,13 +38,13 @@ for (var i = 0; i <= 10; i++) {
 //Arrays
 var junkData = ["Eddie Murphy", 49, "peanuts", 31];
 //Array .push
-junkData.push("More Junk")
-	//While loops 
+junkData.push("More Junk");
+//While loops 
 var loop = true
 var soloLoop = function() {
 	while (loop) {
 		console.log("Looped once!");
-		loop = false
+		loop = false;
 	}
 };
 
@@ -61,3 +61,21 @@ var loop = function() {
 };
 
 loop();
+//do
+do{
+	console.log('stuff');
+}while(loop);
+//isNaN()
+var isEven = function(number) {
+  if(number % 2 == 0){
+      return true;
+  }
+  else if (isNaN(number)) {
+      return "That isnt a number";
+  }
+  else{
+      return false;
+  }
+  
+};
+isEven("meep");
