@@ -1,13 +1,13 @@
 console.log('Scratchpad Script is now running!');
 
-var code = prompt("Continue with the code stuff?") 
+var code = prompt("Continue with the code stuff?")
 
-    if(code === "yes").toUpperCase()
+    if(code.toLowerCase() === "yes")
         {  
              console.log('Yey Script time!');
 
              var yey = prompt("Yey?")
-                if(yey === "yey").toUpperCase()
+                if(yey.toLowerCase() === "yey")
                     {
                          alert("This makes me happy!");
                     }
@@ -18,7 +18,7 @@ var code = prompt("Continue with the code stuff?")
          }
 
 
-    else if(code === "no").toUpperCase()
+    else if(code.toLowerCase() === "no")
         {
             console.log('Really I cant show you my coding things?');
 
