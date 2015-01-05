@@ -79,3 +79,17 @@ var isEven = function(number) {
   
 };
 isEven("meep");
+//Case, Switch, default 
+var meep = prompt("meep");
+
+switch(meep) {
+  case 'meep':
+    console.log("Meep Meep!");
+    break;
+  case 'moop':
+    console.log("No MEEP!");
+    break;
+ 
+  default:
+    console.log("You need to meep");
+}
