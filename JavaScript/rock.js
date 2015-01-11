@@ -15,10 +15,10 @@ var dothething = function() {
 
 
         var compare = function(choice1, choice2) {
-            if (choice1 === choice2) {
+            if (choice1.toLowerCase() === choice2.toLowerCase()) {
                 return "The result is a tie!";
                 console.log('It is a Tie!');
-            } else if (choice1 === "rock" || choice1 === "Rock") {
+            } else if (choice1.toLowerCase() === "rock") {
                 if (choice2 === "Scissors") {
                     return "You win!";
                     console.log('You Win!');
@@ -26,7 +26,7 @@ var dothething = function() {
                     return "The Computer wins!";
                     console.log("The Computer Wins!");
                 }
-            } else if (choice1 === "paper" || choice1 === "Paper") {
+            } else if (choice1.toLowerCase() === "paper") {
                 if (choice2 === "Rock") {
                     return "You win!";
                     console.log('You Win!');
@@ -35,7 +35,7 @@ var dothething = function() {
                     console.log("The Computer Wins!");
 
                 }
-            } else if (choice1 === "scissors" || choice1 === "Scissors") {
+            } else if (choice1.toLowerCase() === "scissors") {
                 if (choice2 === "Paper") {
                     return "You win!";
                     console.log('You Win!');
