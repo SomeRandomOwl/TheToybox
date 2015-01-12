@@ -1,6 +1,8 @@
-
-var dothething = function() {
-
+var dothething = "" 
+var userChoice = "" 
+var computerChoice = "" 
+var done = false 
+var doTheThing = function() {
         var userChoice = prompt("Do you choose rock, paper or scissors?")
         console.log("The Player Chooses" + " " + userChoice)
         var computerChoice = Math.random()
@@ -12,10 +14,7 @@ var dothething = function() {
         } else {
             computerChoice = "Scissors";
         }
-
         console.log("The Computer Chooses:" + " " + computerChoice);
-
-
         var compare = function(choice1, choice2) {
             if (choice1.toLowerCase() === choice2.toLowerCase()) {
                 return "The result is a tie!";
@@ -57,32 +56,32 @@ var dothething = function() {
                 var done = false
             } 
         }
-
         var inform = confirm('The Computer Chooses:' + " " + computerChoice)
         if (inform === true) {
             var results = compare(userChoice, computerChoice);
             alert(results)
         } else {
             console.log('error');
-        } return true
+        }
+return true 
     }
-    //This does something
+    //This does something 
 var meep = function() {
  var rock = prompt("Want to play a game")
     if (rock.toLowerCase() === "yes") {
-       dothething()
-    } else { 
+       dothething = doTheThing()
+    } else {
        console.log("meh… ")
     }
 } 
-meep()
+meep() 
 if (dothething === true) {
    var play = prompt("Play again?")
       if (play.toLowerCase() === "yes") {
-        dothething = false 
-        dothething()
+        dothething = false
+        dotgething = doTheThing()
        }
-      else { 
+      else {
          confirm("Ok have a nice day")
        }
 }
