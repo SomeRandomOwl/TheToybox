@@ -20,38 +20,38 @@ var doTheThing = function() {
             console.log("The Computer Chooses:" + " " + computerChoice);
             var compare = function(choice1, choice2) {
                 if (choice1.toLowerCase() === choice2.toLowerCase()) {
-                    return "The result is a tie!";
                     console.log('It is a Tie!');
                     var done = true
+                    return "The result is a tie!";
                 } else if (choice1.toLowerCase() === "rock") {
                     if (choice2 === "Scissors") {
-                        return "You win!";
                         console.log('You Win!');
                         var done = true
+                        return "You win!";
                     } else {
-                        return "The Computer wins!";
                         console.log("The Computer Wins!");
                         var done = true
+                        return "The Computer wins!";
                     }
                 } else if (choice1.toLowerCase() === "paper") {
                     if (choice2 === "Rock") {
-                        return "You win!";
                         console.log('You Win!');
                         var done = true
+                        return "You win!";
                     } else {
-                        return "The Computer wins!";
                         console.log("The Computer Wins!");
                         var done = true
+                        return "The Computer wins!";
                     }
                 } else if (choice1.toLowerCase() === "scissors") {
                     if (choice2 === "Paper") {
-                        return "You win!";
                         console.log('You Win!');
                         var done = true
+                        return "You win!";
                     } else {
-                        return "The Computer wins!";
                         console.log("The Computer Wins!");
                         var done = true
+                        return "The Computer wins!";
                     }
                 } else {
                     return "Error! Unrecgonized Choice!";
