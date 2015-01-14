@@ -66,7 +66,7 @@ var doTheThing = function() {
             } else {
                 console.log('error');
             }
-            if (!confirm("go again?")) {
+            if (!confirm("Play Again?")) {
                 return;
             }
 
