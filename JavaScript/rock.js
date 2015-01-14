@@ -3,7 +3,7 @@ var dothething = ""
 var userChoice = ""
 var computerChoice = ""
 var done = false
-    //----------------
+//----------------
 var doTheThing = function() {
         do {
             var userChoice = prompt("Do you choose rock, paper or scissors?")
@@ -72,7 +72,7 @@ var doTheThing = function() {
 
         } while (true)
     }
-    //This does something 
+//This does something 
 var meep = function() {
         var rock = prompt("Want to play a game")
         if (rock.toLowerCase() === "yes") {
@@ -81,6 +81,6 @@ var meep = function() {
             console.log("meh… ")
         }
     }
-    //Starts the game
+//Starts the game
 meep()
 
