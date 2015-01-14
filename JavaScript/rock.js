@@ -83,7 +83,7 @@ if (dothething === true) {
     var play = prompt("Play again?")
     if (play.toLowerCase() === "yes") {
         dothething = false
-        dotgething = doTheThing()
+        doTheThing()
     } else {
         confirm("Ok have a nice day")
     }
