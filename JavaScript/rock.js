@@ -81,6 +81,10 @@ var meep = function() {
             console.log("meh… ")
         }
     }
+//This does nothing
+var nothing = function() {
+    console.log('A thing that doesnt do anything did a thing thats nothing.');
+}
 //Starts the game
 meep()
 
