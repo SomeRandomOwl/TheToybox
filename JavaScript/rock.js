@@ -1,7 +1,9 @@
-var dothething = "" 
-var userChoice = "" 
-var computerChoice = "" 
-var done = false 
+//Making The Variables in the function global
+var dothething = ""
+var userChoice = ""
+var computerChoice = ""
+var done = false
+//----------------
 var doTheThing = function() {
         var userChoice = prompt("Do you choose rock, paper or scissors?")
         console.log("The Player Chooses" + " " + userChoice)
@@ -54,7 +56,7 @@ var doTheThing = function() {
                 return "Error! Unrecgonized Choice!";
                 console.log('Error, undefined Choice');
                 var done = false
-            } 
+            }
         }
         var inform = confirm('The Computer Chooses:' + " " + computerChoice)
         if (inform === true) {
@@ -63,27 +65,26 @@ var doTheThing = function() {
         } else {
             console.log('error');
         }
-return true 
+        return true
     }
-    //This does something 
+//This does something 
 var meep = function() {
- var rock = prompt("Want to play a game")
+    var rock = prompt("Want to play a game")
     if (rock.toLowerCase() === "yes") {
-       dothething = doTheThing()
+        dothething = doTheThing()
     } else {
-       console.log("meh… ")
+        console.log("meh… ")
     }
-} 
-meep() 
+}
+//Starts the game
+meep()
+//Checks for game to be compleated and asks if to replay
 if (dothething === true) {
-   var play = prompt("Play again?")
-      if (play.toLowerCase() === "yes") {
+    var play = prompt("Play again?")
+    if (play.toLowerCase() === "yes") {
         dothething = false
         dotgething = doTheThing()
-       }
-      else {
-         confirm("Ok have a nice day")
-       }
+    } else {
+        confirm("Ok have a nice day")
+    }
 }
-      
-         
