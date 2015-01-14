@@ -78,7 +78,7 @@ var meep = function() {
 }
 //Starts the game
 meep()
-//Checks for game to be compleated and asks if to replay
+//Checks for game to be compleated and asks to replay the game
 if (dothething === true) {
     var play = prompt("Play again?")
     if (play.toLowerCase() === "yes") {
