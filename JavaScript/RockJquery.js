@@ -3,7 +3,7 @@ var dothething = ""
 var userChoice = ""
 var computerChoice = ""
 var done = false
-//----------------
+    //----------------
 var doTheThing = function() {
         do {
             var userChoice = prompt("Do you choose rock, paper or scissors?")
@@ -72,19 +72,20 @@ var doTheThing = function() {
 
         } while (true)
     }
-//This does something 
+    //This does something 
 var meep = function() {
         var rock = prompt("Want to play a game")
         if (rock.toLowerCase() === "yes") {
             dothething = doTheThing()
+        } else if (rock = null) {
+            console.log('Null Error, The cancel button was clicked');
         } else {
             console.log("meh… ")
         }
     }
-//This does nothing
+    //This does nothing
 var nothing = function() {
-    console.log('A thing that doesnt do anything did a thing thats nothing.');
-}
-//Starts the game
+        console.log('A thing that doesnt do anything did a thing thats nothing.');
+    }
+    //Starts the game
 meep()
-
