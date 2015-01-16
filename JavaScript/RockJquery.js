@@ -7,8 +7,11 @@ var done = false
 var doTheThing = function() {
         do {
             var userChoice = prompt("Do you choose rock, paper or scissors?")
+
             console.log("The Player Chooses" + " " + userChoice)
+
             var computerChoice = Math.random()
+
             console.log("The Random Number Is:" + " " + computerChoice);
             if (computerChoice >= 0 && computerChoice <= 0.33) {
                 computerChoice = "Rock";
@@ -17,7 +20,9 @@ var doTheThing = function() {
             } else {
                 computerChoice = "Scissors";
             }
+
             console.log("The Computer Chooses:" + " " + computerChoice);
+
             var compare = function(choice1, choice2) {
                 if (choice1.toLowerCase() === choice2.toLowerCase()) {
                     console.log('It is a Tie!');
@@ -74,7 +79,7 @@ var doTheThing = function() {
     }
     //This does something 
 var meep = function() {
-        var rock = prompt("Want to play a game")
+        var rock = ""
         if (rock.toLowerCase() === "yes") {
             dothething = doTheThing()
         } else if (rock = null) {
