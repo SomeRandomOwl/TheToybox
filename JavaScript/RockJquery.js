@@ -25,7 +25,7 @@ var doTheThing = function() {
 
             var compare = function(choice1, choice2) {
                 if (choice1.toLowerCase() === choice2.toLowerCase()) {
-                    console.log('It is a Tie!');
+                    console.log('It is a Tie!'); 
                     var done = true
                     return "The result is a tie!";
                 } else if (choice1.toLowerCase() === "rock") {
