@@ -3,12 +3,15 @@ var dothething = ""
 var userChoice = ""
 var computerChoice = ""
 var done = false
-//----------------
+    //----------------
 var doTheThing = function() {
         do {
-            var userChoice = prompt("Do you choose rock, paper or scissors?")
+            var userChoice = ""
+
             console.log("The Player Chooses" + " " + userChoice)
+
             var computerChoice = Math.random()
+
             console.log("The Random Number Is:" + " " + computerChoice);
             if (computerChoice >= 0 && computerChoice <= 0.33) {
                 computerChoice = "Rock";
@@ -17,10 +20,12 @@ var doTheThing = function() {
             } else {
                 computerChoice = "Scissors";
             }
+
             console.log("The Computer Chooses:" + " " + computerChoice);
+
             var compare = function(choice1, choice2) {
                 if (choice1.toLowerCase() === choice2.toLowerCase()) {
-                    console.log('It is a Tie!');
+                    console.log('It is a Tie!'); 
                     var done = true
                     return "The result is a tie!";
                 } else if (choice1.toLowerCase() === "rock") {
@@ -72,20 +77,20 @@ var doTheThing = function() {
 
         } while (true)
     }
-//This does something 
+    //This does something 
 var meep = function() {
-        var rock = prompt("Want to play a game")
+        var rock = ""
         if (rock.toLowerCase() === "yes") {
             dothething = doTheThing()
+        } else if (rock = null) {
+            console.log('Null Error, The cancel button was clicked');
         } else {
             console.log("meh… ")
         }
     }
-//This does nothing
+    //This does nothing
 var nothing = function() {
-    console.log('A thing that doesnt do anything did a thing thats nothing.');
-}
-nothing()
-//Starts the game
-meep()
-
+        console.log('A thing that doesnt do anything did a thing thats nothing.');
+    }
+    //Starts the game
+   //meep() 
