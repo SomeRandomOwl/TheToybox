@@ -1,11 +1,11 @@
 console.log('Scratchpad Script is now running!');
 
-var code = prompt("Continue with the code stuff?")
+var code = prompt("Continue with the code stuff?", "Yes or No?")
 
 if (code.toLowerCase() === "yes") {
     console.log('Yey Script time!');
 
-    var yey = prompt("Yey?")
+    var yey = prompt("Yey?", "Can you Yey?")
     if (yey.toLowerCase() === "yey") {
         alert("This makes me happy!");
     } else if (yey.toLowerCase() === "doctor?") {
@@ -23,4 +23,3 @@ if (code.toLowerCase() === "yes") {
     console.log('Error no recgonized input!');
     alert("Error, Invalid input");
 }
- 
