@@ -6,7 +6,7 @@ var done = false
 //---------------- 
 var doTheThing = function() {
         do {
-            var userChoice = prompt("Do you choose rock, paper or scissors?")
+            var userChoice = prompt("Do you choose rock, paper or scissors?","Rock, Paper, or Scissors?")
             console.log("The Player Chooses" + " " + userChoice)
             var computerChoice = Math.random()
             console.log("The Random Number Is:" + " " + computerChoice);
@@ -74,7 +74,7 @@ var doTheThing = function() {
     }
 //This does something 
 var meep = function() {
-        var rock = prompt("Want to play a game")
+        var rock = prompt("Want to play a game","Yes or No?")
         if (rock.toLowerCase() === "yes") {
             dothething = doTheThing()
         } else {
