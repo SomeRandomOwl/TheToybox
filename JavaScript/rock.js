@@ -3,7 +3,7 @@ var dothething = ""
 var userChoice = ""
 var computerChoice = ""
 var done = false
-//---------------- 
+//----------------
 var doTheThing = function() {
         do {
             var userChoice = prompt("Do you choose rock, paper or scissors?","Rock, Paper, or Scissors?")
