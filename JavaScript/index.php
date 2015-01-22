@@ -1,10 +1,13 @@
-<?php # Directory Index (dirindex.php) # # Reads the current directory 's content and displays it as
+<?php
+# Directory Index (dirindex.php)
+#
+# Reads the current directory's content and displays it as
 # HTML.  Useful if file listing is denied by the web server
 # configuration.
 #
 # Installation:
 # - Put in any directory you like on your PHP-capable webspace.
-# - Rename to 'index.php ' if you like it to get called if no
+# - Rename to 'index.php' if you like it to get called if no
 #   file is specified in the URL (e.g. www.example.com/files/).
 # - Fit the design to your needs just using HTML and CSS.
 #
@@ -26,14 +29,14 @@
 ### configuration
 
 # Show the local path. Disable this for security reasons.
-define('SHOW_PATH ', FALSE);
+define('SHOW_PATH', FALSE);
 
-# Show a link to the parent directory ('.. ').
-define('SHOW_PARENT_LINK ', TRUE);
+# Show a link to the parent directory ('..').
+define('SHOW_PARENT_LINK', FALSE);
 
 # Show "hidden" directories and files, i.e. those whose names
 # start with a dot.
-define('SHOW_HIDDEN_ENTRIES ', FALSE);
+define('SHOW_HIDDEN_ENTRIES', FALSE);
 
 ### /configuration
 
@@ -71,8 +74,8 @@ function array_partition($array, $predicate_callback) {
 function filter_directories($dirs) {
     # Exclude directories. Adjust as necessary.
     return array_filter($dirs, function($dir) {
-        return $dir != '. '  # current directory
-            && (SHOW_PARENT_LINK || $dir != '.. ') # parent directory
+        return $dir != '.'  # current directory
+            && (SHOW_PARENT_LINK || $dir != '..') # parent directory
             && !is_hidden($dir);
     });
 }
@@ -80,21 +83,23 @@ function filter_directories($dirs) {
 function filter_files($files) {
     return array_filter($files, function($file) {
         return !is_hidden($file)
-            && substr($file, -4) != '.php ' # PHP scripts
-            && substr($file, -4) != '.settings ' #To hide sensitive data
-            && substr($file, -4) != '.ftpquota ' #To hide ftp Things
-            && substr($file, -4) != '.html ';
+            && substr($file, -4) != '.php' # PHP scripts
+            && substr($file, -4) != '.settings' #To hide sensitive data
+            && substr($file, -4) != '.ftpquota' #To hide ftp Things
+            && substr($file, -4) != '*.html'
+            && substr($file, -4) != '*.sublime-project'
+            && substr($file, -4) != '*.sublime-workspace';
     });
 }
 
 function is_hidden($entry) {
     return !SHOW_HIDDEN_ENTRIES
-        && substr($entry, 0, 1) == '. '  # Name starts with a dot.
-        && $entry != '. '  # Ignore current directory.
-        && $entry != '.. ';  # Ignore parent directory.
+        && substr($entry, 0, 1) == '.'  # Name starts with a dot.
+        && $entry != '.'  # Ignore current directory.
+        && $entry != '..';  # Ignore parent directory.
 }
 
-$path = __DIR__ . '/ ';
+$path = __DIR__ . '/';
 $entries = get_grouped_entries($path);
 ?>
 <!DOCTYPE html>
@@ -146,7 +151,7 @@ $entries = get_grouped_entries($path);
         content: '[ ';
       }
       li.directory a:after {
-        content: ' ] ';
+        content: ' ]';
       }
 
       footer {
@@ -160,7 +165,9 @@ $entries = get_grouped_entries($path);
 
     <article>
       <h1>Content of <?php echo SHOW_PATH ? '<em>' . $path . '</em>' : 'this directory'; ?></h1>
-<h1><p> Here are all of my JavaScript Scripts</p>
+      <h1><p> This is used for Script testing<br>
+      Alot of my scripts require the console log<br>
+      From here you can see all the scripts ive messed with</p>
       <ol>
 <?php
 foreach ($entries as $entry => $is_dir) {
