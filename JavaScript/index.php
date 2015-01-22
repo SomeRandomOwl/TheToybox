@@ -32,7 +32,7 @@
 define('SHOW_PATH', FALSE);
 
 # Show a link to the parent directory ('..').
-define('SHOW_PARENT_LINK', FALSE);
+define('SHOW_PARENT_LINK', TRUE);
 
 # Show "hidden" directories and files, i.e. those whose names
 # start with a dot.
@@ -139,6 +139,7 @@ $entries = get_grouped_entries($path);
         -webkit-border-radius: 11px;
         border-radius: 11px;
         padding: 0 1em;
+        width: 90%;
       }
       h1 {
         font-size: 140%;
@@ -164,10 +165,10 @@ $entries = get_grouped_entries($path);
   <body>
 
     <article>
-      <h1>Content of <?php echo SHOW_PATH ? '<em>' . $path . '</em>' : 'this directory'; ?></h1>
-      <h1><p> This is used for Script testing<br>
-      Alot of my scripts require the console log<br>
-      From here you can see all the scripts ive messed with</p>
+      <h1 align="center">Content of <?php echo SHOW_PATH ? '<em>' . $path . '</em>' : 'this directory'; ?></h1>
+      <h3 align="center"><p> These are all of my JavaScript Scripts, from here you can see the code behind them</p></h3>
+      <h5 align="center"><p>Alot of my scripts require the console log</p></h5><h1>
+      </p>
       <ol>
 <?php
 foreach ($entries as $entry => $is_dir) {

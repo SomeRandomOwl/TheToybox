@@ -139,6 +139,7 @@ $entries = get_grouped_entries($path);
         -webkit-border-radius: 11px;
         border-radius: 11px;
         padding: 0 1em;
+        width: 90%
       }
       h1 {
         font-size: 140%;
@@ -164,10 +165,10 @@ $entries = get_grouped_entries($path);
   <body>
 
     <article>
-      <h1>Content of <?php echo SHOW_PATH ? '<em>' . $path . '</em>' : 'this directory'; ?></h1>
-      <h1><p> This is used for Script testing<br>
-      Alot of my scripts require the console log<br>
-      From here you can see all the scripts ive messed with</p>
+      <h1 align="Center">Content of <?php echo SHOW_PATH ? '<em>' . $path . '</em>' : 'this directory'; ?></h1>
+      <h1 align="center"><p> This is used for Script testing From here you can see all the scripts I've messed with</p></h1>
+      <h5 align="center">Alot of my scripts require the console log</h5>
+      <h1>
       <ol>
 <?php
 foreach ($entries as $entry => $is_dir) {
