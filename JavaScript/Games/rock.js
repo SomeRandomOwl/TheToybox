@@ -8,7 +8,7 @@ var meep = ""
     //----------------
 var doTheThing = function() {
         do {
-            var userChoice = prompt("Do you choose rock, paper or scissors?", "Rock, Paper, or Scissors?")
+            var userChoice = prompt("Do you choose rock, paper or scissors?", "Rock, Paper, or Scissors?").toLowerCase();
             if (userChoice === null) {
                 return null
             } else if (userChoice === "Rock, Paper, or Scissors?") {
@@ -26,10 +26,10 @@ var doTheThing = function() {
             }
             console.log("The Computer Chooses:" + " " + computerChoice);
             var compare = function(choice1, choice2) {
-                if (choice1.toLowerCase() === choice2.toLowerCase()) {
+                if (choice1 === choice2) {
                     console.log('It is a Tie!');
                     return "The result is a tie!";
-                } else if (choice1.toLowerCase() === "rock") {
+                } else if (choice1 === "rock") {
                     if (choice2 === "Scissors") {
                         console.log('You Win!');
                         return "You win!";
@@ -37,7 +37,7 @@ var doTheThing = function() {
                         console.log("The Computer Wins!");
                         return "The Computer wins!";
                     }
-                } else if (choice1.toLowerCase() === "paper") {
+                } else if (choice1 === "paper") {
                     if (choice2 === "Rock") {
                         console.log('You Win!');
                         return "You win!";
@@ -45,7 +45,7 @@ var doTheThing = function() {
                         console.log("The Computer Wins!");
                         return "The Computer wins!";
                     }
-                } else if (choice1.toLowerCase() === "scissors") {
+                } else if (choice1 === "scissors") {
                     if (choice2 === "Paper") {
                         console.log('You Win!');
                         return "You win!";
@@ -76,8 +76,8 @@ var doTheThing = function() {
 
         //This does something 
         var meep = function() {
-                var rock = prompt("Want to play a game", "Yes or No?")
-                if (rock.toLowerCase() === "yes") {
+                var rock = prompt("Want to play a game", "Yes or No?").toLowerCase();
+                if (rock === "yes") {
                     dothething = doTheThing()
                 } else {
                     console.log("meh… ")
