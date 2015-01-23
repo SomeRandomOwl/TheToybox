@@ -119,7 +119,7 @@ $entries = get_grouped_entries($path);
   <script src="/secret/TheToybox/assets/external/jquery/jquery.js"></script>
   <script src="/secret/TheToybox/assets/jquery-ui.js"></script>
   <link rel="stylesheet" href="/secret/TheToybox/assets/jquery-ui.css">
-  <script src="/secret/TheToybox/assets/jquery.scrollbar/jquery.scrollbar.js"></script>
+  <script src="/Secret/TheToybox/assets/jquery.scrollbar/jquery.scrollbar.js"></script>
   <script src="/secret/TheToybox/JavaScript/Games/rock.js"></script>
 </head>
 <html>
@@ -293,8 +293,7 @@ $entries = get_grouped_entries($path);
       <h1 align="center"><a href="/secret/TheToybox">The Toybox</a></h1>
       <h2 align="center">Current active script is rock.js</h2>
       <h3 align="center"><input type="submit" value="Start Script">
-  <!--    <iframe src="filelist.php" width="100%" height="600" frameborder="0"></iframe>-->
-
+      <hr>
 <div class="scrollbar-macosx" width="100%" height="100%">
     <article>
       <h1 align="Center">Content of <?php echo SHOW_PATH ? '<em>' . $path . '</em>' : 'this directory'; ?></h1>
