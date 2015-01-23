@@ -98,3 +98,10 @@ if(meep === "meep" && func === "I Do Things"){
 if(meep !== "meep" || func !== "I Do Things"){
 	return "no"
 }
+//objects
+var me = {
+	name: "Meep"
+	meep: 42
+};
+console.log('me.name');
+console.log('me.meep');
