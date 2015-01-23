@@ -4,7 +4,7 @@ var userChoice = ""
 var computerChoice = ""
 var inform = ""
 var results = ""
-var meep = ""
+var start = ""
     //----------------
 var doTheThing = function() {
         do {
@@ -75,7 +75,7 @@ var doTheThing = function() {
         }
 
         //This does something 
-        var meep = function() {
+        var start = function() {
                 var rock = prompt("Want to play a game", "Yes or No?").toLowerCase();
                 if (rock === "yes") {
                     dothething = doTheThing()
@@ -89,4 +89,4 @@ var doTheThing = function() {
         }
         nothing()
             //Starts the game
-        meep()
+        //start()
