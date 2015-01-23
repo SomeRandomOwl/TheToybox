@@ -11,15 +11,25 @@
   <title>Toybox</title>
   <!--Asset Loading-->
   <link rel="stylesheet" type="text/css" href="main.css">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <script src="assets/external/jquery/jquery.js"></script>
+  <script src="assets/jquery-ui.js"></script>
+  <script>
+
 </head>
 <html>
   <body>
+   <script>
+      $(function() {
+        $( "input[type=submit], a, button" )
+            .button()
+              .click(function( event ) {
+                start();
+              });
+});
+</script>
     <h1 align="center"><a href="/secret/TheToybox">The Toybox</a></h1>
     <h2 align="center">Current active script is rock.js</h2>
-    <h3 align="center"><button href="javascript:void(0)" onClick="start();">Start The Script</button>
+    <h3 align="center"><!--<button href="javascript:void(0)" onClick="start();">Start The Script</button>--><input type="submit" value="Start Script">
     <iframe src="filelist.php" width="100%" height="499" frameborder="0"></iframe>
     <script src="JavaScript/Games/rock.js"></script>
   </body>
