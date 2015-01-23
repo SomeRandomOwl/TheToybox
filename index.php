@@ -32,7 +32,7 @@
 define('SHOW_PATH', FALSE);
 
 # Show a link to the parent directory ('..').
-define('SHOW_PARENT_LINK', TRUE);
+define('SHOW_PARENT_LINK', FALSE);
 
 # Show "hidden" directories and files, i.e. those whose names
 # start with a dot.
@@ -115,12 +115,11 @@ $entries = get_grouped_entries($path);
   <meta property='og:url' content='http://bronylug.com/secret/toybox/'>
   <title>Toybox</title>
   <!--Asset Loading-->
-  <link rel="stylesheet" type="text/css" href="/secret/TheToybox/main.css">
-  <script src="/secret/TheToybox/assets/external/jquery/jquery.js"></script>
-  <script src="/secret/TheToybox/assets/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/secret/TheToybox/assets/jquery-ui.css">
-  <script src="/secret/TheToybox/assets/jquery.scrollbar/jquery.scrollbar.js"></script>
-  <script src="/secret/TheToybox/JavaScript/Games/rock.js"></script>
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <script src="assets/external/jquery/jquery.js"></script>
+  <script src="assets/jquery-ui.js"></script>
+  <link rel="stylesheet" href="assets/jquery-ui.css">
+  <script src="assets/jquery.scrollbar/jquery.scrollbar.js"></script>
 </head>
 <html>
   <style type="text/css">
@@ -294,6 +293,7 @@ $entries = get_grouped_entries($path);
       <h2 align="center">Current active script is rock.js</h2>
       <h3 align="center"><input type="submit" value="Start Script">
   <!--    <iframe src="filelist.php" width="100%" height="600" frameborder="0"></iframe>-->
+      <script src="JavaScript/Games/rock.js"></script>
 
 <div class="scrollbar-macosx" width="100%" height="100%">
     <article>
