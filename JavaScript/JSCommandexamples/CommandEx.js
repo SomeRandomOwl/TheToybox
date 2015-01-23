@@ -90,3 +90,18 @@ switch (meep) {
 	default:
 		console.log("You need to meep");
 }
+//AND and OR
+if(meep === "meep" && func === "I Do Things"){
+	return "yes"
+}
+
+if(meep !== "meep" || func !== "I Do Things"){
+	return "no"
+}
+//objects
+var me = {
+	name: "Meep"
+	meep: 42
+};
+console.log('me.name');
+console.log('me.meep');
