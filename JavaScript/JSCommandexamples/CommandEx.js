@@ -105,3 +105,5 @@ var me = {
 };
 console.log('me.name');
 console.log('me.meep');
+var meep = new Object()
+meep.meep = "meep"
