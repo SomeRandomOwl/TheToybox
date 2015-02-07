@@ -119,7 +119,7 @@ $entries = get_grouped_entries($path);
   <script src="/secret/TheToybox/assets/external/jquery/jquery.js"></script>
   <script src="/secret/TheToybox/assets/jquery-ui.js"></script>
   <link rel="stylesheet" href="/secret/TheToybox/assets/jquery-ui.css">
-  <script src="/Secret/TheToybox/assets/jquery.scrollbar/jquery.scrollbar.js"></script>
+  <script src="/secret/TheToybox/assets/jquery.scrollbar/jquery.scrollbar.js"></script>
   <script src="/secret/TheToybox/JavaScript/Games/rock.js"></script>
 </head>
 <html>
@@ -321,15 +321,6 @@ foreach ($entries as $entry => $is_dir) {
     <!--<footer>
       <p>directory index script written by <a href="http://homework.nwsnet.de/">Jochen Kupperschmidt</a></p>
     </footer>-->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-47261149-3', 'auto');
-  ga('send', 'pageview');
-
-</script>
   </body>
 </html>
