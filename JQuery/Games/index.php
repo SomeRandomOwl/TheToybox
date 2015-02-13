@@ -103,204 +103,73 @@ $path = __DIR__ . '/';
 $entries = get_grouped_entries($path);
 ?>
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
   <head>
-  <!--Meta Info-->
-  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-  <meta content="utf-8" http-equiv="encoding">
-  <meta property='og:site_name' content='Brony Lug'>
-  <meta property='og:title' content='Toybox'>
-  <meta property='og:description' content='My toys'>
-  <meta property='og:image' content='http://bronylug.com/uploads/3/4/0/5/3405336/1390198763.png'>
-  <meta property='og:url' content='http://bronylug.com/secret/toybox/'>
-  <title>Toybox</title>
-  <!--Asset Loading-->
-  <link rel="stylesheet" type="text/css" href="/secret/TheToybox/main.css">
-  <script src="/secret/TheToybox/assets/external/jquery/jquery.js"></script>
-  <script src="/secret/TheToybox/assets/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/secret/TheToybox/assets/jquery-ui.css">
-  <script src="/Secret/TheToybox/assets/jquery.scrollbar/jquery.scrollbar.js"></script>
-  <script src="/secret/TheToybox/JavaScript/Games/rock.js"></script>
-</head>
-<html>
-  <style type="text/css">
-  /*************** SCROLLBAR BASE CSS ***************/
-  
-  .scroll-wrapper {
-  overflow: hidden !important;
-  padding: 0 !important;
-  position: relative;
-  }
-  
-  .scroll-wrapper > .scroll-content {
-  border: none !important;
-  box-sizing: content-box !important;
-  height: auto;
-  left: 0;
-  margin: 0;
-  max-height: none !important;
-  max-width: none !important;
-  overflow: scroll !important;
-  padding: 0;
-  position: relative !important;
-  top: 0;
-  width: auto !important;
-  }
-  
-  .scroll-wrapper > .scroll-content::-webkit-scrollbar {
-  height: 0;
-  width: 0;
-  }
-  
-  .scroll-element {
-  display: none;
-  }
-  .scroll-element, .scroll-element div {
-  box-sizing: content-box;
-  }
-  
-  .scroll-element.scroll-x.scroll-scrollx_visible,
-  .scroll-element.scroll-y.scroll-scrolly_visible {
-  display: block;
-  }
-  
-  .scroll-element .scroll-bar,
-  .scroll-element .scroll-arrow {
-  cursor: default;
-  }
-  
-  .scroll-textarea {
-  border: 1px solid #cccccc;
-  border-top-color: #999999;
-  }
-  .scroll-textarea > .scroll-content {
-  overflow: hidden !important;
-  }
-  .scroll-textarea > .scroll-content > textarea {
-  border: none !important;
-  box-sizing: border-box;
-  height: 100% !important;
-  margin: 0;
-  max-height: none !important;
-  max-width: none !important;
-  overflow: scroll !important;
-  outline: none;
-  padding: 2px;
-  position: relative !important;
-  top: 0;
-  width: 100% !important;
-  }
-  .scroll-textarea > .scroll-content > textarea::-webkit-scrollbar {
-  height: 0;
-  width: 0;
-  }
-  
-  
-  
-  
-  /*************** SCROLLBAR MAC OS X ***************/
-  
-  .scrollbar-macosx > .scroll-element,
-  .scrollbar-macosx > .scroll-element div
-  {
-  background: none;
-  border: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  z-index: 10;
-  }
-  
-  .scrollbar-macosx > .scroll-element div {
-  display: block;
-  height: 100%;
-  left: 0;
-  top: 0;
-  width: 100%;
-  }
-  
-  .scrollbar-macosx > .scroll-element .scroll-element_track { display: none; }
-  .scrollbar-macosx > .scroll-element .scroll-bar {
-  background-color: #6C6E71;
-  display: block;
-  
-  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: alpha(opacity=0);
-  opacity: 0;
-  
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  border-radius: 7px;
-  
-  -webkit-transition: opacity 0.2s linear;
-  -moz-transition: opacity 0.2s linear;
-  -o-transition: opacity 0.2s linear;
-  -ms-transition: opacity 0.2s linear;
-  transition: opacity 0.2s linear;
-  }
-  .scrollbar-macosx:hover > .scroll-element .scroll-bar,
-  .scrollbar-macosx > .scroll-element.scroll-draggable .scroll-bar {
-  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
-  filter: alpha(opacity=70);
-  opacity: 0.7;
-  }
-  
-  
-  .scrollbar-macosx > .scroll-element.scroll-x {
-  bottom: 0px;
-  height: 0px;
-  left: 0;
-  min-width: 100%;
-  overflow: visible;
-  width: 100%;
-  }
-  
-  .scrollbar-macosx > .scroll-element.scroll-y {
-  height: 100%;
-  min-height: 100%;
-  right: 0px;
-  top: 0;
-  width: 0px;
-  }
-  
-  /* scrollbar height/width & offset from container borders */
-  .scrollbar-macosx > .scroll-element.scroll-x .scroll-bar { height: 7px; min-width: 10px; top: -9px; }
-  .scrollbar-macosx > .scroll-element.scroll-y .scroll-bar { left: -9px; min-height: 10px; width: 7px; }
-  
-  .scrollbar-macosx > .scroll-element.scroll-x .scroll-element_outer { left: 2px; }
-  .scrollbar-macosx > .scroll-element.scroll-x .scroll-element_size { left: -4px; }
-  
-  .scrollbar-macosx > .scroll-element.scroll-y .scroll-element_outer { top: 2px; }
-  .scrollbar-macosx > .scroll-element.scroll-y .scroll-element_size { top: -4px; }
-  
-  /* update scrollbar offset if both scrolls are visible */
-  .scrollbar-macosx > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_size { left: -11px; }
-  .scrollbar-macosx > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_size { top: -11px; }
-  </style>
-       <script>
-      $(function() {
-      $( "input[type=submit]" )
-      .button()
-      .click(function( event ) {
-      start();
-      });
-      });
-      jQuery(document).ready(function(){
-      jQuery('.scrollbar-macosx').scrollbar();
-      });
-      </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Stuff">
+    <meta name="author" content="seth177">
+    <title>Testing</title>
+    <link rel="stylesheet" type="text/css" href="/assets/main.css">
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/cover.css" rel="stylesheet">
+      <script src="/secret/TheToybox/JavaScript/Games/rock.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
   <body>
-      <h1 align="center"><a href="/secret/TheToybox">The Toybox</a></h1>
-      <h2 align="center">Current active script is rock.js</h2>
-      <h3 align="center"><input type="submit" value="Start Script">
+
+    <style type="text/css">
+  li.directory a:before {
+  content: '[ ';
+  }
+  li.directory a:after {
+  content: ' ]';
+  }
+  </style>
+
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+
+          <div>
+            <div class="inner">
+              <h3 class="masthead-brand">Seth177's Random place</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li><a href="/">Home</a></li>
+                  <li class="active"><a href="/secret/TheToybox">Scripts</a></li>
+                  <li><a href="/contact">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+            <hr color="#004466">
+          </div>
+
+          <div class="inner cover" id="body">
+
+      <h1><a href="/secret/TheToybox">The Toybox</a></h1>
+      <h2>Current active script is rock.js</h2>
+      <h3><a type="submit" value="Start Script" class="btn btn-lg btn-default">Start Script</a>
       <hr>
+      </div>
+</div>
 <div class="scrollbar-macosx" width="100%" height="100%">
     <article>
       <h1 align="Center">Content of <?php echo SHOW_PATH ? '<em>' . $path . '</em>' : 'this directory'; ?></h1>
       <h1 align="center"><p> This is used for Script testing From here you can see all the scripts I've messed with</p></h1>
       <h5 align="center">Alot of my scripts require the console log</h5>
       <h1>
-      <ol>
+      <ul>
   <div align="left">
 <?php
 foreach ($entries as $entry => $is_dir) {
@@ -310,18 +179,37 @@ foreach ($entries as $entry => $is_dir) {
         $class_name, $escaped_entry, $escaped_entry);
 }
 ?>
-      </ol>
-  </div>
+      </ul>
     </article>
-</div>
-  <footer>
-    <h5>Scripts Made By Seth177</h5><br>
-    <p>Scripts contain some tidbits from sources I've learned from</p>
-  </footer>
-    <!--<footer>
-      <p>directory index script written by <a href="http://homework.nwsnet.de/">Jochen Kupperschmidt</a></p>
-    </footer>-->
-<script>
+          </div>
+
+          <div>
+            <div>
+              <p>Made by <a href="http://steamcommunity.com/id/Seth177/" id="steam">seth177</a></p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+             <script>
+      $(function() {
+      $( "a[type=submit]" )
+      .button()
+      .click(function( event ) {
+      start();
+      });
+      });
+      </script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
