@@ -52,5 +52,10 @@
   p {
     color: #004466;
   }
+  .static {
+    position: static;
+  }
+  .nonstatic {
+    position: relative;
+  }
   
-  /********************************/
