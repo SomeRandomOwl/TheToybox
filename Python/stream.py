@@ -13,9 +13,9 @@ if service == 'twitch':
 	pass
 if service == 'youtube':
 	if stream[1:32] == 'https://www.youtube.com/watch?v=':
-		streaming = 'livestreamer youtube.com/watch?v=' + stream[32:] + ' best'
+		streaming = 'livestreamer youtube.com/watch?v=' + stream[32:] + ' best --player-no-close'
 	else:
-		streaming = 'livestreamer youtube.com/watch?v=' + stream + ' best'
+		streaming = 'livestreamer youtube.com/watch?v=' + stream + ' best --player-no-close'
 	pass
 os.system(streaming)
 time.sleep(1)
