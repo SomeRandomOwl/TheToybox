@@ -11,6 +11,19 @@ option = ''
 service = ''
 stream = ''
 streaming = ''
+
+print('')
+print('Avalible options:')
+print('')
+print('----------')
+print('')
+print('check (checks stauts of a specific user')
+print('list (Checks the status of a list of predefined users')
+print('open (opens a stream)')
+print('')
+print('----------')
+print('')
+
 option = input('What do you want to do?: ')
 def check_user(user):
     """ returns 0: online, 1: offline, 2: not found, 3: error """
@@ -29,20 +42,46 @@ def check_user(user):
     return status
 
 if option == 'check':
+	print('')
 	user = input('Who?: ')	
+	print('')
 	# main
 	try:
 	   	if check_user(user) == 0:
-	   		print(user + ' Is online')
+	   		print('----------')
+	   		print('')
+	   		print(user + ' Is ONLINE')
+	   		print('')
+	   		print('----------')
 	   	elif check_user(user) == 1:
+	   		print('----------')
+	   		print('')
 	   		print(user + ' Is offline')
+	   		print('')
+	   		print('----------')
 	   	elif check_user(user) == 2:
+	   		print('----------')
+	   		print('')
 	   		print(user + ' Is not found')
+	   		print('')
+	   		print('----------')
 	   	elif check_user(user) == 3:
+	   		print('----------')
+	   		print('')
 	   		print('Error in checking status')
+	   		print('')
+	   		print('----------')
 	   		pass
 	except KeyboardInterrupt:
 	   	pass
+	print('')
+	whatDo = input('End script?: ')
+
+	if whatDo == 'no':
+		option = 'open'
+	else:
+		exit()
+		pass
 	pass
 
 if option == 'list':
@@ -82,9 +121,9 @@ if option == 'list':
 	list('haxmega')
 	print('')
 
-	whatdo = input('End script?: ')
-	
-	if whatdo == 'no':
+	whatDo = input('End script?: ')
+
+	if whatDo == 'no':
 		option = 'open'
 	else:
 		exit()
