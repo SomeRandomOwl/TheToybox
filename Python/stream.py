@@ -45,7 +45,6 @@ if option == 'check':
 	print('')
 	user = input('Who?: ')	
 	print('')
-	# main
 	try:
 	   	if check_user(user) == 0:
 	   		print('----------')
