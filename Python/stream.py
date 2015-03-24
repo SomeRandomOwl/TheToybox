@@ -1,6 +1,6 @@
 # Importent note:
 # This uses the program http://docs.livestreamer.io/index.html which provides the livestreamer command
-# This python program is used to open twitch streams in vlc media player
+# This python program is used to open streams in vlc media player
 import time
 import os
 service = ''
