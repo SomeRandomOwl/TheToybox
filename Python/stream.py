@@ -8,6 +8,11 @@ stream = ''
 streaming = ''
 service = input('What stream service?: ')
 stream = input('What stream?:')
-streaming = 'livestreamer twitch.tv/' + stream + ' source'
+if service == 'twitch':
+	streaming = 'livestreamer twitch.tv/' + stream + ' source'
+	pass
+if service == 'youtube':
+	exit()
+	pass
 os.system(streaming)
 input("Press Enter to continue...")
