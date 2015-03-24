@@ -1,4 +1,5 @@
-# Importent notes this uses the program http://docs.livestreamer.io/index.html which provides the livestreamer command
+# Importent note:
+# This uses the program http://docs.livestreamer.io/index.html which provides the livestreamer command
 # This python program is used to open twitch streams in vlc media player
 
 import os
