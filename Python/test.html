@@ -1,0 +1,40 @@
+<table cellpadding="0" cellspacing="0" width="100%" class="sortable">
+
+                        <thead>
+                            <tr>
+                                <th>Histroy Number</th>
+                                <th>Coin</th>
+                                <th>Mode</th>
+                                <th>Ammount</th>
+                                <th>Date</th>
+                                <th>New Total</th>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+<?php
+      function list_projects() {
+
+          global $connection;
+
+      $output = "";
+      $result = mysqli_query("SELECT * FROM History ORDER BY histNum ASC");
+      while ($row = mysqli_fetch_array($result)){
+      $output .= '
+      <tr>
+      <td>' . $row['histNum'] . '</td>
+      <td>' . $row['coin'] . '</td>                                                   
+      <td>' . $row['mode'] . '</td>
+      <td>' . $row['ammount'] . '</td>
+      <td>' . $row['date'] . '</td>   
+      <td>' . $row['newTotal'] . '</td>                                 
+      </tr>';
+      }
+
+      return $output;
+
+     }
+?>
+</tbody>
+</table>
