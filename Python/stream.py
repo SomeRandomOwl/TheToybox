@@ -12,17 +12,7 @@ service = ''
 stream = ''
 streaming = ''
 
-print('')
-print('Avalible options:')
-print('')
-print('----------')
-print('')
-print('check (checks stauts of a specific user')
-print('list (Checks the status of a list of predefined users')
-print('open (opens a stream)')
-print('')
-print('----------')
-print('')
+print(' \nAvalible options:\n \n----------\n \ncheck (checks status of a specific user\nlist (Checks the status of a list of predefined users\nopen (opens a stream)\n \n----------\n \n')
 
 option = input('What do you want to do?: ')
 def check_user(user):
@@ -140,9 +130,9 @@ if service == 'twitch':
 
 if service == 'youtube':
 	if stream[1:32] == 'https://www.youtube.com/watch?v=':
-		streaming = 'livestreamer youtube.com/watch?v=' + stream[32:] + ' best --player-no-close'
+		streaming = 'livestreamer youtube.com/watch?v=' + stream[32:] + ' best'
 	else:
-		streaming = 'livestreamer youtube.com/watch?v=' + stream + ' best --player-no-close'
+		streaming = 'livestreamer youtube.com/watch?v=' + stream + ' best'
 	pass
 
 os.system(streaming)
