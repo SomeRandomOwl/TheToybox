@@ -12,8 +12,9 @@ option = ''
 service = ''
 stream = ''
 streaming = ''
-lsTwitch = 'livestreamer twitch.tv/'
-lsYoutube = 'livestreamer youtube.com/watch?v='
+lsTwitch = 'E:\Stuff\livestreamer-v1.12.1\livestreamer twitch.tv/'
+lsYoutube = 'E:\Stuff\livestreamer-v1.12.1\livestreamer youtube.com/watch?v='
+lsConfig =  '-p=E:\PortableApps\VLCPortable'
 times = 0
 timem = 0
 timeh =0
@@ -115,20 +116,20 @@ if service == 'twitch':
 	if stream == 'monstercat':
 		audio = input('Do you want to do audio only?: ')
 		if audio == 'yes':
-			streaming = lsTwitch + stream + ' audio'
+			streaming = lsTwitch + stream + ' audio' + lsConfig
 		else:
-			streaming = lsTwitch + stream + ' source'
+			streaming = lsTwitch + stream + ' source' + lsConfig
 			pass
 	else:
-		streaming = lsTwitch + stream + ' source'
+		streaming = lsTwitch + stream + ' source' + lsConfig
 		pass
 	pass
 
 if service == 'youtube':
 	if stream[1:32] == 'https://www.youtube.com/watch?v=':
-		streaming = lsYoutube + stream[32:] + ' best'
+		streaming = lsYoutube + stream[32:] + ' best' + lsConfig
 	else:
-		streaming = lsYoutube + stream + ' best'
+		streaming = lsYoutube + stream + ' best' + lsConfig
 	pass
 
 print('')
