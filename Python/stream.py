@@ -7,10 +7,14 @@ import os
 from urllib.request import urlopen
 from urllib.error import URLError
 import json
+
 option = ''
 service = ''
 stream = ''
 streaming = ''
+times = 0
+timem = 0
+timeh =0
 
 print(' \nAvalible options:\n \n----------\n \ncheck (checks status of a specific user\nlist (Checks the status of a list of predefined users\nopen (opens a stream)\n \n----------\n \n')
 
@@ -141,8 +145,32 @@ if service == 'youtube':
 		streaming = 'livestreamer youtube.com/watch?v=' + stream + ' best'
 	pass
 
+start = time.time()
+print('')
 os.system(streaming)
-time.sleep(1)
+end = time.time()
+times = end - start
+times = int(times)
+
+if times > 60:
+	while times > 60:
+		times = times - 60
+		timem = timem + 1
+		pass
+	pass
+
+if timem > 60:
+	while timem > 60:
+		timem = timem - 60
+		timhh = timeh + 1
+		pass
+
+times = str(times)
+timem = str(timem)
+timeh = str(timeh)
+
+print ('Time elapsed: ' + timeh + ":" + timem + ":" + times)
+
 
 
 input("Press Enter to continue...")
