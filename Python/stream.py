@@ -168,9 +168,9 @@ if timem > 60:
 times = str(times)
 timem = str(timem)
 timeh = str(timeh)
-
+print('')
 print ('Time elapsed: ' + timeh + ":" + timem + ":" + times)
+print('')
 
-
-
+time.sleep(1)
 input("Press Enter to continue...")
