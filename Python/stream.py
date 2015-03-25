@@ -102,12 +102,18 @@ if option == 'list':
 		   	pass
 		return 
 
-	list('totalbiscuit')
-	list('monstercat')
-	list('trionworlds')
-	list('argodaemon')
-	list('nerdcubed')
-	list('haxmega')
+	list('Totalbiscuit')
+	list('Monstercat')
+	list('TrionWorlds')
+	list('Argodaemon')
+	list('Nerdcubed')
+	list('Mattophobia')
+	list('Muselk')
+	list('Scykoh')
+	list('NaturalSelection2')
+	list('GopherGaming')
+	list('Haxmega')
+	
 	print('')
 
 	whatDo = input('End script?: ')
@@ -137,4 +143,6 @@ if service == 'youtube':
 
 os.system(streaming)
 time.sleep(1)
+
+
 input("Press Enter to continue...")
