@@ -20,17 +20,6 @@ timeh =0
 
 print(' \nAvalible options:\n \n----------\n \ncheck (checks status of a specific user\nlist (Checks the status of a list of predefined users\nopen (opens a stream)\n \n----------\n \n')
 
-def script_end():
-	print('')
-	whatDo = input('End script?: ')
-
-	if whatDo == 'no':
-		option = 'open'
-	else:
-		exit()
-		pass
-	return
-
 option = input('What do you want to do?: ')
 def check_user(user):
     """ returns 0: online, 1: offline, 2: not found, 3: error """
@@ -88,7 +77,14 @@ if option == 'check':
 	user = input('Who?: ')	
 	print('')
 	list(user)
-	script_end()
+	print('')
+	whatDo = input('End script?: ')
+
+	if whatDo == 'no':
+		option = 'open'
+	else:
+		exit()
+		pass
 	pass
 
 if option == 'list':
@@ -103,7 +99,14 @@ if option == 'list':
 	list('NaturalSelection2')
 	list('GopherGaming')
 	list('Haxmega')
-	script_end()	
+	print('')
+	whatDo = input('End script?: ')
+
+	if whatDo == 'no':
+		option = 'open'
+	else:
+		exit()
+		pass
 	pass
 
 if option == 'open':
@@ -126,9 +129,19 @@ if service == 'twitch':
 
 if service == 'youtube':
 	if stream[1:32] == 'https://www.youtube.com/watch?v=':
-		streaming = lsYoutube + stream[32:] + ' best'
+		audio = input('Do you want to do audio only?: ')
+		if audio == 'yes':
+			streaming = lsYoutube + stream[32:] + ' audio_mp4'
+		else:
+			streaming = lsYoutube + stream[32:] + ' best'
+			pass
 	else:
-		streaming = lsYoutube + stream + ' best'
+		audio = input('Do you want to do audio only?: ')
+		if audio == 'yes':
+			streaming = lsYoutube + stream + ' audio_mp4'
+		else:
+			streaming = lsYoutube + stream + ' best'
+			pass
 	pass
 
 print('')
@@ -139,18 +152,15 @@ end = time.time()
 times = end - start
 times = int(times)
 
-if times > 60:
-	while times > 60:
-		times = times - 60
-		timem = timem + 1
-		pass
+while times > 59:
+	times = times - 60
+	timem = timem + 1
 	pass
 
-if timem > 60:
-	while timem > 60:
-		timem = timem - 60
-		timhh = timeh + 1
-		pass
+while timem > 59:
+	timem = timem - 60
+	timeh = timeh + 1
+	pass
 
 times = str(times)
 timem = str(timem)
