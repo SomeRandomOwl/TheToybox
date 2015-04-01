@@ -36,9 +36,7 @@ open (opens a stream)
 """
 
 listing = """
-
 -------------
-
 """
 
 print(options)
@@ -108,9 +106,8 @@ if option == 'list':
 
 	datanum = datanum + 1
 	datanum = str(datanum)
-	data["num"]["id"] = datanum
 
-	print('There are ' + datanum + ' on record')
+	print('There are ' + datanum + ' streams on being tracked.')
 
 	for i in range(len(data["streams"])):
 		list(data["streams"][i])
