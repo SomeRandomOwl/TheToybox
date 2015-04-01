@@ -100,7 +100,7 @@ if option == 'check':
 	pass
 
 if option == 'list':
-	
+
 	print('')
 	for i in range(len(data["streams"])):
 		datanum = i
@@ -108,6 +108,7 @@ if option == 'list':
 
 	datanum = datanum + 1
 	datanum = str(datanum)
+	data["num"]["id"] = datanum
 
 	print('There are ' + datanum + ' on record')
 
