@@ -18,7 +18,30 @@ times = 0
 timem = 0
 timeh =0
 
-print(' \nAvalible options:\n \n----------\n \ncheck (checks status of a specific user\nlist (Checks the status of a list of predefined users\nopen (opens a stream)\n \n----------\n \n')
+with open('list.json') as data_file:    
+    data = json.load(data_file)
+
+options = """
+
+Avalible options:
+
+----------
+
+check (checks status of a specific user
+list (Checks the status of a list of predefined users
+open (opens a stream)
+
+----------
+
+"""
+
+listing = """
+
+-------------
+
+"""
+
+print(options)
 
 option = input('What do you want to do?: ')
 def check_user(user):
@@ -40,41 +63,30 @@ def check_user(user):
 def list(urc):
 	try:
 	   	if check_user(urc) == 0:
-	   		print('')
-	   		print('-------------')
-	   		print('')
+	   		print(listing)
 	   		print(urc + ' Is ONLINE')
-	   		print('')
-	   		print('-------------')
+	   		print(listing)
 	   	elif check_user(urc) == 1:
-	   		print('')
-	   		print('-------------')
-	   		print('')
+	   		print(listing)
 	   		print(urc + ' Is offline')
-	   		print('')
-	   		print('-------------')
+	   		print(listing)
 	   	elif check_user(urc) == 2:
-	   		print('')
-	   		print('-------------')
-	   		print('')
+	   		print(listing)
 	   		print(urc + ' Is not found')
-	   		print('')
-	   		print('-------------')
+	   		print(listing)
 	   	elif check_user(urc) == 3:
-	   		print('')
-	   		print('-------------')
-	   		print('')
+	   		print(listing)
 	   		print('Error in checking status')
-	   		print('')
-	   		print('-------------')
+	   		print(listing)
 	   		pass
 	except KeyboardInterrupt:
 	   	pass
 	return 
 
 if option == 'check':
+
 	print('')
-	user = input('Who?: ')	
+	user = input('User to check status of: ')	
 	print('')
 	list(user)
 	print('')
@@ -88,18 +100,21 @@ if option == 'check':
 	pass
 
 if option == 'list':
-	list('Totalbiscuit')
-	list('Monstercat')
-	list('TrionWorlds')
-	list('Argodaemon')
-	list('Nerdcubed')
-	list('Mattophobia')
-	list('Muselk')
-	list('Scykoh')
-	list('NaturalSelection2')
-	list('GopherGaming')
-	list('Haxmega')
+	
 	print('')
+	for i in range(len(data["streams"])):
+		datanum = i
+		pass
+
+	datanum = datanum + 1
+	datanum = str(datanum)
+
+	print('There are ' + datanum + ' on record')
+
+	for i in range(len(data["streams"])):
+		list(data["streams"][i])
+		pass
+
 	whatDo = input('End script?: ')
 
 	if whatDo == 'no':
@@ -110,7 +125,7 @@ if option == 'list':
 	pass
 
 if option == 'open':
-	service = input('What stream service?: ')
+	service = input('What stream service? (Youtube or Twitch): ')
 	stream = input('What stream?:')
 	pass
 
