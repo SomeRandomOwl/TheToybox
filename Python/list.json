@@ -1,54 +1,103 @@
 {
-	"streams": {
-		"Totalbiscuit" {
-			"playCount":"0",
-			"musicStream":"false"
-		},
-		"Monstercat"{
-			"playCount":"0"	,
-			"musicStream":"true"
-		},
-		"TrionWorlds" {
-			"playCount":"0",
-			"musicStream":"false"
-		},
-		"Argodaemon" {
-			"playCount":"0",
-			"musicStream":"false"
-		},
-		"Nerdcubed" {
-			"playCount":"0",
-			"musicStream":"false"
-		},
-		"Mattophobia" {
-			"playCount":"0",
-			"musicStream":"false"
-		},
-		"Muselk" {
-			"playCount":"0",
-			"musicStream":"false"
-		},
-		"Scykoh" {
-			"playCount":"0",
-			"musicStream":"false"
-		},
-		"NaturalSelection2" {
-			"playCount":"0",
-			"musicStream":"false"
-		},
-		"GopherGaming" {
-			"playCount":"0",
-			"musicStream":"false"
-		},
-		"Haxmega" {
-			"playCount":"0",
-			"musicStream":"false"
-		}
-	},
+	"streams": [
+		"Totalbiscuit",
+		"Monstercat",
+		"TrionWorlds",
+		"Argodaemon",
+		"Nerdcubed",
+		"Mattophobia",
+		"Muselk",
+		"Scykoh",
+		"NaturalSelection2",
+		"GopherGaming",
+		"Haxmega"
+	],
 
 	"data": {
-		"streamNum":"11",
-		"totalPlay":"0",
-		"totalTime":"0:0:0"
+		"streamNum":11,
+		"totalPlay":0,
+		"totalTime":"0:0:0",
+		"hours":0,
+		"mins":0,
+		"secs":0,
+		"streamCounts":{
+			"Totalbiscuit":{
+				"playCount":"0",
+				"musicStream":"false",
+				"hours:":0,
+				"mins":0,
+				"secs":0
+			},
+			"Monstercat":{
+				"playCount":"0"	,
+				"musicStream":"true",
+				"hours:":0,
+				"mins":0,
+				"secs":0
+			},
+			"TrionWorlds":{
+				"playCount":"0",
+				"musicStream":"false",
+				"hours:":0,
+				"mins":0,
+				"secs":0
+			},
+			"Argodaemon":{
+				"playCount":"0",
+				"musicStream":"false",
+				"hours:":0,
+				"mins":0,
+				"secs":0
+			},
+			"Nerdcubed":{
+				"playCount":"0",
+				"musicStream":"false",
+				"hours:":0,
+				"mins":0,
+				"secs":0
+			},
+			"Mattophobia":{
+				"playCount":"0",
+				"musicStream":"false",
+				"hours:":0,
+				"mins":0,
+				"secs":0
+			},
+			"Muselk":{
+				"playCount":"0",
+				"musicStream":"false",
+				"hours:":0,
+				"mins":0,
+				"secs":0
+			},
+			"Scykoh":{
+				"playCount":"0",
+				"musicStream":"false",
+				"hours:":0,
+				"mins":0,
+				"secs":0
+			},
+			"NaturalSelection2":{
+				"playCount":"0",
+				"musicStream":"false",
+				"hours:":0,
+				"mins":0,
+				"secs":0
+			},
+			"GopherGaming":{
+				"playCount":"0",
+				"musicStream":"false",
+				"hours:":0,
+				"mins":0,
+				"secs":0
+			},
+			"Haxmega":{
+				"playCount":"0",
+				"musicStream":"false",
+				"hours:":0,
+				"mins":0,
+				"secs":0
+			}
+		}
 	}
 }
