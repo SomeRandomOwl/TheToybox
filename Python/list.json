@@ -1,23 +1,54 @@
 {
-	"streams": [
-		"Totalbiscuit",
-		"Monstercat",
-		"TrionWorlds",
-		"Argodaemon",
-		"Nerdcubed",
-		"Mattophobia",
-		"Muselk",
-		"Scykoh",
-		"NaturalSelection2",
-		"GopherGaming",
-		"Haxmega"
-	],
-
-	"data": [{
-		"streamNum":"11",
-
-		"streamCounts":{
-			"Monstercat":"20"
+	"streams": {
+		"Totalbiscuit" {
+			"playCount":"0",
+			"musicStream":"false"
+		},
+		"Monstercat"{
+			"playCount":"0"	,
+			"musicStream":"true"
+		},
+		"TrionWorlds" {
+			"playCount":"0",
+			"musicStream":"false"
+		},
+		"Argodaemon" {
+			"playCount":"0",
+			"musicStream":"false"
+		},
+		"Nerdcubed" {
+			"playCount":"0",
+			"musicStream":"false"
+		},
+		"Mattophobia" {
+			"playCount":"0",
+			"musicStream":"false"
+		},
+		"Muselk" {
+			"playCount":"0",
+			"musicStream":"false"
+		},
+		"Scykoh" {
+			"playCount":"0",
+			"musicStream":"false"
+		},
+		"NaturalSelection2" {
+			"playCount":"0",
+			"musicStream":"false"
+		},
+		"GopherGaming" {
+			"playCount":"0",
+			"musicStream":"false"
+		},
+		"Haxmega" {
+			"playCount":"0",
+			"musicStream":"false"
 		}
-	}]
-}	
+	},
+
+	"data": {
+		"streamNum":"11",
+		"totalPlay":"0",
+		"totalTime":"0:0:0"
+	}
+}
