@@ -10,7 +10,9 @@ import os
 from urllib.request import urlopen
 from urllib.error import URLError
 import json
+
 os.system('cls')
+
 #Sets up the input variables that is used later in the script
 
 option = ''
@@ -21,10 +23,12 @@ audio = ''
 restart = 'yes'
 
 #Variables used to condense code down slightly
+
 lsTwitch = 'livestreamer twitch.tv/'
 lsYoutube = 'livestreamer youtube.com/watch?v='
 	
 #Sets the inital value for the timer variable so calculatins are correct
+
 times = 0
 timem = 0
 timeh =0
@@ -125,7 +129,6 @@ def lvstList():
 	pass
 
 #Command to open a stream
-
 def open():
 	global service
 	global lvst
@@ -180,9 +183,10 @@ def cmdwin():
 	global lvsting
 	global options
 
-	#print('Opening ' + stream + "'s stream on " + service + ".")
+
 	os.system('cls')
 	print(options)
+	print('Opening ' + stream + "'s stream on " + service + ".\n")
 	start = time.time()
 	os.system(lvsting)
 	end = time.time()
@@ -210,12 +214,14 @@ def timeCalc():
 	times = str(times)
 	timem = str(timem)
 	timeh = str(timeh)
+	#Prints the elapsed time
+	elapsedTime = timeh + ':' + timem + ':' + times
 	print('')
-	global timeh
-	print ('Time elapsed: ' + timeh + ":" + timem + ":" + times)
+	print ('Time elapsed: ' + elapsedTime)
 	print('')
 	pass
 
+#Main Starter
 def start():
 	global option
 	global times
@@ -228,6 +234,8 @@ def start():
 	option = input('What do you want to do?: ')
 	os.system('cls')
 	print(options)
+
+	#checks what option was chosen
 	if option == "check":
 		check()
 	elif option == "list":
@@ -245,9 +253,11 @@ Option Not Recgonized
 
 """)
 		pass
+	print('')
 	restart = input('Restart the Script?: ')
 	pass
 
+#Restarts the script
 while restart == "yes":
 	start()
 	if restart == "yes":
