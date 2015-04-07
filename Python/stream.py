@@ -204,33 +204,10 @@ def cmdwin():
 		playnum = data['data']['streamData'][lvst]['playCount']
 		playnum = playnum + 1
 		data['data']['streamData'][lvst]['playCount'] = playnum
-		print("Times " + lvst + " has been played: " + str(data['data']['streamData'][lvst]['playCount'])
+		print("Times " + lvst + " has been played: " + str(data['data']['streamData'][lvst]['playCount']))
 		pass
 	except:
 		pass
-	start = time.time()
-	os.system(lvsting)
-	end = time.time()
-	times = end - start
-	times = int(times)
-	pass
-
-#Timer calculation
-def timeCalc():
-	global times
-	global timem
-	global timeh
-
-	while times > 59:
-		times = times - 60
-		timem = timem + 1
-		pass
-
-	while timem > 59:
-		timem = timem - 60
-		timeh = timeh + 1
-		pass
-	
 	#converts timer values to strings to display with print
 	times = str(times)
 	timem = str(timem)
