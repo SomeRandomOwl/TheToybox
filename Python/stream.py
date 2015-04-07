@@ -25,7 +25,16 @@ lsYoutube = 'livestreamer youtube.com/watch?v='
 times = 0
 timem = 0
 timeh =0
-	
+
+#sets up global variables (Hopefully)
+global option
+global service
+global stream
+global streaming
+global times
+global timem
+global timeh
+
 #Opens the json file for the list of tracked streamers
 with open('list.json') as data_file:    
     data = json.load(data_file)
