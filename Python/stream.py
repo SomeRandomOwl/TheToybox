@@ -21,6 +21,7 @@ lvst = ''
 wincmd = ''
 audio = ''
 restart = 'yes'
+lvsting = ''
 
 #Variables used to condense code down slightly
 
@@ -36,7 +37,8 @@ timeh =0
 #Opens the json file for the list of tracked streamers
 with open('list.json') as data_file:    
     data = json.load(data_file)
-	
+    data_file.close()
+    pass
 #Displays avaliable options
 options = """
 	
@@ -115,21 +117,24 @@ def lvstList():
 
 	print('')
 	for i in range(len(data["streams"])):
-		datanum = i
+		if data['streams'][i] != "null":
+			datanum = i
 		pass
 
 	datanum = datanum + 1
 	datanum = str(datanum)
-
+	data['data']['streamNum'] = int(datanum)
 	print('There are ' + datanum + ' streams on being tracked.')
 
 	for i in range(len(data["streams"])):
-		list(data["streams"][i])
+		if data["streams"][i] != "null":
+			list(data["streams"][i])
+			pass
 		pass
 	pass
 
 #Command to open a stream
-def open():
+def openstream():
 	global service
 	global lvst
 	global lsTwitch
@@ -146,17 +151,24 @@ def open():
 	print(options)
 	#Process to use for twitch streams
 	if service.lower() == 'twitch':
-		if data['data']['streamData'][lvst.lower()]['musicStream'] == 'true':
-			audio = input('Do you want to do audio only?: ')
-			if audio.lower() == 'yes':
-				lvsting = lsTwitch + lvst + ' audio'
+		try:
+			audioOnly = data['data']['streamData'][lvst.lower()]['musicStream']
+			if audioOnly == 'true':
+				audio = input('Do you want to do audio only?: ')
+				if audio.lower() == 'yes':
+					lvsting = lsTwitch + lvst + ' audio'
+				else:
+					lvsting = lsTwitch + lvst + ' source'
+					pass
+				pass
 			else:
 				lvsting = lsTwitch + lvst + ' source'
 				pass
-		else:
-			lvsting = lsTwitch + lvst + ' source'
 			pass
-		pass
+		except:
+			lvsting = lsTwitch + lvst + ' source'
+			return
+
 	
 	#Process for youtube streams
 	if service.lower() == 'youtube':
@@ -185,10 +197,17 @@ def cmdwin():
 	global service
 	global lvst
 
-
 	os.system('cls')
 	print(options)
 	print('Opening ' + lvst + "'s stream on " + service + ".\n")
+	try:
+		playnum = data['data']['streamData'][lvst]['playCount']
+		playnum = playnum + 1
+		data['data']['streamData'][lvst]['playCount'] = playnum
+		print("Times " + lvst + " has been played: " + str(data['data']['streamData'][lvst]['playCount'])
+		pass
+	except:
+		pass
 	start = time.time()
 	os.system(lvsting)
 	end = time.time()
@@ -230,6 +249,7 @@ def start():
 	global timem
 	global restart
 	global options
+	global lvst
 
 	#Option input
 	print(options)
@@ -243,7 +263,7 @@ def start():
 	elif option.lower() == "list":
 		lvstList()
 	elif option.lower() == "open":
-		open()
+		openstream()
 		cmdwin()
 		timeCalc()
 	else:
@@ -267,9 +287,14 @@ while restart == "yes":
 		pass
 	pass
 
+
+
 #Script end confirmation
 print('')
 input("Press Enter to continue...")
-	
+
+with open('list.json', "w") as write_file:  
+	json.dump(data, write_file)
+
 ##End##
 	
