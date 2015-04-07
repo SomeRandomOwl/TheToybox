@@ -162,28 +162,42 @@ if service == 'youtube':
 print('')
 	
 #Starts timer and opens stream
-start = time.time()
-os.system(streaming)
-end = time.time()
-times = end - start
-times = int(times)
-	
-#Timer calculation
-while times > 59:
-	times = times - 60
-	timem = timem + 1
+def stream():
+	global times
+	global streaming
+
+	start = time.time()
+	os.system(streaming)
+	end = time.time()
+	times = end - start
+	times = int(times)
 	pass
 
-while timem > 59:
-	timem = timem - 60
-	timeh = timeh + 1
+#Timer calculation
+def timeCalc():
+	global times
+	global timem
+	global timeh
+
+	while times > 59:
+		times = times - 60
+		timem = timem + 1
+		pass
+
+	while timem > 59:
+		timem = timem - 60
+		timeh = timeh + 1
+		pass
+	
+	#converts timer values to strings to display with print
+	times = str(times)
+	timem = str(timem)
+	timeh = str(timeh)
 	pass
-	
-#converts timer values to strings to display with print
-times = str(times)
-timem = str(timem)
-timeh = str(timeh)
-	
+
+stream()
+timeCalc()
+
 #Displays timer
 print('')
 print ('Time elapsed: ' + timeh + ":" + timem + ":" + times)
