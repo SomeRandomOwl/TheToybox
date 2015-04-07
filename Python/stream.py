@@ -145,10 +145,10 @@ def open():
 	os.system('cls')
 	print(options)
 	#Process to use for twitch streams
-	if service == 'twitch':
-		if lvst == 'monstercat':
+	if service.lower() == 'twitch':
+		if data['data']['streamData'][lvst.lower()]['musicStream'] == 'true':
 			audio = input('Do you want to do audio only?: ')
-			if audio == 'yes':
+			if audio.lower() == 'yes':
 				lvsting = lsTwitch + lvst + ' audio'
 			else:
 				lvsting = lsTwitch + lvst + ' source'
@@ -159,17 +159,17 @@ def open():
 		pass
 	
 	#Process for youtube streams
-	if service == 'youtube':
+	if service.lower() == 'youtube':
 		if lvst[1:32] == 'https://www.youtube.com/watch?v=':
 			audio = input('Do you want to do audio only?: ')
-			if audio == 'yes':
+			if audio.lower() == 'yes':
 				lvsting = lsYoutube + lvst[32:] + ' audio_mp4'
 			else:
 				lvsting = lsYoutube + lvst[32:] + ' best'
 				pass
 		else:
 			audio = input('Do you want to do audio only?: ')
-			if audio == 'yes':
+			if audio.lower() == 'yes':
 				lvsting = lsYoutube + lvst + ' audio_mp4'
 			else:
 				lvsting = lsYoutube + lvst + ' best'
@@ -182,11 +182,13 @@ def cmdwin():
 	global times
 	global lvsting
 	global options
+	global service
+	global lvst
 
 
 	os.system('cls')
 	print(options)
-	print('Opening ' + stream + "'s stream on " + service + ".\n")
+	print('Opening ' + lvst + "'s stream on " + service + ".\n")
 	start = time.time()
 	os.system(lvsting)
 	end = time.time()
@@ -236,11 +238,11 @@ def start():
 	print(options)
 
 	#checks what option was chosen
-	if option == "check":
+	if option.lower() == "check":
 		check()
-	elif option == "list":
+	elif option.lower() == "list":
 		lvstList()
-	elif option == "open":
+	elif option.lower() == "open":
 		open()
 		cmdwin()
 		timeCalc()

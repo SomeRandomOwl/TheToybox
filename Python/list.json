@@ -20,78 +20,78 @@
 		"hours":0,
 		"mins":0,
 		"secs":0,
-		"streamCounts":{
-			"Totalbiscuit":{
+		"streamData":{
+			"totalbiscuit":{
 				"playCount":0,
 				"musicStream":"false",
 				"hours:":0,
 				"mins":0,
 				"secs":0
 			},
-			"Monstercat":{
+			"monstercat":{
 				"playCount":0	,
 				"musicStream":"true",
 				"hours:":0,
 				"mins":0,
 				"secs":0
 			},
-			"TrionWorlds":{
+			"trionWorlds":{
 				"playCount":0,
 				"musicStream":"false",
 				"hours:":0,
 				"mins":0,
 				"secs":0
 			},
-			"Argodaemon":{
+			"argodaemon":{
 				"playCount":0,
 				"musicStream":"false",
 				"hours:":0,
 				"mins":0,
 				"secs":0
 			},
-			"Nerdcubed":{
+			"nerdcubed":{
 				"playCount":0,
 				"musicStream":"false",
 				"hours:":0,
 				"mins":0,
 				"secs":0
 			},
-			"Mattophobia":{
+			"mattophobia":{
 				"playCount":0,
 				"musicStream":"false",
 				"hours:":0,
 				"mins":0,
 				"secs":0
 			},
-			"Muselk":{
+			"muselk":{
 				"playCount":0,
 				"musicStream":"false",
 				"hours:":0,
 				"mins":0,
 				"secs":0
 			},
-			"Scykoh":{
+			"scykoh":{
 				"playCount":0,
 				"musicStream":"false",
 				"hours:":0,
 				"mins":0,
 				"secs":0
 			},
-			"NaturalSelection2":{
+			"naturalselection2":{
 				"playCount":0,
 				"musicStream":"false",
 				"hours:":0,
 				"mins":0,
 				"secs":0
 			},
-			"GopherGaming":{
+			"gophergaming":{
 				"playCount":0,
 				"musicStream":"false",
 				"hours:":0,
 				"mins":0,
 				"secs":0
 			},
-			"Haxmega":{
+			"haxmega":{
 				"playCount":0,
 				"musicStream":"false",
 				"hours:":0,
