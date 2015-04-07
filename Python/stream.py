@@ -1,7 +1,7 @@
 ##------------------------------------------------------------------------------------------------------##
-## Importent note: ##
+## Importent note:																					    ##
 ## This uses the program http://docs.livestreamer.io/index.html which provides the livestreamer command ##
-## This python program is used to open streams in vlc media player ##
+## This python program is used to open streams in vlc media player 										##
 ##------------------------------------------------------------------------------------------------------##
 
 #Loading modules the script relies on
