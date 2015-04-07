@@ -10,13 +10,16 @@ import os
 from urllib.request import urlopen
 from urllib.error import URLError
 import json
-
+os.system('cls')
 #Sets up the input variables that is used later in the script
+
 option = ''
 service = ''
-stream = ''
-streaming = ''
-	
+lvst = ''
+wincmd = ''
+audio = ''
+restart = 'yes'
+
 #Variables used to condense code down slightly
 lsTwitch = 'livestreamer twitch.tv/'
 lsYoutube = 'livestreamer youtube.com/watch?v='
@@ -43,16 +46,12 @@ open (opens a stream)
 	
 ----------
 	
-	"""
+"""
 	
 listing = """
 -------------
 """
 	
-print(options)
-	
-#Option input
-option = input('What do you want to do?: ')
 	
 #Defines the program to check a users status
 def check_user(user):
@@ -96,7 +95,7 @@ def list(urc):
 	return 
 	
 #Individual user status check
-if option == 'check':
+def check():
 	print('')
 	user = input('User to check status of: ')	
 	print('')
@@ -105,7 +104,11 @@ if option == 'check':
 	pass
 	
 #User status list from the list.json file
-if option == 'list':
+def lvstList():
+	global data
+	global datanum
+	global data_file
+
 	print('')
 	for i in range(len(data["streams"])):
 		datanum = i
@@ -122,52 +125,66 @@ if option == 'list':
 	pass
 
 #Command to open a stream
-if option == 'open':
-	service = input('What stream service? (Youtube or Twitch): ')
-	stream = input('What stream?:')
-	pass
 
-#Process to use for twitch streams
-if service == 'twitch':
-	if stream == 'monstercat':
-		audio = input('Do you want to do audio only?: ')
-		if audio == 'yes':
-			streaming = lsTwitch + stream + ' audio'
+def open():
+	global service
+	global lvst
+	global lsTwitch
+	global lvsting
+	global lsYoutube
+	global audio
+	global options
+
+	service = input('What stream service? (Youtube or Twitch): ')
+	os.system('cls')
+	print(options)
+	lvst = input('What stream?:')
+	os.system('cls')
+	print(options)
+	#Process to use for twitch streams
+	if service == 'twitch':
+		if lvst == 'monstercat':
+			audio = input('Do you want to do audio only?: ')
+			if audio == 'yes':
+				lvsting = lsTwitch + lvst + ' audio'
+			else:
+				lvsting = lsTwitch + lvst + ' source'
+				pass
 		else:
-			streaming = lsTwitch + stream + ' source'
+			lvsting = lsTwitch + lvst + ' source'
 			pass
-	else:
-		streaming = lsTwitch + stream + ' source'
+		pass
+	
+	#Process for youtube streams
+	if service == 'youtube':
+		if lvst[1:32] == 'https://www.youtube.com/watch?v=':
+			audio = input('Do you want to do audio only?: ')
+			if audio == 'yes':
+				lvsting = lsYoutube + lvst[32:] + ' audio_mp4'
+			else:
+				lvsting = lsYoutube + lvst[32:] + ' best'
+				pass
+		else:
+			audio = input('Do you want to do audio only?: ')
+			if audio == 'yes':
+				lvsting = lsYoutube + lvst + ' audio_mp4'
+			else:
+				lvsting = lsYoutube + lvst + ' best'
+				pass
 		pass
 	pass
-
-#Process for youtube streams
-if service == 'youtube':
-	if stream[1:32] == 'https://www.youtube.com/watch?v=':
-		audio = input('Do you want to do audio only?: ')
-		if audio == 'yes':
-			streaming = lsYoutube + stream[32:] + ' audio_mp4'
-		else:
-			streaming = lsYoutube + stream[32:] + ' best'
-			pass
-	else:
-		audio = input('Do you want to do audio only?: ')
-		if audio == 'yes':
-			streaming = lsYoutube + stream + ' audio_mp4'
-		else:
-			streaming = lsYoutube + stream + ' best'
-			pass
-	pass
-
-print('')
 	
 #Starts timer and opens stream
-def stream():
+def cmdwin():
 	global times
-	global streaming
+	global lvsting
+	global options
 
+	#print('Opening ' + stream + "'s stream on " + service + ".")
+	os.system('cls')
+	print(options)
 	start = time.time()
-	os.system(streaming)
+	os.system(lvsting)
 	end = time.time()
 	times = end - start
 	times = int(times)
@@ -193,19 +210,53 @@ def timeCalc():
 	times = str(times)
 	timem = str(timem)
 	timeh = str(timeh)
+	print('')
+	global timeh
+	print ('Time elapsed: ' + timeh + ":" + timem + ":" + times)
+	print('')
 	pass
 
-stream()
-timeCalc()
+def start():
+	global option
+	global times
+	global timem
+	global restart
+	global options
 
-#Displays timer
-print('')
-print ('Time elapsed: ' + timeh + ":" + timem + ":" + times)
-print('')
-pass
+	#Option input
+	print(options)
+	option = input('What do you want to do?: ')
+	os.system('cls')
+	print(options)
+	if option == "check":
+		check()
+	elif option == "list":
+		lvstList()
+	elif option == "open":
+		open()
+		cmdwin()
+		timeCalc()
+	else:
+		print("""
 
+-----------
+Option Not Recgonized
+-----------
+
+""")
+		pass
+	restart = input('Restart the Script?: ')
+	pass
+
+while restart == "yes":
+	start()
+	if restart == "yes":
+		os.system('cls')
+		pass
+	pass
 
 #Script end confirmation
+print('')
 input("Press Enter to continue...")
 	
 ##End##
