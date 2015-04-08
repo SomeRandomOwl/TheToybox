@@ -30,6 +30,7 @@ totalusersec = 0
 totalusermin = 0
 totaluserhrs = 0
 totaluserdays = 0
+
 #Variables used to condense code down slightly
 
 lsTwitch = 'livestreamer twitch.tv/'
@@ -342,6 +343,8 @@ def stattracker():
 	global totalusermin
 	global totaluserhrs
 	global totaluserdays
+	global service
+
 	#Updates the play count on the active streamer
 	try:
 		playnum = data['data']['streamData'][lvst]['playCount']
@@ -396,44 +399,42 @@ def stattracker():
 	data['data']['totalTime'] = totalelapsed
 
 	#Updates user time totals
-	totalusersec = data['data']['streamData'][lvst]['secs']
-	totalusermin = data['data']['streamData'][lvst]['mins']
-	totaluserhrs = data['data']['streamData'][lvst]['hours']
-	totaluserdays = data['data']['streamData'][lvst]['days']
+	if service.lower() == 'twitch':
+		totalusersec = data['data']['streamData'][lvst]['secs']
+		totalusermin = data['data']['streamData'][lvst]['mins']
+		totaluserhrs = data['data']['streamData'][lvst]['hours']
+		totaluserdays = data['data']['streamData'][lvst]['days']
+	
+		totalusersec = totalusersec + times
+		totalusermin = totalusermin + timem
+		totaluserhrs = totaluserhrs + timeh
 
-	totalusersec = totalusersec + times
-	totalusermin = totalusermin + timem
-	totaluserhrs = totaluserhrs + timeh
+		while totalusersec > 59:
+			totalusersec = totalusersec - 60
+			totalusermin = totalusermin + 1
+			pass
 
-	while totalusersec > 59:
-		totalusersec = totalusersec - 60
-		totalusermin = totalusermin + 1
-		pass
+		while totalusermin > 59:
+			totalusermin = totalusermin - 60
+			totaluserhrs = totaluserhrs + 1
+			pass
 
-	while totalusermin > 59:
-		totalusermin = totalusermin - 60
-		totaluserhrs = totaluserhrs + 1
-		pass
-	while totaluserhrs > 23:
-		totaluserhrs - 24
-		totaluserdays + 1
-		pass
-
-	data['data']['streamData'][lvst]['secs'] = totalusersec
-	data['data']['streamData'][lvst]['mins'] = totalusermin
-	data['data']['streamData'][lvst]['hours'] = totaluserhrs
-	data['data']['streamData'][lvst]['days'] = totaluserdays
-	totalusersec = str(totalusersec)
-	totalusermin = str(totalusermin)
-	totaluserhrs = str(totaluserhrs)
-	totaluserdays = str(totaluserdays)
-	totaluserelapsed = totaluserdays + " Days " + totaluserhrs + ":" + totalusermin + ":" + totalusersec
-	data['data']['streamData'][lvst]['totalTime'] = totaluserelapsed
+		while totaluserhrs > 23:
+			totaluserhrs - 24
+			totaluserdays + 1
+			pass
+	
+		data['data']['streamData'][lvst]['secs'] = totalusersec
+		data['data']['streamData'][lvst]['mins'] = totalusermin
+		data['data']['streamData'][lvst]['hours'] = totaluserhrs
+		data['data']['streamData'][lvst]['days'] = totaluserdays
+		totalusersec = str(totalusersec)
+		totalusermin = str(totalusermin)
+		totaluserhrs = str(totaluserhrs)
+		totaluserdays = str(totaluserdays)
+		totaluserelapsed = totaluserdays + " Days " + totaluserhrs + ":" + totalusermin + ":" + totalusersec
+		data['data']['streamData'][lvst]['totalTime'] = totaluserelapsed
 	pass
-
-
-
-
 
 #Main Starter
 def start():
@@ -491,4 +492,3 @@ with open('list.json', "w") as write_file:
 	json.dump(data, write_file)
 
 ##End##
-	
