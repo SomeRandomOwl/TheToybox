@@ -35,7 +35,7 @@ totaluserdays = 0
 
 lsTwitch = 'livestreamer twitch.tv/'
 lsYoutube = 'livestreamer youtube.com/watch?v='
-	
+
 #Sets the inital value for the timer variable so calculatins are correct
 
 times = 0
@@ -47,6 +47,8 @@ with open('list.json') as data_file:
     data = json.load(data_file)
     data_file.close()
     pass
+
+streamDataTemp = data['data']['streamData']['streamTemplate']
 #Displays avaliable options
 options = """
 	
@@ -57,6 +59,7 @@ Avalible options:
 check (checks status of a specific user
 list (Checks the status of a list of predefined users
 open (opens a stream)
+Add (Adds a user to to the tracked user list)
 	
 ----------
 	
@@ -139,7 +142,19 @@ Might have youtube support in the future
 ----------
 	
 """
+optionsadd = """
 	
+Avalible options:
+	
+----------
+	
+This is used to add a user to the tracked list
+This make ther status to be checked with the list command
+It also allows statistic tracking for the user
+	
+----------
+	
+"""
 listing = """
 -------------
 """
@@ -185,7 +200,50 @@ def list(urc):
 	except KeyboardInterrupt:
 	   	pass
 	return 
-	
+def userAdd():
+	global streamDataTemp
+	global data
+
+	goodRecord = 0
+	emptyRecord = 0
+	allRecords = 0
+
+	for i in range(len(data["streams"])):
+		if data['streams'][i] != "null":
+			goodRecord = goodRecord + 1
+		elif data['streams'][i] == "null":
+			emptyRecord = emptyRecord + 1
+			pass
+		allRecords = allRecords + 1
+		pass
+
+	goodRecord = str(goodRecord)
+	emptyRecord = str(emptyRecord)
+	allRecords = str(allRecords)
+
+	os.system('cls')
+	print(optionsadd)
+	print('\nThere are ' + goodRecord + ' used records and  ' + emptyRecord + ' empty records out of ' + allRecords + '\n')
+	userAdd = input('Name of the user to add?: ')
+	nextRecord = data['data']['nextRecord']
+	data['streams'][nextRecord] = userAdd
+	data['data']['streamData'][userAdd.lower()] = streamDataTemp
+	nextRecord = nextRecord + 1
+	data['data']['nextRecord'] = nextRecord
+	isMusicStream = input('Is this streama music stream? (Yes or No): ')
+	if isMusicStream.lower() == 'yes':
+		data['data']['streamData'][userAdd]['musicStream'] = true
+		pass
+
+	for i in range(len(data["streams"])):
+		if data['streams'][i] != "null":
+			datanum = i
+		pass
+
+	datanum = datanum + 1
+	data['data']['streamNum'] = datanum
+
+	pass
 #Individual user status check
 def check():
 	os.system('cls')
@@ -402,40 +460,43 @@ def stattracker():
 
 	#Updates user time totals
 	if service.lower() == 'twitch':
-		totalusersec = data['data']['streamData'][lvst]['secs']
-		totalusermin = data['data']['streamData'][lvst]['mins']
-		totaluserhrs = data['data']['streamData'][lvst]['hours']
-		totaluserdays = data['data']['streamData'][lvst]['days']
+		try:
+			totalusersec = data['data']['streamData'][lvst]['secs']
+			totalusermin = data['data']['streamData'][lvst]['mins']
+			totaluserhrs = data['data']['streamData'][lvst]['hours']
+			totaluserdays = data['data']['streamData'][lvst]['days']
+		
+			totalusersec = totalusersec + times
+			totalusermin = totalusermin + timem
+			totaluserhrs = totaluserhrs + timeh
+
+			while totalusersec > 59:
+				totalusersec = totalusersec - 60
+				totalusermin = totalusermin + 1
+				pass
 	
-		totalusersec = totalusersec + times
-		totalusermin = totalusermin + timem
-		totaluserhrs = totaluserhrs + timeh
+			while totalusermin > 59:
+				totalusermin = totalusermin - 60
+				totaluserhrs = totaluserhrs + 1
+				pass
 
-		while totalusersec > 59:
-			totalusersec = totalusersec - 60
-			totalusermin = totalusermin + 1
+			while totaluserhrs > 23:
+				totaluserhrs - 24
+				totaluserdays + 1
+				pass
+		
+			data['data']['streamData'][lvst]['secs'] = totalusersec
+			data['data']['streamData'][lvst]['mins'] = totalusermin
+			data['data']['streamData'][lvst]['hours'] = totaluserhrs
+			data['data']['streamData'][lvst]['days'] = totaluserdays
+			totalusersec = str(totalusersec)
+			totalusermin = str(totalusermin)
+			totaluserhrs = str(totaluserhrs)
+			totaluserdays = str(totaluserdays)
+			totaluserelapsed = totaluserdays + " Days " + totaluserhrs + ":" + totalusermin + ":" + totalusersec
+			data['data']['streamData'][lvst]['totalTime'] = totaluserelapsed
+		except:
 			pass
-
-		while totalusermin > 59:
-			totalusermin = totalusermin - 60
-			totaluserhrs = totaluserhrs + 1
-			pass
-
-		while totaluserhrs > 23:
-			totaluserhrs - 24
-			totaluserdays + 1
-			pass
-	
-		data['data']['streamData'][lvst]['secs'] = totalusersec
-		data['data']['streamData'][lvst]['mins'] = totalusermin
-		data['data']['streamData'][lvst]['hours'] = totaluserhrs
-		data['data']['streamData'][lvst]['days'] = totaluserdays
-		totalusersec = str(totalusersec)
-		totalusermin = str(totalusermin)
-		totaluserhrs = str(totaluserhrs)
-		totaluserdays = str(totaluserdays)
-		totaluserelapsed = totaluserdays + " Days " + totaluserhrs + ":" + totalusermin + ":" + totalusersec
-		data['data']['streamData'][lvst]['totalTime'] = totaluserelapsed
 	pass
 
 #Main Starter
@@ -463,6 +524,8 @@ def start():
 		cmdwin()
 		timeCalc()
 		stattracker()
+	elif option.lower() == "add":
+		userAdd()
 	else:
 		print("""
 
