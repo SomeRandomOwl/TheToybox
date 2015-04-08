@@ -22,7 +22,14 @@ wincmd = ''
 audio = ''
 restart = 'yes'
 lvsting = ''
-
+totalsec = 0
+totalmin = 0
+totalhrs = 0
+totaldays = 0
+totalusersec = 0
+totalusermin = 0
+totaluserhrs = 0
+totaluserdays = 0
 #Variables used to condense code down slightly
 
 lsTwitch = 'livestreamer twitch.tv/'
@@ -49,6 +56,84 @@ Avalible options:
 check (checks status of a specific user
 list (Checks the status of a list of predefined users
 open (opens a stream)
+	
+----------
+	
+"""
+optionsstreaming = """
+	
+Avalible options:
+	
+----------
+	
+The stream you chose is opening
+So sit back and watch/listen to you stream
+Enjoy!
+	
+----------
+	
+"""
+optionsopen = """
+	
+Avalible options:
+	
+----------
+
+This is to open stream service The only two options avaliable are:	
+Youtube -- Allows you to open a stream with a youtube url ir video id
+Twitch -- Opens a twitch stream when you input user
+	
+----------
+	
+"""
+optionsstream = """
+	
+Avalible options:
+	
+----------
+
+This is to specify a stream
+Input a username if for Twitch
+Input a video id if for Youtube
+	
+----------
+	
+"""
+optionsopenaudio = """
+	
+Avalible options:
+	
+----------
+	
+This is if you want to listen to the audio only for the stream
+Input yes to only get the audio and no video
+Input no to have video as well as audio
+	
+----------
+	
+"""
+optionslist = """
+	
+Avalible options:
+	
+----------
+	
+This is used to list users present in the list.json
+This only works for twitch streamers at the moment
+Will maybe extend to youtube in the future
+	
+----------
+	
+"""
+optionscheck = """
+	
+Avalible options:
+	
+----------
+	
+This is used to check the status of a individual twitch streamer
+This is unavaliable for youtube unless it is otherwisse possible
+Might have youtube support in the future
 	
 ----------
 	
@@ -102,7 +187,8 @@ def list(urc):
 	
 #Individual user status check
 def check():
-	print('')
+	os.system('cls')
+	print(optionscheck)
 	user = input('User to check status of: ')	
 	print('')
 	list(user)
@@ -115,7 +201,8 @@ def lvstList():
 	global datanum
 	global data_file
 
-	print('')
+	os.system('cls')
+	print(optionslist)
 	for i in range(len(data["streams"])):
 		if data['streams'][i] != "null":
 			datanum = i
@@ -143,18 +230,21 @@ def openstream():
 	global audio
 	global options
 
+	os.system('cls')
+	print(optionsopen)
 	service = input('What stream service? (Youtube or Twitch): ')
 	os.system('cls')
-	print(options)
-	lvst = input('What stream?:')
-	os.system('cls')
-	print(options)
+	print(optionsstream)
+	lvst = input('What stream?: ')
 	#Process to use for twitch streams
 	if service.lower() == 'twitch':
 		try:
 			audioOnly = data['data']['streamData'][lvst.lower()]['musicStream']
 			if audioOnly == 'true':
+				os.system('cls')
+				print(optionsopenaudio)
 				audio = input('Do you want to do audio only?: ')
+
 				if audio.lower() == 'yes':
 					lvsting = lsTwitch + lvst + ' audio'
 				else:
@@ -172,6 +262,8 @@ def openstream():
 	
 	#Process for youtube streams
 	if service.lower() == 'youtube':
+		os.system('cls')
+		print(optionsopenaudio)
 		if lvst[1:32] == 'https://www.youtube.com/watch?v=':
 			audio = input('Do you want to do audio only?: ')
 			if audio.lower() == 'yes':
@@ -197,8 +289,10 @@ def cmdwin():
 	global options
 
 	os.system('cls')
-	print(options)
-	print('Opening ' + stream + "'s stream on " + service + ".\n")
+	print(optionsstreaming)
+	print('Opening ' + lvst + "'s stream on " + service + ".\n")
+	print('Total times ' + lvst + " has been played: " + str(data['data']['streamData'][lvst]['playCount']) + ".\n")
+	print('Total ammount of time ' + lvst + " Has been played for: " + data['data']['streamData'][lvst]['totalTime'] + " \n")
 	start = time.time()
 	os.system(lvsting)
 	end = time.time()
@@ -240,7 +334,14 @@ def stattracker():
 	global timeh
 	global lvst
 	global elapsedTime
-
+	global totalsec
+	global totalmin
+	global totalhrs
+	global totaldays
+	global totalusersec
+	global totalusermin
+	global totaluserhrs
+	global totaluserdays
 	#Updates the play count on the active streamer
 	try:
 		playnum = data['data']['streamData'][lvst]['playCount']
@@ -251,15 +352,20 @@ def stattracker():
 		pass
 
 	#Updates the total play count for all streams
-	totalplay = data['data']['totalplay']
-	totalplay = totalplay +1
-	data['data']['totalplay'] = totalplay
+	totalplay = data['data']['totalPlay']
+	totalplay = totalplay + 1
+	data['data']['totalPlay'] = totalplay
+
 
 	#Updates overall time totals
 	totalsec = data['data']['secs']
 	totalmin = data['data']['mins']
 	totalhrs = data['data']['hours']
 	totaldays = data['data']['days']
+
+	times = int(times)
+	timem = int(timem)
+	timeh = int(timeh)
 
 	totalsec = totalsec + times
 	totalmin = totalmin + timem
@@ -290,10 +396,10 @@ def stattracker():
 	data['data']['totalTime'] = totalelapsed
 
 	#Updates user time totals
-	totalusersec = data['data']['streamData']['secs']
-	totalusermin = data['data']['streamData']['mins']
-	totaluserhrs = data['data']['streamData']['hours']
-	totaluserdays = data['data']['streamData']['days']
+	totalusersec = data['data']['streamData'][lvst]['secs']
+	totalusermin = data['data']['streamData'][lvst]['mins']
+	totaluserhrs = data['data']['streamData'][lvst]['hours']
+	totaluserdays = data['data']['streamData'][lvst]['days']
 
 	totalusersec = totalusersec + times
 	totalusermin = totalusermin + timem
@@ -313,16 +419,16 @@ def stattracker():
 		totaluserdays + 1
 		pass
 
-	data['data']['streamData']['secs'] = totalusersec
-	data['data']['streamData']['mins'] = totalusermin
-	data['data']['streamData']['hours'] = totaluserhrs
-	data['data']['streamData']['days'] = totaluserdays
+	data['data']['streamData'][lvst]['secs'] = totalusersec
+	data['data']['streamData'][lvst]['mins'] = totalusermin
+	data['data']['streamData'][lvst]['hours'] = totaluserhrs
+	data['data']['streamData'][lvst]['days'] = totaluserdays
 	totalusersec = str(totalusersec)
 	totalusermin = str(totalusermin)
 	totaluserhrs = str(totaluserhrs)
 	totaluserdays = str(totaluserdays)
 	totaluserelapsed = totaluserdays + " Days " + totaluserhrs + ":" + totalusermin + ":" + totalusersec
-	data['data']['streamData']['totalTime'] = totaluserelapsed
+	data['data']['streamData'][lvst]['totalTime'] = totaluserelapsed
 	pass
 
 
