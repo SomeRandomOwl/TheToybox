@@ -49,7 +49,7 @@ with open('list.json') as data_file:
     pass
 
 streamDataTemp = data['data']['streamData']['streamTemplate']
-#Displays avaliable options
+#Motd's
 options = """
 	
 Avalible options:
@@ -158,8 +158,7 @@ It also allows statistic tracking for the user
 listing = """
 -------------
 """
-	
-	
+
 #Defines the program to check a users status
 def check_user(user):
     """ returns 0: online, 1: offline, 2: not found, 3: error """
@@ -320,7 +319,6 @@ def openstream():
 			lvsting = lsTwitch + lvst + ' source'
 			return
 
-	
 	#Process for youtube streams
 	if service.lower() == 'youtube':
 		os.system('cls')
@@ -418,7 +416,6 @@ def stattracker():
 	totalplay = data['data']['totalPlay']
 	totalplay = totalplay + 1
 	data['data']['totalPlay'] = totalplay
-
 
 	#Updates overall time totals
 	totalsec = data['data']['secs']
@@ -546,8 +543,6 @@ while restart == "yes":
 		os.system('cls')
 		pass
 	pass
-
-
 
 #Script end confirmation
 print('')
