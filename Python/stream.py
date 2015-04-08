@@ -212,11 +212,13 @@ def lvstList():
 	datanum = datanum + 1
 	datanum = str(datanum)
 	data['data']['streamNum'] = int(datanum)
-	print('There are ' + datanum + ' streams on being tracked.')
+	print('There are ' + datanum + ' streams on being tracked.\n\nDisplaying Online Users')
 
 	for i in range(len(data["streams"])):
 		if data["streams"][i] != "null":
-			list(data["streams"][i])
+			if check_user(data["streams"][i]) != 1:
+				list(data["streams"][i])
+				pass
 			pass
 		pass
 	pass
