@@ -30,6 +30,8 @@ totalusersec = 0
 totalusermin = 0
 totaluserhrs = 0
 totaluserdays = 0
+statAdd = 'no'
+statwho = ''
 
 #Variables used to condense code down slightly
 
@@ -60,6 +62,7 @@ check (checks status of a specific user
 list (Checks the status of a list of predefined users
 open (opens a stream)
 Add (Adds a user to to the tracked user list)
+Stats (Views the list of tracked stats)
 	
 ----------
 	
@@ -142,6 +145,33 @@ Might have youtube support in the future
 ----------
 	
 """
+optionsstatscheck = """
+	
+Avalible options:
+	
+----------
+	
+This is used to view the stats being tracked
+You can view the stats of a individual user
+You can also view the total global stats
+You can also Clear the stats
+	
+----------
+	
+"""
+optionsstatsclear = """
+	
+Avalible options:
+	
+----------
+	
+This is the danger zone!
+This is where you can clear a users stats or the global stats
+Continue if you sure of what you are doing!
+	
+----------
+	
+"""
 optionsadd = """
 	
 Avalible options:
@@ -202,46 +232,120 @@ def list(urc):
 def userAdd():
 	global streamDataTemp
 	global data
+	global statAdd
+	global statwho
 
 	goodRecord = 0
 	emptyRecord = 0
 	allRecords = 0
 
-	for i in range(len(data["streams"])):
-		if data['streams'][i] != "null":
-			goodRecord = goodRecord + 1
-		elif data['streams'][i] == "null":
-			emptyRecord = emptyRecord + 1
+	if statAdd.lower() == 'yes':
+
+		nextRecord = data['data']['nextRecord']
+		data['streams'][nextRecord] = statwho.lower()
+		data['data']['streamData'][statwho.lower()] = streamDataTemp
+		nextRecord = nextRecord + 1
+		data['data']['nextRecord'] = nextRecord
+		pass
+
+	if statAdd.lower() != 'yes':
+		for i in range(len(data["streams"])):
+			if data['streams'][i] != "null":
+				goodRecord = goodRecord + 1
+			elif data['streams'][i] == "null":
+				emptyRecord = emptyRecord + 1
+				pass
+			allRecords = allRecords + 1
 			pass
-		allRecords = allRecords + 1
+	
+		goodRecord = str(goodRecord)
+		emptyRecord = str(emptyRecord)
+		allRecords = str(allRecords)
+	
+		os.system('cls')
+		print(optionsadd)
+		print('\nThere are ' + goodRecord + ' used records and  ' + emptyRecord + ' empty records out of ' + allRecords + '\n')
+		userAdd = input('Name of the user to add?: ')
+		nextRecord = data['data']['nextRecord']
+		data['streams'][nextRecord] = userAdd.lower()
+		data['data']['streamData'][userAdd.lower()] = streamDataTemp
+		nextRecord = nextRecord + 1
+		data['data']['nextRecord'] = nextRecord
+		isMusicStream = input('Is this streama music stream? (Yes or No): ')
+
+		if isMusicStream.lower() == 'yes':
+			data['data']['streamData'][userAdd]['musicStream'] = true
+			pass
+	
+		for i in range(len(data["streams"])):
+			if data['streams'][i] != "null":
+				datanum = i
+			pass
+	
+		datanum = datanum + 1
+		data['data']['streamNum'] = datanum
 		pass
+	pass
+def statCheck():
+	global data
+	global statAdd
+	global statwho
 
-	goodRecord = str(goodRecord)
-	emptyRecord = str(emptyRecord)
-	allRecords = str(allRecords)
-
+	statAdd = 'no'
 	os.system('cls')
-	print(optionsadd)
-	print('\nThere are ' + goodRecord + ' used records and  ' + emptyRecord + ' empty records out of ' + allRecords + '\n')
-	userAdd = input('Name of the user to add?: ')
-	nextRecord = data['data']['nextRecord']
-	data['streams'][nextRecord] = userAdd
-	data['data']['streamData'][userAdd.lower()] = streamDataTemp
-	nextRecord = nextRecord + 1
-	data['data']['nextRecord'] = nextRecord
-	isMusicStream = input('Is this streama music stream? (Yes or No): ')
-	if isMusicStream.lower() == 'yes':
-		data['data']['streamData'][userAdd]['musicStream'] = true
+	print(optionsstatscheck)
+	statWhat = input('Which stat do you want to see? (User, Global or Clear): ')
+	if statWhat.lower() == 'user':
+		os.system('cls')
+		print(optionsstatscheck)
+		statwho = input('Who do you want to check the stats of?: ')
+		try:
+			print("\nThis stream has been played: " + str(data['data']['streamData'][statwho.lower()]['playCount']))
+			print("\nThis stream has been played for a total of: " + data['data']['streamData'][statwho.lower()]['totalTime'])
+			if data['data']['streamData'][statwho.lower()]['musicStream'] == 'true':
+				print('\nThis stream is also marked as a music stream')
+				pass
+			pass
+		except:
+			os.system('cls')
+			print(optionsstatscheck)
+			print('\nThere are no stats for this user!\n')
+			statAdd = input('Whould you like to add this user to the tracked list?: ')
+			if statAdd.lower() == 'yes':
+				userAdd()
+				pass
+			pass
+	if statWhat.lower() == 'global':
+		os.system('cls')
+		print(optionsstatscheck)
+		print('\nThe total ammount of streams played is: ' + str(data['data']['totalPlay']))
+		print('\nTheres a total of: ' + str(data['data']['streamNum']) + ' streams being tracked.')
+		print('\nThe total ammount of time the streams have been played for is: ' + data['data']['totalTime'] + '\n')
 		pass
 
-	for i in range(len(data["streams"])):
-		if data['streams'][i] != "null":
-			datanum = i
+	if statWhat.lower() == 'clear':
+		os.system('cls')
+		print(optionsstatsclear)
+		statClear = input('Do you want to clear global stats or the stats of a specific user? (Global, User): ')
+		if statClear.lower() == 'global':
+			os.system('cls')
+			print(optionsstatsclear)
+			data['data']['totalPlay'] = 0
+			data['data']['totalTime'] = "0 Days 0:0:0"
+			data['data']['secs'] = 0
+			data['data']['mins'] = 0
+			data['data']['hours'] = 0
+			data['data']['days'] = 0
+			print('\nStat Clear Done!\n')
+		elif statClear.lower() == 'user':
+			os.system('cls')
+			print(optionsstatsclear)
+			statClearUser = input('Whos stats do you want to clear?: ')
+			data['data']['streamData'][statClearUser] = streamDataTemp
+			print('\nStat clear done!')
+		else:
+			print('\nStat clear aborted!')
 		pass
-
-	datanum = datanum + 1
-	data['data']['streamNum'] = datanum
-
 	pass
 #Individual user status check
 def check():
@@ -523,6 +627,8 @@ def start():
 		stattracker()
 	elif option.lower() == "add":
 		userAdd()
+	elif option.lower() == "stats":
+		statCheck()
 	else:
 		print("""
 
