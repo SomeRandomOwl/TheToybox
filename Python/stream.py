@@ -189,25 +189,39 @@ def openstream():
 		pass
 	pass
 	
-#Starts timer and opens stream
+ #Starts timer and opens stream
+
 def cmdwin():
 	global times
 	global lvsting
 	global options
-	global service
-	global lvst
 
 	os.system('cls')
 	print(options)
-	print('Opening ' + lvst + "'s stream on " + service + ".\n")
-	try:
-		playnum = data['data']['streamData'][lvst]['playCount']
-		playnum = playnum + 1
-		data['data']['streamData'][lvst]['playCount'] = playnum
-		print("Times " + lvst + " has been played: " + str(data['data']['streamData'][lvst]['playCount']))
+	print('Opening ' + stream + "'s stream on " + service + ".\n")
+	start = time.time()
+	os.system(lvsting)
+	end = time.time()
+	times = end - start
+	times = int(times)
+	pass
+ 
+ #Timer calculation
+def timeCalc():
+	global times
+	global timem
+	global timeh
+
+	while times > 59:
+		times = times - 60
+		timem = timem + 1
 		pass
-	except:
+
+	while timem > 59:
+		timem = timem - 60
+		timeh = timeh + 1
 		pass
+	
 	#converts timer values to strings to display with print
 	times = str(times)
 	timem = str(timem)
@@ -218,6 +232,102 @@ def cmdwin():
 	print ('Time elapsed: ' + elapsedTime)
 	print('')
 	pass
+
+#Updates Stats
+def stattracker():
+	global times
+	global timem
+	global timeh
+	global lvst
+	global elapsedTime
+
+	#Updates the play count on the active streamer
+	try:
+		playnum = data['data']['streamData'][lvst]['playCount']
+		playnum = playnum + 1
+		data['data']['streamData'][lvst]['playCount'] = playnum
+		pass
+	except:
+		pass
+
+	#Updates the total play count for all streams
+	totalplay = data['data']['totalplay']
+	totalplay = totalplay +1
+	data['data']['totalplay'] = totalplay
+
+	#Updates overall time totals
+	totalsec = data['data']['secs']
+	totalmin = data['data']['mins']
+	totalhrs = data['data']['hours']
+	totaldays = data['data']['days']
+
+	totalsec = totalsec + times
+	totalmin = totalmin + timem
+	totalhrs = totalhrs + timeh
+
+	while totalsec > 59:
+		totalsec = totalsec - 60
+		totalmin = totalmin + 1
+		pass
+	while totalmin > 59:
+		totalmin = totalmin - 60
+		totalhrs = totalhrs + 1
+		pass
+	while totalhrs > 23:
+		totalhrs - 24
+		totaldays + 1
+		pass
+
+	data['data']['secs'] = totalsec
+	data['data']['mins'] = totalmin
+	data['data']['hours'] = totalhrs
+	data['data']['days'] = totaldays
+	totalsec = str(totalsec)
+	totalmin = str(totalmin)
+	totalhrs = str(totalhrs)
+	totaldays = str(totaldays)
+	totalelapsed = totaldays + " Days " + totalhrs + ":" + totalmin + ":" + totalsec
+	data['data']['totalTime'] = totalelapsed
+
+	#Updates user time totals
+	totalusersec = data['data']['streamData']['secs']
+	totalusermin = data['data']['streamData']['mins']
+	totaluserhrs = data['data']['streamData']['hours']
+	totaluserdays = data['data']['streamData']['days']
+
+	totalusersec = totalusersec + times
+	totalusermin = totalusermin + timem
+	totaluserhrs = totaluserhrs + timeh
+
+	while totalusersec > 59:
+		totalusersec = totalusersec - 60
+		totalusermin = totalusermin + 1
+		pass
+
+	while totalusermin > 59:
+		totalusermin = totalusermin - 60
+		totaluserhrs = totaluserhrs + 1
+		pass
+	while totaluserhrs > 23:
+		totaluserhrs - 24
+		totaluserdays + 1
+		pass
+
+	data['data']['streamData']['secs'] = totalusersec
+	data['data']['streamData']['mins'] = totalusermin
+	data['data']['streamData']['hours'] = totaluserhrs
+	data['data']['streamData']['days'] = totaluserdays
+	totalusersec = str(totalusersec)
+	totalusermin = str(totalusermin)
+	totaluserhrs = str(totaluserhrs)
+	totaluserdays = str(totaluserdays)
+	totaluserelapsed = totaluserdays + " Days " + totaluserhrs + ":" + totalusermin + ":" + totalusersec
+	data['data']['streamData']['totalTime'] = totaluserelapsed
+	pass
+
+
+
+
 
 #Main Starter
 def start():
@@ -243,6 +353,7 @@ def start():
 		openstream()
 		cmdwin()
 		timeCalc()
+		stattracker()
 	else:
 		print("""
 
