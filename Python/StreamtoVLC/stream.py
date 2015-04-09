@@ -249,11 +249,9 @@ def userAdd():
 
 	if statAdd.lower() == 'yes':
 
-		nextRecord = data['data']['logs']['nextRecord']
-		data['streams'][nextRecord] = statwho.lower()
+		array = data['streams']
+		array.append(statwho.lower())
 		data['data']['streamData'][statwho.lower()] = streamDataTemp
-		nextRecord = nextRecord + 1
-		data['data']['logs']['nextRecord'] = nextRecord
 		pass
 
 	if statAdd.lower() != 'yes':
@@ -274,15 +272,14 @@ def userAdd():
 		print(optionsadd)
 		print('\nThere are ' + goodRecord + ' used records and  ' + emptyRecord + ' empty records out of ' + allRecords + '\n')
 		userAdd = input('Name of the user to add?: ')
-		nextRecord = data['data']['logs']['nextRecord']
-		data['streams'][nextRecord] = userAdd.lower()
+		array = data['streams']
+		array.append(userAdd.lower())
 		data['data']['streamData'][userAdd.lower()] = streamDataTemp
-		nextRecord = nextRecord + 1
-		data['data']['logs']['nextRecord'] = nextRecord
+
 		isMusicStream = input('Is this streama music stream? (Yes or No): ')
 
 		if isMusicStream.lower() == 'yes':
-			data['data']['streamData'][userAdd]['musicStream'] = true
+			data['data']['streamData'][userAdd]['musicStream'] = 'true'
 			pass
 	
 		for i in range(len(data["streams"])):
