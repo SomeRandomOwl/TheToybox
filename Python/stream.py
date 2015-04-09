@@ -52,6 +52,9 @@ with open('list.json') as data_file:
     pass
 
 streamDataTemp = data['data']['streamData']['streamTemplate']
+startCount = data['data']['logs']['timesStarted']
+startCount = startCount + 1
+data['data']['logs']['timesStarted'] = startCount
 
 #Motd's
 options = """
@@ -157,6 +160,7 @@ This is used to view the stats being tracked
 You can view the stats of a individual user
 You can also view the total global stats
 You can also Clear the stats
+You can also check the errorLogs
 	
 ----------
 	
@@ -299,7 +303,7 @@ def statCheck():
 	statAdd = 'no'
 	os.system('cls')
 	print(optionsstatscheck)
-	statWhat = input('Which stat do you want to see? (User, Global or Clear): ')
+	statWhat = input('Which stat do you want to see? (User, Global, Error or Clear): ')
 	if statWhat.lower() == 'user':
 		os.system('cls')
 		print(optionsstatscheck)
@@ -327,7 +331,17 @@ def statCheck():
 		print(optionsstatscheck)
 		print('\nThe total ammount of streams played is: ' + str(data['data']['logs']['totalPlay']))
 		print('\nTheres a total of: ' + str(data['data']['logs']['streamNum']) + ' streams being tracked.')
-		print('\nThe total ammount of time the streams have been played for is: ' + data['data']['timeCounters']['totalTime'] + '\n')
+		print('\nThe total ammount of time the streams have been played for is: ' + data['data']['timeCounters']['totalTime'])
+		print('\nThe script has been started: ' + str(data['data']['logs']['timesStarted']) + ' times.')
+		print('\nThe script has been restarted: ' + str(data['data']['logs']['timesRestarted']) + ' times.')
+		pass
+
+	if statWhat.lower() == 'error':
+		os.system('cls')
+		print(optionsstatscheck)
+		print('\nThe total ammount of times the script has been interuppted is: ' + str(data['data']['errorLogs']['timesInterrupted']))
+		print('\nThe total of unsupported services entered is:  ' + str(data['data']['errorLogs']['unsupportedServices']))
+		print('\nThe totall ammount of unrecgonized commands entered is: ' + str(data['data']['errorLogs']['unRecgonizedCmds']))
 		pass
 
 	if statWhat.lower() == 'clear':
@@ -456,6 +470,9 @@ def openstream():
 	else:
 		print('\nStream service not supported!\n')
 		streamError = 'true'
+		serviceErrorCnt = data['data']['errorLogs']['unsupportedServices']
+		serviceErrorCnt = serviceErrorCnt + 1
+		data['data']['errorLogs']['unsupportedServices'] = serviceErrorCnt
 		pass
 	pass
 	
@@ -657,6 +674,9 @@ def start():
 	elif option.lower() == "stats":
 		statCheck()
 	else:
+		unrecgonizedCmd = data['data']['errorLogs']['unRecgonizedCmds']
+		unrecgonizedCmd = unrecgonizedCmd + 1
+		data['data']['errorLogs']['unRecgonizedCmds'] = unrecgonizedCmd
 		print("""
 
 -----------
@@ -672,16 +692,25 @@ Option Not Recgonized
 	pass
 
 #Restarts the script
-while restart == "yes":
+while restart.lower() == "yes":
 	try:
 		start()
 		if restart == "yes":
 			os.system('cls')
 			pass
+		pass
 	except KeyboardInterrupt:
-		print('\n\nEnding Script\n')
-		input("Press Enter to continue...")
-		exit()
+		print('\n\nEnding Script')
+		timesInterrupted = data['data']['errorLogs']['timesInterrupted']
+		timesInterrupted = timesInterrupted + 1
+		data['data']['errorLogs']['timesInterrupted'] = timesInterrupted
+		restart = 'no'
+		pass
+	if restart.lower() == "yes":
+		timesRestarted = data['data']['logs']['timesRestarted']
+		timesRestarted = timesRestarted + 1
+		data['data']['logs']['timesRestarted'] = timesRestarted
+		pass
 	pass
 
 #Script end confirmation
