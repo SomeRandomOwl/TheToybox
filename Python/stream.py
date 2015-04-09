@@ -32,6 +32,7 @@ totaluserhrs = 0
 totaluserdays = 0
 statAdd = 'no'
 statwho = ''
+streamError = ''
 
 #Variables used to condense code down slightly
 
@@ -51,6 +52,7 @@ with open('list.json') as data_file:
     pass
 
 streamDataTemp = data['data']['streamData']['streamTemplate']
+
 #Motd's
 options = """
 	
@@ -58,9 +60,9 @@ Avalible options:
 	
 ----------
 	
-check (checks status of a specific user
-list (Checks the status of a list of predefined users
-open (opens a stream)
+Check (checks status of a specific user
+List (Checks the status of a list of predefined users
+Open (opens a stream)
 Add (Adds a user to to the tracked user list)
 Stats (Views the list of tracked stats)
 	
@@ -229,6 +231,8 @@ def list(urc):
 	except KeyboardInterrupt:
 	   	pass
 	return 
+
+#Function to add new tracked users
 def userAdd():
 	global streamDataTemp
 	global data
@@ -286,6 +290,7 @@ def userAdd():
 		data['data']['streamNum'] = datanum
 		pass
 	pass
+
 def statCheck():
 	global data
 	global statAdd
@@ -306,6 +311,7 @@ def statCheck():
 				print('\nThis stream is also marked as a music stream')
 				pass
 			pass
+
 		except:
 			os.system('cls')
 			print(optionsstatscheck)
@@ -315,6 +321,7 @@ def statCheck():
 				userAdd()
 				pass
 			pass
+
 	if statWhat.lower() == 'global':
 		os.system('cls')
 		print(optionsstatscheck)
@@ -347,6 +354,7 @@ def statCheck():
 			print('\nStat clear aborted!')
 		pass
 	pass
+
 #Individual user status check
 def check():
 	os.system('cls')
@@ -393,54 +401,61 @@ def openstream():
 	global lsYoutube
 	global audio
 	global options
+	global streamError
 
 	os.system('cls')
 	print(optionsopen)
 	service = input('What stream service? (Youtube or Twitch): ')
-	os.system('cls')
-	print(optionsstream)
-	lvst = input('What stream?: ')
-	#Process to use for twitch streams
-	if service.lower() == 'twitch':
-		try:
-			audioOnly = data['data']['streamData'][lvst.lower()]['musicStream']
-			if audioOnly == 'true':
-				os.system('cls')
-				print(optionsopenaudio)
-				audio = input('Do you want to do audio only?: ')
 
-				if audio.lower() == 'yes':
-					lvsting = lsTwitch + lvst + ' audio'
+	if service.lower() == 'youtube' or service.lower() == 'twitch':
+		os.system('cls')
+		print(optionsstream)
+		lvst = input('What stream?: ')
+		#Process to use for twitch streams
+		if service.lower() == 'twitch':
+			try:
+				audioOnly = data['data']['streamData'][lvst.lower()]['musicStream']
+				if audioOnly == 'true':
+					os.system('cls')
+					print(optionsopenaudio)
+					audio = input('Do you want to do audio only?: ')
+
+					if audio.lower() == 'yes':
+						lvsting = lsTwitch + lvst + ' audio'
+					else:
+						lvsting = lsTwitch + lvst + ' source'
+						pass
+					pass
 				else:
 					lvsting = lsTwitch + lvst + ' source'
 					pass
 				pass
-			else:
+			except:
 				lvsting = lsTwitch + lvst + ' source'
-				pass
-			pass
-		except:
-			lvsting = lsTwitch + lvst + ' source'
-			return
+				return
 
-	#Process for youtube streams
-	if service.lower() == 'youtube':
-		os.system('cls')
-		print(optionsopenaudio)
-		if lvst[1:32] == 'https://www.youtube.com/watch?v=':
-			audio = input('Do you want to do audio only?: ')
-			if audio.lower() == 'yes':
-				lvsting = lsYoutube + lvst[32:] + ' audio_mp4'
+			#Process for youtube streams
+		if service.lower() == 'youtube':
+			os.system('cls')
+			print(optionsopenaudio)
+			if lvst[1:32] == 'https://www.youtube.com/watch?v=':
+				audio = input('Do you want to do audio only?: ')
+				if audio.lower() == 'yes':
+					lvsting = lsYoutube + lvst[32:] + ' audio_mp4'
+				else:
+					lvsting = lsYoutube + lvst[32:] + ' best'
+					pass
 			else:
-				lvsting = lsYoutube + lvst[32:] + ' best'
-				pass
-		else:
-			audio = input('Do you want to do audio only?: ')
-			if audio.lower() == 'yes':
-				lvsting = lsYoutube + lvst + ' audio_mp4'
-			else:
-				lvsting = lsYoutube + lvst + ' best'
-				pass
+				audio = input('Do you want to do audio only?: ')
+				if audio.lower() == 'yes':
+					lvsting = lsYoutube + lvst + ' audio_mp4'
+				else:
+					lvsting = lsYoutube + lvst + ' best'
+					pass
+			pass
+	else:
+		print('\nStream service not supported!\n')
+		streamError = 'true'
 		pass
 	pass
 	
@@ -450,17 +465,26 @@ def cmdwin():
 	global times
 	global lvsting
 	global options
+	global streamError
 
-	os.system('cls')
-	print(optionsstreaming)
-	print('Opening ' + lvst + "'s stream on " + service + ".\n")
-	print('Total times ' + lvst + " has been played: " + str(data['data']['streamData'][lvst]['playCount']) + ".\n")
-	print('Total ammount of time ' + lvst + " Has been played for: " + data['data']['streamData'][lvst]['totalTime'] + " \n")
-	start = time.time()
-	os.system(lvsting)
-	end = time.time()
-	times = end - start
-	times = int(times)
+	if streamError != 'true':
+		os.system('cls')
+		print(optionsstreaming)
+		print('Opening ' + lvst + "'s stream on " + service + ".\n")
+		try:
+			print('Total times ' + lvst + " has been played: " + str(data['data']['streamData'][lvst]['playCount']) + ".\n")
+			print('Total ammount of time ' + lvst + " Has been played for: " + data['data']['streamData'][lvst]['totalTime'] + " \n")
+			pass
+		except:
+			pass
+		start = time.time()
+		os.system(lvsting)
+		end = time.time()
+		times = end - start
+		times = int(times)
+	else:
+		print('There was a error opening the stream!')
+		pass
 	pass
  
  #Timer calculation
@@ -608,6 +632,7 @@ def start():
 	global restart
 	global options
 	global lvst
+	global streamError
 
 	#Option input
 	print(options)
@@ -623,8 +648,10 @@ def start():
 	elif option.lower() == "open":
 		openstream()
 		cmdwin()
-		timeCalc()
-		stattracker()
+		if streamError != 'true':
+			timeCalc()
+			stattracker()
+			pass
 	elif option.lower() == "add":
 		userAdd()
 	elif option.lower() == "stats":
@@ -633,7 +660,9 @@ def start():
 		print("""
 
 -----------
+
 Option Not Recgonized
+
 -----------
 
 """)
@@ -644,10 +673,15 @@ Option Not Recgonized
 
 #Restarts the script
 while restart == "yes":
-	start()
-	if restart == "yes":
-		os.system('cls')
-		pass
+	try:
+		start()
+		if restart == "yes":
+			os.system('cls')
+			pass
+	except KeyboardInterrupt:
+		print('\n\nEnding Script\n')
+		input("Press Enter to continue...")
+		exit()
 	pass
 
 #Script end confirmation
