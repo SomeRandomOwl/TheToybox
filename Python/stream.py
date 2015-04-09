@@ -245,11 +245,11 @@ def userAdd():
 
 	if statAdd.lower() == 'yes':
 
-		nextRecord = data['data']['nextRecord']
+		nextRecord = data['data']['logs']['nextRecord']
 		data['streams'][nextRecord] = statwho.lower()
 		data['data']['streamData'][statwho.lower()] = streamDataTemp
 		nextRecord = nextRecord + 1
-		data['data']['nextRecord'] = nextRecord
+		data['data']['logs']['nextRecord'] = nextRecord
 		pass
 
 	if statAdd.lower() != 'yes':
@@ -270,11 +270,11 @@ def userAdd():
 		print(optionsadd)
 		print('\nThere are ' + goodRecord + ' used records and  ' + emptyRecord + ' empty records out of ' + allRecords + '\n')
 		userAdd = input('Name of the user to add?: ')
-		nextRecord = data['data']['nextRecord']
+		nextRecord = data['data']['logs']['nextRecord']
 		data['streams'][nextRecord] = userAdd.lower()
 		data['data']['streamData'][userAdd.lower()] = streamDataTemp
 		nextRecord = nextRecord + 1
-		data['data']['nextRecord'] = nextRecord
+		data['data']['logs']['nextRecord'] = nextRecord
 		isMusicStream = input('Is this streama music stream? (Yes or No): ')
 
 		if isMusicStream.lower() == 'yes':
@@ -287,7 +287,7 @@ def userAdd():
 			pass
 	
 		datanum = datanum + 1
-		data['data']['streamNum'] = datanum
+		data['data']['logs']['streamNum'] = datanum
 		pass
 	pass
 
@@ -325,9 +325,9 @@ def statCheck():
 	if statWhat.lower() == 'global':
 		os.system('cls')
 		print(optionsstatscheck)
-		print('\nThe total ammount of streams played is: ' + str(data['data']['totalPlay']))
-		print('\nTheres a total of: ' + str(data['data']['streamNum']) + ' streams being tracked.')
-		print('\nThe total ammount of time the streams have been played for is: ' + data['data']['totalTime'] + '\n')
+		print('\nThe total ammount of streams played is: ' + str(data['data']['logs']['totalPlay']))
+		print('\nTheres a total of: ' + str(data['data']['logs']['streamNum']) + ' streams being tracked.')
+		print('\nThe total ammount of time the streams have been played for is: ' + data['data']['timeCounters']['totalTime'] + '\n')
 		pass
 
 	if statWhat.lower() == 'clear':
@@ -337,12 +337,12 @@ def statCheck():
 		if statClear.lower() == 'global':
 			os.system('cls')
 			print(optionsstatsclear)
-			data['data']['totalPlay'] = 0
-			data['data']['totalTime'] = "0 Days 0:0:0"
-			data['data']['secs'] = 0
-			data['data']['mins'] = 0
-			data['data']['hours'] = 0
-			data['data']['days'] = 0
+			data['data']['logs']['totalPlay'] = 0
+			data['data']['timeCounters']['totalTime'] = "0 Days 0:0:0"
+			data['data']['timeCounters']['secs'] = 0
+			data['data']['timeCounters']['mins'] = 0
+			data['data']['timeCounters']['hours'] = 0
+			data['data']['timeCounters']['days'] = 0
 			print('\nStat Clear Done!\n')
 		elif statClear.lower() == 'user':
 			os.system('cls')
@@ -380,7 +380,7 @@ def lvstList():
 
 	datanum = datanum + 1
 	datanum = str(datanum)
-	data['data']['streamNum'] = int(datanum)
+	data['data']['logs']['streamNum'] = int(datanum)
 	print('There are ' + datanum + ' streams on being tracked.\n\nDisplaying Online Users')
 
 	for i in range(len(data["streams"])):
@@ -541,15 +541,15 @@ def stattracker():
 		pass
 
 	#Updates the total play count for all streams
-	totalplay = data['data']['totalPlay']
+	totalplay = data['data']['logs']['totalPlay']
 	totalplay = totalplay + 1
-	data['data']['totalPlay'] = totalplay
+	data['data']['logs']['totalPlay'] = totalplay
 
 	#Updates overall time totals
-	totalsec = data['data']['secs']
-	totalmin = data['data']['mins']
-	totalhrs = data['data']['hours']
-	totaldays = data['data']['days']
+	totalsec = data['data']['timeCounters']['secs']
+	totalmin = data['data']['timeCounters']['mins']
+	totalhrs = data['data']['timeCounters']['hours']
+	totaldays = data['data']['timeCounters']['days']
 
 	times = int(times)
 	timem = int(timem)
@@ -572,16 +572,16 @@ def stattracker():
 		totaldays + 1
 		pass
 
-	data['data']['secs'] = totalsec
-	data['data']['mins'] = totalmin
-	data['data']['hours'] = totalhrs
-	data['data']['days'] = totaldays
+	data['data']['timeCounters']['secs'] = totalsec
+	data['data']['timeCounters']['mins'] = totalmin
+	data['data']['timeCounters']['hours'] = totalhrs
+	data['data']['timeCounters']['days'] = totaldays
 	totalsec = str(totalsec)
 	totalmin = str(totalmin)
 	totalhrs = str(totalhrs)
 	totaldays = str(totaldays)
 	totalelapsed = totaldays + " Days " + totalhrs + ":" + totalmin + ":" + totalsec
-	data['data']['totalTime'] = totalelapsed
+	data['data']['timeCounters']['totalTime'] = totalelapsed
 
 	#Updates user time totals
 	if service.lower() == 'twitch':
