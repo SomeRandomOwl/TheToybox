@@ -338,7 +338,8 @@ def statCheck():
 		print(optionsstatscheck)
 		print('\nThe total ammount of times the script has been interuppted is: ' + str(data['data']['errorLogs']['timesInterrupted']))
 		print('\nThe total of unsupported services entered is:  ' + str(data['data']['errorLogs']['unsupportedServices']))
-		print('\nThe totall ammount of unrecgonized commands entered is: ' + str(data['data']['errorLogs']['unRecgonizedCmds']))
+		print('\nThe total ammount of unrecgonized commands entered is: ' + str(data['data']['errorLogs']['unRecgonizedCmds']))
+		print('\nThe total number of Unknown Errors encountered: ' + str(data['data']['errorLogs']['unknownError']))
 		pass
 
 	if statWhat.lower() == 'clear':
@@ -701,6 +702,13 @@ while restart.lower() == "yes":
 		timesInterrupted = data['data']['errorLogs']['timesInterrupted']
 		timesInterrupted = timesInterrupted + 1
 		data['data']['errorLogs']['timesInterrupted'] = timesInterrupted
+		restart = 'no'
+		pass
+	except:
+		print('\n\nUnknown Error!')
+		unknownError = data['data']['errorLogs']['unknownError']
+		unknownError = unknownError + 1
+		data['data']['errorLogs']['unknownError'] = unknownError
 		restart = 'no'
 		pass
 	if restart.lower() == "yes":
