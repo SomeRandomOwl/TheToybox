@@ -1,1 +1,153 @@
-{"data": {"streamData": {"argodaemon": {"totalTime": "0 Days 0:0:39", "days": 0, "hours": 0, "musicStream": "false", "mins": 0, "secs": 39, "playCount": 2}, "gophergaming": {"totalTime": "0 days 0:0:0", "days": 0, "hours": 0, "musicStream": "false", "mins": 0, "secs": 0, "playCount": 0}, "fixt": {"totalTime": "0 Days 0:8:55", "days": 0, "hours": 0, "musicStream": "true", "mins": 8, "secs": 55, "playCount": 1}, "mattophobia": {"totalTime": "0 days 0:0:0", "days": 0, "hours": 0, "musicStream": "false", "mins": 0, "secs": 0, "playCount": 0}, "streamTemplate": {"totalTime": "0 Days 0:0:0", "days": 0, "hours": 0, "musicStream": "false", "mins": 0, "secs": 0, "playCount": 0}, "monstercat": {"totalTime": "0 Days 10:28:32", "days": 0, "hours": 10, "musicStream": "true", "mins": 28, "secs": 32, "playCount": 11}, "haxmega": {"totalTime": "0 days 0:0:0", "days": 0, "hours": 0, "musicStream": "false", "mins": 0, "secs": 0, "playCount": 0}, "muselk": {"totalTime": "0 days 0:0:0", "days": 0, "hours": 0, "musicStream": "false", "mins": 0, "secs": 0, "playCount": 0}, "totalbiscuit": {"totalTime": "0 days 0:0:0", "days": 0, "hours": 0, "musicStream": "false", "mins": 0, "secs": 0, "playCount": 0}, "scykoh": {"totalTime": "0 days 0:0:0", "days": 0, "hours": 0, "musicStream": "false", "mins": 0, "secs": 0, "playCount": 0}, "trionworlds": {"totalTime": "0 days 0:0:0", "days": 0, "hours": 0, "musicStream": "false", "mins": 0, "secs": 0, "playCount": 0}, "Spinninrecords": {"totalTime": "0 Days 0:12:55", "days": 0, "hours": 0, "musicStream": "true", "mins": 12, "secs": 55, "playCount": 1}, "naturalselection2": {"totalTime": "0 days 0:0:0", "days": 0, "hours": 0, "musicStream": "false", "mins": 0, "secs": 0, "playCount": 0}, "nerdcubed": {"totalTime": "0 days 0:0:0", "days": 0, "hours": 0, "musicStream": "false", "mins": 0, "secs": 0, "playCount": 0}}, "logs": {"streamNum": 13, "timesRestarted": 8, "timesStarted": 33, "totalPlay": 17}, "timeCounters": {"days": 0, "hours": 10, "totalTime": "0 Days 10:51:19", "mins": 51, "secs": 19}, "errorLogs": {"unknownError": 4, "timesInterrupted": 8, "unRecgonizedCmds": 3, "debug": "0", "unsupportedServices": 2}}, "streams": ["totalbiscuit", "monstercat", "fixt", "spinninrecords", "trionworlds", "argodaemon", "nerdcubed", "mattophobia", "muselk", "scykoh", "naturalselection2", "gophergaming", "haxmega"]}
+{
+	"streams": ["totalbiscuit", "monstercat", "fixt", "spinninrecords", "trionworlds", "argodaemon", "nerdcubed", "mattophobia", "muselk", "scykoh", "naturalselection2", "gophergaming", "haxmega"],
+	"data": {
+		"timeCounters": {
+			"hours": 10,
+			"mins": 51,
+			"days": 0,
+			"secs": 19,
+			"totalTime": "0 Days 10:51:19"
+		},
+		"logs": {
+			"timesStarted": 34,
+			"totalPlay": 17,
+			"timesRestarted": 8,
+			"streamNum": 13
+		},
+		"streamData": {
+			"naturalselection2": {
+				"musicStream": "false",
+				"playCount": 0,
+				"secs": 0,
+				"hours": 0,
+				"mins": 0,
+				"days": 0,
+				"totalTime": "0 days 0:0:0"
+			},
+			"fixt": {
+				"musicStream": "true",
+				"playCount": 1,
+				"secs": 55,
+				"hours": 0,
+				"mins": 8,
+				"days": 0,
+				"totalTime": "0 Days 0:8:55"
+			},
+			"muselk": {
+				"musicStream": "false",
+				"playCount": 0,
+				"secs": 0,
+				"hours": 0,
+				"mins": 0,
+				"days": 0,
+				"totalTime": "0 days 0:0:0"
+			},
+			"argodaemon": {
+				"musicStream": "false",
+				"playCount": 2,
+				"secs": 39,
+				"hours": 0,
+				"mins": 0,
+				"days": 0,
+				"totalTime": "0 Days 0:0:39"
+			},
+			"monstercat": {
+				"musicStream": "true",
+				"playCount": 11,
+				"secs": 32,
+				"hours": 10,
+				"mins": 28,
+				"days": 0,
+				"totalTime": "0 Days 10:28:32"
+			},
+			"trionworlds": {
+				"musicStream": "false",
+				"playCount": 0,
+				"secs": 0,
+				"hours": 0,
+				"mins": 0,
+				"days": 0,
+				"totalTime": "0 days 0:0:0"
+			},
+			"Spinninrecords": {
+				"musicStream": "true",
+				"playCount": 1,
+				"secs": 55,
+				"hours": 0,
+				"mins": 12,
+				"days": 0,
+				"totalTime": "0 Days 0:12:55"
+			},
+			"streamTemplate": {
+				"musicStream": "false",
+				"playCount": 0,
+				"secs": 0,
+				"hours": 0,
+				"mins": 0,
+				"days": 0,
+				"totalTime": "0 Days 0:0:0"
+			},
+			"nerdcubed": {
+				"musicStream": "false",
+				"playCount": 0,
+				"secs": 0,
+				"hours": 0,
+				"mins": 0,
+				"days": 0,
+				"totalTime": "0 days 0:0:0"
+			},
+			"haxmega": {
+				"musicStream": "false",
+				"playCount": 0,
+				"secs": 0,
+				"hours": 0,
+				"mins": 0,
+				"days": 0,
+				"totalTime": "0 days 0:0:0"
+			},
+			"gophergaming": {
+				"musicStream": "false",
+				"playCount": 0,
+				"secs": 0,
+				"hours": 0,
+				"mins": 0,
+				"days": 0,
+				"totalTime": "0 days 0:0:0"
+			},
+			"mattophobia": {
+				"musicStream": "false",
+				"playCount": 0,
+				"secs": 0,
+				"hours": 0,
+				"mins": 0,
+				"days": 0,
+				"totalTime": "0 days 0:0:0"
+			},
+			"scykoh": {
+				"musicStream": "false",
+				"playCount": 0,
+				"secs": 0,
+				"hours": 0,
+				"mins": 0,
+				"days": 0,
+				"totalTime": "0 days 0:0:0"
+			},
+			"totalbiscuit": {
+				"musicStream": "false",
+				"playCount": 0,
+				"secs": 0,
+				"hours": 0,
+				"mins": 0,
+				"days": 0,
+				"totalTime": "0 days 0:0:0"
+			}
+		},
+		"errorLogs": {
+			"timesInterrupted": 8,
+			"unknownError": 4,
+			"unsupportedServices": 2,
+			"unRecgonizedCmds": 3,
+			"debug": "0"
+		}
+	}
+}
