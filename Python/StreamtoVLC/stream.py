@@ -57,6 +57,8 @@ startCount = startCount + 1
 data['data']['logs']['timesStarted'] = startCount
 
 #Motd's
+
+global options
 options = ""																		+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -70,6 +72,8 @@ options = ""																		+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""
+
+global optionsstreaming
 optionsstreaming = ""																+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -81,6 +85,8 @@ optionsstreaming = ""																+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""
+
+global optionsopen
 optionsopen = ""																	+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -92,6 +98,8 @@ optionsopen = ""																	+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""	
+
+global optionsstream
 optionsstream = ""																	+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -103,6 +111,8 @@ optionsstream = ""																	+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""
+
+global optionsopenaudio
 optionsopenaudio = "nAvalible options:"												+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
@@ -113,6 +123,8 @@ optionsopenaudio = "nAvalible options:"												+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""
+
+global optionslist
 optionslist = ""																	+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -124,6 +136,8 @@ optionslist = ""																	+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""
+
+global optionscheck
 optionscheck = ""																	+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -135,6 +149,8 @@ optionscheck = ""																	+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""
+
+global optionsstatscheck
 optionsstatscheck = ""																+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -148,6 +164,8 @@ optionsstatscheck = ""																+"\n"+\
 			""																		+"\n"+\
 			"---------"																+"\n"+\
 			""
+
+global optionsstatsclear
 optionsstatsclear = ""																+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -159,6 +177,8 @@ optionsstatsclear = ""																+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""	
+
+global optionsadd
 optionsadd = ""																		+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -170,6 +190,8 @@ optionsadd = ""																		+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""	
+
+global listing
 listing = ""																		+"\n"+\
 			"-------------"															+"\n"+\
 			""
@@ -378,10 +400,6 @@ def lvstList():
 		if data["streams"][i] != "null":
 			if check_user(data["streams"][i]) != 1:
 				list(data["streams"][i])
-				pass
-			pass
-		pass
-	pass
 
 #Command to open a stream
 def openstream():
@@ -670,7 +688,6 @@ while restart.lower() == "yes":
 			pass
 		pass
 	except KeyboardInterrupt:
-
 		print('\n\nEnding Script')
 		timesInterrupted = data['data']['errorLogs']['timesInterrupted']
 		timesInterrupted = timesInterrupted + 1
@@ -678,7 +695,6 @@ while restart.lower() == "yes":
 		restart = 'no'
 		pass
 	except:
-
 		print('\n\nUnknown Error!')
 		unknownError = data['data']['errorLogs']['unknownError']
 		unknownError = unknownError + 1
@@ -686,7 +702,6 @@ while restart.lower() == "yes":
 		restart = 'no'
 		pass
 	if restart.lower() == "yes":
-
 		timesRestarted = data['data']['logs']['timesRestarted']
 		timesRestarted = timesRestarted + 1
 		data['data']['logs']['timesRestarted'] = timesRestarted
