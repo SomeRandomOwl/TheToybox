@@ -251,7 +251,7 @@ def check():
 	print('')
 	pass
 	
-#User status list from the list.json file
+#Loops through the json to check the status of users and prints using print()
 def lvstList():
 	global data
 	global datanum
@@ -565,6 +565,7 @@ while restart.lower() == "yes":
 			pass
 		pass
 	except KeyboardInterrupt:
+
 		print('\n\nEnding Script')
 		timesInterrupted = data['data']['errorLogs']['timesInterrupted']
 		timesInterrupted = timesInterrupted + 1
@@ -572,6 +573,7 @@ while restart.lower() == "yes":
 		restart = 'no'
 		pass
 	except:
+
 		print('\n\nUnknown Error!')
 		unknownError = data['data']['errorLogs']['unknownError']
 		unknownError = unknownError + 1
@@ -579,6 +581,7 @@ while restart.lower() == "yes":
 		restart = 'no'
 		pass
 	if restart.lower() == "yes":
+
 		timesRestarted = data['data']['logs']['timesRestarted']
 		timesRestarted = timesRestarted + 1
 		data['data']['logs']['timesRestarted'] = timesRestarted
