@@ -56,8 +56,7 @@ startCount = data['data']['logs']['timesStarted']
 startCount = startCount + 1
 data['data']['logs']['timesStarted'] = startCount
 
-#Motd's
-
+#Menu Prompts
 global options
 options = ""																		+"\n"+\
 			"Avalible options:"														+"\n"+\
