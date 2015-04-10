@@ -283,7 +283,7 @@ def userAdd():
 		array.append(userAdd.lower())
 		data['data']['streamData'][userAdd.lower()] = streamDataTemp
 
-		isMusicStream = input('Is this streama music stream? (Yes or No): ')
+		isMusicStream = input('Is this stream a music stream? (Yes or No): ')
 
 		if isMusicStream.lower() == 'yes':
 			data['data']['streamData'][userAdd]['musicStream'] = 'true'
