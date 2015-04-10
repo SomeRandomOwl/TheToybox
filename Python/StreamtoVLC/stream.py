@@ -17,6 +17,7 @@ def clearscreen():
 		os.system('clear')
 	else:
 		os.system('cls')
+clearscreen()
 
 #Sets up the input variables that is used later in the script
 
@@ -117,7 +118,8 @@ optionsstream = ""																	+"\n"+\
 			""
 
 global optionsopenaudio
-optionsopenaudio = "nAvalible options:"												+"\n"+\
+optionsopenaudio = ""																+"\n"+\
+			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""																		+"\n"+\
@@ -684,10 +686,10 @@ def start():
 	pass
 
 #Restarts the script
-while restart.lower() == "yes":
+while restart.lower() in ["yes","y"]:
 	try:
 		start()
-		if restart == "yes":
+		if restart.lower() in ["yes","y"]:
 			clearscreen()
 			pass
 		pass
@@ -705,7 +707,7 @@ while restart.lower() == "yes":
 		data['data']['errorLogs']['unknownError'] = unknownError
 		restart = 'no'
 		pass
-	if restart.lower() == "yes":
+	if restart.lower() in ["yes","y"]:
 		timesRestarted = data['data']['logs']['timesRestarted']
 		timesRestarted = timesRestarted + 1
 		data['data']['logs']['timesRestarted'] = timesRestarted
