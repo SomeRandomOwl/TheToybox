@@ -57,17 +57,143 @@ startCount = startCount + 1
 data['data']['logs']['timesStarted'] = startCount
 
 #Motd's
-options = "\nAvalible options:\n\n----------\n\nCheck (checks status of a specific user\nList (Checks the status of a list of predefined users\nOpen (opens a stream)\nAdd (Adds a user to to the tracked user list)\nStats (Views the list of tracked stats)\n\n----------\n"
-optionsstreaming = "\nAvalible options:\n\n----------\n\nThe stream you chose is opening\nSo sit back and watch/listen to you stream\nEnjoy!\n\n----------\n"
-optionsopen = "\nAvalible options:\n\n----------\n\nThis is to open stream service The only two options avaliable are:\nYoutube -- Allows you to open a stream with a youtube url ir video id\nTwitch -- Opens a twitch stream when you input user\n\n----------\n"	
-optionsstream = "\nAvalible options:\n\n----------\n\nThis is to specify a stream\nInput a username if for Twitch\nInput a video id if for Youtube\n\n----------\n"
-optionsopenaudio = "nAvalible options:\n\n----------\n\nThis is if you want to listen to the audio only for the stream\nInput yes to only get the audio and no video\nInput no to have video as well as audio\n\n----------\n"
-optionslist = "\nAvalible options:\n\n----------\n\nThis is used to list users present in the list.json\nThis only works for twitch streamers at the moment\nWill maybe extend to youtube in the future\n\n----------\n"
-optionscheck = "\nAvalible options:\n\n----------\n\nThis is used to check the status of a individual twitch streamer\nThis is unavaliable for youtube unless it is otherwisse possible\nMight have youtube support in the future\n\n----------\n"
-optionsstatscheck = "\nAvalible options:\n\n----------\n\nThis is used to view the stats being tracked\nYou can view the stats of a individual user\nYou can also view the total global stats\nYou can also Clear the stats\nYou can also check the errorLogs\n\n---------\n"
-optionsstatsclear = "\nAvalible options:\n\n----------\n\nThis is the danger zone!\nThis is where you can clear a users stats or the global stats\nContinue if you sure of what you are doing!\n\n----------\n"	
-optionsadd = "\nAvalible options:\n\n----------\n\nThis is used to add a user to the tracked list\nThis make ther status to be checked with the list command\nIt also allows statistic tracking for the user\n\n----------\n"	
-listing = "\n-------------\n"
+options = """
+	
+Avalible options:
+	
+----------
+	
+Check (checks status of a specific user
+List (Checks the status of a list of predefined users
+Open (opens a stream)
+Add (Adds a user to to the tracked user list)
+Stats (Views the list of tracked stats)
+	
+----------
+	
+"""
+optionsstreaming = """
+	
+Avalible options:
+	
+----------
+	
+The stream you chose is opening
+So sit back and watch/listen to you stream
+Enjoy!
+	
+----------
+	
+"""
+optionsopen = """
+	
+Avalible options:
+	
+----------
+
+This is to open stream service The only two options avaliable are:	
+Youtube -- Allows you to open a stream with a youtube url ir video id
+Twitch -- Opens a twitch stream when you input user
+	
+----------
+	
+"""
+optionsstream = """
+	
+Avalible options:
+	
+----------
+
+This is to specify a stream
+Input a username if for Twitch
+Input a video id if for Youtube
+	
+----------
+	
+"""
+optionsopenaudio = """
+	
+Avalible options:
+	
+----------
+	
+This is if you want to listen to the audio only for the stream
+Input yes to only get the audio and no video
+Input no to have video as well as audio
+	
+----------
+	
+"""
+optionslist = """
+	
+Avalible options:
+	
+----------
+	
+This is used to list users present in the list.json
+This only works for twitch streamers at the moment
+Will maybe extend to youtube in the future
+	
+----------
+	
+"""
+optionscheck = """
+	
+Avalible options:
+	
+----------
+	
+This is used to check the status of a individual twitch streamer
+This is unavaliable for youtube unless it is otherwisse possible
+Might have youtube support in the future
+	
+----------
+	
+"""
+optionsstatscheck = """
+	
+Avalible options:
+	
+----------
+	
+This is used to view the stats being tracked
+You can view the stats of a individual user
+You can also view the total global stats
+You can also Clear the stats
+You can also check the errorLogs
+	
+----------
+	
+"""
+optionsstatsclear = """
+	
+Avalible options:
+	
+----------
+	
+This is the danger zone!
+This is where you can clear a users stats or the global stats
+Continue if you sure of what you are doing!
+	
+----------
+	
+"""
+optionsadd = """
+	
+Avalible options:
+	
+----------
+	
+This is used to add a user to the tracked list
+This make ther status to be checked with the list command
+It also allows statistic tracking for the user
+	
+----------
+	
+"""
+listing = """
+-------------
+"""
 
 #Defines the program to check a users status
 def check_user(user):
@@ -550,44 +676,102 @@ def start():
 		unrecgonizedCmd = data['data']['errorLogs']['unRecgonizedCmds']
 		unrecgonizedCmd = unrecgonizedCmd + 1
 		data['data']['errorLogs']['unRecgonizedCmds'] = unrecgonizedCmd
-		print("\n\n----------\nOption Not Recgonized\n-----------\n\n")
+		print("""
+
+-----------
+
+Option Not Recgonized
+
+-----------
+
+""")
 		pass
 	print('')
 	restart = input('Restart the Script?: ')
 	pass
 
-#Restarts the script
-while restart.lower() == "yes":
-	try:
-		start()
-		if restart == "yes":
-			os.system('cls')
-			pass
-		pass
-	except KeyboardInterrupt:
-		print('\n\nEnding Script')
-		timesInterrupted = data['data']['errorLogs']['timesInterrupted']
-		timesInterrupted = timesInterrupted + 1
-		data['data']['errorLogs']['timesInterrupted'] = timesInterrupted
-		restart = 'no'
-		pass
-	except:
-		print('\n\nUnknown Error!')
-		unknownError = data['data']['errorLogs']['unknownError']
-		unknownError = unknownError + 1
-		data['data']['errorLogs']['unknownError'] = unknownError
-		restart = 'no'
-		pass
-	if restart.lower() == "yes":
-		timesRestarted = data['data']['logs']['timesRestarted']
-		timesRestarted = timesRestarted + 1
-		data['data']['logs']['timesRestarted'] = timesRestarted
-		pass
+
+from tkinter import *
+from tkinter import ttk
+
+
+root = Tk()
+root.title("Stream to VLC")
+def calculate():
 	pass
+mainframe = ttk.Frame(root, padding="12 12 12 12")
+mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+mainframe.columnconfigure(0, weight=1)
+mainframe.rowconfigure(0, weight=1)
+
+feet = StringVar()
+meters = StringVar()
+
+
+
+ttk.Button(mainframe, text="Open", command=open).grid(column=2, row=3, sticky=W)
+ttk.Button(mainframe, text="List", command=lvstList).grid(column=3, row=3, sticky=W)
+ttk.Button(mainframe, text="Check", command=check).grid(column=4, row=3, sticky=W)
+ttk.Button(mainframe, text="Add", command=userAdd).grid(column=5, row=3, sticky=W)
+
+ttk.Label(mainframe, text="""
+	
+Avalible options:
+	
+----------
+	
+Check (checks status of a specific user
+List (Checks the status of a list of predefined users
+Open (opens a stream)
+Add (Adds a user to to the tracked user list)
+Stats (Views the list of tracked stats)
+	
+----------
+	
+""").grid(column=1, row=1, sticky=W)
+#ttk.Label(mainframe, text="feet").grid(column=3, row=1, sticky=W)
+ttk.Label(mainframe, text="Things!").grid(column=1, row=1, sticky=E)
+ttk.Label(mainframe, text="Yey Tests!").grid(column=1, row=2, sticky=W)
+
+for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
+
+#feet_entry.focus()
+root.bind('<Return>', calculate)
+
+root.mainloop()
+
+#Restarts the script
+#while restart.lower() == "yes":
+#	try:
+#		start()
+#		if restart == "yes":
+#			os.system('cls')
+#			pass
+#		pass
+#	except KeyboardInterrupt:
+#		print('\n\nEnding Script')
+#		timesInterrupted = data['data']['errorLogs']['timesInterrupted']
+#		timesInterrupted = timesInterrupted + 1
+#		data['data']['errorLogs']['timesInterrupted'] = timesInterrupted
+#		restart = 'no'
+#		pass
+#	except:
+#		print('\n\nUnknown Error!')
+#		unknownError = data['data']['errorLogs']['unknownError']
+#		unknownError = unknownError + 1
+#		data['data']['errorLogs']['unknownError'] = unknownError
+#		restart = 'no'
+#		pass
+#	if restart.lower() == "yes":
+#		timesRestarted = data['data']['logs']['timesRestarted']
+#		timesRestarted = timesRestarted + 1
+#		data['data']['logs']['timesRestarted'] = timesRestarted
+#		pass
+#	pass
 
 #Script end confirmation
 print('')
-input("Press Enter to continue...")
+#input("Press Enter to continue...")
 
 with open('list.json', "w") as write_file:  
 	json.dump(data, write_file)
