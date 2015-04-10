@@ -7,11 +7,17 @@
 #Loading modules the script relies on
 import time
 import os
+import platform
 from urllib.request import urlopen
 from urllib.error import URLError
 import json
 
-os.system('cls')
+def clearscreen():
+	if platform.system()=='Linux':
+		os.system('clear')
+	else:
+		os.system('cls')
+clearscreen()
 
 #Sets up the input variables that is used later in the script
 
@@ -56,7 +62,8 @@ startCount = data['data']['logs']['timesStarted']
 startCount = startCount + 1
 data['data']['logs']['timesStarted'] = startCount
 
-#Motd's
+#Menu Prompts
+global options
 options = ""																		+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -70,6 +77,8 @@ options = ""																		+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""
+
+global optionsstreaming
 optionsstreaming = ""																+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -81,6 +90,8 @@ optionsstreaming = ""																+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""
+
+global optionsopen
 optionsopen = ""																	+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -92,6 +103,8 @@ optionsopen = ""																	+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""	
+
+global optionsstream
 optionsstream = ""																	+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -103,7 +116,10 @@ optionsstream = ""																	+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""
-optionsopenaudio = "nAvalible options:"												+"\n"+\
+
+global optionsopenaudio
+optionsopenaudio = ""																+"\n"+\
+			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""																		+"\n"+\
@@ -113,6 +129,8 @@ optionsopenaudio = "nAvalible options:"												+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""
+
+global optionslist
 optionslist = ""																	+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -124,6 +142,8 @@ optionslist = ""																	+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""
+
+global optionscheck
 optionscheck = ""																	+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -135,6 +155,8 @@ optionscheck = ""																	+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""
+
+global optionsstatscheck
 optionsstatscheck = ""																+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -148,6 +170,8 @@ optionsstatscheck = ""																+"\n"+\
 			""																		+"\n"+\
 			"---------"																+"\n"+\
 			""
+
+global optionsstatsclear
 optionsstatsclear = ""																+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -159,6 +183,8 @@ optionsstatsclear = ""																+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""	
+
+global optionsadd
 optionsadd = ""																		+"\n"+\
 			"Avalible options:"														+"\n"+\
 			""																		+"\n"+\
@@ -170,6 +196,8 @@ optionsadd = ""																		+"\n"+\
 			""																		+"\n"+\
 			"----------"															+"\n"+\
 			""	
+
+global listing
 listing = ""																		+"\n"+\
 			"-------------"															+"\n"+\
 			""
@@ -247,7 +275,7 @@ def userAdd():
 		emptyRecord = str(emptyRecord)
 		allRecords = str(allRecords)
 	
-		os.system('cls')
+		clearscreen()
 		print(optionsadd)
 		print('\nThere are ' + goodRecord + ' used records and  ' + emptyRecord + ' empty records out of ' + allRecords + '\n')
 		userAdd = input('Name of the user to add?: ')
@@ -255,7 +283,7 @@ def userAdd():
 		array.append(userAdd.lower())
 		data['data']['streamData'][userAdd.lower()] = streamDataTemp
 
-		isMusicStream = input('Is this streama music stream? (Yes or No): ')
+		isMusicStream = input('Is this stream a music stream? (Yes or No): ')
 
 		if isMusicStream.lower() == 'yes':
 			data['data']['streamData'][userAdd]['musicStream'] = 'true'
@@ -277,11 +305,11 @@ def statCheck():
 	global statwho
 
 	statAdd = 'no'
-	os.system('cls')
+	clearscreen()
 	print(optionsstatscheck)
 	statWhat = input('Which stat do you want to see? (User, Global, Error or Clear): ')
 	if statWhat.lower() == 'user':
-		os.system('cls')
+		clearscreen()
 		print(optionsstatscheck)
 		statwho = input('Who do you want to check the stats of?: ')
 		try:
@@ -293,7 +321,7 @@ def statCheck():
 			pass
 
 		except:
-			os.system('cls')
+			clearscreen()
 			print(optionsstatscheck)
 			print('\nThere are no stats for this user!\n')
 			statAdd = input('Whould you like to add this user to the tracked list?: ')
@@ -303,7 +331,7 @@ def statCheck():
 			pass
 
 	if statWhat.lower() == 'global':
-		os.system('cls')
+		clearscreen()
 		print(optionsstatscheck)
 		print('\nThe total ammount of streams played is: ' + str(data['data']['logs']['totalPlay']))
 		print('\nTheres a total of: ' + str(data['data']['logs']['streamNum']) + ' streams being tracked.')
@@ -313,7 +341,7 @@ def statCheck():
 		pass
 
 	if statWhat.lower() == 'error':
-		os.system('cls')
+		clearscreen()
 		print(optionsstatscheck)
 		print('\nThe total ammount of times the script has been interuppted is: ' + str(data['data']['errorLogs']['timesInterrupted']))
 		print('\nThe total of unsupported services entered is:  ' + str(data['data']['errorLogs']['unsupportedServices']))
@@ -322,11 +350,11 @@ def statCheck():
 		pass
 
 	if statWhat.lower() == 'clear':
-		os.system('cls')
+		clearscreen()
 		print(optionsstatsclear)
 		statClear = input('Do you want to clear global stats or the stats of a specific user? (Global, User): ')
 		if statClear.lower() == 'global':
-			os.system('cls')
+			clearscreen()
 			print(optionsstatsclear)
 			data['data']['logs']['totalPlay'] = 0
 			data['data']['timeCounters']['totalTime'] = "0 Days 0:0:0"
@@ -336,7 +364,7 @@ def statCheck():
 			data['data']['timeCounters']['days'] = 0
 			print('\nStat Clear Done!\n')
 		elif statClear.lower() == 'user':
-			os.system('cls')
+			clearscreen()
 			print(optionsstatsclear)
 			statClearUser = input('Whos stats do you want to clear?: ')
 			data['data']['streamData'][statClearUser] = streamDataTemp
@@ -348,7 +376,7 @@ def statCheck():
 
 #Individual user status check
 def check():
-	os.system('cls')
+	clearscreen()
 	print(optionscheck)
 	user = input('User to check status of: ')	
 	print('')
@@ -362,7 +390,7 @@ def lvstList():
 	global datanum
 	global data_file
 
-	os.system('cls')
+	clearscreen()
 	print(optionslist)
 	for i in range(len(data["streams"])):
 		if data['streams'][i] != "null":
@@ -378,10 +406,6 @@ def lvstList():
 		if data["streams"][i] != "null":
 			if check_user(data["streams"][i]) != 1:
 				list(data["streams"][i])
-				pass
-			pass
-		pass
-	pass
 
 #Command to open a stream
 def openstream():
@@ -394,12 +418,12 @@ def openstream():
 	global options
 	global streamError
 
-	os.system('cls')
+	clearscreen()
 	print(optionsopen)
 	service = input('What stream service? (Youtube or Twitch): ')
 
 	if service.lower() == 'youtube' or service.lower() == 'twitch':
-		os.system('cls')
+		clearscreen()
 		print(optionsstream)
 		lvst = input('What stream?: ')
 		#Process to use for twitch streams
@@ -407,7 +431,7 @@ def openstream():
 			try:
 				audioOnly = data['data']['streamData'][lvst.lower()]['musicStream']
 				if audioOnly == 'true':
-					os.system('cls')
+					clearscreen()
 					print(optionsopenaudio)
 					audio = input('Do you want to do audio only?: ')
 
@@ -427,7 +451,7 @@ def openstream():
 
 			#Process for youtube streams
 		if service.lower() == 'youtube':
-			os.system('cls')
+			clearscreen()
 			print(optionsopenaudio)
 			if lvst[1:32] == 'https://www.youtube.com/watch?v=':
 				audio = input('Do you want to do audio only?: ')
@@ -462,7 +486,7 @@ def cmdwin():
 	global streamError
 
 	if streamError != 'true':
-		os.system('cls')
+		clearscreen()
 		print(optionsstreaming)
 		print('Opening ' + lvst + "'s stream on " + service + ".\n")
 		try:
@@ -632,7 +656,7 @@ def start():
 	#Option input
 	print(options)
 	option = input('What do you want to do?: ')
-	os.system('cls')
+	clearscreen()
 	print(options)
 
 	#checks what option was chosen
@@ -662,15 +686,14 @@ def start():
 	pass
 
 #Restarts the script
-while restart.lower() == "yes":
+while restart.lower() in ["yes","y"]:
 	try:
 		start()
-		if restart == "yes":
-			os.system('cls')
+		if restart.lower() in ["yes","y"]:
+			clearscreen()
 			pass
 		pass
 	except KeyboardInterrupt:
-
 		print('\n\nEnding Script')
 		timesInterrupted = data['data']['errorLogs']['timesInterrupted']
 		timesInterrupted = timesInterrupted + 1
@@ -678,15 +701,13 @@ while restart.lower() == "yes":
 		restart = 'no'
 		pass
 	except:
-
 		print('\n\nUnknown Error!')
 		unknownError = data['data']['errorLogs']['unknownError']
 		unknownError = unknownError + 1
 		data['data']['errorLogs']['unknownError'] = unknownError
 		restart = 'no'
 		pass
-	if restart.lower() == "yes":
-
+	if restart.lower() in ["yes","y"]:
 		timesRestarted = data['data']['logs']['timesRestarted']
 		timesRestarted = timesRestarted + 1
 		data['data']['logs']['timesRestarted'] = timesRestarted

@@ -1,25 +1,48 @@
-##------------------------------------------------------------------------------------------------------##
-## Importent note:                                                                                      ##
-## This uses the program http://docs.livestreamer.io/index.html which provides the livestreamer command ##
-## This python program is used to open streams in vlc media player                                      ##
-##------------------------------------------------------------------------------------------------------##
+#############################################
+ #											#
+ # META DATA HERE							#
+ #											#
+#############################################
+ #Descripttion:								#
+ #											#
+ # This program opens streams from			#
+ #  - Dailymotion							#
+ #  - Livestream							#
+ #  - Twitch								#
+ #  - UStream								#
+ #  - YouTube Live							#
+ # and plays them in vlc media player		#
+ #											#
+ ############################################
 
-#Loading modules the script relies on
 import time
 import os
 import platform
 from urllib.request import urlopen
 from urllib.error import URLError
 import json
-
-def clearscreen():
-	if platform.system()=='Linux':
-		os.system('clear')
-	else:
-		os.system('cls')
-clearscreen()
+#import livestreamer
 
 #Sets up the input variables that is used later in the script
+
+global option
+global service
+global lvst
+global wincmd
+global audio
+global restart
+global lvsting
+global totalsec
+global totalmin
+global totalhrs
+global totaldays
+global totalusersec
+global totalusermin
+global totaluserhrs
+global totaluserdays
+global statAdd
+global statwho
+global streamError
 
 option = ''
 service = ''
@@ -40,8 +63,7 @@ statAdd = 'no'
 statwho = ''
 streamError = ''
 
-#Variables used to condense code down slightly
-
+#todo remove and replace with internal funciton
 lsTwitch = 'livestreamer twitch.tv/'
 lsYoutube = 'livestreamer youtube.com/watch?v='
 
@@ -53,9 +75,9 @@ timeh =0
 
 #Opens the json file for the list of tracked streamers
 with open('list.json') as data_file:    
-    data = json.load(data_file)
-    data_file.close()
-    pass
+	data = json.load(data_file)
+	data_file.close()
+	pass
 
 streamDataTemp = data['data']['streamData']['streamTemplate']
 startCount = data['data']['logs']['timesStarted']
@@ -202,46 +224,43 @@ listing = ""																		+"\n"+\
 			"-------------"															+"\n"+\
 			""
 
-#Defines the program to check a users status
-def check_user(user):
-    """ returns 0: online, 1: offline, 2: not found, 3: error """
-    url = 'https://api.twitch.tv/kraken/streams/' + user
-    try:
-        info = json.loads(urlopen(url, timeout = 15).read().decode('utf-8'))
-        if info['stream'] == None:
-            status = 1
-        else:
-            status = 0
-    except URLError as e:
-        if e.reason == 'Not Found' or e.reason == 'Unprocessable Entity':
-            status = 2
-        else:
-            status = 3
-    return status
+global status_list
+status_list={
+	  "Dailymotion"	:{},
+	  "Livestream"	:{},
+	  "Twitch"		:{},
+	  "UStream"		:{},
+	  "YouTube Live":{},
+}
 
-#Defines the program to display the output from the check user as text
-def list(urc):
-	try:
-	   	if check_user(urc) == 0:
-	   		print(listing)
-	   		print(urc + ' Is ONLINE')
-	   		print(listing)
-	   	elif check_user(urc) == 1:
-	   		print(listing)
-	   		print(urc + ' Is offline')
-	   		print(listing)
-	   	elif check_user(urc) == 2:
-	   		print(listing)
-	   		print(urc + ' Is not found')
-	   		print(listing)
-	   	elif check_user(urc) == 3:
-	   		print(listing)
-	   		print('Error in checking status')
-	   		print(listing)
-	   		pass
-	except KeyboardInterrupt:
-	   	pass
-	return 
+#set up graphics fram managment things
+def update_frame():
+	pass
+
+def update_user_status(server,user):
+	global status_list
+	if server=="Dailymotion":
+		pass
+	if server=="Livestream":
+		pass
+	if server=="Twitch":
+		url = 'https://api.twitch.tv/kraken/streams/' + user
+		try:
+			info = json.loads(urlopen(url, timeout = 15).read().decode('utf-8'))
+			if info['stream'] == None:
+				status_list["Twitch"][user] = "Offline"
+			else:
+				status_list["Twitch"][user] = "Online"
+		except URLError as e:
+			if e.reason == 'Not Found' or e.reason == 'Unprocessable Entity':
+				status_list["Twitch"][user] = "Not Found"
+			else:
+				status_list["Twitch"][user] = "ERROR"
+		return status
+	if server=="UStream":
+		pass
+	if server=="YouTube Live":
+		pass
 
 #Function to add new tracked users
 def userAdd():
@@ -380,7 +399,7 @@ def check():
 	print(optionscheck)
 	user = input('User to check status of: ')	
 	print('')
-	list(user)
+	update_user_status("Twitch",user)
 	print('')
 	pass
 	
@@ -404,8 +423,8 @@ def lvstList():
 
 	for i in range(len(data["streams"])):
 		if data["streams"][i] != "null":
-			if check_user(data["streams"][i]) != 1:
-				list(data["streams"][i])
+			if update_user_status("Twitch",data["streams"][i]) != 1:
+				update_user_status("Twitch",data["streams"][i])
 				pass
 			pass
 		pass
@@ -696,8 +715,6 @@ from tkinter import ttk
 
 root = Tk()
 root.title("Stream to VLC")
-def calculate():
-	pass
 mainframe = ttk.Frame(root, padding="12 12 12 12")
 mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
 mainframe.columnconfigure(0, weight=1)
