@@ -7,11 +7,17 @@
 #Loading modules the script relies on
 import time
 import os
+import platform
 from urllib.request import urlopen
 from urllib.error import URLError
 import json
 
-os.system('cls')
+def clearscreen():
+	if platform.system()=='Linux':
+		os.system('clear')
+	else:
+		os.system('cls')
+clearscreen()
 
 #Sets up the input variables that is used later in the script
 
@@ -56,144 +62,145 @@ startCount = data['data']['logs']['timesStarted']
 startCount = startCount + 1
 data['data']['logs']['timesStarted'] = startCount
 
-#Motd's
-options = """
-	
-Avalible options:
-	
-----------
-	
-Check (checks status of a specific user
-List (Checks the status of a list of predefined users
-Open (opens a stream)
-Add (Adds a user to to the tracked user list)
-Stats (Views the list of tracked stats)
-	
-----------
-	
-"""
-optionsstreaming = """
-	
-Avalible options:
-	
-----------
-	
-The stream you chose is opening
-So sit back and watch/listen to you stream
-Enjoy!
-	
-----------
-	
-"""
-optionsopen = """
-	
-Avalible options:
-	
-----------
+#Menu Prompts
+global options
+options = ""																		+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"Check (checks status of a specific user"								+"\n"+\
+			"List (Checks the status of a list of predefined users"					+"\n"+\
+			"Open (opens a stream)"													+"\n"+\
+			"Add (Adds a user to to the tracked user list)"							+"\n"+\
+			"Stats (Views the list of tracked stats)"								+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""
 
-This is to open stream service The only two options avaliable are:	
-Youtube -- Allows you to open a stream with a youtube url ir video id
-Twitch -- Opens a twitch stream when you input user
-	
-----------
-	
-"""
-optionsstream = """
-	
-Avalible options:
-	
-----------
+global optionsstreaming
+optionsstreaming = ""																+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"The stream you chose is opening"										+"\n"+\
+			"So sit back and watch/listen to you stream"							+"\n"+\
+			"Enjoy!"																+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""
 
-This is to specify a stream
-Input a username if for Twitch
-Input a video id if for Youtube
-	
-----------
-	
-"""
-optionsopenaudio = """
-	
-Avalible options:
-	
-----------
-	
-This is if you want to listen to the audio only for the stream
-Input yes to only get the audio and no video
-Input no to have video as well as audio
-	
-----------
-	
-"""
-optionslist = """
-	
-Avalible options:
-	
-----------
-	
-This is used to list users present in the list.json
-This only works for twitch streamers at the moment
-Will maybe extend to youtube in the future
-	
-----------
-	
-"""
-optionscheck = """
-	
-Avalible options:
-	
-----------
-	
-This is used to check the status of a individual twitch streamer
-This is unavaliable for youtube unless it is otherwisse possible
-Might have youtube support in the future
-	
-----------
-	
-"""
-optionsstatscheck = """
-	
-Avalible options:
-	
-----------
-	
-This is used to view the stats being tracked
-You can view the stats of a individual user
-You can also view the total global stats
-You can also Clear the stats
-You can also check the errorLogs
-	
-----------
-	
-"""
-optionsstatsclear = """
-	
-Avalible options:
-	
-----------
-	
-This is the danger zone!
-This is where you can clear a users stats or the global stats
-Continue if you sure of what you are doing!
-	
-----------
-	
-"""
-optionsadd = """
-	
-Avalible options:
-	
-----------
-	
-This is used to add a user to the tracked list
-This make ther status to be checked with the list command
-It also allows statistic tracking for the user
-	
-----------
-	
-"""
-listing = """
--------------
-"""
+global optionsopen
+optionsopen = ""																	+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"This is to open stream service The only two options avaliable are:"	+"\n"+\
+			"Youtube -- Allows you to open a stream with a youtube url ir video id"	+"\n"+\
+			"Twitch -- Opens a twitch stream when you input user"					+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""	
+
+global optionsstream
+optionsstream = ""																	+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"This is to specify a stream"											+"\n"+\
+			"Input a username if for Twitch"										+"\n"+\
+			"Input a video id if for Youtube"										+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""
+
+global optionsopenaudio
+optionsopenaudio = ""																+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"This is if you want to listen to the audio only for the stream"		+"\n"+\
+			"Input yes to only get the audio and no video"							+"\n"+\
+			"Input no to have video as well as audio"								+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""
+
+global optionslist
+optionslist = ""																	+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"This is used to list users present in the list.json"					+"\n"+\
+			"This only works for twitch streamers at the moment"					+"\n"+\
+			"Will maybe extend to youtube in the future"							+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""
+
+global optionscheck
+optionscheck = ""																	+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"This is used to check the status of a individual twitch streamer"		+"\n"+\
+			"This is unavaliable for youtube unless it is otherwisse possible"		+"\n"+\
+			"Might have youtube support in the future"								+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""
+
+global optionsstatscheck
+optionsstatscheck = ""																+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"This is used to view the stats being tracked"							+"\n"+\
+			"You can view the stats of a individual user"							+"\n"+\
+			"You can also view the total global stats"								+"\n"+\
+			"You can also Clear the stats"											+"\n"+\
+			"You can also check the errorLogs"										+"\n"+\
+			""																		+"\n"+\
+			"---------"																+"\n"+\
+			""
+
+global optionsstatsclear
+optionsstatsclear = ""																+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"This is the danger zone!"												+"\n"+\
+			"This is where you can clear a users stats or the global stats"			+"\n"+\
+			"Continue if you sure of what you are doing!"							+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""	
+
+global optionsadd
+optionsadd = ""																		+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"This is used to add a user to the tracked list"						+"\n"+\
+			"This make ther status to be checked with the list command"				+"\n"+\
+			"It also allows statistic tracking for the user"						+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""	
+
+global listing
+listing = ""																		+"\n"+\
+			"-------------"															+"\n"+\
+			""
 
 #Defines the program to check a users status
 def check_user(user):
@@ -268,7 +275,7 @@ def userAdd():
 		emptyRecord = str(emptyRecord)
 		allRecords = str(allRecords)
 	
-		os.system('cls')
+		clearscreen()
 		print(optionsadd)
 		print('\nThere are ' + goodRecord + ' used records and  ' + emptyRecord + ' empty records out of ' + allRecords + '\n')
 		userAdd = input('Name of the user to add?: ')
@@ -298,11 +305,11 @@ def statCheck():
 	global statwho
 
 	statAdd = 'no'
-	os.system('cls')
+	clearscreen()
 	print(optionsstatscheck)
 	statWhat = input('Which stat do you want to see? (User, Global, Error or Clear): ')
 	if statWhat.lower() == 'user':
-		os.system('cls')
+		clearscreen()
 		print(optionsstatscheck)
 		statwho = input('Who do you want to check the stats of?: ')
 		try:
@@ -314,7 +321,7 @@ def statCheck():
 			pass
 
 		except:
-			os.system('cls')
+			clearscreen()
 			print(optionsstatscheck)
 			print('\nThere are no stats for this user!\n')
 			statAdd = input('Whould you like to add this user to the tracked list?: ')
@@ -324,7 +331,7 @@ def statCheck():
 			pass
 
 	if statWhat.lower() == 'global':
-		os.system('cls')
+		clearscreen()
 		print(optionsstatscheck)
 		print('\nThe total ammount of streams played is: ' + str(data['data']['logs']['totalPlay']))
 		print('\nTheres a total of: ' + str(data['data']['logs']['streamNum']) + ' streams being tracked.')
@@ -334,7 +341,7 @@ def statCheck():
 		pass
 
 	if statWhat.lower() == 'error':
-		os.system('cls')
+		clearscreen()
 		print(optionsstatscheck)
 		print('\nThe total ammount of times the script has been interuppted is: ' + str(data['data']['errorLogs']['timesInterrupted']))
 		print('\nThe total of unsupported services entered is:  ' + str(data['data']['errorLogs']['unsupportedServices']))
@@ -343,11 +350,11 @@ def statCheck():
 		pass
 
 	if statWhat.lower() == 'clear':
-		os.system('cls')
+		clearscreen()
 		print(optionsstatsclear)
 		statClear = input('Do you want to clear global stats or the stats of a specific user? (Global, User): ')
 		if statClear.lower() == 'global':
-			os.system('cls')
+			clearscreen()
 			print(optionsstatsclear)
 			data['data']['logs']['totalPlay'] = 0
 			data['data']['timeCounters']['totalTime'] = "0 Days 0:0:0"
@@ -357,7 +364,7 @@ def statCheck():
 			data['data']['timeCounters']['days'] = 0
 			print('\nStat Clear Done!\n')
 		elif statClear.lower() == 'user':
-			os.system('cls')
+			clearscreen()
 			print(optionsstatsclear)
 			statClearUser = input('Whos stats do you want to clear?: ')
 			data['data']['streamData'][statClearUser] = streamDataTemp
@@ -369,7 +376,7 @@ def statCheck():
 
 #Individual user status check
 def check():
-	os.system('cls')
+	clearscreen()
 	print(optionscheck)
 	user = input('User to check status of: ')	
 	print('')
@@ -383,7 +390,7 @@ def lvstList():
 	global datanum
 	global data_file
 
-	os.system('cls')
+	clearscreen()
 	print(optionslist)
 	for i in range(len(data["streams"])):
 		if data['streams'][i] != "null":
@@ -415,12 +422,12 @@ def openstream():
 	global options
 	global streamError
 
-	os.system('cls')
+	clearscreen()
 	print(optionsopen)
 	service = input('What stream service? (Youtube or Twitch): ')
 
 	if service.lower() == 'youtube' or service.lower() == 'twitch':
-		os.system('cls')
+		clearscreen()
 		print(optionsstream)
 		lvst = input('What stream?: ')
 		#Process to use for twitch streams
@@ -428,7 +435,7 @@ def openstream():
 			try:
 				audioOnly = data['data']['streamData'][lvst.lower()]['musicStream']
 				if audioOnly == 'true':
-					os.system('cls')
+					clearscreen()
 					print(optionsopenaudio)
 					audio = input('Do you want to do audio only?: ')
 
@@ -448,7 +455,7 @@ def openstream():
 
 			#Process for youtube streams
 		if service.lower() == 'youtube':
-			os.system('cls')
+			clearscreen()
 			print(optionsopenaudio)
 			if lvst[1:32] == 'https://www.youtube.com/watch?v=':
 				audio = input('Do you want to do audio only?: ')
@@ -483,7 +490,7 @@ def cmdwin():
 	global streamError
 
 	if streamError != 'true':
-		os.system('cls')
+		clearscreen()
 		print(optionsstreaming)
 		print('Opening ' + lvst + "'s stream on " + service + ".\n")
 		try:
@@ -653,7 +660,7 @@ def start():
 	#Option input
 	print(options)
 	option = input('What do you want to do?: ')
-	os.system('cls')
+	clearscreen()
 	print(options)
 
 	#checks what option was chosen
@@ -676,15 +683,7 @@ def start():
 		unrecgonizedCmd = data['data']['errorLogs']['unRecgonizedCmds']
 		unrecgonizedCmd = unrecgonizedCmd + 1
 		data['data']['errorLogs']['unRecgonizedCmds'] = unrecgonizedCmd
-		print("""
-
------------
-
-Option Not Recgonized
-
------------
-
-""")
+		print("\n\n-----------\n\nOption Not Recgonized\n\n-----------\n")
 		pass
 	print('')
 	restart = input('Restart the Script?: ')
@@ -745,7 +744,7 @@ root.mainloop()
 #	try:
 #		start()
 #		if restart == "yes":
-#			os.system('cls')
+#			clearscreen()
 #			pass
 #		pass
 #	except KeyboardInterrupt:
