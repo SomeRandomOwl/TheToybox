@@ -57,17 +57,122 @@ startCount = startCount + 1
 data['data']['logs']['timesStarted'] = startCount
 
 #Motd's
-options = "\nAvalible options:\n\n----------\n\nCheck (checks status of a specific user\nList (Checks the status of a list of predefined users\nOpen (opens a stream)\nAdd (Adds a user to to the tracked user list)\nStats (Views the list of tracked stats)\n\n----------\n"
-optionsstreaming = "\nAvalible options:\n\n----------\n\nThe stream you chose is opening\nSo sit back and watch/listen to you stream\nEnjoy!\n\n----------\n"
-optionsopen = "\nAvalible options:\n\n----------\n\nThis is to open stream service The only two options avaliable are:\nYoutube -- Allows you to open a stream with a youtube url ir video id\nTwitch -- Opens a twitch stream when you input user\n\n----------\n"	
-optionsstream = "\nAvalible options:\n\n----------\n\nThis is to specify a stream\nInput a username if for Twitch\nInput a video id if for Youtube\n\n----------\n"
-optionsopenaudio = "nAvalible options:\n\n----------\n\nThis is if you want to listen to the audio only for the stream\nInput yes to only get the audio and no video\nInput no to have video as well as audio\n\n----------\n"
-optionslist = "\nAvalible options:\n\n----------\n\nThis is used to list users present in the list.json\nThis only works for twitch streamers at the moment\nWill maybe extend to youtube in the future\n\n----------\n"
-optionscheck = "\nAvalible options:\n\n----------\n\nThis is used to check the status of a individual twitch streamer\nThis is unavaliable for youtube unless it is otherwisse possible\nMight have youtube support in the future\n\n----------\n"
-optionsstatscheck = "\nAvalible options:\n\n----------\n\nThis is used to view the stats being tracked\nYou can view the stats of a individual user\nYou can also view the total global stats\nYou can also Clear the stats\nYou can also check the errorLogs\n\n---------\n"
-optionsstatsclear = "\nAvalible options:\n\n----------\n\nThis is the danger zone!\nThis is where you can clear a users stats or the global stats\nContinue if you sure of what you are doing!\n\n----------\n"	
-optionsadd = "\nAvalible options:\n\n----------\n\nThis is used to add a user to the tracked list\nThis make ther status to be checked with the list command\nIt also allows statistic tracking for the user\n\n----------\n"	
-listing = "\n-------------\n"
+options = ""																		+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"Check (checks status of a specific user"								+"\n"+\
+			"List (Checks the status of a list of predefined users"					+"\n"+\
+			"Open (opens a stream)"													+"\n"+\
+			"Add (Adds a user to to the tracked user list)"							+"\n"+\
+			"Stats (Views the list of tracked stats)"								+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""
+optionsstreaming = ""																+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"The stream you chose is opening"										+"\n"+\
+			"So sit back and watch/listen to you stream"							+"\n"+\
+			"Enjoy!"																+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""
+optionsopen = ""																	+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"This is to open stream service The only two options avaliable are:"	+"\n"+\
+			"Youtube -- Allows you to open a stream with a youtube url ir video id"	+"\n"+\
+			"Twitch -- Opens a twitch stream when you input user"					+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""	
+optionsstream = ""																	+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"This is to specify a stream"											+"\n"+\
+			"Input a username if for Twitch"										+"\n"+\
+			"Input a video id if for Youtube"										+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""
+optionsopenaudio = "nAvalible options:"												+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"This is if you want to listen to the audio only for the stream"		+"\n"+\
+			"Input yes to only get the audio and no video"							+"\n"+\
+			"Input no to have video as well as audio"								+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""
+optionslist = ""																	+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"This is used to list users present in the list.json"					+"\n"+\
+			"This only works for twitch streamers at the moment"					+"\n"+\
+			"Will maybe extend to youtube in the future"							+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""
+optionscheck = ""																	+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"This is used to check the status of a individual twitch streamer"		+"\n"+\
+			"This is unavaliable for youtube unless it is otherwisse possible"		+"\n"+\
+			"Might have youtube support in the future"								+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""
+optionsstatscheck = ""																+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"This is used to view the stats being tracked"							+"\n"+\
+			"You can view the stats of a individual user"							+"\n"+\
+			"You can also view the total global stats"								+"\n"+\
+			"You can also Clear the stats"											+"\n"+\
+			"You can also check the errorLogs"										+"\n"+\
+			""																		+"\n"+\
+			"---------"																+"\n"+\
+			""
+optionsstatsclear = ""																+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"This is the danger zone!"												+"\n"+\
+			"This is where you can clear a users stats or the global stats"			+"\n"+\
+			"Continue if you sure of what you are doing!"							+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""	
+optionsadd = ""																		+"\n"+\
+			"Avalible options:"														+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""																		+"\n"+\
+			"This is used to add a user to the tracked list"						+"\n"+\
+			"This make ther status to be checked with the list command"				+"\n"+\
+			"It also allows statistic tracking for the user"						+"\n"+\
+			""																		+"\n"+\
+			"----------"															+"\n"+\
+			""	
+listing = ""																		+"\n"+\
+			"-------------"															+"\n"+\
+			""
 
 #Defines the program to check a users status
 def check_user(user):
