@@ -7,8 +7,8 @@
 #Loading modules the script relies on
 import time
 import os
-from urllib.request import urlopen
-from urllib.error import URLError
+from urllib3.request import urlopen
+from urllib3.error import URLError
 import json
 
 os.system('cls')
