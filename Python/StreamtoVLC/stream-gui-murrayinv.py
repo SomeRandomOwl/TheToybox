@@ -26,7 +26,6 @@ import json
 #Sets up the input variables that is used later in the script
 
 global option
-global service
 global lvst
 global wincmd
 global audio
@@ -45,7 +44,6 @@ global statwho
 global streamError
 
 option = ''
-service = ''
 lvst = ''
 wincmd = ''
 audio = ''
@@ -224,6 +222,12 @@ listing = ""																		+"\n"+\
 			"-------------"															+"\n"+\
 			""
 
+
+
+########################
+#  Inverted Funcitons  #
+########################
+
 global status_list
 status_list={
 	  "Dailymotion"	:{},
@@ -232,10 +236,6 @@ status_list={
 	  "UStream"		:{},
 	  "YouTube Live":{},
 }
-
-#set up graphics fram managment things
-def update_frame():
-	pass
 
 def update_user_status(server,user):
 	global status_list
@@ -261,6 +261,94 @@ def update_user_status(server,user):
 		pass
 	if server=="YouTube Live":
 		pass
+def update_users_stati():
+	for s in status_list:
+		for u in s:
+			update_user_status(s,u)
+
+#todo
+#replace lvsting with call to livestreamer
+
+#populate status_list from json
+def readJSON():
+	pass
+
+#add new user to json and status_list
+def addUser(service,user):
+	#add to json
+	readJSON()
+	update_users_stati()
+
+#open a user's stream
+def openstream(service,user):
+	global lsTwitch
+	global lvsting
+	global lsYoutube
+	global audio
+	global options
+	global streamError
+
+	#clearscreen()
+	#print(optionsopen)
+	#service = input('What stream service? (Youtube or Twitch): ')
+
+	if service.lower() == 'youtube' or service.lower() == 'twitch':
+		#clearscreen()
+		#print(optionsstream)
+		#lvst = input('What stream?: ')
+		##Process to use for twitch streams
+		if service.lower() == 'twitch':
+			try:
+				audioOnly = data['data']['streamData'][user.lower()]['musicStream']
+				if audioOnly == 'true':
+					clearscreen()
+					print(optionsopenaudio)
+					audio = input('Do you want to do audio only?: ')
+
+					if audio.lower() == 'yes':
+						lvsting = lsTwitch + user + ' audio'
+					else:
+						lvsting = lsTwitch + user + ' source'
+						pass
+					pass
+				else:
+					lvsting = lsTwitch + user + ' source'
+					pass
+				pass
+			except:
+				lvsting = lsTwitch + user + ' source'
+				return
+
+			#Process for youtube streams
+		if service.lower() == 'youtube':
+			clearscreen()
+			print(optionsopenaudio)
+			if user[1:32] == 'https://www.youtube.com/watch?v=':
+				user=user[32:]
+			audio = input('Do you want to do audio only?: ')
+			if audio.lower() == 'yes':
+				lvsting = lsYoutube + user + ' audio_mp4'
+			else:
+				lvsting = lsYoutube + user + ' best'
+				pass
+			pass
+	else:
+		print('\nStream service not supported!\n')
+		streamError = 'true'
+		serviceErrorCnt = data['data']['errorLogs']['unsupportedServices']
+		serviceErrorCnt = serviceErrorCnt + 1
+		data['data']['errorLogs']['unsupportedServices'] = serviceErrorCnt
+		pass
+	pass
+	
+ #Starts timer and opens stream
+
+#get stats for display in popup window
+
+
+###################
+#  Old Functions  #
+###################
 
 #Function to add new tracked users
 def userAdd():
@@ -298,8 +386,7 @@ def userAdd():
 		print(optionsadd)
 		print('\nThere are ' + goodRecord + ' used records and  ' + emptyRecord + ' empty records out of ' + allRecords + '\n')
 		userAdd = input('Name of the user to add?: ')
-		array = data['streams']
-		array.append(userAdd.lower())
+		data['streams'].append(userAdd.lower())
 		data['data']['streamData'][userAdd.lower()] = streamDataTemp
 
 		isMusicStream = input('Is this stream a music stream? (Yes or No): ')
@@ -402,7 +489,7 @@ def check():
 	update_user_status("Twitch",user)
 	print('')
 	pass
-	
+
 #User status list from the list.json file
 def lvstList():
 	global data
@@ -429,78 +516,6 @@ def lvstList():
 			pass
 		pass
 	pass
-
-#Command to open a stream
-def openstream():
-	global service
-	global lvst
-	global lsTwitch
-	global lvsting
-	global lsYoutube
-	global audio
-	global options
-	global streamError
-
-	clearscreen()
-	print(optionsopen)
-	service = input('What stream service? (Youtube or Twitch): ')
-
-	if service.lower() == 'youtube' or service.lower() == 'twitch':
-		clearscreen()
-		print(optionsstream)
-		lvst = input('What stream?: ')
-		#Process to use for twitch streams
-		if service.lower() == 'twitch':
-			try:
-				audioOnly = data['data']['streamData'][lvst.lower()]['musicStream']
-				if audioOnly == 'true':
-					clearscreen()
-					print(optionsopenaudio)
-					audio = input('Do you want to do audio only?: ')
-
-					if audio.lower() == 'yes':
-						lvsting = lsTwitch + lvst + ' audio'
-					else:
-						lvsting = lsTwitch + lvst + ' source'
-						pass
-					pass
-				else:
-					lvsting = lsTwitch + lvst + ' source'
-					pass
-				pass
-			except:
-				lvsting = lsTwitch + lvst + ' source'
-				return
-
-			#Process for youtube streams
-		if service.lower() == 'youtube':
-			clearscreen()
-			print(optionsopenaudio)
-			if lvst[1:32] == 'https://www.youtube.com/watch?v=':
-				audio = input('Do you want to do audio only?: ')
-				if audio.lower() == 'yes':
-					lvsting = lsYoutube + lvst[32:] + ' audio_mp4'
-				else:
-					lvsting = lsYoutube + lvst[32:] + ' best'
-					pass
-			else:
-				audio = input('Do you want to do audio only?: ')
-				if audio.lower() == 'yes':
-					lvsting = lsYoutube + lvst + ' audio_mp4'
-				else:
-					lvsting = lsYoutube + lvst + ' best'
-					pass
-			pass
-	else:
-		print('\nStream service not supported!\n')
-		streamError = 'true'
-		serviceErrorCnt = data['data']['errorLogs']['unsupportedServices']
-		serviceErrorCnt = serviceErrorCnt + 1
-		data['data']['errorLogs']['unsupportedServices'] = serviceErrorCnt
-		pass
-	pass
-	
- #Starts timer and opens stream
 
 def cmdwin():
 	global times
@@ -570,7 +585,6 @@ def stattracker():
 	global totalusermin
 	global totaluserhrs
 	global totaluserdays
-	global service
 
 	#Updates the play count on the active streamer
 	try:
@@ -715,6 +729,8 @@ from tkinter import ttk
 
 root = Tk()
 root.title("Stream to VLC")
+def calculate():
+	pass
 mainframe = ttk.Frame(root, padding="12 12 12 12")
 mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
 mainframe.columnconfigure(0, weight=1)
@@ -730,21 +746,7 @@ ttk.Button(mainframe, text="List", command=lvstList).grid(column=3, row=3, stick
 ttk.Button(mainframe, text="Check", command=check).grid(column=4, row=3, sticky=W)
 ttk.Button(mainframe, text="Add", command=userAdd).grid(column=5, row=3, sticky=W)
 
-ttk.Label(mainframe, text="""
-	
-Avalible options:
-	
-----------
-	
-Check (checks status of a specific user
-List (Checks the status of a list of predefined users
-Open (opens a stream)
-Add (Adds a user to to the tracked user list)
-Stats (Views the list of tracked stats)
-	
-----------
-	
-""").grid(column=1, row=1, sticky=W)
+ttk.Label(mainframe, text=options).grid(column=1, row=1, sticky=W)
 #ttk.Label(mainframe, text="feet").grid(column=3, row=1, sticky=W)
 ttk.Label(mainframe, text="Things!").grid(column=1, row=1, sticky=E)
 ttk.Label(mainframe, text="Yey Tests!").grid(column=1, row=2, sticky=W)
