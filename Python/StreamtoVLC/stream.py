@@ -53,9 +53,9 @@ timeh =0
 
 #Opens the json file for the list of tracked streamers
 with open('list.json') as data_file:    
-    data = json.load(data_file)
-    data_file.close()
-    pass
+	data = json.load(data_file)
+	data_file.close()
+	pass
 
 streamDataTemp = data['data']['streamData']['streamTemplate']
 startCount = data['data']['logs']['timesStarted']
@@ -204,43 +204,43 @@ listing = ""																		+"\n"+\
 
 #Defines the program to check a users status
 def check_user(user):
-    """ returns 0: online, 1: offline, 2: not found, 3: error """
-    url = 'https://api.twitch.tv/kraken/streams/' + user
-    try:
-        info = json.loads(urlopen(url, timeout = 15).read().decode('utf-8'))
-        if info['stream'] == None:
-            status = 1
-        else:
-            status = 0
-    except URLError as e:
-        if e.reason == 'Not Found' or e.reason == 'Unprocessable Entity':
-            status = 2
-        else:
-            status = 3
-    return status
+	""" returns 0: online, 1: offline, 2: not found, 3: error """
+	url = 'https://api.twitch.tv/kraken/streams/' + user
+	try:
+		info = json.loads(urlopen(url, timeout = 15).read().decode('utf-8'))
+		if info['stream'] == None:
+			status = 1
+		else:
+			status = 0
+	except URLError as e:
+		if e.reason == 'Not Found' or e.reason == 'Unprocessable Entity':
+			status = 2
+		else:
+			status = 3
+	return status
 
 #Defines the program to display the output from the check user as text
 def list(urc):
 	try:
-	   	if check_user(urc) == 0:
-	   		print(listing)
-	   		print(urc + ' Is ONLINE')
-	   		print(listing)
-	   	elif check_user(urc) == 1:
-	   		print(listing)
-	   		print(urc + ' Is offline')
-	   		print(listing)
-	   	elif check_user(urc) == 2:
-	   		print(listing)
-	   		print(urc + ' Is not found')
-	   		print(listing)
-	   	elif check_user(urc) == 3:
-	   		print(listing)
-	   		print('Error in checking status')
-	   		print(listing)
-	   		pass
+		if check_user(urc) == 0:
+			print(listing)
+			print(urc + ' Is ONLINE')
+			print(listing)
+		elif check_user(urc) == 1:
+			print(listing)
+			print(urc + ' Is offline')
+			print(listing)
+		elif check_user(urc) == 2:
+			print(listing)
+			print(urc + ' Is not found')
+			print(listing)
+		elif check_user(urc) == 3:
+			print(listing)
+			print('Error in checking status')
+			print(listing)
+			pass
 	except KeyboardInterrupt:
-	   	pass
+		pass
 	return 
 
 #Function to add new tracked users
@@ -718,7 +718,8 @@ while restart.lower() in ["yes","y"]:
 print('')
 input("Press Enter to continue...")
 
-with open('list.json', "w") as write_file:  
-	json.dump(data, write_file)
-
+ with open('list.json', "w") as write_file:
+	 write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
+	 pass
+ 
 ##End##
