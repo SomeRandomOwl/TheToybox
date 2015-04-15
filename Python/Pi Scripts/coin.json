@@ -1,0 +1,20 @@
+{
+    "coins": {
+        "quarters": {
+            "ammount": 0,
+            "value": 0.0
+        },
+		"dimes": {
+            "ammount": 0,
+            "value": 0.0
+        },
+		"nickles": {
+            "ammount": 0,
+            "value": 0.0
+        },
+		"pennies": {
+            "ammount": 0,
+            "value": 0.0
+        }
+    }
+}
