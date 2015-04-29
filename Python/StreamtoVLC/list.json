@@ -2,16 +2,16 @@
     "data": {
         "errorLogs": {
             "debug": 0,
-            "timesInterrupted": 9,
+            "timesInterrupted": 10,
             "unRecgonizedCmds": 3,
             "unknownError": 4,
-            "unsupportedServices": 2
+            "unsupportedServices": 4
         },
         "logs": {
             "streamNum": 13,
-            "timesRestarted": 11,
-            "timesStarted": 40,
-            "totalPlay": 20
+            "timesRestarted": 16,
+            "timesStarted": 49,
+            "totalPlay": 24
         },
         "streamData": {
             "Spinninrecords": {
@@ -70,12 +70,12 @@
             },
             "monstercat": {
                 "days": 0,
-                "hours": 12,
-                "mins": 41,
+                "hours": 14,
+                "mins": 29,
                 "musicStream": "true",
-                "playCount": 13,
-                "secs": 16,
-                "totalTime": "0 Days 12:41:16"
+                "playCount": 15,
+                "secs": 15,
+                "totalTime": "0 Days 14:29:15"
             },
             "muselk": {
                 "days": 0,
@@ -134,19 +134,19 @@
             "trionworlds": {
                 "days": 0,
                 "hours": 0,
-                "mins": 0,
+                "mins": 22,
                 "musicStream": "false",
-                "playCount": 0,
-                "secs": 0,
-                "totalTime": "0 days 0:0:0"
+                "playCount": 1,
+                "secs": 16,
+                "totalTime": "0 Days 0:22:16"
             }
         },
         "timeCounters": {
             "days": 0,
-            "hours": 14,
-            "mins": 12,
-            "secs": 1,
-            "totalTime": "0 Days 14:12:1"
+            "hours": 17,
+            "mins": 1,
+            "secs": 33,
+            "totalTime": "0 Days 17:1:33"
         }
     },
     "streams": [

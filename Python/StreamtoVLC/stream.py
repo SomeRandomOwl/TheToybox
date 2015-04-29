@@ -38,7 +38,7 @@ totaluserhrs = 0
 totaluserdays = 0
 statAdd = 'no'
 statwho = ''
-streamError = ''
+streamError = 'false'
 
 #Variables used to condense code down slightly
 
@@ -718,8 +718,8 @@ while restart.lower() in ["yes","y"]:
 print('')
 input("Press Enter to continue...")
 
- with open('list.json', "w") as write_file:
-	 write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
-	 pass
+with open('list.json', "w") as write_file:
+	write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
+	pass
  
 ##End##
