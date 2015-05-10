@@ -4,6 +4,8 @@
 ## This python program is used to open streams in vlc media player                                      ##
 ##------------------------------------------------------------------------------------------------------##
 
+##Start##
+
 #Loading modules the script relies on
 import time
 import os
