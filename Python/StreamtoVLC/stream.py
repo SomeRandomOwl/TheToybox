@@ -368,7 +368,7 @@ def statCheck():
 	if statWhat.lower() == 'clear':
 		clearscreen()
 		print(optionsstatsclear)
-		statClear = input('Do you want to clear global stats or the stats of a specific user? (Global, User): ')
+		statClear = input('Do you want to clear global stats or the stats of a specific user? Or do you want to erase all tracked stats and users? (Global, User, Erase): ')
 		if statClear.lower() == 'global':
 			clearscreen()
 			print(optionsstatsclear)
@@ -385,6 +385,11 @@ def statCheck():
 			statClearUser = input('Whos stats do you want to clear?: ')
 			data['data']['streamData'][statClearUser] = streamDataTemp
 			print('\nStat clear done!')
+		elif statClear.lower() == erase:
+			os.system('del list.json')
+			print('\nJson file deleted, regenerating json to default template...')
+			jsonCheck()
+			print('\nJson file recreated, all tracked stats and users erased.')
 		else:
 			print('\nStat clear aborted!')
 		pass
