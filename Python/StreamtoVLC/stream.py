@@ -736,13 +736,13 @@ while restart.lower() in ["yes","y"]:
 		data['data']['errorLogs']['timesInterrupted'] = timesInterrupted
 		restart = 'no'
 		pass
-	#except:
-	#	print('\n\nUnknown Error! You shouldent be seeing this!')
-	#	unknownError = data['data']['errorLogs']['unknownError']
-	#	unknownError = unknownError + 1
-	#	data['data']['errorLogs']['unknownError'] = unknownError
-	#	restart = 'no'
-	#	pass
+	except:
+		print('\n\nUnknown Error! You shouldent be seeing this!')
+		unknownError = data['data']['errorLogs']['unknownError']
+		unknownError = unknownError + 1
+		data['data']['errorLogs']['unknownError'] = unknownError
+		restart = 'no'
+		pass
 	if restart.lower() in ["yes","y"]:
 		timesRestarted = data['data']['logs']['timesRestarted']
 		timesRestarted = timesRestarted + 1
