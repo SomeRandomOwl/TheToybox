@@ -593,84 +593,113 @@ def stattracker():
 		pass
 
 	#Updates the total play count for all streams
+	print('getting total play counters')
 	totalplay = data['data']['logs']['totalPlay']
 	totalplay = totalplay + 1
 	data['data']['logs']['totalPlay'] = totalplay
-
+	print('getting total time counters')
 	#Updates overall time totals
 	totalsec = data['data']['timeCounters']['secs']
 	totalmin = data['data']['timeCounters']['mins']
 	totalhrs = data['data']['timeCounters']['hours']
 	totaldays = data['data']['timeCounters']['days']
-
+	print('converting calculated timer unto int')
 	times = int(times)
 	timem = int(timem)
 	timeh = int(timeh)
 
+	print('adding total timers')
 	totalsec = totalsec + times
 	totalmin = totalmin + timem
 	totalhrs = totalhrs + timeh
-
+	print('subtracting extras')
 	while totalsec > 59:
+		print('1 min over')
 		totalsec = totalsec - 60
 		totalmin = totalmin + 1
+		print('added 1 minute')
 		pass
 	while totalmin > 59:
+		print('one hour over')
 		totalmin = totalmin - 60
 		totalhrs = totalhrs + 1
+		print('added 1 hour')
 		pass
 	while totalhrs > 23:
+		print('one day over')
 		totalhrs - 24
 		totaldays + 1
+		print('one day added')
 		pass
-
+	print('adding times into json')
 	data['data']['timeCounters']['secs'] = totalsec
+	print('seconds done')
 	data['data']['timeCounters']['mins'] = totalmin
+	print('minutes done')
 	data['data']['timeCounters']['hours'] = totalhrs
+	print('hours done')
 	data['data']['timeCounters']['days'] = totaldays
+	print('days done')
+	print('converting times to strings')
 	totalsec = str(totalsec)
 	totalmin = str(totalmin)
 	totalhrs = str(totalhrs)
 	totaldays = str(totaldays)
+	print('combining strings')
 	totalelapsed = totaldays + " Days " + totalhrs + ":" + totalmin + ":" + totalsec
+	print('setting time string into json')
 	data['data']['timeCounters']['totalTime'] = totalelapsed
 
 	#Updates user time totals
 	if service.lower() == 'twitch':
 		try:
+			print('pulling user totals')
 			totalusersec = data['data']['streamData'][lvst]['secs']
 			totalusermin = data['data']['streamData'][lvst]['mins']
 			totaluserhrs = data['data']['streamData'][lvst]['hours']
 			totaluserdays = data['data']['streamData'][lvst]['days']
-		
+			print('adding totals')
 			totalusersec = totalusersec + times
 			totalusermin = totalusermin + timem
 			totaluserhrs = totaluserhrs + timeh
-
+			print('removing excess')
 			while totalusersec > 59:
+				print('one minute over')
 				totalusersec = totalusersec - 60
 				totalusermin = totalusermin + 1
+				print('1 minute added')
 				pass
 	
 			while totalusermin > 59:
+				print('one hour over')
 				totalusermin = totalusermin - 60
 				totaluserhrs = totaluserhrs + 1
+				print('one hour added')
 				pass
 
 			while totaluserhrs > 23:
+				print('one day over')
 				totaluserhrs - 24
 				totaluserdays + 1
+				print('one day added')
 				pass
-		
+			print('setting times into json')
 			data['data']['streamData'][lvst]['secs'] = totalusersec
+			print('seconds done')
 			data['data']['streamData'][lvst]['mins'] = totalusermin
+			print('minutes done')
 			data['data']['streamData'][lvst]['hours'] = totaluserhrs
+			print('hours done')
 			data['data']['streamData'][lvst]['days'] = totaluserdays
+			print('days done')
+			print('converting times to strings')
 			totalusersec = str(totalusersec)
 			totalusermin = str(totalusermin)
 			totaluserhrs = str(totaluserhrs)
 			totaluserdays = str(totaluserdays)
+			print('adding string togther')
 			totaluserelapsed = totaluserdays + " Days " + totaluserhrs + ":" + totalusermin + ":" + totalusersec
+			print('setting string in json')
 			data['data']['streamData'][lvst]['totalTime'] = totaluserelapsed
 		except:
 			pass

@@ -9,8 +9,8 @@
         "logs": {
             "streamNum": 13,
             "timesRestarted": 18,
-            "timesStarted": 63,
-            "totalPlay": 30
+            "timesStarted": 64,
+            "totalPlay": 31
         },
         "streamData": {
             "Spinninrecords": {
@@ -72,7 +72,7 @@
                 "hours": 23,
                 "mins": 36,
                 "musicStream": "true",
-                "playCount": 22,
+                "playCount": 23,
                 "secs": 37,
                 "totalTime": "0 Days 23:36:37"
             },
@@ -142,10 +142,10 @@
         },
         "timeCounters": {
             "days": 1,
-            "hours": 7,
-            "mins": 21,
-            "secs": 8,
-            "totalTime": "1 Days 7:21:8"
+            "hours": 8,
+            "mins": 51,
+            "secs": 7,
+            "totalTime": "1 Days 8:51:7"
         }
     },
     "streams": [
