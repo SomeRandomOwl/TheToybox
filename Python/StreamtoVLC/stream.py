@@ -14,13 +14,6 @@ from urllib.request import urlopen
 from urllib.error import URLError
 import json
 
-def clearscreen():
-	if platform.system()=='Linux':
-		os.system('clear')
-	else:
-		os.system('cls')
-clearscreen()
-
 #Sets up the input variables that is used later in the script
 
 option = ''
@@ -41,6 +34,27 @@ totaluserdays = 0
 statAdd = 'no'
 statwho = ''
 streamError = 'false'
+jsonTemplate =  '{"data": {"errorLogs": {"timesInterrupted": 0, "unRecgonizedCmds": 0, "unknownError": 0, "unsupportedServices": 0}, "logs": {"streamNum": 0, "timesRestarted": 0, "timesStarted": 0, "totalPlay": 0}, "streamData": {"streamTemplate": {"days": 0, "hours": 0, "mins": 0, "musicStream": "true", "playCount": 0, "secs": 0, "totalTime": "0 Days 0:0:0"}}}, "streams": []}'
+
+def jsonCheck():
+	test = os.path.isfile('list.json')
+	if test == False:
+		print('List.json Not Found, Creating...')
+		fname = "list.json"
+		with open(fname, 'w') as fout:
+			fout.write(jsonTemplate)
+			fout.close()
+		pass
+	elif test:
+		print('List.json Found, Continueing...')
+	pass
+
+def clearscreen():
+	if platform.system()=='Linux':
+		os.system('clear')
+	else:
+		os.system('cls')
+clearscreen()
 
 #Variables used to condense code down slightly
 

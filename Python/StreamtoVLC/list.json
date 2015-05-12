@@ -1,7 +1,6 @@
 {
     "data": {
         "errorLogs": {
-            "debug": 0,
             "timesInterrupted": 11,
             "unRecgonizedCmds": 3,
             "unknownError": 7,
