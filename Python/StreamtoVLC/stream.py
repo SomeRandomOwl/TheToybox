@@ -33,8 +33,8 @@ totaluserhrs = 0
 totaluserdays = 0
 statAdd = 'no'
 statwho = ''
-streamError = 'false'
-jsonTemplate =  '{"data": {"errorLogs": {"timesInterrupted": 0, "unRecgonizedCmds": 0, "unknownError": 0, "unsupportedServices": 0}, "logs": {"streamNum": 0, "timesRestarted": 0, "timesStarted": 0, "totalPlay": 0}, "streamData": {"streamTemplate": {"days": 0, "hours": 0, "mins": 0, "musicStream": "true", "playCount": 0, "secs": 0, "totalTime": "0 Days 0:0:0"}}}, "streams": []}'
+streamError = False
+jsonTemplate =  {"data": {"errorLogs": {"timesInterrupted": 0, "unRecgonizedCmds": 0, "unknownError": 0, "unsupportedServices": 0}, "logs": {"streamNum": 0, "timesRestarted": 0, "timesStarted": 0, "totalPlay": 0}, "streamData": {"streamTemplate": {"days": 0, "hours": 0, "mins": 0, "musicStream": "true", "playCount": 0, "secs": 0, "totalTime": "0 Days 0:0:0"}}}, "streams": []}
 
 def jsonCheck():
 	test = os.path.isfile('list.json')
@@ -42,7 +42,7 @@ def jsonCheck():
 		print('List.json Not Found, Creating...')
 		fname = "list.json"
 		with open(fname, 'w') as fout:
-			fout.write(jsonTemplate)
+			fout.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
 			fout.close()
 		pass
 	elif test:
@@ -266,8 +266,6 @@ def userAdd():
 	global statAdd
 	global statwho
 
-	goodRecord = 0
-	emptyRecord = 0
 	allRecords = 0
 
 	if statAdd.lower() == 'yes':
@@ -279,39 +277,38 @@ def userAdd():
 
 	if statAdd.lower() != 'yes':
 		for i in range(len(data["streams"])):
-			if data['streams'][i] != "null":
-				goodRecord = goodRecord + 1
-			elif data['streams'][i] == "null":
-				emptyRecord = emptyRecord + 1
-				pass
 			allRecords = allRecords + 1
 			pass
 	
-		goodRecord = str(goodRecord)
-		emptyRecord = str(emptyRecord)
-		allRecords = str(allRecords)
-	
 		clearscreen()
 		print(optionsadd)
-		print('\nThere are ' + goodRecord + ' used records and  ' + emptyRecord + ' empty records out of ' + allRecords + '\n')
+		if allRecords == 1:
+			print('\nThere is currently: ' + str(allRecords) + ' tracked user.' + '\n')
+		elif allRecords == 0:
+			print('\nThere is currently: ' + str(allRecords) + ' tracked users.' + '\n')
+		elif allRecords >> 1:
+			print('\nThere is currently: ' + str(allRecords) + ' tracked users.' + '\n')
+			pass
 		userAdd = input('Name of the user to add?: ')
-		array = data['streams']
-		array.append(userAdd.lower())
-		data['data']['streamData'][userAdd.lower()] = streamDataTemp
-
-		isMusicStream = input('Is this stream a music stream? (Yes or No): ')
-
-		if isMusicStream.lower() == 'yes':
-			data['data']['streamData'][userAdd]['musicStream'] = 'true'
-			pass
+		if not userAdd:
+			print('\nPlease type in a username and not leave the line blank.')
+		else:
+			array = data['streams']
+			array.append(userAdd.lower())
+			data['data']['streamData'][userAdd.lower()] = streamDataTemp
 	
-		for i in range(len(data["streams"])):
-			if data['streams'][i] != "null":
+			isMusicStream = input('Is this stream a music stream? (Yes or No): ')
+	
+			if isMusicStream.lower() == 'yes':
+				data['data']['streamData'][userAdd]['musicStream'] = 'true'
+				pass
+		
+			for i in range(len(data["streams"])):
 				datanum = i
+				pass
+			datanum = datanum + 1
+			data['data']['logs']['streamNum'] = datanum
 			pass
-	
-		datanum = datanum + 1
-		data['data']['logs']['streamNum'] = datanum
 		pass
 	pass
 
@@ -344,9 +341,8 @@ def statCheck():
 			if statAdd.lower() == 'yes':
 				userAdd()
 				pass
-			pass
 
-	if statWhat.lower() == 'global':
+	elif statWhat.lower() == 'global':
 		clearscreen()
 		print(optionsstatscheck)
 		print('\nThe total ammount of streams played is: ' + str(data['data']['logs']['totalPlay']))
@@ -354,21 +350,20 @@ def statCheck():
 		print('\nThe total ammount of time the streams have been played for is: ' + data['data']['timeCounters']['totalTime'])
 		print('\nThe script has been started: ' + str(data['data']['logs']['timesStarted']) + ' times.')
 		print('\nThe script has been restarted: ' + str(data['data']['logs']['timesRestarted']) + ' times.')
-		pass
 
-	if statWhat.lower() == 'error':
+	elif statWhat.lower() == 'error':
 		clearscreen()
 		print(optionsstatscheck)
 		print('\nThe total ammount of times the script has been interuppted is: ' + str(data['data']['errorLogs']['timesInterrupted']))
 		print('\nThe total of unsupported services entered is:  ' + str(data['data']['errorLogs']['unsupportedServices']))
 		print('\nThe total ammount of unrecgonized commands entered is: ' + str(data['data']['errorLogs']['unRecgonizedCmds']))
 		print('\nThe total number of Unknown Errors encountered: ' + str(data['data']['errorLogs']['unknownError']))
-		pass
 
-	if statWhat.lower() == 'clear':
+	elif statWhat.lower() == 'clear':
 		clearscreen()
 		print(optionsstatsclear)
-		statClear = input('Do you want to clear global stats or the stats of a specific user? Or do you want to erase all tracked stats and users? (Global, User, Erase): ')
+		print('Do you want to clear global stats or the stats of a specific user?')
+		statClear = input('Or do you want to erase all tracked stats and users? (Global, User, Erase): ')
 		if statClear.lower() == 'global':
 			clearscreen()
 			print(optionsstatsclear)
@@ -385,13 +380,21 @@ def statCheck():
 			statClearUser = input('Whos stats do you want to clear?: ')
 			data['data']['streamData'][statClearUser] = streamDataTemp
 			print('\nStat clear done!')
-		elif statClear.lower() == erase:
+		elif statClear.lower() == 'erase':
 			os.system('del list.json')
 			print('\nJson file deleted, regenerating json to default template...')
+			data = jsonTemplate
 			jsonCheck()
 			print('\nJson file recreated, all tracked stats and users erased.')
 		else:
 			print('\nStat clear aborted!')
+	elif not statWhat:
+		print('No command Entered!')
+	else:
+		unrecgonizedCmd = data['data']['errorLogs']['unRecgonizedCmds']
+		unrecgonizedCmd = unrecgonizedCmd + 1
+		data['data']['errorLogs']['unRecgonizedCmds'] = unrecgonizedCmd
+		print("\n\n----------\nOption Not Recgonized\n-----------\n\n")
 		pass
 	pass
 
@@ -400,9 +403,13 @@ def check():
 	clearscreen()
 	print(optionscheck)
 	user = input('User to check status of: ')	
-	print('')
-	list(user)
-	print('')
+	if not user:
+		print('No Username entered!')
+	else:
+		print('')
+		list(user)
+		print('')
+		pass
 	pass
 	
 #Loops through the json to check the status of users and prints using print()
@@ -448,7 +455,10 @@ def openstream():
 		print(optionsstream)
 		lvst = input('What stream?: ')
 		#Process to use for twitch streams
-		if service.lower() == 'twitch':
+		if not lvst:
+			print('\nNo Stream Entered')
+			streamError = True
+		elif service.lower() == 'twitch':
 			try:
 				audioOnly = data['data']['streamData'][lvst.lower()]['musicStream']
 				if audioOnly == 'true':
@@ -471,7 +481,7 @@ def openstream():
 				return
 
 			#Process for youtube streams
-		if service.lower() == 'youtube':
+		elif service.lower() == 'youtube':
 			clearscreen()
 			print(optionsopenaudio)
 			if lvst[1:32] == 'https://www.youtube.com/watch?v=':
@@ -489,9 +499,12 @@ def openstream():
 					lvsting = lsYoutube + lvst + ' best'
 					pass
 			pass
+	elif not service:
+		print('\nNo Stream Service Entered!')
+		streamError = True
 	else:
 		print('\nStream service not supported!\n')
-		streamError = 'true'
+		streamError = True
 		serviceErrorCnt = data['data']['errorLogs']['unsupportedServices']
 		serviceErrorCnt = serviceErrorCnt + 1
 		data['data']['errorLogs']['unsupportedServices'] = serviceErrorCnt
@@ -506,7 +519,7 @@ def cmdwin():
 	global options
 	global streamError
 
-	if streamError != 'true':
+	if streamError != True:
 		clearscreen()
 		print(optionsstreaming)
 		print('Opening ' + lvst + "'s stream on " + service + ".\n")
@@ -522,7 +535,7 @@ def cmdwin():
 		times = end - start
 		times = int(times)
 	else:
-		print('There was a error opening the stream!')
+		print('\nThere was a error opening the stream!')
 		pass
 	pass
  
@@ -688,7 +701,7 @@ def start():
 	elif option.lower() == "open":
 		openstream()
 		cmdwin()
-		if streamError != 'true':
+		if streamError != True:
 			timeCalc()
 			stattracker()
 			pass
@@ -696,6 +709,8 @@ def start():
 		userAdd()
 	elif option.lower() == "stats":
 		statCheck()
+	elif not option:
+		print('No command Entered!')
 	else:
 		unrecgonizedCmd = data['data']['errorLogs']['unRecgonizedCmds']
 		unrecgonizedCmd = unrecgonizedCmd + 1
@@ -721,13 +736,13 @@ while restart.lower() in ["yes","y"]:
 		data['data']['errorLogs']['timesInterrupted'] = timesInterrupted
 		restart = 'no'
 		pass
-	except:
-		print('\n\nUnknown Error!')
-		unknownError = data['data']['errorLogs']['unknownError']
-		unknownError = unknownError + 1
-		data['data']['errorLogs']['unknownError'] = unknownError
-		restart = 'no'
-		pass
+	#except:
+	#	print('\n\nUnknown Error! You shouldent be seeing this!')
+	#	unknownError = data['data']['errorLogs']['unknownError']
+	#	unknownError = unknownError + 1
+	#	data['data']['errorLogs']['unknownError'] = unknownError
+	#	restart = 'no'
+	#	pass
 	if restart.lower() in ["yes","y"]:
 		timesRestarted = data['data']['logs']['timesRestarted']
 		timesRestarted = timesRestarted + 1
