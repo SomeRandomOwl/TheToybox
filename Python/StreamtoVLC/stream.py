@@ -15,6 +15,7 @@ from urllib.error import URLError
 import json
 import sys
 import traceback
+import signal
 
 #Sets up the input variables that is used later in the script
 
@@ -50,7 +51,6 @@ def jsonCheck():
 		
 	elif test:
 		print('List.json Found, Continueing...')
-	
 
 def clearscreen():
 	if platform.system()=='Linux':
@@ -87,8 +87,8 @@ def debug(info,error=0):
 				dbg="ERROR: "
 			else:
 				dbg="DEBUG: "
-			print(datetime.datetime.now().strftime("[%Y-%m-%dT%T%z] ")+dbg +str(info))
-			debglog.append(datetime.datetime.now().strftime("[%Y-%m-%dT%T%z] ")+dbg+str(info))
+			print(datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg +str(info))
+			debglog.append(datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg+str(info))
 debug('--Start--')
 streamDataTemp = data['data']['streamData']['streamTemplate']
 startCount = data['data']['logs']['timesStarted']
@@ -813,7 +813,7 @@ while restart.lower() in ["yes","y"]:
 			clearscreen()
 			
 	except KeyboardInterrupt:
-		print('\n\nEnding Script')
+		debug('Ending Script')
 		timesInterrupted = data['data']['errorLogs']['timesInterrupted']
 		timesInterrupted = timesInterrupted + 1
 		data['data']['errorLogs']['timesInterrupted'] = timesInterrupted

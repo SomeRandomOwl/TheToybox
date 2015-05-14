@@ -1,16 +1,16 @@
 {
     "data": {
         "errorLogs": {
-            "debug": "True",
-            "timesInterrupted": 12,
+            "debug": "False",
+            "timesInterrupted": 17,
             "unRecgonizedCmds": 5,
-            "unknownError": 9,
+            "unknownError": 10,
             "unsupportedServices": 5
         },
         "logs": {
             "streamNum": 14,
-            "timesRestarted": 36,
-            "timesStarted": 81,
+            "timesRestarted": 37,
+            "timesStarted": 89,
             "totalPlay": 39
         },
         "streamData": {
