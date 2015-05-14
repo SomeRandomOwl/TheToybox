@@ -80,7 +80,7 @@ def debug(info,error=0):
 	if data['data']['errorLogs']['debug'] == 'True':
 		if type(info)==type([]):
 			for a in info:
-				debug(a)
+				debug(a,error)
 		else:
 			import datetime
 			if error:
@@ -825,7 +825,7 @@ while restart.lower() in ["yes","y"]:
 		unknownError = unknownError + 1
 		data['data']['errorLogs']['unknownError'] = unknownError
 		restart = 'no'
-		debug([str(sys.exc_info()), str(traceback.extract_stack())])
+		debug([str(sys.exc_info()), str(traceback.extract_stack())],1)
 		
 	if restart.lower() in ["yes","y"]:
 		debug('Restart Count Updateing')
