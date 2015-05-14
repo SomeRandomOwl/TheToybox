@@ -87,8 +87,8 @@ def debug(info,error=0):
 				dbg="ERROR: "
 			else:
 				dbg="DEBUG: "
-			print(datetime.datetime.now().strftime("[%FT%T%z] ")+dbg +str(info))
-			debglog.append(datetime.datetime.now().strftime("[%FT%T%z] ")+dbg+str(info))
+			print(datetime.datetime.now().strftime("[%Y-%m-%dT%T%z] ")+dbg +str(info))
+			debglog.append(datetime.datetime.now().strftime("[%Y-%m-%dT%T%z] ")+dbg+str(info))
 debug('--Start--')
 streamDataTemp = data['data']['streamData']['streamTemplate']
 startCount = data['data']['logs']['timesStarted']
