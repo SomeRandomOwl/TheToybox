@@ -75,7 +75,7 @@ with open('list.json') as data_file:
 	data = json.load(data_file)
 	data_file.close()
 
-def debug(info):
+def debug(info,error=0):
 	global debglog
 	if data['data']['errorLogs']['debug'] == 'True':
 		if type(info)==type([]):
@@ -83,8 +83,12 @@ def debug(info):
 				debug(a)
 		else:
 			import datetime
-			print(datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ") + 'DEBUG: '  + str(info))
-			debglog.append(datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ") + "DEBUG: " + str(info))
+			if error:
+				dbg="ERROR: "
+			else:
+				dbg="DEBUG: "
+			print(datetime.datetime.now().strftime("[%FT%T%z] ")+dbg +str(info))
+			debglog.append(datetime.datetime.now().strftime("[%FT%T%z] ")+dbg+str(info))
 debug('--Start--')
 streamDataTemp = data['data']['streamData']['streamTemplate']
 startCount = data['data']['logs']['timesStarted']
