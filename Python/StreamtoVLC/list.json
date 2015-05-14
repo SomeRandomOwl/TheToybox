@@ -1,17 +1,17 @@
 {
     "data": {
         "errorLogs": {
-            "debug": "False",
-            "timesInterrupted": 11,
-            "unRecgonizedCmds": 3,
-            "unknownError": 7,
+            "debug": "True",
+            "timesInterrupted": 12,
+            "unRecgonizedCmds": 5,
+            "unknownError": 9,
             "unsupportedServices": 5
         },
         "logs": {
-            "streamNum": 13,
-            "timesRestarted": 24,
-            "timesStarted": 71,
-            "totalPlay": 34
+            "streamNum": 14,
+            "timesRestarted": 36,
+            "timesStarted": 81,
+            "totalPlay": 39
         },
         "streamData": {
             "Spinninrecords": {
@@ -31,6 +31,15 @@
                 "playCount": 2,
                 "secs": 39,
                 "totalTime": "0 Days 0:0:39"
+            },
+            "blaaaaaa": {
+                "days": 0,
+                "hours": 0,
+                "mins": 0,
+                "musicStream": "true",
+                "playCount": 0,
+                "secs": 0,
+                "totalTime": "0 Days 0:0:0"
             },
             "fixt": {
                 "days": 0,
@@ -71,10 +80,10 @@
             "monstercat": {
                 "days": 0,
                 "hours": 23,
-                "mins": 39,
+                "mins": 43,
                 "musicStream": "true",
-                "playCount": 26,
-                "secs": 58,
+                "playCount": 31,
+                "secs": 25,
                 "totalTime": "0 Days 23:39:58"
             },
             "muselk": {
@@ -144,9 +153,9 @@
         "timeCounters": {
             "days": 1,
             "hours": 8,
-            "mins": 54,
-            "secs": 28,
-            "totalTime": "1 Days 8:54:28"
+            "mins": 57,
+            "secs": 55,
+            "totalTime": "1 Days 8:57:55"
         }
     },
     "streams": [
@@ -162,6 +171,7 @@
         "scykoh",
         "naturalselection2",
         "gophergaming",
-        "haxmega"
+        "haxmega",
+        "blaaaaaa"
     ]
 }

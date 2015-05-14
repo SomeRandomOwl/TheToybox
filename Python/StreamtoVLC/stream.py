@@ -13,6 +13,8 @@ import platform
 from urllib.request import urlopen
 from urllib.error import URLError
 import json
+import sys
+import traceback
 
 #Sets up the input variables that is used later in the script
 
@@ -79,10 +81,11 @@ def debug(info):
 		if type(info)==type([]):
 			for a in info:
 				debug(a)
-		import datetime
-		print(datetime.datetime.now().strftime("[%FT%T%z] ")+'DEBUG: ' +str(info))
-		debglog.append(datetime.datetime.now().strftime("[%FT%T%z] ")+"DEBUG: "+str(info))
-debug('##Start##')
+		else:
+			import datetime
+			print(datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ") + 'DEBUG: '  + str(info))
+			debglog.append(datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ") + "DEBUG: " + str(info))
+debug('--Start--')
 streamDataTemp = data['data']['streamData']['streamTemplate']
 startCount = data['data']['logs']['timesStarted']
 startCount = startCount + 1
@@ -636,10 +639,10 @@ def stattracker():
 	totalsec = totalsec + times
 	totalmin = totalmin + timem
 	totalhrs = totalhrs + timeh
-	debug('TotalSeconds: ' + str(totalsec))
-	debug('TotalMinutes: ' + str(totalmin))
-	debug('TotalHours: ' + str(totalhrs))
-	debug('TotalDays: ' + str(totaldays))
+	debug(['TotalSeconds: ' + str(totalsec),
+		   'TotalMinutes: ' + str(totalmin),
+		   'TotalHours: ' + str(totalhrs),
+		   'TotalDays: ' + str(totaldays)])
 	debug('Subtracting extras')
 	while totalsec > 59:
 		debug('One minute over')
@@ -659,10 +662,10 @@ def stattracker():
 		totaldays = totaldays + 1
 		debug('one day added')
 		
-	debug('TotalSeconds: ' + str(totalsec))
-	debug('TotalMinutes: ' + str(totalmin))
-	debug('TotalHours: ' + str(totalhrs))
-	debug('TotalDays: ' + str(totaldays))
+	debug(['TotalSeconds: ' + str(totalsec),
+		   'TotalMinutes: ' + str(totalmin),
+		   'TotalHours: ' + str(totalhrs),
+		   'TotalDays: ' + str(totaldays)])
 
 	debug('Adding times into json')
 	data['data']['timeCounters']['secs'] = totalsec
@@ -695,10 +698,10 @@ def stattracker():
 			totalusersec = totalusersec + times
 			totalusermin = totalusermin + timem
 			totaluserhrs = totaluserhrs + timeh
-			debug('TotalUserSeconds: ' + str(totalusersec))
-			debug('TotalUserMinutes: ' + str(totalusermin))
-			debug('TotalUserHours: ' + str(totaluserhrs))
-			debug('TotalUserDays: ' + str(totaluserdays))
+			debug(['TotalUserSeconds: ' + str(totalusersec),
+				   'TotalUserMinutes: ' + str(totalusermin),
+				   'TotalUserHours: ' + str(totaluserhrs),
+				   'TotalUserDays: ' + str(totaluserdays)])
 			debug('Removing excess')
 			while totalusersec > 59:
 				debug('One minute over')
@@ -718,10 +721,10 @@ def stattracker():
 				totaluserdays = totaluserdays + 1
 				debug('One day added')
 				
-			print(totalusersec)
-			print(totalusermin)
-			print(totaluserhrs)
-			print(totaluserdays)
+			debug(['TotalUserSeconds: ' + str(totalusersec),
+				   'TotalUserMinutes: ' + str(totalusermin),
+				   'TotalUserHours: ' + str(totaluserhrs),
+				   'TotalUserDays: ' + str(totaluserdays)])
 			debug('Setting times into json')
 			data['data']['streamData'][lvst]['secs'] = totalusersec
 			debug('seconds done')
@@ -733,10 +736,10 @@ def stattracker():
 			debug('Days done')
 			debug('Converting times to strings')
 
-			debug('TotalUserSeconds: ' + str(totalusersec))
-			debug('TotalUserMinutes: ' + str(totalusermin))
-			debug('TotalUserHours: ' + str(totaluserhrs))
-			debug('TotalUserDays: ' + str(totaluserdays))
+			debug(['TotalUserSeconds: ' + str(totalusersec),
+				   'TotalUserMinutes: ' + str(totalusermin),
+				   'TotalUserHours: ' + str(totaluserhrs),
+				   'TotalUserDays: ' + str(totaluserdays)])
 
 			debug('Adding string togther')
 			totaluserelapsed = totaluserdays + " Days " + totaluserhrs + ":" + totalusermin + ":" + totalusersec
@@ -799,9 +802,8 @@ def start():
 
 #Restarts the script
 while restart.lower() in ["yes","y"]:
-
 	try:
-		debug('Restarting')
+		debug('Restarting Script')
 		start()
 		if restart.lower() in ["yes","y"]:
 			clearscreen()
@@ -819,6 +821,7 @@ while restart.lower() in ["yes","y"]:
 		unknownError = unknownError + 1
 		data['data']['errorLogs']['unknownError'] = unknownError
 		restart = 'no'
+		debug([str(sys.exc_info()), str(traceback.extract_stack())])
 		
 	if restart.lower() in ["yes","y"]:
 		debug('Restart Count Updateing')
@@ -831,7 +834,7 @@ while restart.lower() in ["yes","y"]:
 print('')
 input("Press Enter to continue...")
 
-debug('##End##')
+debug('--End--')
 with open('list.json', "w") as write_file:
 	write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
 if data['data']['errorLogs']['debug'] == 'True':
