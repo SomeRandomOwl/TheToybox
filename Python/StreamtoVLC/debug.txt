@@ -1,0 +1,8 @@
+[
+    "DEBUG:##Start##",
+    "DEBUG:Start Count Added Onto",
+    "DEBUG:Restarting",
+    "DEBUG:Starting Main starter",
+    "DEBUG:Starter Function Done",
+    "DEBUG:##End##"
+]
