@@ -76,9 +76,12 @@ with open('list.json') as data_file:
 def debug(info):
 	global debglog
 	if data['data']['errorLogs']['debug'] == 'True':
-		info = 'DEBUG:' + info
-		print('\n' + info)
-		debglog.append(info)
+		if type(info)==type([]):
+			for a in info:
+				debug(a)
+		import datetime
+		print(datetime.datetime.now().strftime("[%FT%T%z] ")+'DEBUG: ' +str(info))
+		debglog.append(datetime.datetime.now().strftime("[%FT%T%z] ")+"DEBUG: "+str(info))
 debug('##Start##')
 streamDataTemp = data['data']['streamData']['streamTemplate']
 startCount = data['data']['logs']['timesStarted']
