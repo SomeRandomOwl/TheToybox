@@ -499,7 +499,7 @@ def openstream():
 					print(optionsopenaudio)
 					debug('Music stream')
 					audio = input('Do you want to do audio only?: ')
-					debug('Recived' + audio)
+					debug('Recived ' + audio)
 					if audio.lower() == 'yes':
 						lvsting = lsTwitch + lvst + ' audio'
 					else:
@@ -634,7 +634,7 @@ def stattracker():
 	totalmin = data['data']['timeCounters']['mins']
 	totalhrs = data['data']['timeCounters']['hours']
 	totaldays = data['data']['timeCounters']['days']
-	debug('Converting calculated timer unto int')
+	debug('Converting calculated timer into int')
 	times = int(times)
 	timem = int(timem)
 	timeh = int(timeh)
@@ -789,9 +789,12 @@ def start():
 		if data['data']['errorLogs']['debug'] == 'True':
 			data['data']['errorLogs']['debug'] = "False"
 			print('Debug Set to False')
+			debug('--Start--')
 		elif data['data']['errorLogs']['debug'] == 'False':
+			debuf('--End--')
 			data['data']['errorLogs']['debug'] = "True"
 			print('Debug set to True')
+
 	elif not option:
 		print('No command Entered!')
 	else:
