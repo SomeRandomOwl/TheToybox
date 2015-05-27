@@ -9,11 +9,13 @@ def writeToData(location,val):
 
 def writeToData(location,val,d=data):
 	if location==[]:
+		print d
 		d=val
+		print d
 		jsonWrite()
 	else:
-		print d
 		writeToData(location[1:],val,d[location[0]])
+		print d
 
 def jsonWrite():
 	with open('list.json', "w") as write_file:
