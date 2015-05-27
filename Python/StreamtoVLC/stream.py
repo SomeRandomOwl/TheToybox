@@ -78,13 +78,13 @@ with open('list.json') as data_file:
 def jsonWrite():
 	with open('list.json', "w") as write_file:
 		write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
-def wrightToJson(location,val):
- 	def i(loc):
-  		if loc==[]:
-   			return data
-  		return i(loc[1:])loc[1]
+def writeToJson(location,val):
+	def i(loc):
+		if loc==[]:
+			return data
+		return i(loc[1:])[loc[1]]
 	i(location)=val
-
+	jsonWrite()
 
 #Debug function to append time stamps and write to files
 def debug(info,error=0):
@@ -108,7 +108,7 @@ debug('--Start--')
 streamDataTemp = data['data']['streamData']['streamTemplate']
 startCount = data['data']['logs']['timesStarted']
 startCount = startCount + 1
-wrightToJson(['data','logs','timesStarted'],startCount)
+writeToJson(['data','logs','timesStarted'],startCount)
 debug('Start Count Added Onto')
 
 #Menu Prompts
