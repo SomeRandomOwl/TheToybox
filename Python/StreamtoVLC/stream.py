@@ -96,7 +96,7 @@ def debug(info,error=0):
 		if data['data']['errorLogs']['debug'] == 'True':
 			print(mes)
 		with open("debug.txt", "a") as myfile:
-	    	myfile.write(mes)
+			myfile.write(mes)
 
 debug('--Start--')
 streamDataTemp = data['data']['streamData']['streamTemplate']
@@ -292,7 +292,7 @@ def userAdd(username):
 		array.append(statwho.lower())
 		data['data']['streamData'][statwho.lower()] = streamDataTemp
 		debug('Short User Add Done')
-	debug('Counting Usernames')
+		debug('Counting Usernames')
 	else:
 		#for i in range(len(data["streams"])):
 			#allRecords = allRecords + 1
@@ -740,7 +740,7 @@ def add(username=''):
 
 	isMusicStream = input('Is this stream a music stream? (Yes or No): ')
 	if isMusicStream.lower() == 'yes':
-		setUserMusic(username):
+		setUserMusic(username)
 
 def stats():
 	clearscreen()
@@ -752,7 +752,7 @@ def stats():
 		clearscreen()
 		print(optionsstatscheck)
 		statUser = input('Who do you want to check the stats of?: ')
-		if statUser.lower() not in data['data']['streamData']
+		if statUser.lower() not in data['data']['streamData']:
 			clearscreen()
 			print(optionsstatscheck)
 			print('\nThere are no stats for this user!\n')
@@ -762,7 +762,7 @@ def stats():
 				add(statUser)
 		else:
 			clearscreen()
-			print statCheck(statWhat,statOpt,statUser)
+			print (statCheck(statWhat,statOpt,statUser))
 	elif statWhat.lower() == 'clear':
 		clearscreen()
 		print(optionsstatsclear)
@@ -772,10 +772,10 @@ def stats():
 		if statOpt.lower()=='user':
 			statUser = input('Whos stats do you want to clear?: ')
 		clearscreen()
-		print statCheck(statWhat,statOpt,statUser)
+		print (statCheck(statWhat,statOpt,statUser))
 	else:
 		clearscreen()
-		print statCheck(statWhat,statOpt,statUser)
+		print (statCheck(statWhat,statOpt,statUser))
 
 def ynQuestion(prompt,default=''):
 	prompt=str(prompt)
