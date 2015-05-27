@@ -1,12 +1,19 @@
-def wright_to_thingy(location,thing_to_wright):
+def writeToData(location,val):
 	def i(loc):
 		if loc==[]:
 			return data
 		return i(loc[:-1])[loc[-1]]
-	i(location)=thing_to_wright
+	i(location)=val
 	#print i(location)
-	function_that_updates_json()
+	jsonWrite()
 
-def function_that_updates_json():
+def writeToData(location,val,d=data):
+	if loc==[]:
+		d=val
+		jsonWrite()
+	else:
+		writeToData(location[:-1],val,d[loc[-1]])
+
+def jsonWrite():
 	with open('list.json', "w") as write_file:
 		write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
