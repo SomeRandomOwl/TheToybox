@@ -3,7 +3,8 @@ def wright_to_thingy(location,thing_to_wright):
 		if loc==[]:
 			return data
 		return i(loc[1:])[loc[1]]
-	i(location)=thing_to_wright
+	#i(location)=thing_to_wright
+	print i(location)
 	function_that_updates_json()
 
 def function_that_updates_json():
