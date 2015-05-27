@@ -2,7 +2,7 @@ def wright_to_thingy(location,thing_to_wright):
 	def i(loc):
 		if loc==[]:
 			return data
-		return i(loc[1:])loc[1]
+		return i(loc[1:])[loc[1]]
 	i(location)=thing_to_wright
 	function_that_updates_json()
 
