@@ -75,6 +75,18 @@ with open('list.json') as data_file:
 	data = json.load(data_file)
 	data_file.close()
 
+def jsonWrite():
+	with open('list.json', "w") as write_file:
+		write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
+def wrightToJson(location,val):
+ 	def i(loc):
+  		if loc==[]:
+   			return data
+  		return i(loc[1:])loc[1]
+	i(location)=val
+
+
+#Debug function to append time stamps and write to files
 def debug(info,error=0):
 	global debglog
 	if data['data']['errorLogs']['debug'] == 'True':
@@ -91,11 +103,12 @@ def debug(info,error=0):
 			debglog.append(datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg+str(info))
 		with open('debug.txt', 'w') as debug_file:
 			debug_file.write(json.dumps(debglog, sort_keys=True, indent=4, separators=(',', ': ')))
+
 debug('--Start--')
 streamDataTemp = data['data']['streamData']['streamTemplate']
 startCount = data['data']['logs']['timesStarted']
 startCount = startCount + 1
-data['data']['logs']['timesStarted'] = startCount
+wrightToJson(['data','logs','timesStarted'],startCount)
 debug('Start Count Added Onto')
 
 #Menu Prompts
@@ -844,6 +857,8 @@ print('')
 input("Press Enter to continue...")
 
 debug('--End--')
+
+#write To the json file
 with open('list.json', "w") as write_file:
 	write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
 ##End##
