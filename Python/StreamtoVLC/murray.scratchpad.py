@@ -12,7 +12,7 @@ def writeToData(location,val,d=data):
 		d=val
 		jsonWrite()
 	else:
-		writeToData(location[:-1],val,d[location[-1]])
+		writeToData(location[1:],val,d[location[1]])
 
 def jsonWrite():
 	with open('list.json', "w") as write_file:
