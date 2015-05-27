@@ -3,14 +3,14 @@
         "errorLogs": {
             "debug": "True",
             "timesInterrupted": 17,
-            "unRecgonizedCmds": 5,
+            "unRecgonizedCmds": 7,
             "unknownError": 10,
             "unsupportedServices": 5
         },
         "logs": {
             "streamNum": 14,
             "timesRestarted": 43,
-            "timesStarted": 96,
+            "timesStarted": 97,
             "totalPlay": 47
         },
         "streamData": {

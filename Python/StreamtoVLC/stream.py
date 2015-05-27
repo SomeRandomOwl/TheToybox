@@ -78,13 +78,16 @@ with open('list.json') as data_file:
 def jsonWrite():
 	with open('list.json', "w") as write_file:
 		write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
-def writeToJson(location,val,d=data):
+
+def writeToJson(location,val,d=data,top=1):
 	if location==[]:
 		d=val
-		jsonWrite()
+		return d
 	else:
-		writeToJson(location[1:],val,d[location[0]])
-
+		d[location[0]]=writeToJson(location[1:],val,d[location[0]],0)
+		return d
+		if top:
+			jsonWrite()
 #Debug function to append time stamps and write to files
 def debug(info,error=0):
 	global debglog
