@@ -7,15 +7,15 @@ def writeToData(location,val):
 	#print i(location)
 	jsonWrite()
 
-def writeToData(location,val,d=data):
+def writeToData(location,val,d=data,top=1):
 	if location==[]:
-		print d
 		d=val
-		print d
-		jsonWrite()
+		return d
 	else:
-		writeToData(location[1:],val,d[location[0]])
-		print d
+		d[location[0]]=writeToData(location[1:],val,d[location[0]],0)
+		return d
+		if top:
+			jsonWrite()
 
 def jsonWrite():
 	with open('list.json', "w") as write_file:
