@@ -7,13 +7,16 @@ def writeToData(location,val):
 	#print i(location)
 	jsonWrite()
 
-def writeToData(location,val,d=data,top=1):
+def writeToData(location,val,d='data',top=1):
 	if location==[]:
 		d=val
 		return d
 	else:
-		d[location[0]]=writeToData(location[1:],val,d[location[0]],0)
-		return d
+		if type(d)==type(''):
+			globals()[d][location[0]]=writeToData(location[1:],val,globals()[d][location[0]],0)
+		else:
+			d[location[0]]=writeToData(location[1:],val,d[location[0]],0)
+			return d
 		if top:
 			jsonWrite()
 
