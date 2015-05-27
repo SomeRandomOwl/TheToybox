@@ -79,15 +79,19 @@ def jsonWrite():
 	with open('list.json', "w") as write_file:
 		write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
 
-def writeToJson(location,val,d=data,top=1):
+def writeToJson(location,val,d='data',top=1):
 	if location==[]:
 		d=val
 		return d
 	else:
-		d[location[0]]=writeToJson(location[1:],val,d[location[0]],0)
-		return d
+		if type(d)==type(''):
+			globals()[d][location[0]]=writeToJson(location[1:],val,globals()[d][location[0]],0)
+		else:
+			d[location[0]]=writeToJson(location[1:],val,d[location[0]],0)
+			return d
 		if top:
 			jsonWrite()
+
 #Debug function to append time stamps and write to files
 def debug(info,error=0):
 	global debglog
@@ -747,7 +751,7 @@ def stattracker():
 				   'TotalUserHours: ' + str(totaluserhrs),
 				   'TotalUserDays: ' + str(totaluserdays)])
 			debug('Setting times into json')
-			data['data']['streamData'][lvst]['secs'] = totalusersec
+			writeToJson(['data','streamData',lvst,'secs'],totalusersec)
 			debug('seconds done')
 			data['data']['streamData'][lvst]['mins'] = totalusermin
 			debug('Minutes done')

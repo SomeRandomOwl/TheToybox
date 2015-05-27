@@ -2,16 +2,16 @@
     "data": {
         "errorLogs": {
             "debug": "True",
-            "timesInterrupted": 17,
-            "unRecgonizedCmds": 7,
+            "timesInterrupted": 18,
+            "unRecgonizedCmds": 8,
             "unknownError": 10,
             "unsupportedServices": 5
         },
         "logs": {
             "streamNum": 14,
             "timesRestarted": 43,
-            "timesStarted": 97,
-            "totalPlay": 47
+            "timesStarted": 102,
+            "totalPlay": 49
         },
         "streamData": {
             "Spinninrecords": {
@@ -80,10 +80,10 @@
             "monstercat": {
                 "days": 1,
                 "hours": 3,
-                "mins": 22,
+                "mins": 23,
                 "musicStream": "true",
-                "playCount": 37,
-                "secs": 46,
+                "playCount": 39,
+                "secs": 59,
                 "totalTime": "0 Days 23:39:58"
             },
             "muselk": {
@@ -153,9 +153,9 @@
         "timeCounters": {
             "days": 1,
             "hours": 12,
-            "mins": 45,
-            "secs": 45,
-            "totalTime": "1 Days 12:45:45"
+            "mins": 46,
+            "secs": 58,
+            "totalTime": "1 Days 12:46:58"
         }
     },
     "streams": [
