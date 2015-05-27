@@ -10,8 +10,8 @@
         "logs": {
             "streamNum": 14,
             "timesRestarted": 43,
-            "timesStarted": 95,
-            "totalPlay": 46
+            "timesStarted": 96,
+            "totalPlay": 47
         },
         "streamData": {
             "Spinninrecords": {
@@ -154,8 +154,8 @@
             "days": 1,
             "hours": 12,
             "mins": 45,
-            "secs": 27,
-            "totalTime": "1 Days 12:45:27"
+            "secs": 45,
+            "totalTime": "1 Days 12:45:45"
         }
     },
     "streams": [

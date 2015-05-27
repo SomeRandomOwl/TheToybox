@@ -89,6 +89,8 @@ def debug(info,error=0):
 				dbg="DEBUG: "
 			print(datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg +str(info))
 			debglog.append(datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg+str(info))
+		with open('debug.txt', 'w') as debug_file:
+			debug_file.write(json.dumps(debglog, sort_keys=True, indent=4, separators=(',', ': ')))
 debug('--Start--')
 streamDataTemp = data['data']['streamData']['streamTemplate']
 startCount = data['data']['logs']['timesStarted']
@@ -844,9 +846,4 @@ input("Press Enter to continue...")
 debug('--End--')
 with open('list.json', "w") as write_file:
 	write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
-if data['data']['errorLogs']['debug'] == 'True':
-	with open('debug.txt', 'w') as debug_file:
-		debug_file.write(json.dumps(debglog, sort_keys=True, indent=4, separators=(',', ': ')))
-	pass
- 
 ##End##
