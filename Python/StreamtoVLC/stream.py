@@ -83,7 +83,7 @@ def writeToJson(location,val,d=data):
 		d=val
 		jsonWrite()
 	else:
-		writeToJson(location[:-1],val,d[location[-1]])
+		writeToJson(location[1:],val,d[location[0]])
 
 #Debug function to append time stamps and write to files
 def debug(info,error=0):
