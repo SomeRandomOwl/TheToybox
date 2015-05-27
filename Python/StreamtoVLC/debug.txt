@@ -1,8 +1,6 @@
 [
-    "[2015-05-26T23:51:26] DEBUG: --Start--",
-    "[2015-05-26T23:51:26] DEBUG: Start Count Added Onto",
-    "[2015-05-26T23:51:26] DEBUG: Restarting Script",
-    "[2015-05-26T23:51:26] DEBUG: Starting Main starter",
-    "[2015-05-26T23:51:36] DEBUG: Starter Function Done",
-    "[2015-05-26T23:51:36] DEBUG: --End--"
+    "[2015-05-27T00:01:36] DEBUG: --Start--",
+    "[2015-05-27T00:01:36] DEBUG: Start Count Added Onto",
+    "[2015-05-27T00:01:36] DEBUG: Restarting Script",
+    "[2015-05-27T00:01:36] DEBUG: Starting Main starter"
 ]
