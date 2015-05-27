@@ -18,13 +18,6 @@ import traceback
 import signal
 
 #Sets up the input variables that is used later in the script
-option = ''
-service = ''
-lvst = ''
-wincmd = ''
-audio = ''
-restart = 'yes'
-lvsting = ''
 totalsec = 0
 totalmin = 0
 totalhrs = 0
@@ -33,9 +26,7 @@ totalusersec = 0
 totalusermin = 0
 totaluserhrs = 0
 totaluserdays = 0
-statAdd = 'no'
-statOpt = ''
-debglog = []
+statAdd = 0
 streamError = False
 jsonTemplate =  {"data": {"errorLogs": {"timesInterrupted": 0, "unRecgonizedCmds": 0, "unknownError": 0, "unsupportedServices": 0}, "logs": {"streamNum": 0, "timesRestarted": 0, "timesStarted": 0, "totalPlay": 0}, "streamData": {"streamTemplate": {"days": 0, "hours": 0, "mins": 0, "musicStream": "true", "playCount": 0, "secs": 0, "totalTime": "0 Days 0:0:0"}}}, "streams": []}
 
@@ -92,7 +83,6 @@ def writeToJson(location,val,d='data',top=1):
 #Debug function to append time stamps and write to files
 #i made only outputting text depend on the switch and outputting to log always on
 def debug(info,error=0):
-	global debglog
 	if type(info)==type([]):
 		for a in info:
 			debug(a,error)
@@ -102,11 +92,11 @@ def debug(info,error=0):
 			dbg="ERROR: "
 		else:
 			dbg="DEBUG: "
+		mes=datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg +str(info)
 		if data['data']['errorLogs']['debug'] == 'True':
-			print(datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg +str(info))
-		debglog.append(datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg+str(info))
-	with open('debug.txt', 'w') as debug_file:
-		debug_file.write(json.dumps(debglog, sort_keys=True, indent=4, separators=(',', ': ')))
+			print(mes)
+		with open("debug.txt", "a") as myfile:
+	    	myfile.write(mes)
 
 debug('--Start--')
 streamDataTemp = data['data']['streamData']['streamTemplate']
@@ -297,13 +287,13 @@ def list(urc):
 def userAdd(username):
 	allRecords = 0
 	debug('User Add Started')
-	if statAdd.lower() == 'yes':
+	if statAdd:
 		array = data['streams']
 		array.append(statwho.lower())
 		data['data']['streamData'][statwho.lower()] = streamDataTemp
 		debug('Short User Add Done')
 	debug('Counting Usernames')
-	if statAdd.lower() != 'yes':
+	else:
 		#for i in range(len(data["streams"])):
 			#allRecords = allRecords + 1
 		allRecords+=len(data["streams"])
@@ -330,7 +320,7 @@ def setUserMusic(username):
 def statCheck(statWhat,statOpt,statUser):
 	out=''
 	debug('Stat Check Started')
-	statAdd = 'no'
+	statAdd = 0
 	if statWhat.lower() == 'user':
 		debug('Retriveing User Stats')
 		out+="\nThis stream has been played: " + str(data['data']['streamData'][statUser.lower()]['playCount'])
@@ -420,21 +410,16 @@ def lvstList():
 
 #Command to open a stream
 def openstream(service,lvst):
-	global service
-	global lvst
 	global lsTwitch
-	global lvsting
+	lvsting=''
 	global lsYoutube
-	global audio
 	global options
-	global streamError
-
 
 	debug('Opening Stream Started')
 	debug('Service Recived ' + service)
 	debug('Streamer Recived ' + lvst)
 	#Process to use for twitch streams
-	elif service.lower() == 'twitch':
+	if service.lower() == 'twitch':
 		try:
 			audioOnly = data['data']['streamData'][lvst.lower()]['musicStream']
 			if audioOnly == 'true':
@@ -450,7 +435,6 @@ def openstream(service,lvst):
 					
 			else:
 				lvsting = lsTwitch + lvst + ' source'
-			
 		except:
 			lvsting = lsTwitch + lvst + ' source'
 			return
@@ -462,7 +446,6 @@ def openstream(service,lvst):
 				lvsting = lsYoutube + lvst[32:] + ' audio_mp4'
 			else:
 				lvsting = lsYoutube + lvst[32:] + ' best'
-				
 		else:
 			if audio.lower() == 'yes':
 				lvsting = lsYoutube + lvst + ' audio_mp4'
@@ -473,14 +456,14 @@ def openstream(service,lvst):
 
 #Starts timer and opens stream
 
-def cmdwin():#has print
+def cmdwin(service,lvst,lvsting):#has print
 	global times
 	global lvsting
 	global options
 	global streamError
 
 	debug('Opening Stream')
-	if streamError == False:
+	if not streamError:
 		clearscreen()
 		print(optionsstreaming)
 		print('Opening ' + lvst + "'s stream on " + service + ".\n")
@@ -527,7 +510,7 @@ def timeCalc():#has print
 	debug('Time Calculation done')
 
 #Updates Stats
-def stattracker():
+def stattracker(lvst):
 	global times
 	global timem
 	global timeh
@@ -541,7 +524,6 @@ def stattracker():
 	global totalusermin
 	global totaluserhrs
 	global totaluserdays
-	global service
 
 	#Updates the play count on the active streamer
 	try:
@@ -775,7 +757,8 @@ def stats():
 			print(optionsstatscheck)
 			print('\nThere are no stats for this user!\n')
 			debug('Done')
-			if ynQuestion('Would you like to add this user to the tracked list?'):
+			statAdd = ynQuestion('Whould you like to add this user to the tracked list?: ')
+			if statAdd:
 				add(statUser)
 		else:
 			clearscreen()
@@ -794,30 +777,33 @@ def stats():
 		clearscreen()
 		print statCheck(statWhat,statOpt,statUser)
 
-def ynQuestion(prompt,default=''):#y or n
-	if default=='':
-		answer = input(prompt+' (yes or no): ')
-	if default=='y':
-		answer = input(prompt+' (Yes or no): ')
-	if default=='n':
-		answer = input(prompt+' (yes or No): ')
+def ynQuestion(prompt,default=''):
+	prompt=str(prompt)
+	default=str(default)
+
+	if default.lower() in ['y','yes','1']:
+		answer = input(prompt+' [Yes/no]: ')
+	elif default.lower() in ['n','no','0']:
+		answer = input(prompt+' [yes/No]: ')
+	else:
+		answer = input(prompt+' [yes/no]: ')
+	
 	if answer=='':
 		answer=default
-	if answer.lower() in ['y','yes']:
+	
+	if answer.lower() in ['y','yes','1']:
 		return 1
-	if answer.lower() in ['n','no']:
+	elif answer.lower() in ['n','no','0']:
 		return 0
-	return ynQuestion(prompt,default)
+	else:
+		return ynQuestion(prompt,default)
 
 #Main Starter
-def start():
-	global option
+def menu():
 	global times
 	global timem
 	global restart
 	global options
-	global lvst
-	global streamError
 
 	debug('Starting Main starter')
 	#Option input
@@ -863,46 +849,62 @@ def start():
 		
 	print('')
 	restart = input('Restart the Script?: ')
-	debug('Starter Function Done')
+	debug('Main menu end')
+	return restart
 
-#Restarts the script
-while restart.lower() in ["yes","y"]:
-	try:
-		debug('Restarting Script')
-		start()
-		if restart.lower() in ["yes","y"]:
-			clearscreen()
+def init():
+	pass
+
+def terminate():
+	#Script end confirmation
+	print('')
+	input("Press Enter to continue...")
+
+	debug('Terminating')
+	debug('--End--')
+
+	#write To the json file
+	with open('list.json', "w") as write_file:
+		write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
+
+def main():
+	init()
+	
+	restart = 'yes'
+	#Restarts the script
+	while restart.lower() in ["yes","y"]:
+		try:
+			debug('Restarting Script')
+			restart=menu()
+			if restart.lower() in ["yes","y"]:
+				clearscreen()
+				
+		except KeyboardInterrupt:
+			debug('Ending Script')
+			timesInterrupted = data['data']['errorLogs']['timesInterrupted']
+			timesInterrupted = timesInterrupted + 1
+			data['data']['errorLogs']['timesInterrupted'] = timesInterrupted
+			restart = 'no'
 			
-	except KeyboardInterrupt:
-		debug('Ending Script')
-		timesInterrupted = data['data']['errorLogs']['timesInterrupted']
-		timesInterrupted = timesInterrupted + 1
-		data['data']['errorLogs']['timesInterrupted'] = timesInterrupted
-		restart = 'no'
-		
-	except:
-		print('\n\nUnknown Error! You shouldent be seeing this!')
-		unknownError = data['data']['errorLogs']['unknownError']
-		unknownError = unknownError + 1
-		data['data']['errorLogs']['unknownError'] = unknownError
-		restart = 'no'
-		debug([str(sys.exc_info()), str(traceback.extract_stack())],1)
-		
-	if restart.lower() in ["yes","y"]:
-		debug('Restart Count Updating')
-		timesRestarted = data['data']['logs']['timesRestarted']
-		timesRestarted = timesRestarted + 1
-		data['data']['logs']['timesRestarted'] = timesRestarted
-		debug('Restart Count updated')
+		except:
+			print('\n\nUnknown Error! You shouldent be seeing this!')
+			unknownError = data['data']['errorLogs']['unknownError']
+			unknownError = unknownError + 1
+			data['data']['errorLogs']['unknownError'] = unknownError
+			restart = 'no'
+			debug([str(sys.exc_info()), str(traceback.extract_stack())],1)
+			
+		if restart.lower() in ["yes","y"]:
+			debug('Restart Count Updating')
+			timesRestarted = data['data']['logs']['timesRestarted']
+			timesRestarted = timesRestarted + 1
+			data['data']['logs']['timesRestarted'] = timesRestarted
+			debug('Restart Count updated')
 
-#Script end confirmation
-print('')
-input("Press Enter to continue...")
+	terminate()
 
-debug('Terminating')
-debug('--End--')
+def tests():
+	pass
+	#put tests here
 
-#write To the json file
-with open('list.json', "w") as write_file:
-	write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
-##End##
+main()
