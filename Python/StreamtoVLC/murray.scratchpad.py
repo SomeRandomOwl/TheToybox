@@ -8,7 +8,7 @@ def writeToData(location,val):
 	jsonWrite()
 
 def writeToData(location,val,d=data):
-	if loc==[]:
+	if location==[]:
 		d=val
 		jsonWrite()
 	else:
