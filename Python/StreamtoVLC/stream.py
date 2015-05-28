@@ -86,7 +86,7 @@ def debug(info,error=0):
 		if data['data']['errorLogs']['debug'] == 'True':
 			print(mes)
 		with open("debug.txt", "a") as myfile:
-			myfile.write(mes)
+			myfile.write(mes+'\n')
 
 #Defines the program to check a users status
 def check_user(user):
