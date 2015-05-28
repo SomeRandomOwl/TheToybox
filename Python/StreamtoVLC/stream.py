@@ -85,8 +85,11 @@ def debug(info,error=0):
 		mes=datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg +str(info)
 		if data['data']['errorLogs']['debug'] == 'True':
 			print(mes)
-		with open("debug.txt", "a") as myfile:
-			myfile.write(mes+'\n')
+			with open("debug.txt", "a") as myfile:
+				myfile.write(mes+'\n')
+		elif error==1:
+			with open("debug.txt", "a") as myfile:
+				myfile.write(mes+'\n')
 
 #Defines the program to check a users status
 def check_user(user):
