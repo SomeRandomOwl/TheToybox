@@ -484,7 +484,7 @@ def mainopen():
 				print(optionsopenaudio)
 				if lvst[1:32] == 'https://www.youtube.com/watch?v=':
 					audio = input('Do you want to do audio only?: ')
-			lvsting=openstream(service,lvst,audio)
+			lvsting=openstream(service,lvst)
 	elif not service:
 		print('\nNo Stream Service Entered!')
 		streamError = True
@@ -859,6 +859,3 @@ def tests():
 	#put tests here
 
 main()
-
-
-
