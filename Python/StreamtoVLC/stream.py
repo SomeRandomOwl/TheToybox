@@ -83,7 +83,7 @@ def debug(info,error=0):
 		else:
 			dbg="DEBUG: "
 		mes=datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg +str(info)
-		if data['data']['errorLogs']['debug'] == 'True':
+		if data['data']['errorLogs']['debug'] in [1,'1']:
 			print(mes)
 			with open("debug.txt", "a") as myfile:
 				myfile.write(mes+'\n')
@@ -447,7 +447,7 @@ def stattracker(lvst,times,audio):
 
 
 
-####################### print, input, and data are not allowed above this line #######################
+####################### print and input are not allowed above this line #######################
 
 
 
