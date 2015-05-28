@@ -6,11 +6,9 @@
  #Descripttion:								#
  #											#
  # This program opens streams from			#
- #  - Dailymotion							#
- #  - Livestream							#
- #  - Twitch								#
- #  - UStream								#
- #  - YouTube Live							#
+
+ # http://docs.livestreamer.io/plugin_matrix.html#plugin-matrix
+ 
  # and plays them in vlc media player		#
  #											#
  ############################################
@@ -25,57 +23,13 @@ import json
 
 #Sets up the input variables that is used later in the script
 
-global option
-global lvst
-global wincmd
-global audio
-global restart
-global lvsting
-global totalsec
-global totalmin
-global totalhrs
-global totaldays
-global totalusersec
-global totalusermin
-global totaluserhrs
-global totaluserdays
-global statAdd
-global statwho
-global streamError
-
-option = ''
-lvst = ''
-wincmd = ''
-audio = ''
 restart = 'yes'
-lvsting = ''
-totalsec = 0
-totalmin = 0
-totalhrs = 0
-totaldays = 0
-totalusersec = 0
-totalusermin = 0
-totaluserhrs = 0
-totaluserdays = 0
 statAdd = 'no'
-statwho = ''
-streamError = ''
-
-#todo remove and replace with internal funciton
-lsTwitch = 'livestreamer twitch.tv/'
-lsYoutube = 'livestreamer youtube.com/watch?v='
-
-#Sets the inital value for the timer variable so calculatins are correct
-
-times = 0
-timem = 0
-timeh =0
 
 #Opens the json file for the list of tracked streamers
 with open('list.json') as data_file:    
 	data = json.load(data_file)
-	data_file.close()
-	pass
+	#data_file.close()
 
 streamDataTemp = data['data']['streamData']['streamTemplate']
 startCount = data['data']['logs']['timesStarted']
@@ -237,6 +191,62 @@ status_list={
 	  "YouTube Live":{},
 }
 
+####################
+# stream functions #
+####################
+
+#def openstream(service,user):
+	#if service.lower() == 'youtube' or service.lower() == 'twitch':
+		#if service.lower() == 'twitch':
+			#try:
+				#audioOnly = data['data']['streamData'][user.lower()]['musicStream']
+				#if audioOnly == 'true':
+					#clearscreen()
+					#print(optionsopenaudio)
+					#audio = input('Do you want to do audio only?: ')
+					#
+					#if audio.lower() == 'yes':
+						#lvsting = lsTwitch + user + ' audio'
+					#else:
+						#lvsting = lsTwitch + user + ' source'
+						#pass
+					#pass
+				#else:
+					#lvsting = lsTwitch + user + ' source'
+					#pass
+				#pass
+			#except:
+				#lvsting = lsTwitch + user + ' source'
+				#return
+			#
+			##Process for youtube streams
+		#if service.lower() == 'youtube':
+			#clearscreen()
+			#print(optionsopenaudio)
+			#if user[1:32] == 'https://www.youtube.com/watch?v=':
+				#user=user[32:]
+			#audio = input('Do you want to do audio only?: ')
+			#if audio.lower() == 'yes':
+				#lvsting = lsYoutube + user + ' audio_mp4'
+			#else:
+				#lvsting = lsYoutube + user + ' best'
+				#pass
+			#pass
+	#else:
+		#print('\nStream service not supported!\n')
+		#streamError = 'true'
+		#serviceErrorCnt = data['data']['errorLogs']['unsupportedServices']
+		#serviceErrorCnt = serviceErrorCnt + 1
+		#data['data']['errorLogs']['unsupportedServices'] = serviceErrorCnt
+		#pass
+	#pass
+	#	
+ ##Starts timer and opens stream
+
+###########################
+# subscriptions managment #
+###########################
+
 def update_user_status(server,user):
 	global status_list
 	if server=="Dailymotion":
@@ -261,7 +271,7 @@ def update_user_status(server,user):
 		pass
 	if server=="YouTube Live":
 		pass
-def update_users_stati():
+def update_known_users_stati():
 	for s in status_list:
 		for u in s:
 			update_user_status(s,u)
@@ -271,80 +281,68 @@ def update_users_stati():
 
 #populate status_list from json
 def readJSON():
-	pass
+	for u in data["streams"]:
+		update_user_status(data["streamData"][u]["type"],u)
 
 #add new user to json and status_list
 def addUser(service,user):
+	#query user for informaiton
+		#"type": service,
+		#"days": 0,
+		#"hours": 0,
+		#"mins": 0,
+		#"musicStream": ask user,
+		#"playCount": 0,
+		#"secs": 0,
+		#"totalTime": "0 Days 0:0:0"
 	#add to json
 	readJSON()
-	update_users_stati()
+	update_known_users_stati()
 
 #open a user's stream
-def openstream(service,user):
-	global lsTwitch
-	global lvsting
-	global lsYoutube
-	global audio
-	global options
-	global streamError
 
-	#clearscreen()
-	#print(optionsopen)
-	#service = input('What stream service? (Youtube or Twitch): ')
-
-	if service.lower() == 'youtube' or service.lower() == 'twitch':
-		#clearscreen()
-		#print(optionsstream)
-		#lvst = input('What stream?: ')
-		##Process to use for twitch streams
-		if service.lower() == 'twitch':
-			try:
-				audioOnly = data['data']['streamData'][user.lower()]['musicStream']
-				if audioOnly == 'true':
-					clearscreen()
-					print(optionsopenaudio)
-					audio = input('Do you want to do audio only?: ')
-
-					if audio.lower() == 'yes':
-						lvsting = lsTwitch + user + ' audio'
-					else:
-						lvsting = lsTwitch + user + ' source'
-						pass
-					pass
-				else:
-					lvsting = lsTwitch + user + ' source'
-					pass
-				pass
-			except:
-				lvsting = lsTwitch + user + ' source'
-				return
-
-			#Process for youtube streams
-		if service.lower() == 'youtube':
-			clearscreen()
-			print(optionsopenaudio)
-			if user[1:32] == 'https://www.youtube.com/watch?v=':
-				user=user[32:]
-			audio = input('Do you want to do audio only?: ')
-			if audio.lower() == 'yes':
-				lvsting = lsYoutube + user + ' audio_mp4'
-			else:
-				lvsting = lsYoutube + user + ' best'
-				pass
-			pass
-	else:
-		print('\nStream service not supported!\n')
-		streamError = 'true'
-		serviceErrorCnt = data['data']['errorLogs']['unsupportedServices']
-		serviceErrorCnt = serviceErrorCnt + 1
-		data['data']['errorLogs']['unsupportedServices'] = serviceErrorCnt
-		pass
-	pass
-	
- #Starts timer and opens stream
 
 #get stats for display in popup window
 
+######################
+# graphics managment #
+######################
+
+def grfthing():
+	from tkinter import *
+	from tkinter import ttk
+
+
+	root = Tk()
+	root.title("Stream to VLC")
+	def calculate():
+		pass
+	mainframe = ttk.Frame(root, padding="12 12 12 12")
+	mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+	mainframe.columnconfigure(0, weight=1)
+	mainframe.rowconfigure(0, weight=1)
+
+	feet = StringVar()
+	meters = StringVar()
+
+
+
+	ttk.Button(mainframe, text="Open", command=open).grid(column=2, row=3, sticky=W)
+	ttk.Button(mainframe, text="List", command=lvstList).grid(column=3, row=3, sticky=W)
+	ttk.Button(mainframe, text="Check", command=check).grid(column=4, row=3, sticky=W)
+	ttk.Button(mainframe, text="Add", command=userAdd).grid(column=5, row=3, sticky=W)
+
+	ttk.Label(mainframe, text=options).grid(column=1, row=1, sticky=W)
+	#ttk.Label(mainframe, text="feet").grid(column=3, row=1, sticky=W)
+	ttk.Label(mainframe, text="Things!").grid(column=1, row=1, sticky=E)
+	ttk.Label(mainframe, text="Yey Tests!").grid(column=1, row=2, sticky=W)
+
+	for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
+
+	#feet_entry.focus()
+	root.bind('<Return>', calculate)
+
+	root.mainloop()
 
 ###################
 #  Old Functions  #
@@ -722,70 +720,34 @@ def start():
 	restart = input('Restart the Script?: ')
 	pass
 
-
-from tkinter import *
-from tkinter import ttk
-
-
-root = Tk()
-root.title("Stream to VLC")
-def calculate():
-	pass
-mainframe = ttk.Frame(root, padding="12 12 12 12")
-mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
-mainframe.columnconfigure(0, weight=1)
-mainframe.rowconfigure(0, weight=1)
-
-feet = StringVar()
-meters = StringVar()
-
-
-
-ttk.Button(mainframe, text="Open", command=open).grid(column=2, row=3, sticky=W)
-ttk.Button(mainframe, text="List", command=lvstList).grid(column=3, row=3, sticky=W)
-ttk.Button(mainframe, text="Check", command=check).grid(column=4, row=3, sticky=W)
-ttk.Button(mainframe, text="Add", command=userAdd).grid(column=5, row=3, sticky=W)
-
-ttk.Label(mainframe, text=options).grid(column=1, row=1, sticky=W)
-#ttk.Label(mainframe, text="feet").grid(column=3, row=1, sticky=W)
-ttk.Label(mainframe, text="Things!").grid(column=1, row=1, sticky=E)
-ttk.Label(mainframe, text="Yey Tests!").grid(column=1, row=2, sticky=W)
-
-for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
-
-#feet_entry.focus()
-root.bind('<Return>', calculate)
-
-root.mainloop()
-
 #Restarts the script
 #while restart.lower() == "yes":
-#	try:
-#		start()
-#		if restart == "yes":
-#			clearscreen()
-#			pass
-#		pass
-#	except KeyboardInterrupt:
-#		print('\n\nEnding Script')
-#		timesInterrupted = data['data']['errorLogs']['timesInterrupted']
-#		timesInterrupted = timesInterrupted + 1
-#		data['data']['errorLogs']['timesInterrupted'] = timesInterrupted
-#		restart = 'no'
-#		pass
-#	except:
-#		print('\n\nUnknown Error!')
-#		unknownError = data['data']['errorLogs']['unknownError']
-#		unknownError = unknownError + 1
-#		data['data']['errorLogs']['unknownError'] = unknownError
-#		restart = 'no'
-#		pass
-#	if restart.lower() == "yes":
-#		timesRestarted = data['data']['logs']['timesRestarted']
-#		timesRestarted = timesRestarted + 1
-#		data['data']['logs']['timesRestarted'] = timesRestarted
-#		pass
-#	pass
+	#try:
+		#start()
+		#if restart == "yes":
+			#clearscreen()
+			#pass
+		#pass
+	#except KeyboardInterrupt:
+		#print('\n\nEnding Script')
+		#timesInterrupted = data['data']['errorLogs']['timesInterrupted']
+		#timesInterrupted = timesInterrupted + 1
+		#data['data']['errorLogs']['timesInterrupted'] = timesInterrupted
+		#restart = 'no'
+		#pass
+	#except:
+		#print('\n\nUnknown Error!')
+		#unknownError = data['data']['errorLogs']['unknownError']
+		#unknownError = unknownError + 1
+		#data['data']['errorLogs']['unknownError'] = unknownError
+		#restart = 'no'
+		#pass
+	#if restart.lower() == "yes":
+		#timesRestarted = data['data']['logs']['timesRestarted']
+		#timesRestarted = timesRestarted + 1
+		#data['data']['logs']['timesRestarted'] = timesRestarted
+		#pass
+	#pass
 
 #Script end confirmation
 print('')

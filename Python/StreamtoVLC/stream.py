@@ -291,7 +291,7 @@ def userAdd(username):
 		array.append(statwho.lower())
 		data['data']['streamData'][statwho.lower()] = streamDataTemp
 		debug('Short User Add Done')
-	debug('Counting Usernames')
+		debug('Counting Usernames')
 	else:
 		#for i in range(len(data["streams"])):
 			#allRecords = allRecords + 1
@@ -761,7 +761,11 @@ def stats():
 				add(statUser)
 		else:
 			clearscreen()
+<<<<<<< HEAD
 			print(statCheck(statWhat,statOpt,statUser))
+=======
+			print (statCheck(statWhat,statOpt,statUser))
+>>>>>>> 23292cdd529c8c69874d98e72ba4524a7b17ab80
 	elif statWhat.lower() == 'clear':
 		clearscreen()
 		print(optionsstatsclear)
@@ -771,10 +775,10 @@ def stats():
 		if statOpt.lower()=='user':
 			statUser = input('Whos stats do you want to clear?: ')
 		clearscreen()
-		print statCheck(statWhat,statOpt,statUser)
+		print (statCheck(statWhat,statOpt,statUser))
 	else:
 		clearscreen()
-		print statCheck(statWhat,statOpt,statUser)
+		print (statCheck(statWhat,statOpt,statUser))
 
 def ynQuestion(prompt,default=''):
 	prompt=str(prompt)
