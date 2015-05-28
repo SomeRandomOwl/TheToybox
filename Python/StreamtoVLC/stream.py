@@ -251,7 +251,7 @@ def lvstList():
 	debug('List Done')
 
 #Command to open a stream
-def openstream(service,lvst):
+def openstream(service,lvst,audio):
 	lvsting=''
 	lsTwitch = 'livestreamer twitch.tv/'
 	lsYoutube = 'livestreamer youtube.com/watch?v='
@@ -267,7 +267,6 @@ def openstream(service,lvst):
 				clearscreen()
 				print(optionsopenaudio)
 				debug('Music stream')
-				audio = input('Do you want to do audio only?: ')
 				debug('Recived ' + audio)
 				if audio.lower() == 'yes':
 					lvsting = lsTwitch + lvst + ' audio'
@@ -323,7 +322,7 @@ def timeCalc(times,timem,timeh):
 	return [times,timem,timeh]
 
 #Updates Stats
-def stattracker(lvst,times):
+def stattracker(lvst,times,audio):
 	#Updates the play count on the active streamer
 	try:
 		debug('Updateing User play count') 
@@ -484,7 +483,7 @@ def mainopen():
 				print(optionsopenaudio)
 				if lvst[1:32] == 'https://www.youtube.com/watch?v=':
 					audio = input('Do you want to do audio only?: ')
-			lvsting=openstream(service,lvst)
+			lvsting=openstream(service,lvst,audio)
 	elif not service:
 		print('\nNo Stream Service Entered!')
 		streamError = True
