@@ -613,7 +613,7 @@ def menu():
 		clearscreen()
 		lvstList()
 	elif option.lower() == "open":
-		[times,timem,timeh]=mainopen(times,timem,timeh)
+		mainopen()
 	elif option.lower() == "add":
 		clearscreen()
 		add()
