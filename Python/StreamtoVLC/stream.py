@@ -18,16 +18,18 @@ import traceback
 import signal
 
 #Sets up the input variables that is used later in the script
-totalsec = 0
-totalmin = 0
-totalhrs = 0
-totaldays = 0
-totalusersec = 0
-totalusermin = 0
-totaluserhrs = 0
-totaluserdays = 0
-statAdd = 0
-jsonTemplate =  {"data": {"errorLogs": {"timesInterrupted": 0, "unRecgonizedCmds": 0, "unknownError": 0, "unsupportedServices": 0}, "logs": {"streamNum": 0, "timesRestarted": 0, "timesStarted": 0, "totalPlay": 0}, "streamData": {"streamTemplate": {"days": 0, "hours": 0, "mins": 0, "musicStream": "true", "playCount": 0, "secs": 0, "totalTime": "0 Days 0:0:0"}}}, "streams": []}
+global totalsec
+global totalmin
+global totalhrs
+global totaldays
+global totalusersec
+global totalusermin
+global totaluserhrs
+global totaluserdays
+global statAdd
+global jsonTemplate
+
+global data
 
 def jsonCheck():
 	test = os.path.isfile('list.json')
@@ -46,22 +48,30 @@ def clearscreen():
 		os.system('clear')
 	else:
 		os.system('cls')
-clearscreen()
 
 #Variables used to condense code down slightly
-lsTwitch = 'livestreamer twitch.tv/'
-lsYoutube = 'livestreamer youtube.com/watch?v='
+global lsTwitch
+global lsYoutube
 
 #Sets the initial value for the timer variable so calculations are correct
-times = 0
-timem = 0
-timeh =0
+global times
+global timem
+global timeh
 
-#Opens the json file for the list of tracked streamers
-with open('list.json') as data_file:
-	data = json.load(data_file)
-	data_file.close()
-
+#Menu Prompts
+if 1:
+	global options
+	global optionsstreaming
+	global optionsopen
+	global optionsstream
+	global optionsopenaudio
+	global optionslist
+	global optionscheck
+	global optionsstatscheck
+	global optionsstatsclear
+	global optionsadd
+	global listing
+	
 def jsonWrite():
 	with open('list.json', "w") as write_file:
 		write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
@@ -96,154 +106,6 @@ def debug(info,error=0):
 			print(mes)
 		with open("debug.txt", "a") as myfile:
 			myfile.write(mes)
-
-debug('--Start--')
-streamDataTemp = data['data']['streamData']['streamTemplate']
-startCount = data['data']['logs']['timesStarted']
-startCount = startCount + 1
-writeToJson(['data','logs','timesStarted'],startCount)
-debug('Start Count Added Onto')
-
-#Menu Prompts
-if 1:
-	global options
-	options = ""																		+"\n"+\
-				"Avalible options:"														+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""																		+"\n"+\
-				"Check (checks status of a specific user"								+"\n"+\
-				"List (Checks the status of a list of predefined users"					+"\n"+\
-				"Open (opens a stream)"													+"\n"+\
-				"Add (Adds a user to to the tracked user list)"							+"\n"+\
-				"Stats (Views the list of tracked stats)"								+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""
-
-	global optionsstreaming
-	optionsstreaming = ""																+"\n"+\
-				"Avalible options:"														+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""																		+"\n"+\
-				"The stream you chose is opening"										+"\n"+\
-				"So sit back and watch/listen to you stream"							+"\n"+\
-				"Enjoy!"																+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""
-
-	global optionsopen
-	optionsopen = ""																	+"\n"+\
-				"Avalible options:"														+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""																		+"\n"+\
-				"This is to open stream service The only two options avaliable are:"	+"\n"+\
-				"Youtube -- Allows you to open a stream with a youtube url ir video id"	+"\n"+\
-				"Twitch -- Opens a twitch stream when you input user"					+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""	
-
-	global optionsstream
-	optionsstream = ""																	+"\n"+\
-				"Avalible options:"														+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""																		+"\n"+\
-				"This is to specify a stream"											+"\n"+\
-				"Input a username if for Twitch"										+"\n"+\
-				"Input a video id if for Youtube"										+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""
-
-	global optionsopenaudio
-	optionsopenaudio = ""																+"\n"+\
-				"Avalible options:"														+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""																		+"\n"+\
-				"This is if you want to listen to the audio only for the stream"		+"\n"+\
-				"Input yes to only get the audio and no video"							+"\n"+\
-				"Input no to have video as well as audio"								+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""
-
-	global optionslist
-	optionslist = ""																	+"\n"+\
-				"Avalible options:"														+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""																		+"\n"+\
-				"This is used to list users present in the list.json"					+"\n"+\
-				"This only works for twitch streamers at the moment"					+"\n"+\
-				"Will maybe extend to youtube in the future"							+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""
-
-	global optionscheck
-	optionscheck = ""																	+"\n"+\
-				"Avalible options:"														+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""																		+"\n"+\
-				"This is used to check the status of a individual twitch streamer"		+"\n"+\
-				"This is unavaliable for youtube unless it is otherwisse possible"		+"\n"+\
-				"Might have youtube support in the future"								+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""
-
-	global optionsstatscheck
-	optionsstatscheck = ""																+"\n"+\
-				"Avalible options:"														+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""																		+"\n"+\
-				"This is used to view the stats being tracked"							+"\n"+\
-				"You can view the stats of a individual user"							+"\n"+\
-				"You can also view the total global stats"								+"\n"+\
-				"You can also Clear the stats"											+"\n"+\
-				"You can also check the errorLogs"										+"\n"+\
-				""																		+"\n"+\
-				"---------"																+"\n"+\
-				""
-
-	global optionsstatsclear
-	optionsstatsclear = ""																+"\n"+\
-				"Avalible options:"														+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""																		+"\n"+\
-				"This is the danger zone!"												+"\n"+\
-				"This is where you can clear a users stats or the global stats"			+"\n"+\
-				"Continue if you sure of what you are doing!"							+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""	
-
-	global optionsadd
-	optionsadd = ""																		+"\n"+\
-				"Avalible options:"														+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""																		+"\n"+\
-				"This is used to add a user to the tracked list"						+"\n"+\
-				"This make ther status to be checked with the list command"				+"\n"+\
-				"It also allows statistic tracking for the user"						+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""	
-
-	global listing
-	listing = ""																		+"\n"+\
-				"-------------"															+"\n"+\
-				""
 
 #Defines the program to check a users status
 def check_user(user):
@@ -761,11 +623,7 @@ def stats():
 				add(statUser)
 		else:
 			clearscreen()
-<<<<<<< HEAD
 			print(statCheck(statWhat,statOpt,statUser))
-=======
-			print (statCheck(statWhat,statOpt,statUser))
->>>>>>> 23292cdd529c8c69874d98e72ba4524a7b17ab80
 	elif statWhat.lower() == 'clear':
 		clearscreen()
 		print(optionsstatsclear)
@@ -856,7 +714,191 @@ def menu():
 	return restart
 
 def init():
-	pass
+	global data
+	global totalsec
+	global totalmin
+	global totalhrs
+	global totaldays
+	global totalusersec
+	global totalusermin
+	global totaluserhrs
+	global totaluserdays
+	global statAdd
+	global jsonTemplate
+	global clearscreen
+	global lsTwitch
+	global lsYoutube
+	global times
+	global timem
+	global timeh
+	totalsec = 0
+	totalmin = 0
+	totalhrs = 0
+	totaldays = 0
+	totalusersec = 0
+	totalusermin = 0
+	totaluserhrs = 0
+	totaluserdays = 0
+	statAdd = 0
+	jsonTemplate =  {"data": {"errorLogs": {"timesInterrupted": 0, "unRecgonizedCmds": 0, "unknownError": 0, "unsupportedServices": 0}, "logs": {"streamNum": 0, "timesRestarted": 0, "timesStarted": 0, "totalPlay": 0}, "streamData": {"streamTemplate": {"days": 0, "hours": 0, "mins": 0, "musicStream": "true", "playCount": 0, "secs": 0, "totalTime": "0 Days 0:0:0"}}}, "streams": []}
+	clearscreen()
+	lsTwitch = 'livestreamer twitch.tv/'
+	lsYoutube = 'livestreamer youtube.com/watch?v='
+	times = 0
+	timem = 0
+	timeh = 0
+	#Opens the json file for the list of tracked streamers
+	with open('list.json') as data_file:
+		data = json.load(data_file)
+		data_file.close()
+
+	debug('--Start--')
+	streamDataTemp = data['data']['streamData']['streamTemplate']
+	startCount = data['data']['logs']['timesStarted']
+	startCount = startCount + 1
+	writeToJson(['data','logs','timesStarted'],startCount)
+	debug('Start Count Added Onto')
+
+	#Menu Prompts
+	if 1:
+		global options
+		options = ""																		+"\n"+\
+					"Avalible options:"														+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""																		+"\n"+\
+					"Check (checks status of a specific user"								+"\n"+\
+					"List (Checks the status of a list of predefined users"					+"\n"+\
+					"Open (opens a stream)"													+"\n"+\
+					"Add (Adds a user to to the tracked user list)"							+"\n"+\
+					"Stats (Views the list of tracked stats)"								+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""
+
+		global optionsstreaming
+		optionsstreaming = ""																+"\n"+\
+					"Avalible options:"														+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""																		+"\n"+\
+					"The stream you chose is opening"										+"\n"+\
+					"So sit back and watch/listen to you stream"							+"\n"+\
+					"Enjoy!"																+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""
+
+		global optionsopen
+		optionsopen = ""																	+"\n"+\
+					"Avalible options:"														+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""																		+"\n"+\
+					"This is to open stream service The only two options avaliable are:"	+"\n"+\
+					"Youtube -- Allows you to open a stream with a youtube url ir video id"	+"\n"+\
+					"Twitch -- Opens a twitch stream when you input user"					+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""	
+
+		global optionsstream
+		optionsstream = ""																	+"\n"+\
+					"Avalible options:"														+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""																		+"\n"+\
+					"This is to specify a stream"											+"\n"+\
+					"Input a username if for Twitch"										+"\n"+\
+					"Input a video id if for Youtube"										+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""
+
+		global optionsopenaudio
+		optionsopenaudio = ""																+"\n"+\
+					"Avalible options:"														+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""																		+"\n"+\
+					"This is if you want to listen to the audio only for the stream"		+"\n"+\
+					"Input yes to only get the audio and no video"							+"\n"+\
+					"Input no to have video as well as audio"								+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""
+
+		global optionslist
+		optionslist = ""																	+"\n"+\
+					"Avalible options:"														+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""																		+"\n"+\
+					"This is used to list users present in the list.json"					+"\n"+\
+					"This only works for twitch streamers at the moment"					+"\n"+\
+					"Will maybe extend to youtube in the future"							+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""
+
+		global optionscheck
+		optionscheck = ""																	+"\n"+\
+					"Avalible options:"														+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""																		+"\n"+\
+					"This is used to check the status of a individual twitch streamer"		+"\n"+\
+					"This is unavaliable for youtube unless it is otherwisse possible"		+"\n"+\
+					"Might have youtube support in the future"								+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""
+
+		global optionsstatscheck
+		optionsstatscheck = ""																+"\n"+\
+					"Avalible options:"														+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""																		+"\n"+\
+					"This is used to view the stats being tracked"							+"\n"+\
+					"You can view the stats of a individual user"							+"\n"+\
+					"You can also view the total global stats"								+"\n"+\
+					"You can also Clear the stats"											+"\n"+\
+					"You can also check the errorLogs"										+"\n"+\
+					""																		+"\n"+\
+					"---------"																+"\n"+\
+					""
+
+		global optionsstatsclear
+		optionsstatsclear = ""																+"\n"+\
+					"Avalible options:"														+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""																		+"\n"+\
+					"This is the danger zone!"												+"\n"+\
+					"This is where you can clear a users stats or the global stats"			+"\n"+\
+					"Continue if you sure of what you are doing!"							+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""	
+
+		global optionsadd
+		optionsadd = ""																		+"\n"+\
+					"Avalible options:"														+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""																		+"\n"+\
+					"This is used to add a user to the tracked list"						+"\n"+\
+					"This make ther status to be checked with the list command"				+"\n"+\
+					"It also allows statistic tracking for the user"						+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""	
+
+		global listing
+		listing = ""																		+"\n"+\
+					"-------------"															+"\n"+\
+					""
 
 def terminate():
 	#Script end confirmation
