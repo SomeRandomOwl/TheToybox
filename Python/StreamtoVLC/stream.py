@@ -18,15 +18,6 @@ import traceback
 import signal
 
 #Sets up the input variables that is used later in the script
-global totalsec
-global totalmin
-global totalhrs
-global totaldays
-global totalusersec
-global totalusermin
-global totaluserhrs
-global totaluserdays
-global statAdd
 global jsonTemplate
 
 global data
@@ -49,9 +40,6 @@ def clearscreen():
 	else:
 		os.system('cls')
 
-#Variables used to condense code down slightly
-global lsTwitch
-global lsYoutube
 
 #Sets the initial value for the timer variable so calculations are correct
 global times
@@ -145,7 +133,7 @@ def list(urc):
 	return (listing+'\n'+out+'\n'+listing)
 
 #Function to add new tracked users
-def userAdd(username):
+def userAdd(username,statAdd):
 	allRecords = 0
 	debug('User Add Started')
 	if statAdd:
@@ -271,10 +259,10 @@ def lvstList():
 
 #Command to open a stream
 def openstream(service,lvst):
-	global lsTwitch
-	lvsting=''
-	global lsYoutube
 	global options
+	lvsting=''
+	lsTwitch = 'livestreamer twitch.tv/'
+	lsYoutube = 'livestreamer youtube.com/watch?v='
 
 	debug('Opening Stream Started')
 	debug('Service Recived ' + service)
@@ -298,7 +286,6 @@ def openstream(service,lvst):
 				lvsting = lsTwitch + lvst + ' source'
 		except:
 			lvsting = lsTwitch + lvst + ' source'
-			return
 		debug('Twitch Stream commands set')
 	#Process for youtube streams
 	elif service.lower() == 'youtube':
@@ -313,38 +300,24 @@ def openstream(service,lvst):
 			else:
 				lvsting = lsYoutube + lvst + ' best'
 		debug('Youtube commands set')
+	return lvsting
 	debug('Open stream done')
 
 #Starts timer and opens stream
 
-def cmdwin(service,lvst,lvsting):#has print
-	global times
-	global lvsting
-	global options
-
+def cmdwin(lvsting):
 	debug('Opening Stream')
-	clearscreen()
-	print(optionsstreaming)
-	print('Opening ' + lvst + "'s stream on " + service + ".\n")
-	try:
-		print('Total times ' + lvst + " has been played: " + str(data['data']['streamData'][lvst]['playCount']) + ".\n")
-		print('Total ammount of time ' + lvst + " Has been played for: " + data['data']['streamData'][lvst]['totalTime'] + " \n")	
-	except:
-		pass
 	start = time.time()
 	os.system(lvsting)
-	end = time.time()
-	times = end - start
-	times = int(times)
 	debug('Stream Finished')
- 
- #Timer calculation
+	end = time.time()
+	duration = end - start
+	duration = int(duration)
+	debug('Duration Calculated')
+	return duration
 
-def timeCalc():#has print
-	global times
-	global timem
-	global timeh
-
+#Timer calculation
+def timeCalc(times,timem,timeh):
 	debug('Time Calculation Started')
 	while times > 59:
 		debug('Calculating Minutes')
@@ -354,34 +327,11 @@ def timeCalc():#has print
 		debug('Calculating Hours')
 		timem = timem - 60
 		timeh = timeh + 1
-	#converts timer values to strings to display with print
-	times = str(times)
-	timem = str(timem)
-	timeh = str(timeh)
-	#Prints the elapsed time
-	debug('Setting ElapsedTime String')
-	elapsedTime = timeh + ':' + timem + ':' + times
-	print('')
-	print ('Time elapsed: ' + elapsedTime)
-	print('')
 	debug('Time Calculation done')
+	return [times,timem,timeh]
 
 #Updates Stats
-def stattracker(lvst):
-	global times
-	global timem
-	global timeh
-	global lvst
-	global elapsedTime
-	global totalsec
-	global totalmin
-	global totalhrs
-	global totaldays
-	global totalusersec
-	global totalusermin
-	global totaluserhrs
-	global totaluserdays
-
+def stattracker(lvst,times,timem,timeh):
 	#Updates the play count on the active streamer
 	try:
 		debug('Updateing User play count') 
@@ -416,19 +366,10 @@ def stattracker(lvst):
 		   'TotalMinutes: ' + str(totalmin),
 		   'TotalHours: ' + str(totalhrs),
 		   'TotalDays: ' + str(totaldays)])
-	debug('Subtracting extras')
-	while totalsec > 59:
-		debug('One minute over')
-		totalsec = totalsec - 60
-		totalmin = totalmin + 1
-		debug('Added one minute')
-		
-	while totalmin > 59:
-		debug('One hour over')
-		totalmin = totalmin - 60
-		totalhrs = totalhrs + 1
-		debug('Added One hour')
-		
+	
+	debug('Calculating Carries')
+	
+	[totalsec,totalmin,totalhrs]=timeCalc(totalsec,totalmin,totalhrs)
 	while totalhrs > 23:
 		debug('one day over')
 		totalhrs = totalhrs - 24
@@ -440,7 +381,7 @@ def stattracker(lvst):
 		   'TotalHours: ' + str(totalhrs),
 		   'TotalDays: ' + str(totaldays)])
 
-	debug('Adding times into json')
+	debug('Inserting time data into json')
 	data['data']['timeCounters']['secs'] = totalsec
 	debug('Seconds done')
 	data['data']['timeCounters']['mins'] = totalmin
@@ -475,18 +416,9 @@ def stattracker(lvst):
 				   'TotalUserMinutes: ' + str(totalusermin),
 				   'TotalUserHours: ' + str(totaluserhrs),
 				   'TotalUserDays: ' + str(totaluserdays)])
-			debug('Removing excess')
-			while totalusersec > 59:
-				debug('One minute over')
-				totalusersec = totalusersec - 60
-				totalusermin = totalusermin + 1
-				debug('One minute added')
-	
-			while totalusermin > 59:
-				debug('One hour over')
-				totalusermin = totalusermin - 60
-				totaluserhrs = totaluserhrs + 1
-				debug('One hour added')
+			
+			debug('Calculating Carries')
+			[totalsec,totalmin,totalhrs]=timeCalc(totalsec,totalmin,totalhrs)
 
 			while totaluserhrs > 23:
 				debug('One day over')
@@ -542,7 +474,7 @@ def check():
 		print('')
 	debug('Individual Check done')
 
-def mainopen():
+def mainopen(times,timem,timeh):
 	streamError=False
 	clearscreen()
 	print(optionsopen)
@@ -562,7 +494,7 @@ def mainopen():
 				print(optionsopenaudio)
 				if lvst[1:32] == 'https://www.youtube.com/watch?v=':
 					audio = input('Do you want to do audio only?: ')
-			openstream(service,lvst,audio)
+			lvsting=openstream(service,lvst,audio)
 	elif not service:
 		print('\nNo Stream Service Entered!')
 		streamError = True
@@ -574,13 +506,27 @@ def mainopen():
 		data['data']['errorLogs']['unsupportedServices'] = serviceErrorCnt
 	
 	if not streamError:
-		cmdwin()
-		timeCalc()
+		clearscreen()
+		print(optionsstreaming)
+		print('Opening ' + lvst + "'s stream on " + service + ".\n")
+		try:
+			print('Total times ' + lvst + " has been played: " + str(data['data']['streamData'][lvst]['playCount']) + ".\n")
+			print('Total ammount of time ' + lvst + " Has been played for: " + data['data']['streamData'][lvst]['totalTime'] + " \n")	
+		except:
+			pass
+		times+=cmdwin(lvsting)
+		[times,timem,timeh]=timeCalc(times,timem,timeh)
+		#Prints the elapsed time
+		debug('Setting ElapsedTime String')
+		elapsedTime = str(timeh) + ':' + str(timem) + ':' + str(times)
+		print('')
+		print('Time elapsed: ' + elapsedTime)
+		print('')
 		stattracker()
 	else:
 		print('\nThere was a error opening the stream!')
 
-def add(username=''):
+def add(username='',statAdd=0):
 	if username == '':
 		input('Name of the user to add?: ')
 	else:
@@ -588,7 +534,7 @@ def add(username=''):
 	while username=='':
 		print('Please type in a user-name and not leave the line blank.')
 		input('Name of the user to add?: ')
-	allRecords=userAdd(username)
+	allRecords=userAdd(username,statAdd)
 
 	clearscreen()
 	print(optionsadd)
@@ -620,7 +566,7 @@ def stats():
 			debug('Done')
 			statAdd = ynQuestion('Whould you like to add this user to the tracked list?: ')
 			if statAdd:
-				add(statUser)
+				add(statUser,statAdd)
 		else:
 			clearscreen()
 			print(statCheck(statWhat,statOpt,statUser))
@@ -661,10 +607,9 @@ def ynQuestion(prompt,default=''):
 
 #Main Starter
 def menu():
-	global times
-	global timem
 	global restart
 	global options
+	[times,timem,timeh]=[0,0,0]
 
 	debug('Starting Main starter')
 	#Option input
@@ -715,38 +660,11 @@ def menu():
 
 def init():
 	global data
-	global totalsec
-	global totalmin
-	global totalhrs
-	global totaldays
-	global totalusersec
-	global totalusermin
-	global totaluserhrs
-	global totaluserdays
-	global statAdd
 	global jsonTemplate
-	global clearscreen
-	global lsTwitch
-	global lsYoutube
-	global times
-	global timem
-	global timeh
-	totalsec = 0
-	totalmin = 0
-	totalhrs = 0
-	totaldays = 0
-	totalusersec = 0
-	totalusermin = 0
-	totaluserhrs = 0
-	totaluserdays = 0
-	statAdd = 0
 	jsonTemplate =  {"data": {"errorLogs": {"timesInterrupted": 0, "unRecgonizedCmds": 0, "unknownError": 0, "unsupportedServices": 0}, "logs": {"streamNum": 0, "timesRestarted": 0, "timesStarted": 0, "totalPlay": 0}, "streamData": {"streamTemplate": {"days": 0, "hours": 0, "mins": 0, "musicStream": "true", "playCount": 0, "secs": 0, "totalTime": "0 Days 0:0:0"}}}, "streams": []}
+	
 	clearscreen()
-	lsTwitch = 'livestreamer twitch.tv/'
-	lsYoutube = 'livestreamer youtube.com/watch?v='
-	times = 0
-	timem = 0
-	timeh = 0
+	
 	#Opens the json file for the list of tracked streamers
 	with open('list.json') as data_file:
 		data = json.load(data_file)
