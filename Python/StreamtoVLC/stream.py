@@ -40,25 +40,18 @@ def clearscreen():
 	else:
 		os.system('cls')
 
-
-#Sets the initial value for the timer variable so calculations are correct
-global times
-global timem
-global timeh
-
 #Menu Prompts
-if 1:
-	global options
-	global optionsstreaming
-	global optionsopen
-	global optionsstream
-	global optionsopenaudio
-	global optionslist
-	global optionscheck
-	global optionsstatscheck
-	global optionsstatsclear
-	global optionsadd
-	global listing
+global options
+global optionsstreaming
+global optionsopen
+global optionsstream
+global optionsopenaudio
+global optionslist
+global optionscheck
+global optionsstatscheck
+global optionsstatsclear
+global optionsadd
+global listing
 	
 def jsonWrite():
 	with open('list.json', "w") as write_file:
@@ -259,7 +252,6 @@ def lvstList():
 
 #Command to open a stream
 def openstream(service,lvst):
-	global options
 	lvsting=''
 	lsTwitch = 'livestreamer twitch.tv/'
 	lsYoutube = 'livestreamer youtube.com/watch?v='
@@ -331,7 +323,7 @@ def timeCalc(times,timem,timeh):
 	return [times,timem,timeh]
 
 #Updates Stats
-def stattracker(lvst,times,timem,timeh):
+def stattracker(lvst,times):
 	#Updates the play count on the active streamer
 	try:
 		debug('Updateing User play count') 
@@ -355,13 +347,10 @@ def stattracker(lvst,times,timem,timeh):
 	totaldays = data['data']['timeCounters']['days']
 	debug('Converting calculated timer into int')
 	times = int(times)
-	timem = int(timem)
-	timeh = int(timeh)
 
 	debug('Adding total timers')
 	totalsec = totalsec + times
-	totalmin = totalmin + timem
-	totalhrs = totalhrs + timeh
+
 	debug(['TotalSeconds: ' + str(totalsec),
 		   'TotalMinutes: ' + str(totalmin),
 		   'TotalHours: ' + str(totalhrs),
@@ -408,10 +397,10 @@ def stattracker(lvst,times,timem,timeh):
 			totalusermin = data['data']['streamData'][lvst]['mins']
 			totaluserhrs = data['data']['streamData'][lvst]['hours']
 			totaluserdays = data['data']['streamData'][lvst]['days']
+
 			debug('Adding totals')
 			totalusersec = totalusersec + times
-			totalusermin = totalusermin + timem
-			totaluserhrs = totaluserhrs + timeh
+
 			debug(['TotalUserSeconds: ' + str(totalusersec),
 				   'TotalUserMinutes: ' + str(totalusermin),
 				   'TotalUserHours: ' + str(totaluserhrs),
@@ -419,7 +408,6 @@ def stattracker(lvst,times,timem,timeh):
 			
 			debug('Calculating Carries')
 			[totalsec,totalmin,totalhrs]=timeCalc(totalsec,totalmin,totalhrs)
-
 			while totaluserhrs > 23:
 				debug('One day over')
 				totaluserhrs = totaluserhrs - 24
@@ -430,7 +418,8 @@ def stattracker(lvst,times,timem,timeh):
 				   'TotalUserMinutes: ' + str(totalusermin),
 				   'TotalUserHours: ' + str(totaluserhrs),
 				   'TotalUserDays: ' + str(totaluserdays)])
-			debug('Setting times into json')
+
+			debug('Inserting time data into json')
 			writeToJson(['data','streamData',lvst,'secs'],totalusersec)
 			debug('seconds done')
 			data['data']['streamData'][lvst]['mins'] = totalusermin
@@ -456,7 +445,7 @@ def stattracker(lvst,times,timem,timeh):
 
 
 
-############################## print and input are not allowed above this line ##############################
+####################### print, input, and data are not allowed above this line #######################
 
 
 
@@ -474,7 +463,8 @@ def check():
 		print('')
 	debug('Individual Check done')
 
-def mainopen(times,timem,timeh):
+def mainopen():
+	times=0
 	streamError=False
 	clearscreen()
 	print(optionsopen)
@@ -515,14 +505,13 @@ def mainopen(times,timem,timeh):
 		except:
 			pass
 		times+=cmdwin(lvsting)
-		[times,timem,timeh]=timeCalc(times,timem,timeh)
 		#Prints the elapsed time
 		debug('Setting ElapsedTime String')
 		elapsedTime = str(timeh) + ':' + str(timem) + ':' + str(times)
 		print('')
 		print('Time elapsed: ' + elapsedTime)
 		print('')
-		stattracker()
+		stattracker(lvst,times)
 	else:
 		print('\nThere was a error opening the stream!')
 
@@ -609,7 +598,6 @@ def ynQuestion(prompt,default=''):
 def menu():
 	global restart
 	global options
-	[times,timem,timeh]=[0,0,0]
 
 	debug('Starting Main starter')
 	#Option input
@@ -625,7 +613,7 @@ def menu():
 		clearscreen()
 		lvstList()
 	elif option.lower() == "open":
-		mainopen()
+		[times,timem,timeh]=mainopen(times,timem,timeh)
 	elif option.lower() == "add":
 		clearscreen()
 		add()
