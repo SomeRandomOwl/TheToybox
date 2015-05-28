@@ -27,7 +27,6 @@ totalusermin = 0
 totaluserhrs = 0
 totaluserdays = 0
 statAdd = 0
-streamError = False
 jsonTemplate =  {"data": {"errorLogs": {"timesInterrupted": 0, "unRecgonizedCmds": 0, "unknownError": 0, "unsupportedServices": 0}, "logs": {"streamNum": 0, "timesRestarted": 0, "timesStarted": 0, "totalPlay": 0}, "streamData": {"streamTemplate": {"days": 0, "hours": 0, "mins": 0, "musicStream": "true", "playCount": 0, "secs": 0, "totalTime": "0 Days 0:0:0"}}}, "streams": []}
 
 def jsonCheck():
@@ -96,7 +95,7 @@ def debug(info,error=0):
 		if data['data']['errorLogs']['debug'] == 'True':
 			print(mes)
 		with open("debug.txt", "a") as myfile:
-	    	myfile.write(mes)
+			myfile.write(mes)
 
 debug('--Start--')
 streamDataTemp = data['data']['streamData']['streamTemplate']
@@ -460,26 +459,22 @@ def cmdwin(service,lvst,lvsting):#has print
 	global times
 	global lvsting
 	global options
-	global streamError
 
 	debug('Opening Stream')
-	if not streamError:
-		clearscreen()
-		print(optionsstreaming)
-		print('Opening ' + lvst + "'s stream on " + service + ".\n")
-		try:
-			print('Total times ' + lvst + " has been played: " + str(data['data']['streamData'][lvst]['playCount']) + ".\n")
-			print('Total ammount of time ' + lvst + " Has been played for: " + data['data']['streamData'][lvst]['totalTime'] + " \n")	
-		except:
-			pass
-		start = time.time()
-		os.system(lvsting)
-		end = time.time()
-		times = end - start
-		times = int(times)
-		debug('Stream Finished')
-	else:
-		print('\nThere was a error opening the stream!')
+	clearscreen()
+	print(optionsstreaming)
+	print('Opening ' + lvst + "'s stream on " + service + ".\n")
+	try:
+		print('Total times ' + lvst + " has been played: " + str(data['data']['streamData'][lvst]['playCount']) + ".\n")
+		print('Total ammount of time ' + lvst + " Has been played for: " + data['data']['streamData'][lvst]['totalTime'] + " \n")	
+	except:
+		pass
+	start = time.time()
+	os.system(lvsting)
+	end = time.time()
+	times = end - start
+	times = int(times)
+	debug('Stream Finished')
  
  #Timer calculation
 
@@ -686,6 +681,7 @@ def check():
 	debug('Individual Check done')
 
 def mainopen():
+	streamError=False
 	clearscreen()
 	print(optionsopen)
 	service = input('What stream service? (Youtube or Twitch): ')
@@ -714,10 +710,13 @@ def mainopen():
 		serviceErrorCnt = data['data']['errorLogs']['unsupportedServices']
 		serviceErrorCnt = serviceErrorCnt + 1
 		data['data']['errorLogs']['unsupportedServices'] = serviceErrorCnt
-	cmdwin()
-	if streamError != True:
+	
+	if not streamError:
+		cmdwin()
 		timeCalc()
 		stattracker()
+	else:
+		print('\nThere was a error opening the stream!')
 
 def add(username=''):
 	if username == '':
@@ -740,7 +739,7 @@ def add(username=''):
 
 	isMusicStream = input('Is this stream a music stream? (Yes or No): ')
 	if isMusicStream.lower() == 'yes':
-		setUserMusic(username):
+		setUserMusic(username)
 
 def stats():
 	clearscreen()
@@ -752,7 +751,7 @@ def stats():
 		clearscreen()
 		print(optionsstatscheck)
 		statUser = input('Who do you want to check the stats of?: ')
-		if statUser.lower() not in data['data']['streamData']
+		if statUser.lower() not in data['data']['streamData']:
 			clearscreen()
 			print(optionsstatscheck)
 			print('\nThere are no stats for this user!\n')
@@ -762,7 +761,7 @@ def stats():
 				add(statUser)
 		else:
 			clearscreen()
-			print statCheck(statWhat,statOpt,statUser)
+			print(statCheck(statWhat,statOpt,statUser))
 	elif statWhat.lower() == 'clear':
 		clearscreen()
 		print(optionsstatsclear)
