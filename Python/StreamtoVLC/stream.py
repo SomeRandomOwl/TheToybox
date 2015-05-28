@@ -613,7 +613,7 @@ def menu():
 		check()
 	elif option.lower() == "list":
 		clearscreen()
-		lvstList()
+		print lvstList()
 	elif option.lower() == "open":
 		mainopen()
 	elif option.lower() == "add":
