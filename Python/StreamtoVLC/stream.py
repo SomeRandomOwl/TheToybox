@@ -432,11 +432,8 @@ def stattracker(lvst,times,audio):
 ################
 
 def jsonWrite(d=data):
-	try:
-		with open('list.json', "w") as write_file:
-			write_file.write(json.dumps(d, sort_keys=True, indent=4, separators=(',', ': ')))
-	except:
-		print([str(sys.exc_info()), str(traceback.extract_stack())],1)
+	with open('list.json', "w") as write_file:
+		write_file.write(json.dumps(d, sort_keys=True, indent=4, separators=(',', ': ')))
 
 def jsonCheck():
 	exists = os.path.isfile('list.json')
@@ -633,7 +630,7 @@ def menuCLI():
 		checkCLI()
 	elif option.lower() == "list":
 		clearscreen()
-		print("This wight take a while...")
+		print("This might take a while...")
 		print(lvstList())
 	elif option.lower() == "open":
 		mainopenCLI()
