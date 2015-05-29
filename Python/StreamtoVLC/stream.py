@@ -52,11 +52,11 @@ def debug(info,error=0):
 		else:
 			dbg="DEBUG: "
 		mes=datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg +str(info)
-		if data['data']['errorLogs']['debug'] in [1,'1']:
+		if 1:#data['data']['errorLogs']['debug'] in [1,'1']:
 			print(mes)
 			with open("debug.txt", "a") as myfile:
 				myfile.write(mes+'\n')
-		elif error==1:
+		elif 1:#error==1:
 			with open("debug.txt", "a") as myfile:
 				myfile.write(mes+'\n')
 
