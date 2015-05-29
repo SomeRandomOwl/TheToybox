@@ -35,8 +35,6 @@ def jsonWrite():
 from tkinter import *
 from tkinter import ttk
 
-from tkinter import ttk.style
-
 import platform
 
 def main():
@@ -58,7 +56,7 @@ def main():
 		def initUI(self):
 			self.centerWindow(290,150)
 			self.parent.title("Simple")
-			self.style = Style()
+			self.style = ttk.Style()
 			self.style.theme_use("default")
 			self.pack(fill=BOTH, expand=1)
 			self.populateUI()
