@@ -54,7 +54,7 @@ def main():
 		
 		def populateUI(self):
 			quitButton = Button(self, text="Quit",command=self.quit)
-        	quitButton.place(x=50, y=50)
+			quitButton.place(x=50, y=50)
 
 		def initUI(self):
 			self.centerWindow(290,150)
