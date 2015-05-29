@@ -1,0 +1,15 @@
+{
+	"errorLogs": {
+		"debug": "True",
+		"timesInterrupted": 18,
+		"unRecgonizedCmds": 8,
+		"unknownError": 11,
+		"unsupportedServices": 5
+	},
+	"logs": {
+		"streamNum": 14,
+		"timesRestarted": 43,
+		"timesStarted": 105,
+		"totalPlay": 49
+	}
+}
