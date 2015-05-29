@@ -43,23 +43,24 @@ global listing
 #Debug function to append time stamps and write to files
 #i made only outputting text depend on the switch and outputting to log always on
 def debug(info,error=0):
-	if type(info)==type([]):
-		for a in info:
-			debug(a,error)
-	else:
-		import datetime
-		if error:
-			dbg="ERROR: "
+	if config['errorLogs']['debug'] or error:
+		if type(info)==type([]):
+			for a in info:
+				debug(a,error)
 		else:
-			dbg="DEBUG: "
-		mes=datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg +str(info)
-		if config['errorLogs']['debug'] in [1,'1']:
-			print(mes)
-			with open("debug.txt", "a") as myfile:
-				myfile.write(mes+'\n')
-		elif error==1:
-			with open("debug.txt", "a") as myfile:
-				myfile.write(mes+'\n')
+			import datetime
+			if error:
+				dbg="ERROR: "
+			else:
+				dbg="DEBUG: "
+			mes=datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg +str(info)
+			if config['errorLogs']['debug']:
+				print(mes)
+				with open("debug.txt", "a") as myfile:
+					myfile.write(mes+'\n')
+			elif error==1:
+				with open("debug.txt", "a") as myfile:
+					myfile.write(mes+'\n')
 
 
 #######################
