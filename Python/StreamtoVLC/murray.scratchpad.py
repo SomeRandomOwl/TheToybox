@@ -37,9 +37,13 @@ def jsonWrite():
 
 
 
+import platform
 
 def main():
-	from Tkinter import Tk, Frame, BOTH
+	if platform.system()=='Linux':
+		from Tkinter import Tk, Frame, BOTH
+	else:
+		from tkinter import Tk, Frame, BOTH
 	from ttk import Frame, Button, Style
 
 	class Example(Frame):
@@ -54,7 +58,7 @@ def main():
 		
 		def populateUI(self):
 			quitButton = Button(self, text="Quit",command=self.quit)
-        	quitButton.place(x=50, y=50)
+			quitButton.place(x=50, y=50)
 
 		def initUI(self):
 			self.centerWindow(290,150)
