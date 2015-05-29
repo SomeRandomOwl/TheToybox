@@ -52,7 +52,7 @@ def debug(info,error=0):
 		else:
 			dbg="DEBUG: "
 		mes=datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg +str(info)
-		if data['data']['errorLogs']['debug'] in [1,'1']:
+		if data['data']['errorLogs']['debug'] in 1:
 			print(mes)
 			with open("debug.txt", "a") as myfile:
 				myfile.write(mes+'\n')
@@ -489,7 +489,7 @@ def ynQuestion(prompt,default=''):
 	else:
 		return ynQuestion(prompt,default)
 
-def check():
+def checkCLI():
 	clearscreen()
 	debug('Individual User Status Check Started')
 	print(optionscheck)
@@ -502,7 +502,7 @@ def check():
 		print('')
 	debug('Individual Check done')
 
-def mainopen():
+def mainopenCLI():
 	times=0
 	streamError=False
 	clearscreen()
@@ -554,7 +554,7 @@ def mainopen():
 	else:
 		print('\nThere was a error opening the stream!')
 
-def add(username='',statAdd=0):
+def addCLI(username='',statAdd=0):
 	if username == '':
 		input('Name of the user to add?: ')
 	else:
@@ -577,7 +577,7 @@ def add(username='',statAdd=0):
 	if isMusicStream.lower() == 'yes':
 		setUserMusic(username)
 
-def stats():
+def statsCLI():
 	clearscreen()
 	print(optionsstatscheck)
 	statWhat = input('Which stat do you want to see? (User, Global, Error or Clear): ')
@@ -594,7 +594,7 @@ def stats():
 			debug('Done')
 			statAdd = ynQuestion('Whould you like to add this user to the tracked list?: ')
 			if statAdd:
-				add(statUser,statAdd)
+				addCLI(statUser,statAdd)
 		else:
 			clearscreen()
 			print(statCheck(statWhat,statOpt,statUser))
@@ -625,18 +625,18 @@ def menu():
 
 	#checks what option was chosen
 	if option.lower() == "check":
-		check()
+		checkCLI()
 	elif option.lower() == "list":
 		clearscreen()
 		print("This wight take a while...")
 		print(lvstList())
 	elif option.lower() == "open":
-		mainopen()
+		mainopenCLI()
 	elif option.lower() == "add":
 		clearscreen()
-		add()
+		addCLI()
 	elif option.lower() == "stats":
-		stats()
+		statsCLI()
 	elif option.lower() == "debug":
 		if data['data']['errorLogs']['debug'] == 1:
 			debug('Logging disabled')
