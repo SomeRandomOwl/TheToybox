@@ -460,7 +460,8 @@ def writeToJson(location,val,d='data',top=1):
 #                      #
 # User interface (CLI) #
 #                      #
-# Print and input      #
+# print, input and     #
+# some controll logic  #
 ########################
 
 def clearscreen():
@@ -490,7 +491,7 @@ def ynQuestion(prompt,default=''):
 	else:
 		return ynQuestion(prompt,default)
 
-def check():
+def checkCLI():
 	clearscreen()
 	debug('Individual User Status Check Started')
 	print(optionscheck)
@@ -503,7 +504,7 @@ def check():
 		print('')
 	debug('Individual Check done')
 
-def mainopen():
+def mainopenCLI():
 	times=0
 	streamError=False
 	clearscreen()
@@ -555,7 +556,7 @@ def mainopen():
 	else:
 		print('\nThere was a error opening the stream!')
 
-def add(username='',statAdd=0):
+def addCLI(username='',statAdd=0):
 	if username == '':
 		input('Name of the user to add?: ')
 	else:
@@ -578,7 +579,7 @@ def add(username='',statAdd=0):
 	if isMusicStream.lower() == 'yes':
 		setUserMusic(username)
 
-def stats():
+def statsCLI():
 	clearscreen()
 	print(optionsstatscheck)
 	statWhat = input('Which stat do you want to see? (User, Global, Error or Clear): ')
@@ -595,7 +596,7 @@ def stats():
 			debug('Done')
 			statAdd = ynQuestion('Whould you like to add this user to the tracked list?: ')
 			if statAdd:
-				add(statUser,statAdd)
+				addCLI(statUser,statAdd)
 		else:
 			clearscreen()
 			print(statCheck(statWhat,statOpt,statUser))
@@ -613,7 +614,7 @@ def stats():
 		clearscreen()
 		print (statCheck(statWhat,statOpt,statUser))
 
-def menu():
+def menuCLI():
 	global restart
 	global options
 
@@ -626,18 +627,18 @@ def menu():
 
 	#checks what option was chosen
 	if option.lower() == "check":
-		check()
+		checkCLI()
 	elif option.lower() == "list":
 		clearscreen()
 		print("This wight take a while...")
 		print(lvstList())
 	elif option.lower() == "open":
-		mainopen()
+		mainopenCLI()
 	elif option.lower() == "add":
 		clearscreen()
-		add()
+		addCLI()
 	elif option.lower() == "stats":
-		stats()
+		statsCLI()
 	elif option.lower() == "debug":
 		if data['data']['errorLogs']['debug'] == 'True':
 			debug('Logging disabled')
@@ -662,8 +663,48 @@ def menu():
 		
 	print('')
 	restart = input('Restart the Script?: ')
-	debug('Main menu end')
+	debug('Main menuCLI end')
 	return restart
+
+########################
+#                      #
+# User interface (GUI) #
+#                      #
+# TKinter              #
+########################
+
+def grfthing():
+	from tkinter import *
+	from tkinter import ttk
+	
+	root = Tk()
+	root.title("Stream to VLC")
+	
+	mainframe = ttk.Frame(root, padding="12 12 12 12")
+	mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+	mainframe.columnconfigure(0, weight=1)
+	mainframe.rowconfigure(0, weight=1)
+	
+	feet = StringVar()
+	meters = StringVar()
+	
+	ttk.Button(mainframe, text="Open", command=open).grid(column=2, row=3, sticky=W)
+	ttk.Button(mainframe, text="List", command=lvstList).grid(column=3, row=3, sticky=W)
+	ttk.Button(mainframe, text="Check", command=check).grid(column=4, row=3, sticky=W)
+	ttk.Button(mainframe, text="Add", command=userAdd).grid(column=5, row=3, sticky=W)
+	
+	ttk.Label(mainframe, text=options).grid(column=1, row=1, sticky=W)
+	#ttk.Label(mainframe, text="feet").grid(column=3, row=1, sticky=W)
+	ttk.Label(mainframe, text="Things!").grid(column=1, row=1, sticky=E)
+	ttk.Label(mainframe, text="Yey Tests!").grid(column=1, row=2, sticky=W)
+	
+	for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
+	
+	#feet_entry.focus()
+	root.bind('<Return>', calculate)
+	
+	root.mainloop()
+
 
 #################################
 #                               #
@@ -853,7 +894,7 @@ def main():
 	while restart.lower() in ["yes","y"]:
 		try:
 			debug('Restarting Script')
-			restart=menu()
+			restart=menuCLI()
 			if restart.lower() in ["yes","y"]:
 				clearscreen()
 				
