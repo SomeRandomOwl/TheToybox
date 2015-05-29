@@ -675,7 +675,51 @@ def menuCLI():
 
 
 def menuGUI():
-	pass
+	from tkinter import *
+
+	class Example(Frame):
+
+		def centerWindow(self,windowWidth,windoHeight):
+			screenwidth = self.parent.winfo_screenwidth()
+			screenheight = self.parent.winfo_screenheight()
+			
+			xpos = (screenwidth - windowWidth)/2
+			ypos = (screenheight - windoHeight)/2
+			self.parent.geometry('%dx%d+%d+%d' % (windowWidth, windoHeight, xpos, ypos))
+		
+		def populateUI(self,mainframe):
+			quitButton = Button(self, text="Quit",command=self.quit)
+			quitButton.place(x=200, y=100)
+			#ttk.Button(mainframe, text="Open", command=open).grid(column=2, row=3, sticky=W)
+			#ttk.Button(mainframe, text="List", command=lvstList).grid(column=3, row=3, sticky=W)
+			#ttk.Button(mainframe, text="Check", command=check).grid(column=4, row=3, sticky=W)
+			#ttk.Button(mainframe, text="Add", command=userAdd).grid(column=5, row=3, sticky=W)
+			#ttk.Label(mainframe, text=options).grid(column=1, row=1, sticky=W)
+			##ttk.Label(mainframe, text="feet").grid(column=3, row=1, sticky=W)
+			#ttk.Label(mainframe, text="Things!").grid(column=1, row=1, sticky=E)
+			#ttk.Label(mainframe, text="Yey Tests!").grid(column=1, row=2, sticky=W)
+			#for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
+
+		def initUI(self):
+			self.centerWindow(290,150)
+			self.title("Stream to VLC")
+			self.style = ttk.Style()
+			self.style.theme_use("default")
+			self.pack(fill=BOTH, expand=1)
+			#mainframe = ttk.Frame(root, padding="12 12 12 12")
+			#mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+			#mainframe.columnconfigure(0, weight=1)
+			#mainframe.rowconfigure(0, weight=1)
+			self.populateUI()#mainframe)
+
+		def __init__(self, parent):
+			Frame.__init__(self, parent, background="white")
+			self.parent = parent
+			self.initUI()
+
+	root = Tk()
+	app = Example(root)
+	root.mainloop()
 
 def grfthing():
 	from tkinter import *
