@@ -65,3 +65,55 @@
 [2015-05-28T16:53:41] DEBUG: Start Count Added Onto
 [2015-05-28T16:53:41] DEBUG: Restarting Script
 [2015-05-28T16:53:41] DEBUG: Starting Main starter
+[2015-05-28T16:57:04] DEBUG: --Start--
+[2015-05-28T16:57:04] DEBUG: Start Count Added Onto
+[2015-05-28T16:57:04] DEBUG: Restarting Script
+[2015-05-28T16:57:04] DEBUG: Starting Main starter
+[2015-05-28T16:57:07] DEBUG: User List started
+[2015-05-28T16:57:07] DEBUG: StreamNum Updateing
+[2015-05-28T16:57:07] DEBUG: StreamNum Updated
+[2015-05-28T16:57:07] DEBUG: Retriveing User Status
+[2015-05-28T16:57:08] DEBUG: User Status Retrived
+[2015-05-28T16:57:08] DEBUG: Retriveing User Status
+[2015-05-28T16:57:09] DEBUG: User Status Retrived
+[2015-05-28T16:57:09] DEBUG: Processing User Status
+[2015-05-28T16:57:09] DEBUG: Retriveing User Status
+[2015-05-28T16:57:09] DEBUG: User Status Retrived
+[2015-05-28T16:57:09] DEBUG: User Status Processed
+[2015-05-28T16:57:09] DEBUG: Retriveing User Status
+[2015-05-28T16:57:10] DEBUG: User Status Retrived
+[2015-05-28T16:57:10] DEBUG: Processing User Status
+[2015-05-28T16:57:10] DEBUG: Retriveing User Status
+[2015-05-28T16:57:10] DEBUG: User Status Retrived
+[2015-05-28T16:57:10] DEBUG: User Status Processed
+[2015-05-28T16:57:10] DEBUG: Retriveing User Status
+[2015-05-28T16:57:10] DEBUG: User Status Retrived
+[2015-05-28T16:57:10] DEBUG: Processing User Status
+[2015-05-28T16:57:10] DEBUG: Retriveing User Status
+[2015-05-28T16:57:11] DEBUG: User Status Retrived
+[2015-05-28T16:57:11] DEBUG: User Status Processed
+[2015-05-28T16:57:11] DEBUG: Retriveing User Status
+[2015-05-28T16:57:11] DEBUG: User Status Retrived
+[2015-05-28T16:57:11] DEBUG: Retriveing User Status
+[2015-05-28T16:57:12] DEBUG: User Status Retrived
+[2015-05-28T16:57:12] DEBUG: Retriveing User Status
+[2015-05-28T16:57:12] DEBUG: User Status Retrived
+[2015-05-28T16:57:12] DEBUG: Retriveing User Status
+[2015-05-28T16:57:12] DEBUG: User Status Retrived
+[2015-05-28T16:57:12] DEBUG: Retriveing User Status
+[2015-05-28T16:57:13] DEBUG: User Status Retrived
+[2015-05-28T16:57:13] DEBUG: Retriveing User Status
+[2015-05-28T16:57:13] DEBUG: User Status Retrived
+[2015-05-28T16:57:13] DEBUG: Retriveing User Status
+[2015-05-28T16:57:14] DEBUG: User Status Retrived
+[2015-05-28T16:57:14] DEBUG: Retriveing User Status
+[2015-05-28T16:57:14] DEBUG: User Status Retrived
+[2015-05-28T16:57:14] DEBUG: Processing User Status
+[2015-05-28T16:57:14] DEBUG: Retriveing User Status
+[2015-05-28T16:57:15] DEBUG: User Status Retrived
+[2015-05-28T16:57:15] DEBUG: User Status Processed
+[2015-05-28T16:57:15] DEBUG: Retriveing User Status
+[2015-05-28T16:57:15] DEBUG: User Status Retrived
+[2015-05-28T16:57:15] DEBUG: Retriveing User Status
+[2015-05-28T16:57:15] DEBUG: User Status Retrived
+[2015-05-28T17:14:02] DEBUG: Main menu end
