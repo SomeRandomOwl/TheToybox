@@ -4,7 +4,11 @@
 ## This python program is used to open streams in vlc media player                                      ##
 ##------------------------------------------------------------------------------------------------------##
 
-##Start##
+
+#############################
+#  Imports and Debug tools  #
+#############################
+
 
 #Loading modules the script relies on
 import time
@@ -22,24 +26,6 @@ global jsonTemplate
 
 global data
 
-def jsonCheck():
-	test = os.path.isfile('list.json')
-	if test == False:
-		debug('List.json Not Found, Creating...')
-		fname = "list.json"
-		with open(fname, 'w') as fout:
-			fout.write(json.dumps(jsonTemplate, sort_keys=True, indent=4, separators=(',', ': ')))
-			fout.close()
-		
-	elif test:
-		debug('List.json Found, Continueing...')
-
-def clearscreen():
-	if platform.system()=='Linux':
-		os.system('clear')
-	else:
-		os.system('cls')
-
 #Menu Prompts
 global options
 global optionsstreaming
@@ -52,23 +38,6 @@ global optionsstatscheck
 global optionsstatsclear
 global optionsadd
 global listing
-	
-def jsonWrite():
-	with open('list.json', "w") as write_file:
-		write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
-
-def writeToJson(location,val,d='data',top=1):
-	if location==[]:
-		d=val
-		return d
-	else:
-		if type(d)==type(''):
-			globals()[d][location[0]]=writeToJson(location[1:],val,globals()[d][location[0]],0)
-		else:
-			d[location[0]]=writeToJson(location[1:],val,d[location[0]],0)
-			return d
-		if top:
-			jsonWrite()
 
 #Debug function to append time stamps and write to files
 #i made only outputting text depend on the switch and outputting to log always on
@@ -90,6 +59,11 @@ def debug(info,error=0):
 		elif error==1:
 			with open("debug.txt", "a") as myfile:
 				myfile.write(mes+'\n')
+
+
+#######################
+#  Data Manipulation  #
+#######################
 
 #Defines the program to check a users status
 def check_user(user):
@@ -446,12 +420,76 @@ def stattracker(lvst,times,audio):
 	debug('Stat Tracking Done')
 
 
+################ IO is not allowed above this line ################
+#              #
+# OS things    #
+#              #
+# File         #
+################
 
-####################### print and input are not allowed above this line #######################
+def jsonCheck():
+	test = os.path.isfile('list.json')
+	if test == False:
+		debug('List.json Not Found, Creating...')
+		fname = "list.json"
+		with open(fname, 'w') as fout:
+			fout.write(json.dumps(jsonTemplate, sort_keys=True, indent=4, separators=(',', ': ')))
+			fout.close()
+		
+	elif test:
+		debug('List.json Found, Continueing...')
 
+def jsonWrite():
+	with open('list.json', "w") as write_file:
+		write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
 
+def writeToJson(location,val,d='data',top=1):
+	if location==[]:
+		d=val
+		return d
+	else:
+		if type(d)==type(''):
+			globals()[d][location[0]]=writeToJson(location[1:],val,globals()[d][location[0]],0)
+		else:
+			d[location[0]]=writeToJson(location[1:],val,d[location[0]],0)
+			return d
+		if top:
+			jsonWrite()
 
-#Individual user status check
+######################## print and input are not allowed above this line #######################
+#                      #
+# User interface (CLI) #
+#                      #
+# Print and input      #
+########################
+
+def clearscreen():
+	if platform.system()=='Linux':
+		os.system('clear')
+	else:
+		os.system('cls')
+
+def ynQuestion(prompt,default=''):
+	prompt=str(prompt)
+	default=str(default)
+
+	if default.lower() in ['y','yes','1']:
+		answer = input(prompt+' [Yes/no]: ')
+	elif default.lower() in ['n','no','0']:
+		answer = input(prompt+' [yes/No]: ')
+	else:
+		answer = input(prompt+' [yes/no]: ')
+	
+	if answer=='':
+		answer=default
+	
+	if answer.lower() in ['y','yes','1']:
+		return 1
+	elif answer.lower() in ['n','no','0']:
+		return 0
+	else:
+		return ynQuestion(prompt,default)
+
 def check():
 	clearscreen()
 	debug('Individual User Status Check Started')
@@ -496,7 +534,7 @@ def mainopen():
 		serviceErrorCnt = data['data']['errorLogs']['unsupportedServices']
 		serviceErrorCnt = serviceErrorCnt + 1
 		data['data']['errorLogs']['unsupportedServices'] = serviceErrorCnt
-	
+
 	if not streamError:
 		clearscreen()
 		print(optionsstreaming)
@@ -575,28 +613,6 @@ def stats():
 		clearscreen()
 		print (statCheck(statWhat,statOpt,statUser))
 
-def ynQuestion(prompt,default=''):
-	prompt=str(prompt)
-	default=str(default)
-
-	if default.lower() in ['y','yes','1']:
-		answer = input(prompt+' [Yes/no]: ')
-	elif default.lower() in ['n','no','0']:
-		answer = input(prompt+' [yes/No]: ')
-	else:
-		answer = input(prompt+' [yes/no]: ')
-	
-	if answer=='':
-		answer=default
-	
-	if answer.lower() in ['y','yes','1']:
-		return 1
-	elif answer.lower() in ['n','no','0']:
-		return 0
-	else:
-		return ynQuestion(prompt,default)
-
-#Main Starter
 def menu():
 	global restart
 	global options
@@ -648,6 +664,14 @@ def menu():
 	restart = input('Restart the Script?: ')
 	debug('Main menu end')
 	return restart
+
+#################################
+#                               #
+# Code flow crontroll           #
+#                               #
+# only calls to other functions #
+# and controll structures       #
+#################################
 
 def init():
 	global data
