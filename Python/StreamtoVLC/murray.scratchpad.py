@@ -42,9 +42,10 @@ import platform
 def main():
 	if platform.system()=='Linux':
 		from Tkinter import Tk, Frame, BOTH
+		from ttk import Frame, Button, Style
 	else:
 		from tkinter import Tk, Frame, BOTH
-	from ttk import Frame, Button, Style
+		from tkinter.ttk import Frame, Button, Style
 
 	class Example(Frame):
 
