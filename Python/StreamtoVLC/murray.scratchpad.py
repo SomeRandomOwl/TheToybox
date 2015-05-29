@@ -32,20 +32,14 @@ def jsonWrite():
 
 
 
+from tkinter import *
+from tkinter import ttk
 
-
-
-
+from tkinter import ttk.style
 
 import platform
 
 def main():
-	if platform.system()=='Linux':
-		from Tkinter import Tk, Frame, BOTH
-		from ttk import Frame, Button, Style
-	else:
-		from tkinter import Tk, Frame, BOTH
-		from tkinter.ttk import Frame, Button, Style
 
 	class Example(Frame):
 
