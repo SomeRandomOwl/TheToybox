@@ -8,7 +8,6 @@ ftpsync.settings
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 *.sublime-workspace
-list.json
 debug.txt
 # Windows Installer files
 *.cab
