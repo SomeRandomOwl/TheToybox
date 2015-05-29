@@ -52,14 +52,13 @@ def debug(info,error=0):
 		else:
 			dbg="DEBUG: "
 		mes=datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg +str(info)
-		if 1:#data['data']['errorLogs']['debug'] in [1,'1']:
+		if data['data']['errorLogs']['debug'] in [1,'1']:
 			print(mes)
 			with open("debug.txt", "a") as myfile:
 				myfile.write(mes+'\n')
-		elif 1:#error==1:
+		elif error==1:
 			with open("debug.txt", "a") as myfile:
 				myfile.write(mes+'\n')
-
 
 #######################
 #  Data Manipulation  #
@@ -163,7 +162,7 @@ def statCheck(statWhat,statOpt,statUser):
 		out+='\nThe total of unsupported services entered is:  ' + str(data['data']['errorLogs']['unsupportedServices'])
 		out+='\nThe total ammount of unrecgonized commands entered is: ' + str(data['data']['errorLogs']['unRecgonizedCmds'])
 		out+='\nThe total number of Unknown Errors encountered: ' + str(data['data']['errorLogs']['unknownError'])
-		if data['data']['errorLogs']['debug'] == 'True' :
+		if data['data']['errorLogs']['debug'] == 1 :
 			out+='\nCurrently in Debug Mode!'
 	elif statWhat.lower() == 'clear':
 		if statOpt.lower() == 'global':
@@ -639,13 +638,13 @@ def menu():
 	elif option.lower() == "stats":
 		stats()
 	elif option.lower() == "debug":
-		if data['data']['errorLogs']['debug'] == 'True':
+		if data['data']['errorLogs']['debug'] == 1:
 			debug('Logging disabled')
 			debug('--End--')
-			data['data']['errorLogs']['debug'] = "False"
+			data['data']['errorLogs']['debug'] = 0
 			print('Debug Set to False')
 		else:#if data['data']['errorLogs']['debug'] == 'False':
-			data['data']['errorLogs']['debug'] = "True"
+			data['data']['errorLogs']['debug'] = 1
 			debug('--Start--')
 			debug('Logging enabled')
 			print('Debug set to True')
