@@ -62,7 +62,6 @@ def debug(info,error=0):
 				with open("debug.txt", "a") as myfile:
 					myfile.write(mes+'\n')
 
-
 #######################
 #  Data Manipulation  #
 #######################
@@ -363,7 +362,10 @@ def stattracker(lvst,times,audio):
 	totalhrs = str(totalhrs)
 	totaldays = str(totaldays)
 	debug('Combining strings')
-	totalelapsed = totaldays + " Days " + totalhrs + ":" + totalmin + ":" + totalsec
+	if totaldays==1:
+		totalelapsed = totaldays + " Day " + totalhrs + ":" + totalmin + ":" + totalsec
+	else:
+		totalelapsed = totaldays + " Days " + totalhrs + ":" + totalmin + ":" + totalsec
 	debug('Setting time string into json')
 	data['timeCounters']['totalTime'] = totalelapsed
 
@@ -398,7 +400,7 @@ def stattracker(lvst,times,audio):
 				   'TotalUserDays: ' + str(totaluserdays)])
 
 			debug('Inserting time data into json')
-			writeToJson(['data','streamData',lvst,'secs'],totalusersec)
+			writeToJson(['streamData',lvst,'secs'],totalusersec)
 			debug('seconds done')
 			data['streamData'][lvst]['mins'] = totalusermin
 			debug('Minutes done')
@@ -429,21 +431,17 @@ def stattracker(lvst,times,audio):
 # File         #
 ################
 
-def jsonCheck():
-	test = os.path.isfile('list.json')
-	if test == False:
-		debug('List.json Not Found, Creating...')
-		fname = "list.json"
-		with open(fname, 'w') as fout:
-			fout.write(json.dumps(jsonTemplate, sort_keys=True, indent=4, separators=(',', ': ')))
-			fout.close()
-		
-	elif test:
-		debug('List.json Found, Continueing...')
-
-def jsonWrite():
+def jsonWrite(d=data):
 	with open('list.json', "w") as write_file:
-		write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
+		write_file.write(json.dumps(d, sort_keys=True, indent=4, separators=(',', ': ')))
+
+def jsonCheck():
+	exists = os.path.isfile('list.json')
+	if not exists:
+		debug('List.json Not Found, Creating...')
+		jsonWrite(jsonTemplate)
+	else:
+		debug('List.json Found, Continueing...')
 
 def writeToJson(location,val,d='data',top=1):
 	if location==[]:
@@ -675,6 +673,10 @@ def menuCLI():
 # TKinter              #
 ########################
 
+
+def menuGUI():
+	pass
+
 def grfthing():
 	from tkinter import *
 	from tkinter import ttk
@@ -707,7 +709,6 @@ def grfthing():
 
 	root.mainloop()
 
-
 #################################
 #                               #
 # Code flow crontroll           #
@@ -736,7 +737,7 @@ def init():
 	streamDataTemp = data['streamData']['streamTemplate']
 	startCount = config['logs']['timesStarted']
 	startCount = startCount + 1
-	writeToJson(['data','logs','timesStarted'],startCount)
+	writeToJson(['logs','timesStarted'],startCount,'config')
 	debug('Start Count Added Onto')
 
 	#Menu Prompts
@@ -885,12 +886,10 @@ def terminate():
 	print('')
 	input("Press Enter to continue...")
 
+	jsonWrite()
+
 	debug('Terminating')
 	debug('--End--')
-
-	#write To the json file
-	with open('list.json', "w") as write_file:
-		write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
 
 def main():
 	init()
@@ -900,7 +899,10 @@ def main():
 	while restart.lower() in ["yes","y"]:
 		try:
 			debug('Restarting Script')
-			restart=menuCLI()
+			if config['gui']:
+				restart=menuGUI()
+			else:
+				restart=menuCLI()
 			if restart.lower() in ["yes","y"]:
 				clearscreen()
 				
