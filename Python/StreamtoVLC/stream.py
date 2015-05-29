@@ -674,8 +674,10 @@ def menuCLI():
 ########################
 
 
-def menuGUI():
+if config['gui']:
 	from tkinter import *
+
+def menuGUI():
 
 	class Example(Frame):
 
