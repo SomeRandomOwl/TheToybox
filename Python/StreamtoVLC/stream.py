@@ -299,7 +299,7 @@ def timeCalc(times,timem,timeh):
 	return [times,timem,timeh]
 
 #Updates Stats
-def stattracker(lvst,times,audio):
+def stattracker(lvst,times):
 	#Updates the play count on the active streamer
 	try:
 		debug('Updateing User play count') 
