@@ -137,6 +137,7 @@ def setUserMusic(username):
 	data['data']['streamData'][username]['musicStream'] = 'true'
 
 def statCheck(statWhat,statOpt,statUser):
+	global data
 	out=''
 	debug('Stat Check Started')
 	statAdd = 0
