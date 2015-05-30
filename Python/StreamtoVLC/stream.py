@@ -557,6 +557,8 @@ def mainopenCLI():
 		print('\nThere was a error opening the stream!')
 
 def addCLI(username='',statAdd=0):
+	clearscreen()
+	print(optionsadd)
 	if username == '':
 		input('Name of the user to add?: ')
 	else:
@@ -635,7 +637,6 @@ def menuCLI():
 	elif option.lower() == "open":
 		mainopenCLI()
 	elif option.lower() == "add":
-		clearscreen()
 		addCLI()
 	elif option.lower() == "stats":
 		statsCLI()
@@ -671,7 +672,7 @@ def menuCLI():
 # Code flow control             #
 #                               #
 # only calls to other functions #
-# and controll structures       #
+# and control structures        #
 #################################
 
 def init():
