@@ -25,6 +25,7 @@ import signal
 global jsonTemplate
 
 global data
+global config
 
 #Menu Prompts
 global options
@@ -42,24 +43,24 @@ global listing
 #Debug function to append time stamps and write to files
 #i made only outputting text depend on the switch and outputting to log always on
 def debug(info,error=0):
-	if type(info)==type([]):
-		for a in info:
-			debug(a,error)
-	else:
-		import datetime
-		if error:
-			dbg="ERROR: "
+	if config['errorLogs']['debug'] or error:
+		if type(info)==type([]):
+			for a in info:
+				debug(a,error)
 		else:
-			dbg="DEBUG: "
-		mes=datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg +str(info)
-		if data['data']['errorLogs']['debug'] in [1,'1']:
-			print(mes)
-			with open("debug.txt", "a") as myfile:
-				myfile.write(mes+'\n')
-		elif error==1:
-			with open("debug.txt", "a") as myfile:
-				myfile.write(mes+'\n')
-
+			import datetime
+			if error:
+				dbg="ERROR: "
+			else:
+				dbg="DEBUG: "
+			mes=datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg +str(info)
+			if config['errorLogs']['debug']:
+				print(mes)
+				with open("debug.txt", "a") as myfile:
+					myfile.write(mes+'\n')
+			elif error==1:
+				with open("debug.txt", "a") as myfile:
+					myfile.write(mes+'\n')
 
 #######################
 #  Data Manipulation  #
@@ -109,7 +110,7 @@ def userAdd(username,statAdd):
 	if statAdd:
 		array = data['streams']
 		array.append(statwho.lower())
-		data['data']['streamData'][statwho.lower()] = streamDataTemp
+		data['streamData'][statwho.lower()] = streamDataTemp
 		debug('Short User Add Done')
 		debug('Counting Usernames')
 	else:
@@ -121,7 +122,7 @@ def userAdd(username,statAdd):
 	#debug('Username Count Printed')
 	array = data['streams']
 	array.append(username.lower())
-	data['data']['streamData'][username.lower()] = streamDataTemp
+	data['streamData'][username.lower()] = streamDataTemp
 	debug('User added')
 	#why was this done as a loop?
 	datanum=len(data["streams"])
@@ -129,12 +130,12 @@ def userAdd(username,statAdd):
 		#datanum = i
 	debug('User Music Status added')
 	datanum = datanum + 1
-	data['data']['logs']['streamNum'] = datanum
+	config['logs']['streamNum'] = datanum
 	debug('StreamNum Updated')
 	return allRecords
 
 def setUserMusic(username):
-	data['data']['streamData'][username]['musicStream'] = 'true'
+	data['streamData'][username]['musicStream'] = 'true'
 
 def statCheck(statWhat,statOpt,statUser):
 	out=''
@@ -142,45 +143,45 @@ def statCheck(statWhat,statOpt,statUser):
 	statAdd = 0
 	if statWhat.lower() == 'user':
 		debug('Retriveing User Stats')
-		out+="\nThis stream has been played: " + str(data['data']['streamData'][statUser.lower()]['playCount'])
-		out+="\nThis stream has been played for a total of: " + data['data']['streamData'][statUser.lower()]['totalTime']
-		if data['data']['streamData'][statUser.lower()]['musicStream'] == 'true':
+		out+="\nThis stream has been played: " + str(data['streamData'][statUser.lower()]['playCount'])
+		out+="\nThis stream has been played for a total of: " + data['streamData'][statUser.lower()]['totalTime']
+		if data['streamData'][statUser.lower()]['musicStream'] == 'true':
 			out+='\nThis stream is also marked as a music stream'
 		debug('Done')
 	elif statWhat.lower() == 'global':
 		out+=optionsstatscheck
 		debug('Checking Global Stats')
-		out+='\nThe total ammount of streams played is: ' + str(data['data']['logs']['totalPlay'])
-		out+='\nTheres a total of: ' + str(data['data']['logs']['streamNum']) + ' streams being tracked.'
-		out+='\nThe total ammount of time the streams have been played for is: ' + data['data']['timeCounters']['totalTime']
-		out+='\nThe script has been started: ' + str(data['data']['logs']['timesStarted']) + ' times.'
-		out+='\nThe script has been restarted: ' + str(data['data']['logs']['timesRestarted']) + ' times.'
+		out+='\nThe total ammount of streams played is: ' + str(config['logs']['totalPlay'])
+		out+='\nTheres a total of: ' + str(config['logs']['streamNum']) + ' streams being tracked.'
+		out+='\nThe total ammount of time the streams have been played for is: ' + data['timeCounters']['totalTime']
+		out+='\nThe script has been started: ' + str(config['logs']['timesStarted']) + ' times.'
+		out+='\nThe script has been restarted: ' + str(config['logs']['timesRestarted']) + ' times.'
 		debug('Done')
 	elif statWhat.lower() == 'error':
 		out+=optionsstatscheck
 		debug('Checking Error Stats')
-		out+='\nThe total ammount of times the script has been interuppted is: ' + str(data['data']['errorLogs']['timesInterrupted'])
-		out+='\nThe total of unsupported services entered is:  ' + str(data['data']['errorLogs']['unsupportedServices'])
-		out+='\nThe total ammount of unrecgonized commands entered is: ' + str(data['data']['errorLogs']['unRecgonizedCmds'])
-		out+='\nThe total number of Unknown Errors encountered: ' + str(data['data']['errorLogs']['unknownError'])
-		if data['data']['errorLogs']['debug'] == 'True' :
+		out+='\nThe total ammount of times the script has been interuppted is: ' + str(config['errorLogs']['timesInterrupted'])
+		out+='\nThe total of unsupported services entered is:  ' + str(config['errorLogs']['unsupportedServices'])
+		out+='\nThe total ammount of unrecgonized commands entered is: ' + str(config['errorLogs']['unRecgonizedCmds'])
+		out+='\nThe total number of Unknown Errors encountered: ' + str(config['errorLogs']['unknownError'])
+		if config['errorLogs']['debug'] == 'True' :
 			out+='\nCurrently in Debug Mode!'
 	elif statWhat.lower() == 'clear':
 		if statOpt.lower() == 'global':
 			out+=optionsstatsclear
 			debug('Global Stat Clear')
-			data['data']['logs']['totalPlay'] = 0
-			data['data']['timeCounters']['totalTime'] = "0 Days 0:0:0"
-			data['data']['timeCounters']['secs'] = 0
-			data['data']['timeCounters']['mins'] = 0
-			data['data']['timeCounters']['hours'] = 0
-			data['data']['timeCounters']['days'] = 0
+			config['logs']['totalPlay'] = 0
+			data['timeCounters']['totalTime'] = "0 Days 0:0:0"
+			data['timeCounters']['secs'] = 0
+			data['timeCounters']['mins'] = 0
+			data['timeCounters']['hours'] = 0
+			data['timeCounters']['days'] = 0
 			out+='\nStat Clear Done!\n'
 			debug('Done')
 		elif statOpt.lower() == 'user':
 			out+=optionsstatsclear
 			debug('User Stat Clear')
-			data['data']['streamData'][statUser] = streamDataTemp
+			data['streamData'][statUser] = streamDataTemp
 			out+='\nStat clear done!'
 			debug('Done')
 		elif statOpt.lower() == 'erase':
@@ -196,9 +197,9 @@ def statCheck(statWhat,statOpt,statUser):
 	elif not statWhat:
 		print('No command Entered!')
 	else:
-		unrecgonizedCmd = data['data']['errorLogs']['unRecgonizedCmds']
+		unrecgonizedCmd = config['errorLogs']['unRecgonizedCmds']
 		unrecgonizedCmd = unrecgonizedCmd + 1
-		data['data']['errorLogs']['unRecgonizedCmds'] = unrecgonizedCmd
+		config['errorLogs']['unRecgonizedCmds'] = unrecgonizedCmd
 		print("\n\n----------\nOption Not Recgonized\n-----------\n\n")
 	debug('Stat Check Done')
 	return out
@@ -217,7 +218,7 @@ def lvstList():
 	debug('StreamNum Updateing')
 	datanum = datanum + 1
 	datanum = str(datanum)
-	data['data']['logs']['streamNum'] = int(datanum)
+	config['logs']['streamNum'] = int(datanum)
 	debug('StreamNum Updated')
 	out+='There are ' + datanum + ' streams on being tracked.\n\nDisplaying Online Users'
 	for i in range(len(data["streams"])):
@@ -239,7 +240,7 @@ def openstream(service,lvst,audio):
 	#Process to use for twitch streams
 	if service.lower() == 'twitch':
 		try:
-			audioOnly = data['data']['streamData'][lvst.lower()]['musicStream']
+			audioOnly = data['streamData'][lvst.lower()]['musicStream']
 			if audioOnly == 'true':
 				clearscreen()
 				print(optionsopenaudio)
@@ -303,24 +304,24 @@ def stattracker(lvst,times,audio):
 	#Updates the play count on the active streamer
 	try:
 		debug('Updateing User play count') 
-		playnum = data['data']['streamData'][lvst]['playCount']
+		playnum = data['streamData'][lvst]['playCount']
 		playnum = playnum + 1
-		data['data']['streamData'][lvst]['playCount'] = playnum
+		data['streamData'][lvst]['playCount'] = playnum
 		debug('Play count added')
 	except:
 		pass
 
 	#Updates the total play count for all streams
 	debug('Getting total play counters')
-	totalplay = data['data']['logs']['totalPlay']
+	totalplay = config['logs']['totalPlay']
 	totalplay = totalplay + 1
-	data['data']['logs']['totalPlay'] = totalplay
+	config['logs']['totalPlay'] = totalplay
 	debug('Getting total time counters')
 	#Updates overall time totals
-	totalsec = data['data']['timeCounters']['secs']
-	totalmin = data['data']['timeCounters']['mins']
-	totalhrs = data['data']['timeCounters']['hours']
-	totaldays = data['data']['timeCounters']['days']
+	totalsec = data['timeCounters']['secs']
+	totalmin = data['timeCounters']['mins']
+	totalhrs = data['timeCounters']['hours']
+	totaldays = data['timeCounters']['days']
 	debug('Converting calculated timer into int')
 	times = int(times)
 
@@ -347,13 +348,13 @@ def stattracker(lvst,times,audio):
 		   'TotalDays: ' + str(totaldays)])
 
 	debug('Inserting time data into json')
-	data['data']['timeCounters']['secs'] = totalsec
+	data['timeCounters']['secs'] = totalsec
 	debug('Seconds done')
-	data['data']['timeCounters']['mins'] = totalmin
+	data['timeCounters']['mins'] = totalmin
 	debug('Minutes done')
-	data['data']['timeCounters']['hours'] = totalhrs
+	data['timeCounters']['hours'] = totalhrs
 	debug('Hours done')
-	data['data']['timeCounters']['days'] = totaldays
+	data['timeCounters']['days'] = totaldays
 	debug('Days done')
 	debug('Converting times to strings')
 	totalsec = str(totalsec)
@@ -361,18 +362,21 @@ def stattracker(lvst,times,audio):
 	totalhrs = str(totalhrs)
 	totaldays = str(totaldays)
 	debug('Combining strings')
-	totalelapsed = totaldays + " Days " + totalhrs + ":" + totalmin + ":" + totalsec
+	if totaldays==1:
+		totalelapsed = totaldays + " Day " + totalhrs + ":" + totalmin + ":" + totalsec
+	else:
+		totalelapsed = totaldays + " Days " + totalhrs + ":" + totalmin + ":" + totalsec
 	debug('Setting time string into json')
-	data['data']['timeCounters']['totalTime'] = totalelapsed
+	data['timeCounters']['totalTime'] = totalelapsed
 
 	#Updates user time totals
 	if service.lower() == 'twitch':
 		try:
 			debug('Pulling user totals')
-			totalusersec = data['data']['streamData'][lvst]['secs']
-			totalusermin = data['data']['streamData'][lvst]['mins']
-			totaluserhrs = data['data']['streamData'][lvst]['hours']
-			totaluserdays = data['data']['streamData'][lvst]['days']
+			totalusersec = data['streamData'][lvst]['secs']
+			totalusermin = data['streamData'][lvst]['mins']
+			totaluserhrs = data['streamData'][lvst]['hours']
+			totaluserdays = data['streamData'][lvst]['days']
 
 			debug('Adding totals')
 			totalusersec = totalusersec + times
@@ -396,13 +400,13 @@ def stattracker(lvst,times,audio):
 				   'TotalUserDays: ' + str(totaluserdays)])
 
 			debug('Inserting time data into json')
-			writeToJson(['data','streamData',lvst,'secs'],totalusersec)
+			writeToJson(['streamData',lvst,'secs'],totalusersec)
 			debug('seconds done')
-			data['data']['streamData'][lvst]['mins'] = totalusermin
+			data['streamData'][lvst]['mins'] = totalusermin
 			debug('Minutes done')
-			data['data']['streamData'][lvst]['hours'] = totaluserhrs
+			data['streamData'][lvst]['hours'] = totaluserhrs
 			debug('Hours done')
-			data['data']['streamData'][lvst]['days'] = totaluserdays
+			data['streamData'][lvst]['days'] = totaluserdays
 			debug('Days done')
 			debug('Converting times to strings')
 
@@ -414,7 +418,7 @@ def stattracker(lvst,times,audio):
 			debug('Adding string togther')
 			totaluserelapsed = totaluserdays + " Days " + totaluserhrs + ":" + totalusermin + ":" + totalusersec
 			debug('Setting string in json')
-			data['data']['streamData'][lvst]['totalTime'] = totaluserelapsed
+			data['streamData'][lvst]['totalTime'] = totaluserelapsed
 		except:
 			pass
 	debug('Stat Tracking Done')
@@ -427,21 +431,17 @@ def stattracker(lvst,times,audio):
 # File         #
 ################
 
-def jsonCheck():
-	test = os.path.isfile('list.json')
-	if test == False:
-		debug('List.json Not Found, Creating...')
-		fname = "list.json"
-		with open(fname, 'w') as fout:
-			fout.write(json.dumps(jsonTemplate, sort_keys=True, indent=4, separators=(',', ': ')))
-			fout.close()
-		
-	elif test:
-		debug('List.json Found, Continueing...')
-
-def jsonWrite():
+def jsonWrite(d=data):
 	with open('list.json', "w") as write_file:
-		write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
+		write_file.write(json.dumps(d, sort_keys=True, indent=4, separators=(',', ': ')))
+
+def jsonCheck():
+	exists = os.path.isfile('list.json')
+	if not exists:
+		debug('List.json Not Found, Creating...')
+		jsonWrite(jsonTemplate)
+	else:
+		debug('List.json Found, Continueing...')
 
 def writeToJson(location,val,d='data',top=1):
 	if location==[]:
@@ -460,7 +460,8 @@ def writeToJson(location,val,d='data',top=1):
 #                      #
 # User interface (CLI) #
 #                      #
-# Print and input      #
+# print, input and     #
+# some controll logic  #
 ########################
 
 def clearscreen():
@@ -490,7 +491,7 @@ def ynQuestion(prompt,default=''):
 	else:
 		return ynQuestion(prompt,default)
 
-def check():
+def checkCLI():
 	clearscreen()
 	debug('Individual User Status Check Started')
 	print(optionscheck)
@@ -503,7 +504,7 @@ def check():
 		print('')
 	debug('Individual Check done')
 
-def mainopen():
+def mainopenCLI():
 	times=0
 	streamError=False
 	clearscreen()
@@ -531,17 +532,17 @@ def mainopen():
 	else:
 		print('\nStream service not supported!\n')
 		streamError = True
-		serviceErrorCnt = data['data']['errorLogs']['unsupportedServices']
+		serviceErrorCnt = config['errorLogs']['unsupportedServices']
 		serviceErrorCnt = serviceErrorCnt + 1
-		data['data']['errorLogs']['unsupportedServices'] = serviceErrorCnt
+		config['errorLogs']['unsupportedServices'] = serviceErrorCnt
 
 	if not streamError:
 		clearscreen()
 		print(optionsstreaming)
 		print('Opening ' + lvst + "'s stream on " + service + ".\n")
 		try:
-			print('Total times ' + lvst + " has been played: " + str(data['data']['streamData'][lvst]['playCount']) + ".\n")
-			print('Total ammount of time ' + lvst + " Has been played for: " + data['data']['streamData'][lvst]['totalTime'] + " \n")	
+			print('Total times ' + lvst + " has been played: " + str(data['streamData'][lvst]['playCount']) + ".\n")
+			print('Total ammount of time ' + lvst + " Has been played for: " + data['streamData'][lvst]['totalTime'] + " \n")	
 		except:
 			pass
 		times+=cmdwin(lvsting)
@@ -555,7 +556,7 @@ def mainopen():
 	else:
 		print('\nThere was a error opening the stream!')
 
-def add(username='',statAdd=0):
+def addCLI(username='',statAdd=0):
 	if username == '':
 		input('Name of the user to add?: ')
 	else:
@@ -578,7 +579,7 @@ def add(username='',statAdd=0):
 	if isMusicStream.lower() == 'yes':
 		setUserMusic(username)
 
-def stats():
+def statsCLI():
 	clearscreen()
 	print(optionsstatscheck)
 	statWhat = input('Which stat do you want to see? (User, Global, Error or Clear): ')
@@ -588,14 +589,14 @@ def stats():
 		clearscreen()
 		print(optionsstatscheck)
 		statUser = input('Who do you want to check the stats of?: ')
-		if statUser.lower() not in data['data']['streamData']:
+		if statUser.lower() not in data['streamData']:
 			clearscreen()
 			print(optionsstatscheck)
 			print('\nThere are no stats for this user!\n')
 			debug('Done')
 			statAdd = ynQuestion('Whould you like to add this user to the tracked list?: ')
 			if statAdd:
-				add(statUser,statAdd)
+				addCLI(statUser,statAdd)
 		else:
 			clearscreen()
 			print(statCheck(statWhat,statOpt,statUser))
@@ -613,7 +614,7 @@ def stats():
 		clearscreen()
 		print (statCheck(statWhat,statOpt,statUser))
 
-def menu():
+def menuCLI():
 	global restart
 	global options
 
@@ -626,26 +627,26 @@ def menu():
 
 	#checks what option was chosen
 	if option.lower() == "check":
-		check()
+		checkCLI()
 	elif option.lower() == "list":
 		clearscreen()
-		print("This wight take a while...")
+		print("This might take a while...")
 		print(lvstList())
 	elif option.lower() == "open":
-		mainopen()
+		mainopenCLI()
 	elif option.lower() == "add":
 		clearscreen()
-		add()
+		addCLI()
 	elif option.lower() == "stats":
-		stats()
+		statsCLI()
 	elif option.lower() == "debug":
-		if data['data']['errorLogs']['debug'] == 'True':
+		if config['errorLogs']['debug'] == 'True':
 			debug('Logging disabled')
 			debug('--End--')
-			data['data']['errorLogs']['debug'] = "False"
+			config['errorLogs']['debug'] = "False"
 			print('Debug Set to False')
-		else:#if data['data']['errorLogs']['debug'] == 'False':
-			data['data']['errorLogs']['debug'] = "True"
+		else:#if config['errorLogs']['debug'] == 'False':
+			config['errorLogs']['debug'] = "True"
 			debug('--Start--')
 			debug('Logging enabled')
 			print('Debug set to True')
@@ -654,16 +655,103 @@ def menu():
 		print('No command Entered!')
 	else:
 		debug('unrecgonized command: '+option)
-		#unrecgonizedCmd = data['data']['errorLogs']['unRecgonizedCmds']
+		#unrecgonizedCmd = config['errorLogs']['unRecgonizedCmds']
 		#unrecgonizedCmd = unrecgonizedCmd + 1
-		#data['data']['errorLogs']['unRecgonizedCmds'] = unrecgonizedCmd
-		data['data']['errorLogs']['unRecgonizedCmds']+=1
+		#config['errorLogs']['unRecgonizedCmds'] = unrecgonizedCmd
+		config['errorLogs']['unRecgonizedCmds']+=1
 		print("\n\n----------\nOption Not Recgonized\n-----------\n\n")
 		
 	print('')
 	restart = input('Restart the Script?: ')
-	debug('Main menu end')
+	debug('Main menuCLI end')
 	return restart
+
+########################
+#                      #
+# User interface (GUI) #
+#                      #
+# TKinter              #
+########################
+
+
+if config['gui']:
+	from tkinter import *
+
+def menuGUI():
+
+	class Example(Frame):
+
+		def centerWindow(self,windowWidth,windoHeight):
+			screenwidth = self.parent.winfo_screenwidth()
+			screenheight = self.parent.winfo_screenheight()
+			
+			xpos = (screenwidth - windowWidth)/2
+			ypos = (screenheight - windoHeight)/2
+			self.parent.geometry('%dx%d+%d+%d' % (windowWidth, windoHeight, xpos, ypos))
+		
+		def populateUI(self,mainframe):
+			quitButton = Button(self, text="Quit",command=self.quit)
+			quitButton.place(x=200, y=100)
+			#ttk.Button(mainframe, text="Open", command=open).grid(column=2, row=3, sticky=W)
+			#ttk.Button(mainframe, text="List", command=lvstList).grid(column=3, row=3, sticky=W)
+			#ttk.Button(mainframe, text="Check", command=check).grid(column=4, row=3, sticky=W)
+			#ttk.Button(mainframe, text="Add", command=userAdd).grid(column=5, row=3, sticky=W)
+			#ttk.Label(mainframe, text=options).grid(column=1, row=1, sticky=W)
+			##ttk.Label(mainframe, text="feet").grid(column=3, row=1, sticky=W)
+			#ttk.Label(mainframe, text="Things!").grid(column=1, row=1, sticky=E)
+			#ttk.Label(mainframe, text="Yey Tests!").grid(column=1, row=2, sticky=W)
+			#for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
+
+		def initUI(self):
+			self.centerWindow(290,150)
+			self.title("Stream to VLC")
+			self.style = ttk.Style()
+			self.style.theme_use("default")
+			self.pack(fill=BOTH, expand=1)
+			#mainframe = ttk.Frame(root, padding="12 12 12 12")
+			#mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+			#mainframe.columnconfigure(0, weight=1)
+			#mainframe.rowconfigure(0, weight=1)
+			self.populateUI()#mainframe)
+
+		def __init__(self, parent):
+			Frame.__init__(self, parent, background="white")
+			self.parent = parent
+			self.initUI()
+
+	root = Tk()
+	app = Example(root)
+	root.mainloop()
+
+def grfthing():
+
+	root = Tk()
+	root.title("Stream to VLC")
+
+	mainframe = ttk.Frame(root, padding="12 12 12 12")
+	mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+	mainframe.columnconfigure(0, weight=1)
+	mainframe.rowconfigure(0, weight=1)
+
+	feet = StringVar()
+	meters = StringVar()
+
+	ttk.Button(mainframe, text="Open", command=open).grid(column=2, row=3, sticky=W)
+	ttk.Button(mainframe, text="List", command=lvstList).grid(column=3, row=3, sticky=W)
+	ttk.Button(mainframe, text="Check", command=check).grid(column=4, row=3, sticky=W)
+	ttk.Button(mainframe, text="Add", command=userAdd).grid(column=5, row=3, sticky=W)
+
+	ttk.Label(mainframe, text=options).grid(column=1, row=1, sticky=W)
+	#ttk.Label(mainframe, text="feet").grid(column=3, row=1, sticky=W)
+	ttk.Label(mainframe, text="Things!").grid(column=1, row=1, sticky=E)
+	ttk.Label(mainframe, text="Yey Tests!").grid(column=1, row=2, sticky=W)
+
+	for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
+
+	#feet_entry.focus()
+	root.bind('<Return>', calculate)
+
+	root.mainloop()
 
 #################################
 #                               #
@@ -685,11 +773,15 @@ def init():
 		data = json.load(data_file)
 		data_file.close()
 
+	with open('config.json') as config_file:
+		config = json.load(config_file)
+		config_file.close()
+
 	debug('--Start--')
-	streamDataTemp = data['data']['streamData']['streamTemplate']
-	startCount = data['data']['logs']['timesStarted']
+	streamDataTemp = data['streamData']['streamTemplate']
+	startCount = config['logs']['timesStarted']
 	startCount = startCount + 1
-	writeToJson(['data','logs','timesStarted'],startCount)
+	writeToJson(['logs','timesStarted'],startCount,'config')
 	debug('Start Count Added Onto')
 
 	#Menu Prompts
@@ -838,12 +930,10 @@ def terminate():
 	print('')
 	input("Press Enter to continue...")
 
+	jsonWrite()
+
 	debug('Terminating')
 	debug('--End--')
-
-	#write To the json file
-	with open('list.json', "w") as write_file:
-		write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
 
 def main():
 	init()
@@ -853,30 +943,33 @@ def main():
 	while restart.lower() in ["yes","y"]:
 		try:
 			debug('Restarting Script')
-			restart=menu()
+			if config['gui']:
+				restart=menuGUI()
+			else:
+				restart=menuCLI()
 			if restart.lower() in ["yes","y"]:
 				clearscreen()
 				
 		except KeyboardInterrupt:
 			debug('Ending Script')
-			timesInterrupted = data['data']['errorLogs']['timesInterrupted']
+			timesInterrupted = config['errorLogs']['timesInterrupted']
 			timesInterrupted = timesInterrupted + 1
-			data['data']['errorLogs']['timesInterrupted'] = timesInterrupted
+			config['errorLogs']['timesInterrupted'] = timesInterrupted
 			restart = 'no'
 			
 		except:
 			print('\n\nUnknown Error! You shouldent be seeing this!')
-			unknownError = data['data']['errorLogs']['unknownError']
+			unknownError = config['errorLogs']['unknownError']
 			unknownError = unknownError + 1
-			data['data']['errorLogs']['unknownError'] = unknownError
+			config['errorLogs']['unknownError'] = unknownError
 			restart = 'no'
 			debug([str(sys.exc_info()), str(traceback.extract_stack())],1)
 			
 		if restart.lower() in ["yes","y"]:
 			debug('Restart Count Updating')
-			timesRestarted = data['data']['logs']['timesRestarted']
+			timesRestarted = config['logs']['timesRestarted']
 			timesRestarted = timesRestarted + 1
-			data['data']['logs']['timesRestarted'] = timesRestarted
+			config['logs']['timesRestarted'] = timesRestarted
 			debug('Restart Count updated')
 
 	terminate()

@@ -8,7 +8,7 @@
 	#jsonWrite()
 
 def pull_val_from_tree(key,tree):
-	if key=[]:
+	if key==[]:
 		return tree
 	return pull_val_from_tree(val[1:],tree[val[0]])
 
@@ -28,3 +28,47 @@ def writeToData(location,val,d='data',top=1):
 def jsonWrite():
 	with open('list.json', "w") as write_file:
 		write_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
+
+
+
+
+from tkinter import *
+from tkinter import ttk
+
+import platform
+
+def main():
+
+	class Example(Frame):
+
+		def centerWindow(self,windowWidth,windoHeight):
+			screenwidth = self.parent.winfo_screenwidth()
+			screenheight = self.parent.winfo_screenheight()
+			
+			xpos = (screenwidth - windowWidth)/2
+			ypos = (screenheight - windoHeight)/2
+			self.parent.geometry('%dx%d+%d+%d' % (windowWidth, windoHeight, xpos, ypos))
+		
+		def populateUI(self):
+			quitButton = Button(self, text="Quit",command=self.quit)
+			quitButton.place(x=50, y=50)
+
+		def initUI(self):
+			self.centerWindow(290,150)
+			self.parent.title("Simple")
+			self.style = ttk.Style()
+			self.style.theme_use("default")
+			self.pack(fill=BOTH, expand=1)
+			self.populateUI()
+
+		def __init__(self, parent):
+			Frame.__init__(self, parent, background="white")
+			self.parent = parent
+			self.initUI()
+
+	root = Tk()
+	app = Example(root)
+	root.mainloop()
+
+if __name__ == '__main__':
+	main()

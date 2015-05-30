@@ -1,2 +1,124 @@
+<<<<<<< HEAD
 [2015-05-29T18:23:45] ERROR: (<class 'UnboundLocalError'>, UnboundLocalError("local variable 'data' referenced before assignment",), <traceback object at 0x0209EF80>)
 [2015-05-29T18:23:45] ERROR: [('E:\\SublimeProjects\\TheToyboxDev\\TheToybox\\Python\\StreamtoVLC\\stream.py', 888, '<module>', 'main()'), ('E:\\SublimeProjects\\TheToyboxDev\\TheToybox\\Python\\StreamtoVLC\\stream.py', 873, 'main', 'debug([str(sys.exc_info()), str(traceback.extract_stack())],1)')]
+=======
+[2015-05-28T16:28:31] DEBUG: --Start--
+[2015-05-28T16:28:31] DEBUG: Start Count Added Onto
+[2015-05-28T16:28:31] DEBUG: Restarting Script
+[2015-05-28T16:28:31] DEBUG: Starting Main starter
+[2015-05-28T16:28:56] DEBUG: Service Recived twitch
+[2015-05-28T16:29:00] ERROR: (<class 'TypeError'>, TypeError('openstream() takes 2 positional arguments but 3 were given',), <traceback object at 0x0210FFA8>)
+[2015-05-28T16:29:00] ERROR: [('E:\\SublimeProjects\\TheToyboxDev\\TheToybox\\Python\\StreamtoVLC\\stream.py', 861, '<module>', 'main()'), ('E:\\SublimeProjects\\TheToyboxDev\\TheToybox\\Python\\StreamtoVLC\\stream.py', 846, 'main', 'debug([str(sys.exc_info()), str(traceback.extract_stack())],1)')]
+[2015-05-28T16:31:19] DEBUG: Terminating
+[2015-05-28T16:31:19] DEBUG: --End--
+[2015-05-28T16:41:41] DEBUG: --Start--
+[2015-05-28T16:41:41] DEBUG: Start Count Added Onto
+[2015-05-28T16:41:41] DEBUG: Restarting Script
+[2015-05-28T16:41:41] DEBUG: Starting Main starter
+[2015-05-28T16:41:45] DEBUG: User List started
+[2015-05-28T16:41:45] DEBUG: StreamNum Updateing
+[2015-05-28T16:41:45] DEBUG: StreamNum Updated
+[2015-05-28T16:41:45] DEBUG: Retriveing User Status
+[2015-05-28T16:41:46] DEBUG: User Status Retrived
+[2015-05-28T16:41:46] DEBUG: Retriveing User Status
+[2015-05-28T16:41:47] DEBUG: User Status Retrived
+[2015-05-28T16:41:47] DEBUG: Processing User Status
+[2015-05-28T16:41:47] DEBUG: Retriveing User Status
+[2015-05-28T16:41:47] DEBUG: User Status Retrived
+[2015-05-28T16:41:47] DEBUG: User Status Processed
+[2015-05-28T16:41:47] DEBUG: Retriveing User Status
+[2015-05-28T16:41:48] DEBUG: User Status Retrived
+[2015-05-28T16:41:48] DEBUG: Processing User Status
+[2015-05-28T16:41:48] DEBUG: Retriveing User Status
+[2015-05-28T16:41:48] DEBUG: User Status Retrived
+[2015-05-28T16:41:48] DEBUG: User Status Processed
+[2015-05-28T16:41:48] DEBUG: Retriveing User Status
+[2015-05-28T16:41:49] DEBUG: User Status Retrived
+[2015-05-28T16:41:49] DEBUG: Processing User Status
+[2015-05-28T16:41:49] DEBUG: Retriveing User Status
+[2015-05-28T16:41:49] DEBUG: User Status Retrived
+[2015-05-28T16:41:49] DEBUG: User Status Processed
+[2015-05-28T16:41:49] DEBUG: Retriveing User Status
+[2015-05-28T16:41:49] DEBUG: User Status Retrived
+[2015-05-28T16:41:49] DEBUG: Retriveing User Status
+[2015-05-28T16:41:50] DEBUG: User Status Retrived
+[2015-05-28T16:41:50] DEBUG: Retriveing User Status
+[2015-05-28T16:41:51] DEBUG: User Status Retrived
+[2015-05-28T16:41:51] DEBUG: Retriveing User Status
+[2015-05-28T16:41:51] DEBUG: User Status Retrived
+[2015-05-28T16:41:51] DEBUG: Retriveing User Status
+[2015-05-28T16:41:51] DEBUG: User Status Retrived
+[2015-05-28T16:41:51] DEBUG: Retriveing User Status
+[2015-05-28T16:41:52] DEBUG: User Status Retrived
+[2015-05-28T16:41:52] DEBUG: Retriveing User Status
+[2015-05-28T16:41:52] DEBUG: User Status Retrived
+[2015-05-28T16:41:52] DEBUG: Retriveing User Status
+[2015-05-28T16:41:53] DEBUG: User Status Retrived
+[2015-05-28T16:41:53] DEBUG: Processing User Status
+[2015-05-28T16:41:53] DEBUG: Retriveing User Status
+[2015-05-28T16:41:53] DEBUG: User Status Retrived
+[2015-05-28T16:41:53] DEBUG: User Status Processed
+[2015-05-28T16:41:53] DEBUG: Retriveing User Status
+[2015-05-28T16:41:53] DEBUG: User Status Retrived
+[2015-05-28T16:41:53] DEBUG: Retriveing User Status
+[2015-05-28T16:41:54] DEBUG: User Status Retrived
+[2015-05-28T16:53:28] DEBUG: Main menu end
+[2015-05-28T16:53:29] DEBUG: Terminating
+[2015-05-28T16:53:29] DEBUG: --End--
+[2015-05-28T16:53:41] DEBUG: --Start--
+[2015-05-28T16:53:41] DEBUG: Start Count Added Onto
+[2015-05-28T16:53:41] DEBUG: Restarting Script
+[2015-05-28T16:53:41] DEBUG: Starting Main starter
+[2015-05-28T16:57:04] DEBUG: --Start--
+[2015-05-28T16:57:04] DEBUG: Start Count Added Onto
+[2015-05-28T16:57:04] DEBUG: Restarting Script
+[2015-05-28T16:57:04] DEBUG: Starting Main starter
+[2015-05-28T16:57:07] DEBUG: User List started
+[2015-05-28T16:57:07] DEBUG: StreamNum Updateing
+[2015-05-28T16:57:07] DEBUG: StreamNum Updated
+[2015-05-28T16:57:07] DEBUG: Retriveing User Status
+[2015-05-28T16:57:08] DEBUG: User Status Retrived
+[2015-05-28T16:57:08] DEBUG: Retriveing User Status
+[2015-05-28T16:57:09] DEBUG: User Status Retrived
+[2015-05-28T16:57:09] DEBUG: Processing User Status
+[2015-05-28T16:57:09] DEBUG: Retriveing User Status
+[2015-05-28T16:57:09] DEBUG: User Status Retrived
+[2015-05-28T16:57:09] DEBUG: User Status Processed
+[2015-05-28T16:57:09] DEBUG: Retriveing User Status
+[2015-05-28T16:57:10] DEBUG: User Status Retrived
+[2015-05-28T16:57:10] DEBUG: Processing User Status
+[2015-05-28T16:57:10] DEBUG: Retriveing User Status
+[2015-05-28T16:57:10] DEBUG: User Status Retrived
+[2015-05-28T16:57:10] DEBUG: User Status Processed
+[2015-05-28T16:57:10] DEBUG: Retriveing User Status
+[2015-05-28T16:57:10] DEBUG: User Status Retrived
+[2015-05-28T16:57:10] DEBUG: Processing User Status
+[2015-05-28T16:57:10] DEBUG: Retriveing User Status
+[2015-05-28T16:57:11] DEBUG: User Status Retrived
+[2015-05-28T16:57:11] DEBUG: User Status Processed
+[2015-05-28T16:57:11] DEBUG: Retriveing User Status
+[2015-05-28T16:57:11] DEBUG: User Status Retrived
+[2015-05-28T16:57:11] DEBUG: Retriveing User Status
+[2015-05-28T16:57:12] DEBUG: User Status Retrived
+[2015-05-28T16:57:12] DEBUG: Retriveing User Status
+[2015-05-28T16:57:12] DEBUG: User Status Retrived
+[2015-05-28T16:57:12] DEBUG: Retriveing User Status
+[2015-05-28T16:57:12] DEBUG: User Status Retrived
+[2015-05-28T16:57:12] DEBUG: Retriveing User Status
+[2015-05-28T16:57:13] DEBUG: User Status Retrived
+[2015-05-28T16:57:13] DEBUG: Retriveing User Status
+[2015-05-28T16:57:13] DEBUG: User Status Retrived
+[2015-05-28T16:57:13] DEBUG: Retriveing User Status
+[2015-05-28T16:57:14] DEBUG: User Status Retrived
+[2015-05-28T16:57:14] DEBUG: Retriveing User Status
+[2015-05-28T16:57:14] DEBUG: User Status Retrived
+[2015-05-28T16:57:14] DEBUG: Processing User Status
+[2015-05-28T16:57:14] DEBUG: Retriveing User Status
+[2015-05-28T16:57:15] DEBUG: User Status Retrived
+[2015-05-28T16:57:15] DEBUG: User Status Processed
+[2015-05-28T16:57:15] DEBUG: Retriveing User Status
+[2015-05-28T16:57:15] DEBUG: User Status Retrived
+[2015-05-28T16:57:15] DEBUG: Retriveing User Status
+[2015-05-28T16:57:15] DEBUG: User Status Retrived
+[2015-05-28T17:14:02] DEBUG: Main menu end
+>>>>>>> e87a41404179ea86689aee59a63308bd2f323984
