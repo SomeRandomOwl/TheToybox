@@ -614,7 +614,7 @@ def statsCLI():
 		clearscreen()
 		print (statCheck(statWhat,statOpt,statUser))
 
-def menu():
+def menuCLI():
 	global restart
 	global options
 
@@ -668,7 +668,7 @@ def menu():
 
 #################################
 #                               #
-# Code flow crontroll           #
+# Code flow control             #
 #                               #
 # only calls to other functions #
 # and controll structures       #
@@ -854,7 +854,7 @@ def main():
 	while restart:
 		try:
 			debug('Restarting Script')
-			restart=menu()
+			restart=menuCLI()
 			if restart:
 				clearscreen()
 				
