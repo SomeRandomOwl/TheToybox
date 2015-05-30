@@ -10,7 +10,7 @@
         "logs": {
             "streamNum": 14,
             "timesRestarted": 47,
-            "timesStarted": 118,
+            "timesStarted": 121,
             "totalPlay": 49
         },
         "streamData": {
@@ -31,15 +31,6 @@
                 "playCount": 2,
                 "secs": 39,
                 "totalTime": "0 Days 0:0:39"
-            },
-            "blaaaaaa": {
-                "days": 0,
-                "hours": 0,
-                "mins": 0,
-                "musicStream": "true",
-                "playCount": 0,
-                "secs": 0,
-                "totalTime": "0 Days 0:0:0"
             },
             "fixt": {
                 "days": 0,
@@ -171,7 +162,6 @@
         "scykoh",
         "naturalselection2",
         "gophergaming",
-        "haxmega",
-        "blaaaaaa"
+        "haxmega"
     ]
 }

@@ -85,3 +85,45 @@
 [2015-05-29T19:14:35] DEBUG: Starting Main starter
 [2015-05-29T19:14:44] DEBUG: Stat Check Started
 [2015-05-29T19:14:44] DEBUG: Retriveing User Stats
+[2015-05-29T19:18:03] DEBUG: --Start--
+[2015-05-29T19:18:03] DEBUG: Start Count Incremented
+[2015-05-29T19:18:03] DEBUG: Restarting Script
+[2015-05-29T19:18:03] DEBUG: Starting Main starter
+[2015-05-29T19:18:03] DEBUG: unrecgonized command: monstercat
+[2015-05-29T19:18:24] DEBUG: Main menu end
+[2015-05-29T19:18:24] DEBUG: Restart Count Updating
+[2015-05-29T19:18:24] DEBUG: Restart Count updated
+[2015-05-29T19:18:24] DEBUG: Restarting Script
+[2015-05-29T19:18:24] DEBUG: Starting Main starter
+[2015-05-29T19:18:45] DEBUG: Done
+[2015-05-29T19:18:54] DEBUG: Main menu end
+[2015-05-29T19:18:54] DEBUG: Restart Count Updating
+[2015-05-29T19:18:54] DEBUG: Restart Count updated
+[2015-05-29T19:18:54] DEBUG: Restarting Script
+[2015-05-29T19:18:54] DEBUG: Starting Main starter
+[2015-05-29T19:19:06] DEBUG: Stat Check Started
+[2015-05-29T19:19:06] DEBUG: Retriveing User Stats
+[2015-05-29T19:19:06] DEBUG: Done
+[2015-05-29T19:19:06] DEBUG: Stat Check Done
+[2015-05-29T19:25:51] DEBUG: Main menu end
+[2015-05-29T19:25:51] DEBUG: Restart Count Updating
+[2015-05-29T19:25:51] DEBUG: Restart Count updated
+[2015-05-29T19:25:51] DEBUG: Restarting Script
+[2015-05-29T19:25:51] DEBUG: Starting Main starter
+[2015-05-29T19:25:55] DEBUG: unrecgonized command: ad
+[2015-05-29T19:26:02] DEBUG: Main menu end
+[2015-05-29T19:26:02] DEBUG: Restart Count Updating
+[2015-05-29T19:26:02] DEBUG: Restart Count updated
+[2015-05-29T19:26:02] DEBUG: Restarting Script
+[2015-05-29T19:26:02] DEBUG: Starting Main starter
+[2015-05-29T19:26:57] DEBUG: --Start--
+[2015-05-29T19:26:57] DEBUG: Start Count Incremented
+[2015-05-29T19:26:57] DEBUG: Restarting Script
+[2015-05-29T19:26:57] DEBUG: Starting Main starter
+[2015-05-29T19:27:02] DEBUG: Main menu end
+[2015-05-29T19:27:03] DEBUG: Terminating
+[2015-05-29T19:27:03] DEBUG: --End--
+[2015-05-29T19:27:48] DEBUG: --Start--
+[2015-05-29T19:27:48] DEBUG: Start Count Incremented
+[2015-05-29T19:27:48] DEBUG: Restarting Script
+[2015-05-29T19:27:48] DEBUG: Starting Main starter
