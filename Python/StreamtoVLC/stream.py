@@ -27,17 +27,6 @@ data=['default empty data']
 config=['default empty config']
 
 #Menu Prompts
-global options
-global optionsstreaming
-global optionsopen
-global optionsstream
-global optionsopenaudio
-global optionslist
-global optionscheck
-global optionsstatscheck
-global optionsstatsclear
-global optionsadd
-global listing
 
 #Debug function to append time stamps and write to files
 #i made only outputting text depend on the switch and outputting to log always on
@@ -87,6 +76,7 @@ def check_user(user):
 #Defines the program to display the output from the check user as text
 def list(urc):
 	debug('Processing User Status')
+	debug('user: '+str(urc))
 	try:
 		out=''
 		if check_user(urc) == 0:
@@ -100,6 +90,9 @@ def list(urc):
 	except KeyboardInterrupt:
 		pass
 	debug('User Status Processed')
+	listing = ""																		+"\n"+\
+			  "-------------"															+"\n"+\
+			  ""
 	return (listing+'\n'+out+'\n'+listing)
 
 #Function to add new tracked users
@@ -148,7 +141,7 @@ def statCheck(statWhat,statOpt,statUser):
 			out+='\nThis stream is also marked as a music stream'
 		debug('Done')
 	elif statWhat.lower() == 'global':
-		out+=optionsstatscheck
+		out+=statscheckheader
 		debug('Checking Global Stats')
 		out+='\nThe total ammount of streams played is: ' + str(config['logs']['totalPlay'])
 		out+='\nTheres a total of: ' + str(config['logs']['streamNum']) + ' streams being tracked.'
@@ -157,7 +150,7 @@ def statCheck(statWhat,statOpt,statUser):
 		out+='\nThe script has been restarted: ' + str(config['logs']['timesRestarted']) + ' times.'
 		debug('Done')
 	elif statWhat.lower() == 'error':
-		out+=optionsstatscheck
+		out+=statscheckheader
 		debug('Checking Error Stats')
 		out+='\nThe total ammount of times the script has been interuppted is: ' + str(config['errorLogs']['timesInterrupted'])
 		out+='\nThe total of unsupported services entered is:  ' + str(config['errorLogs']['unsupportedServices'])
@@ -242,7 +235,7 @@ def openstream(service,lvst,audio):
 			audioOnly = data['streamData'][lvst.lower()]['musicStream']
 			if audioOnly == 'true':
 				clearscreen()
-				print(optionsopenaudio)
+				print(openaudioheader)
 				debug('Music stream')
 				debug('Recived ' + audio)
 				if audio.lower() == 'yes':
@@ -497,6 +490,17 @@ def ynQuestion(prompt,default=''):
 def checkCLI():
 	clearscreen()
 	debug('Individual User Status Check Started')
+	optionscheck =  ""																		+"\n"+\
+					"Available options:"													+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""																		+"\n"+\
+					"This is used to check the status of a individual twitch streamer"		+"\n"+\
+					"This is unavaliable for youtube unless it is otherwisse possible"		+"\n"+\
+					"Might have youtube support in the future"								+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""
 	print(optionscheck)
 	user = input('User to check status of: ')	
 	if not user:
@@ -507,14 +511,55 @@ def checkCLI():
 		print('')
 	debug('Individual Check done')
 
-def mainopenCLI():
+def lvstListCLI():
+	clearscreen()
+	optionslist =   ""																	+"\n"+\
+					"Available options:"													+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""																		+"\n"+\
+					"This is used to list users present in the list.json"					+"\n"+\
+					"This only works for twitch streamers at the moment"					+"\n"+\
+					"Will maybe extend to youtube in the future"							+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""
+	print(optionslist)
+	print("This might take a while...")
+	lvlistst = lvstList()
+	clearscreen()
+	print(lvlistst)
+
+def openCLI():
 	times=0
 	streamError=False
 	clearscreen()
-	print(optionsopen)
-	service = input('What stream service? (Youtube or Twitch): ')
+	openheader =    ""																		+"\n"+\
+					"Available options:"													+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""																		+"\n"+\
+					"This is to open stream service The only two options available are:"	+"\n"+\
+					"Youtube -- Allows you to open a stream with a youtube url ir video id"	+"\n"+\
+					"Twitch -- Opens a twitch stream when you input user"					+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""	
+	print(openheader)
+	service = input('Which service?\n(Youtube or Twitch): ')
 	if service.lower() == 'youtube' or service.lower() == 'twitch':
 		clearscreen()
+		optionsstream = ""																	+"\n"+\
+					"Available options:"													+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""																		+"\n"+\
+					"This is to specify a stream"											+"\n"+\
+					"Input a username if for Twitch"										+"\n"+\
+					"Input a video id if for Youtube"										+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""
 		print(optionsstream)
 		debug('Service Recived ' + service)
 		lvst = input('What stream?: ')
@@ -525,7 +570,18 @@ def mainopenCLI():
 			audio=''
 			if service.lower() == 'youtube':
 				clearscreen()
-				print(optionsopenaudio)
+				openaudioheader = ""																+"\n"+\
+					"Available options:"													+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""																		+"\n"+\
+					"This is if you want to listen to the audio only for the stream"		+"\n"+\
+					"Input yes to only get the audio and no video"							+"\n"+\
+					"Input no to have video as well as audio"								+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""
+				print(openaudioheader)
 				if lvst[1:32] == 'https://www.youtube.com/watch?v=':
 					audio = ynQuestion('Do you want to do audio only?')
 			lvsting=openstream(service,lvst,audio)
@@ -541,7 +597,18 @@ def mainopenCLI():
 
 	if not streamError:
 		clearscreen()
-		print(optionsstreaming)
+		streamingheader =   ""												+"\n"+\
+							"Available options:"							+"\n"+\
+							""												+"\n"+\
+							"----------"									+"\n"+\
+							""												+"\n"+\
+							"The stream you chose is opening"				+"\n"+\
+							"So sit back and watch/listen to you stream"	+"\n"+\
+							"Enjoy!"										+"\n"+\
+							""												+"\n"+\
+							"----------"									+"\n"+\
+							""
+		print(streamingheader)
 		print('Opening ' + lvst + "'s stream on " + service + ".\n")
 		try:
 			print('Total times ' + lvst + " has been played: " + str(data['streamData'][lvst]['playCount']) + ".\n")
@@ -561,6 +628,7 @@ def mainopenCLI():
 
 def addCLI(username='',statAdd=0):
 	if username == '':
+		clearscreen()
 		input('Name of the user to add?: ')
 	else:
 		print('Adding user: '+username)
@@ -570,6 +638,17 @@ def addCLI(username='',statAdd=0):
 	allRecords=userAdd(username,statAdd)
 
 	clearscreen()
+	optionsadd = ""																		+"\n"+\
+					"Available options:"													+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""																		+"\n"+\
+					"This is used to add a user to the tracked list"						+"\n"+\
+					"This make ther status to be checked with the list command"				+"\n"+\
+					"It also allows statistic tracking for the user"						+"\n"+\
+					""																		+"\n"+\
+					"----------"															+"\n"+\
+					""
 	print(optionsadd)
 	if allRecords < 1:
 		print('\nThere are currently: no tracked users.' + '\n')
@@ -582,19 +661,61 @@ def addCLI(username='',statAdd=0):
 	if isMusicStream:
 		setUserMusic(username)
 
+def statsClearCLI():
+	clearscreen()
+	statsclearheader =  ""																	+"\n"+\
+						"Available options:"												+"\n"+\
+						""																	+"\n"+\
+						"----------"														+"\n"+\
+						""																	+"\n"+\
+						"This is the danger zone!"											+"\n"+\
+						"This is where you can clear a users stats or the global stats"		+"\n"+\
+						"Continue if you sure of what you are doing!"						+"\n"+\
+						""																	+"\n"+\
+						"----------"														+"\n"+\
+						""
+	print(statsclearheader)
+	debug('Clear Stats Started')
+	statOpt = input('Do you want to clear'				+'\n'+\
+					' - global stats'					+'\n'+\
+					' - the stats of a specific user'	+'\n'+\
+					' - all tracked stats and users'	+'\n'+\
+					''									+'\n'+\
+					'(Global, User, Erase): ')
+	if statOpt:
+		if statOpt.lower()=='user':
+			statUser = input('Whos stats do you want to clear?: ')
+		clearscreen()
+		print(statCheck(statWhat,statOpt,statUser))
+	else:
+		print('Canceled')
+
 def statsCLI():
 	clearscreen()
-	print(optionsstatscheck)
-	statWhat = input('Which stat do you want to see? (User, Global, Error or Clear): ')
+	statscheckheader =  ""												+"\n"+\
+						"Available options:"							+"\n"+\
+						""												+"\n"+\
+						"----------"									+"\n"+\
+						""												+"\n"+\
+						"This is used to view the stats being tracked"	+"\n"+\
+						"You can view the stats of a individual user"	+"\n"+\
+						"You can also view the total global stats"		+"\n"+\
+						"You can also Clear the stats"					+"\n"+\
+						"You can also check the errorLogs"				+"\n"+\
+						""												+"\n"+\
+						"---------"										+"\n"+\
+						""
+	print(statscheckheader)
+	statWhat = input('Which stats do you want to see? (User, Global, Error, or Clear): ')
 	statOpt=''
 	statUser=''
 	if statWhat.lower() == 'user':
 		clearscreen()
-		print(optionsstatscheck)
+		print(statscheckheader)
 		statUser = input('Who do you want to check the stats of?: ')
 		if statUser.lower() not in data['streamData']:
 			clearscreen()
-			print(optionsstatscheck)
+			print(statscheckheader)
 			print('\nThere are no stats for this user!\n')
 			debug('Done')
 			statAdd = ynQuestion('Whould you like to add this user to the tracked list?')
@@ -604,58 +725,58 @@ def statsCLI():
 			clearscreen()
 			print(statCheck(statWhat,statOpt,statUser))
 	elif statWhat.lower() == 'clear':
-		clearscreen()
-		print(optionsstatsclear)
-		debug('Clear Stats Started')
-		print('Do you want to clear global stats or the stats of a specific user?')
-		statOpt = input('Or do you want to erase all tracked stats and users? (Global, User, Erase): ')
-		if statOpt.lower()=='user':
-			statUser = input('Whos stats do you want to clear?: ')
-		clearscreen()
-		print (statCheck(statWhat,statOpt,statUser))
+		statsClearCLI()
 	else:
 		clearscreen()
 		print (statCheck(statWhat,statOpt,statUser))
 
+def debugCLI():
+	if config['errorLogs']['debug']:
+		debug('Logging disabled')
+		debug('--End--')
+		config['errorLogs']['debug'] = 0
+		print('Debug disabled')
+	else:#if config['errorLogs']['debug'] == 'False':
+		config['errorLogs']['debug'] = 1
+		debug('--Start--')
+		debug('Logging enabled')
+		print('Debug enabled')
+
 def menuCLI():
-	global restart
-	global options
 
 	debug('Starting Main starter')
 	#Option input
+	options =   ""																		+"\n"+\
+				"Available options:"													+"\n"+\
+				""																		+"\n"+\
+				"----------"															+"\n"+\
+				""																		+"\n"+\
+				"Check (checks status of a specific user"								+"\n"+\
+				"List (Checks the status of a list of predefined users"					+"\n"+\
+				"Open (opens a stream)"													+"\n"+\
+				"Add (Adds a user to to the tracked user list)"							+"\n"+\
+				"Stats (Views the list of tracked stats)"								+"\n"+\
+				""																		+"\n"+\
+				"----------"															+"\n"+\
+				""
 	print(options)
 	option = input('What do you want to do?: ')
-	clearscreen()
-	print(options)
+	#clearscreen()
+	#print(options)
 
 	#checks what option was chosen
 	if option.lower() == "check":
 		checkCLI()
 	elif option.lower() == "list":
-		clearscreen()
-		print(optionslist)
-		print("This might take a while...")
-		lvlistst = lvstList()
-		clearscreen()
-		print(lvlistst)
+		lvstListCLI()
 	elif option.lower() == "open":
-		mainopenCLI()
+		openCLI()
 	elif option.lower() == "add":
-		clearscreen()
 		addCLI()
 	elif option.lower() == "stats":
 		statsCLI()
 	elif option.lower() == "debug":
-		if config['errorLogs']['debug'] == 1:
-			debug('Logging disabled')
-			debug('--End--')
-			config['errorLogs']['debug'] = 0
-			print('Debug Set to False')
-		else:#if config['errorLogs']['debug'] == 'False':
-			config['errorLogs']['debug'] = 1
-			debug('--Start--')
-			debug('Logging enabled')
-			print('Debug set to True')
+		debugCLI()
 
 	elif not option:
 		print('No command Entered!')
@@ -785,148 +906,9 @@ def init():
 	startCount = startCount + 1
 	writeToJson(['logs','timesStarted'],startCount,'config')
 	debug('Start Count Added Onto')
+		
 
-	#Menu Prompts
-	if 1:
-		global options
-		options = ""																		+"\n"+\
-					"Avalible options:"														+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""																		+"\n"+\
-					"Check (checks status of a specific user"								+"\n"+\
-					"List (Checks the status of a list of predefined users"					+"\n"+\
-					"Open (opens a stream)"													+"\n"+\
-					"Add (Adds a user to to the tracked user list)"							+"\n"+\
-					"Stats (Views the list of tracked stats)"								+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""
-
-		global optionsstreaming
-		optionsstreaming = ""																+"\n"+\
-					"Avalible options:"														+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""																		+"\n"+\
-					"The stream you chose is opening"										+"\n"+\
-					"So sit back and watch/listen to you stream"							+"\n"+\
-					"Enjoy!"																+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""
-
-		global optionsopen
-		optionsopen = ""																	+"\n"+\
-					"Avalible options:"														+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""																		+"\n"+\
-					"This is to open stream service The only two options avaliable are:"	+"\n"+\
-					"Youtube -- Allows you to open a stream with a youtube url ir video id"	+"\n"+\
-					"Twitch -- Opens a twitch stream when you input user"					+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""	
-
-		global optionsstream
-		optionsstream = ""																	+"\n"+\
-					"Avalible options:"														+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""																		+"\n"+\
-					"This is to specify a stream"											+"\n"+\
-					"Input a username if for Twitch"										+"\n"+\
-					"Input a video id if for Youtube"										+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""
-
-		global optionsopenaudio
-		optionsopenaudio = ""																+"\n"+\
-					"Avalible options:"														+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""																		+"\n"+\
-					"This is if you want to listen to the audio only for the stream"		+"\n"+\
-					"Input yes to only get the audio and no video"							+"\n"+\
-					"Input no to have video as well as audio"								+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""
-
-		global optionslist
-		optionslist = ""																	+"\n"+\
-					"Avalible options:"														+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""																		+"\n"+\
-					"This is used to list users present in the list.json"					+"\n"+\
-					"This only works for twitch streamers at the moment"					+"\n"+\
-					"Will maybe extend to youtube in the future"							+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""
-
-		global optionscheck
-		optionscheck = ""																	+"\n"+\
-					"Avalible options:"														+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""																		+"\n"+\
-					"This is used to check the status of a individual twitch streamer"		+"\n"+\
-					"This is unavaliable for youtube unless it is otherwisse possible"		+"\n"+\
-					"Might have youtube support in the future"								+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""
-
-		global optionsstatscheck
-		optionsstatscheck = ""																+"\n"+\
-					"Avalible options:"														+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""																		+"\n"+\
-					"This is used to view the stats being tracked"							+"\n"+\
-					"You can view the stats of a individual user"							+"\n"+\
-					"You can also view the total global stats"								+"\n"+\
-					"You can also Clear the stats"											+"\n"+\
-					"You can also check the errorLogs"										+"\n"+\
-					""																		+"\n"+\
-					"---------"																+"\n"+\
-					""
-
-		global optionsstatsclear
-		optionsstatsclear = ""																+"\n"+\
-					"Avalible options:"														+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""																		+"\n"+\
-					"This is the danger zone!"												+"\n"+\
-					"This is where you can clear a users stats or the global stats"			+"\n"+\
-					"Continue if you sure of what you are doing!"							+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""	
-
-		global optionsadd
-		optionsadd = ""																		+"\n"+\
-					"Avalible options:"														+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""																		+"\n"+\
-					"This is used to add a user to the tracked list"						+"\n"+\
-					"This make ther status to be checked with the list command"				+"\n"+\
-					"It also allows statistic tracking for the user"						+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""	
-
-		global listing
-		listing = ""																		+"\n"+\
-					"-------------"															+"\n"+\
-					""
-
+				
 def terminate():
 	#Script end confirmation
 	print('')
