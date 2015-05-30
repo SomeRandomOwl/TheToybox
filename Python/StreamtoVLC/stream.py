@@ -601,6 +601,7 @@ def statsCLI():
 				addCLI(statUser,statAdd)
 		else:
 			clearscreen()
+			print(optionsstatscheck)
 			print(statCheck(statWhat,statOpt,statUser))
 	elif statWhat.lower() == 'clear':
 		clearscreen()
