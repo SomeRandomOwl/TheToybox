@@ -242,9 +242,8 @@ def openstream(service,lvst,audio):
 			if audioOnly == 'true':
 				clearscreen()
 				print(optionsopenaudio)
-				debug('Music stream')
-				debug('Recived ' + audio)
-				if audio.lower() == 'yes':
+				debug('Music stream:' + audio)
+				if audio:
 					lvsting = lsTwitch + lvst + ' audio'
 				else:
 					lvsting = lsTwitch + lvst + ' source'
@@ -256,16 +255,17 @@ def openstream(service,lvst,audio):
 		debug('Twitch Stream commands set')
 	#Process for youtube streams
 	elif service.lower() == 'youtube':
+		lvsting = lsYoutube
+
 		if lvst[1:32] == 'https://www.youtube.com/watch?v=':
-			if audio.lower() == 'yes':
-				lvsting = lsYoutube + lvst[32:] + ' audio_mp4'
-			else:
-				lvsting = lsYoutube + lvst[32:] + ' best'
+			lvsting += lvst[32:]
 		else:
-			if audio.lower() == 'yes':
-				lvsting = lsYoutube + lvst + ' audio_mp4'
-			else:
-				lvsting = lsYoutube + lvst + ' best'
+			lvsting += lvst
+
+		if audio:
+			lvsting += ' audio_mp4'
+		else:
+			lvsting += ' best'
 		debug('Youtube commands set')
 	return lvsting
 	debug('Open stream done')
@@ -517,12 +517,12 @@ def mainopenCLI():
 			print('\nNo Stream Entered')
 			streamError = True
 		else:
-			audio=''
+			audio=0
 			if service.lower() == 'youtube':
 				clearscreen()
 				print(optionsopenaudio)
 				if lvst[1:32] == 'https://www.youtube.com/watch?v=':
-					audio = input('Do you want to do audio only?: ')
+					audio = ynQuestion('Do you want to do audio only?: ')
 			lvsting=openstream(service,lvst,audio)
 	elif not service:
 		print('\nNo Stream Service Entered!')
@@ -573,7 +573,7 @@ def addCLI(username='',statAdd=0):
 	else:
 		print('\nThere are currently: ' + str(allRecords) + ' tracked users.' + '\n')
 
-	isMusicStream = input('Is this stream a music stream? (Yes or No): ')
+	isMusicStream = ynQuestion('Is this stream a music stream?')
 	if isMusicStream.lower() == 'yes':
 		setUserMusic(username)
 
@@ -660,7 +660,7 @@ def menu():
 		print("\n\n----------\nOption Not Recgonized\n-----------\n\n")
 		
 	print('')
-	restart = input('Restart the Script?: ')
+	restart = ynQuestion('Restart the Script?')
 	debug('Main menu end')
 	return restart
 
@@ -847,13 +847,13 @@ def terminate():
 def main():
 	init()
 	
-	restart = 'yes'
+	restart = 1
 	#Restarts the script
-	while restart.lower() in ["yes","y"]:
+	while restart:
 		try:
 			debug('Restarting Script')
 			restart=menu()
-			if restart.lower() in ["yes","y"]:
+			if restart:
 				clearscreen()
 				
 		except KeyboardInterrupt:
@@ -861,17 +861,17 @@ def main():
 			timesInterrupted = data['data']['errorLogs']['timesInterrupted']
 			timesInterrupted = timesInterrupted + 1
 			data['data']['errorLogs']['timesInterrupted'] = timesInterrupted
-			restart = 'no'
+			restart = 0
 			
 		except:
 			print('\n\nUnknown Error! You shouldent be seeing this!')
 			unknownError = data['data']['errorLogs']['unknownError']
 			unknownError = unknownError + 1
 			data['data']['errorLogs']['unknownError'] = unknownError
-			restart = 'no'
+			restart = 0
 			debug([str(sys.exc_info()), str(traceback.extract_stack())],1)
 			
-		if restart.lower() in ["yes","y"]:
+		if restart:
 			debug('Restart Count Updating')
 			timesRestarted = data['data']['logs']['timesRestarted']
 			timesRestarted = timesRestarted + 1
