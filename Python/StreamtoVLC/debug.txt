@@ -1,9 +1,15 @@
-"[2015-05-28T11:47:41] DEBUG: --Start--"
-"[2015-05-28T11:47:41] DEBUG: Start Count Added Onto"
-"[2015-05-28T11:47:41] DEBUG: Restarting Script"
-"[2015-05-28T11:47:41] DEBUG: Starting Main starter"
-"[2015-05-28T11:47:45] DEBUG: Service Recived twitch"
-"[2015-05-28T11:47:49] ERROR: (<class 'TypeError'>, TypeError('openstream() takes 2 positional arguments but 3 were given',), <traceback object at 0x02132170>)"
-"[2015-05-28T11:47:49] ERROR: [('stream.py', 860, '<module>', 'main()'), ('stream.py', 845, 'main', 'debug([str(sys.exc_info()), str(traceback.extract_stack())],1)')]"
-"[2015-05-28T11:47:50] DEBUG: Terminating"
-"[2015-05-28T11:47:50] DEBUG: --End--"
+[
+    "[2015-05-28T14:42:17] DEBUG: --Start--",
+    "[2015-05-28T14:42:17] DEBUG: Start Count Added Onto",
+    "[2015-05-28T14:42:17] DEBUG: Restarting Script",
+    "[2015-05-28T14:42:17] DEBUG: Starting Main starter",
+    "[2015-05-28T14:42:23] DEBUG: Stat Check Started",
+    "[2015-05-28T14:42:31] DEBUG: Retriveing User Stats",
+    "[2015-05-28T14:42:31] DEBUG: Done",
+    "[2015-05-28T14:42:31] DEBUG: Stat Check Done",
+    "[2015-05-28T14:43:20] DEBUG: Starter Function Done",
+    "[2015-05-28T14:43:20] DEBUG: Restart Count Updateing",
+    "[2015-05-28T14:43:20] DEBUG: Restart Count updated",
+    "[2015-05-28T14:43:20] DEBUG: Restarting Script",
+    "[2015-05-28T14:43:20] DEBUG: Starting Main starter"
+]
