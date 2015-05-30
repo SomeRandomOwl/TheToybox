@@ -2,16 +2,17 @@
     "data": {
         "errorLogs": {
             "debug": 0,
-            "timesInterrupted": 20,
-            "unRecgonizedCmds": 12,
-            "unknownError": 17,
+            "timesInterrupted": 18,
+            "unRecgonizedCmds": 8,
+            "unknownError": 15,
             "unsupportedServices": 5
         },
         "logs": {
-            "streamNum": 13,
-            "timesRestarted": 55,
-            "timesStarted": 133,
-            "totalPlay": 50
+            "GUI": 0,
+            "streamNum": 14,
+            "timesRestarted": 47,
+            "timesStarted": 113,
+            "totalPlay": 53
         },
         "streamData": {
             "Spinninrecords": {
@@ -31,6 +32,15 @@
                 "playCount": 2,
                 "secs": 39,
                 "totalTime": "0 Days 0:0:39"
+            },
+            "blaaaaaa": {
+                "days": 0,
+                "hours": 0,
+                "mins": 0,
+                "musicStream": "true",
+                "playCount": 0,
+                "secs": 0,
+                "totalTime": "0 Days 0:0:0"
             },
             "fixt": {
                 "days": 0,
@@ -70,12 +80,12 @@
             },
             "monstercat": {
                 "days": 1,
-                "hours": 3,
-                "mins": 23,
+                "hours": 7,
+                "mins": 24,
                 "musicStream": "true",
-                "playCount": 40,
-                "secs": 59,
-                "totalTime": "0 Days 23:39:58"
+                "playCount": 41,
+                "secs": 40,
+                "totalTime": "1 Days 5:53:49"
             },
             "muselk": {
                 "days": 0,
@@ -143,10 +153,10 @@
         },
         "timeCounters": {
             "days": 1,
-            "hours": 12,
-            "mins": 47,
-            "secs": 10,
-            "totalTime": "1 Days 12:47:10"
+            "hours": 17,
+            "mins": 5,
+            "secs": 14,
+            "totalTime": "1 Days 17:5:14"
         }
     },
     "streams": [
@@ -162,6 +172,7 @@
         "scykoh",
         "naturalselection2",
         "gophergaming",
-        "haxmega"
+        "haxmega",
+        "blaaaaaa"
     ]
 }
