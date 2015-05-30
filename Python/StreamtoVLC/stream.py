@@ -1,5 +1,5 @@
 ##------------------------------------------------------------------------------------------------------##
-## Importent note:                                                                                      ##
+## Important note:                                                                                      ##
 ## This uses the program http://docs.livestreamer.io/index.html which provides the livestreamer command ##
 ## This python program is used to open streams in vlc media player                                      ##
 ##------------------------------------------------------------------------------------------------------##
@@ -761,10 +761,10 @@ def grfthing():
 
 #################################
 #                               #
-# Code flow crontroll           #
+# Code flow control             #
 #                               #
 # only calls to other functions #
-# and controll structures       #
+# and control structures        #
 #################################
 
 def init():
