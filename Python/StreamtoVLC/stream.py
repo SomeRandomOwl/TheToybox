@@ -679,18 +679,18 @@ def init():
 	jsonTemplate =  {"data": {"errorLogs": {"timesInterrupted": 0, "unRecgonizedCmds": 0, "unknownError": 0, "unsupportedServices": 0}, "logs": {"streamNum": 0, "timesRestarted": 0, "timesStarted": 0, "totalPlay": 0}, "streamData": {"streamTemplate": {"days": 0, "hours": 0, "mins": 0, "musicStream": "true", "playCount": 0, "secs": 0, "totalTime": "0 Days 0:0:0"}}}, "streams": []}
 	
 	clearscreen()
+	debug('--Start--')
 	
 	#Opens the json file for the list of tracked streamers
 	with open('list.json') as data_file:
 		data = json.load(data_file)
 		data_file.close()
 
-	debug('--Start--')
 	streamDataTemp = data['data']['streamData']['streamTemplate']
 	startCount = data['data']['logs']['timesStarted']
 	startCount = startCount + 1
 	writeToJson(['data','logs','timesStarted'],startCount)
-	debug('Start Count Added Onto')
+	debug('Start Count Incremented')
 
 	#Menu Prompts
 	if 1:
