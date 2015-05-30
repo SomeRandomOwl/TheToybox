@@ -25,7 +25,7 @@ import signal
 global jsonTemplate
 
 global data
-data=''
+data=['default empty']
 
 #Menu Prompts
 global options
