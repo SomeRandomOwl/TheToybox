@@ -25,6 +25,7 @@ import signal
 global jsonTemplate
 
 global data
+data=''
 
 #Menu Prompts
 global options
