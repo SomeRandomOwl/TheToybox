@@ -1,6 +1,7 @@
 {
+	"gui":0,
 	"errorLogs": {
-		"debug": "True",
+		"debug": 1,
 		"timesInterrupted": 18,
 		"unRecgonizedCmds": 8,
 		"unknownError": 11,

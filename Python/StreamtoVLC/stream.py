@@ -21,11 +21,10 @@ import sys
 import traceback
 import signal
 
-#Sets up the input variables that is used later in the script
-global jsonTemplate
-
 global data
 global config
+data=['default empty data']
+config=['default empty config']
 
 #Menu Prompts
 global options
@@ -58,7 +57,7 @@ def debug(info,error=0):
 				print(mes)
 				with open("debug.txt", "a") as myfile:
 					myfile.write(mes+'\n')
-			elif error==1:
+			elif error:
 				with open("debug.txt", "a") as myfile:
 					myfile.write(mes+'\n')
 
@@ -258,16 +257,15 @@ def openstream(service,lvst,audio):
 		debug('Twitch Stream commands set')
 	#Process for youtube streams
 	elif service.lower() == 'youtube':
+		lvsting = lsYoutube
 		if lvst[1:32] == 'https://www.youtube.com/watch?v=':
-			if audio.lower() == 'yes':
-				lvsting = lsYoutube + lvst[32:] + ' audio_mp4'
-			else:
-				lvsting = lsYoutube + lvst[32:] + ' best'
+			lvsting += lvst[32:]
 		else:
-			if audio.lower() == 'yes':
-				lvsting = lsYoutube + lvst + ' audio_mp4'
-			else:
-				lvsting = lsYoutube + lvst + ' best'
+			lvsting += lvst
+		if audio:
+			lvsting += ' audio_mp4'
+		else:
+			lvsting += ' best'
 		debug('Youtube commands set')
 	return lvsting
 	debug('Open stream done')
@@ -431,17 +429,17 @@ def stattracker(lvst,times,audio):
 # File         #
 ################
 
-def jsonWrite(d=data):
-	with open('list.json', "w") as write_file:
+def jsonWrite(d=data,f='list'):
+	with open(f+'.json', "w") as write_file:
 		write_file.write(json.dumps(d, sort_keys=True, indent=4, separators=(',', ': ')))
 
-def jsonCheck():
-	exists = os.path.isfile('list.json')
+def jsonCheck(d,f):
+	exists = os.path.isfile(f+'.json')
 	if not exists:
-		debug('List.json Not Found, Creating...')
-		jsonWrite(jsonTemplate)
+		debug(f+'.json Not Found, Creating...')
+		jsonWrite(d,f)
 	else:
-		debug('List.json Found, Continueing...')
+		debug(f+'.json Found, Continueing...')
 
 def writeToJson(location,val,d='data',top=1):
 	if location==[]:
@@ -455,6 +453,11 @@ def writeToJson(location,val,d='data',top=1):
 			return d
 		if top:
 			jsonWrite()
+
+def readFromJson(d,f):
+	with open(f+'.json') as dfile:
+		globals()[d]=json.load(dfile)
+		dfile.close()
 
 ######################## print and input are not allowed above this line #######################
 #                      #
@@ -524,7 +527,7 @@ def mainopenCLI():
 				clearscreen()
 				print(optionsopenaudio)
 				if lvst[1:32] == 'https://www.youtube.com/watch?v=':
-					audio = input('Do you want to do audio only?: ')
+					audio = ynQuestion('Do you want to do audio only?')
 			lvsting=openstream(service,lvst,audio)
 	elif not service:
 		print('\nNo Stream Service Entered!')
@@ -575,8 +578,8 @@ def addCLI(username='',statAdd=0):
 	else:
 		print('\nThere are currently: ' + str(allRecords) + ' tracked users.' + '\n')
 
-	isMusicStream = input('Is this stream a music stream? (Yes or No): ')
-	if isMusicStream.lower() == 'yes':
+	isMusicStream = ynQuestion('Is this stream a music stream?')
+	if isMusicStream:
 		setUserMusic(username)
 
 def statsCLI():
@@ -594,7 +597,7 @@ def statsCLI():
 			print(optionsstatscheck)
 			print('\nThere are no stats for this user!\n')
 			debug('Done')
-			statAdd = ynQuestion('Whould you like to add this user to the tracked list?: ')
+			statAdd = ynQuestion('Whould you like to add this user to the tracked list?')
 			if statAdd:
 				addCLI(statUser,statAdd)
 		else:
@@ -643,13 +646,13 @@ def menuCLI():
 	elif option.lower() == "stats":
 		statsCLI()
 	elif option.lower() == "debug":
-		if config['errorLogs']['debug'] == 'True':
+		if config['errorLogs']['debug'] == 1:
 			debug('Logging disabled')
 			debug('--End--')
-			config['errorLogs']['debug'] = "False"
+			config['errorLogs']['debug'] = 0
 			print('Debug Set to False')
 		else:#if config['errorLogs']['debug'] == 'False':
-			config['errorLogs']['debug'] = "True"
+			config['errorLogs']['debug'] = 1
 			debug('--Start--')
 			debug('Logging enabled')
 			print('Debug set to True')
@@ -665,7 +668,7 @@ def menuCLI():
 		print("\n\n----------\nOption Not Recgonized\n-----------\n\n")
 		
 	print('')
-	restart = input('Restart the Script?: ')
+	restart = ynQuestion('Restart the Script?')
 	debug('Main menuCLI end')
 	return restart
 
@@ -766,19 +769,15 @@ def grfthing():
 
 def init():
 	global data
-	global jsonTemplate
-	jsonTemplate =  {"data": {"errorLogs": {"timesInterrupted": 0, "unRecgonizedCmds": 0, "unknownError": 0, "unsupportedServices": 0}, "logs": {"streamNum": 0, "timesRestarted": 0, "timesStarted": 0, "totalPlay": 0}, "streamData": {"streamTemplate": {"days": 0, "hours": 0, "mins": 0, "musicStream": "true", "playCount": 0, "secs": 0, "totalTime": "0 Days 0:0:0"}}}, "streams": []}
-	
-	clearscreen()
-	
-	#Opens the json file for the list of tracked streamers
-	with open('list.json') as data_file:
-		data = json.load(data_file)
-		data_file.close()
+	listTemplate =  {"streamData":{"streamTemplate":{"days":0,"hours":0,"mins":0,"musicStream":1,"playCount":0,"secs":0,"totalTime":"0 Days 0:0:0"}},"streams":[]}
+	configTemplate = {"errorLogs":{"debug":0,"timesInterrupted":0,"unRecgonizedCmds":0,"unknownError":0,"unsupportedServices":0},"logs":{"streamNum":0,"timesRestarted":0,"timesStarted":0,"totalPlay":0}}
 
-	with open('config.json') as config_file:
-		config = json.load(config_file)
-		config_file.close()
+	clearscreen()
+	jsonCheck(listTemplate,'list')
+	jsonCheck(configTemplate,'config')
+	
+	readFromJson('data','list')
+	readFromJson('config','config')
 
 	debug('--Start--')
 	streamDataTemp = data['streamData']['streamTemplate']
@@ -941,16 +940,16 @@ def terminate():
 def main():
 	init()
 	
-	restart = 'yes'
+	restart = 1
 	#Restarts the script
-	while restart.lower() in ["yes","y"]:
+	while restart:
 		try:
 			debug('Restarting Script')
 			if config['gui']:
 				restart=menuGUI()
 			else:
 				restart=menuCLI()
-			if restart.lower() in ["yes","y"]:
+			if restart:
 				clearscreen()
 				
 		except KeyboardInterrupt:
@@ -958,7 +957,7 @@ def main():
 			timesInterrupted = config['errorLogs']['timesInterrupted']
 			timesInterrupted = timesInterrupted + 1
 			config['errorLogs']['timesInterrupted'] = timesInterrupted
-			restart = 'no'
+			restart = 0
 			
 		except:
 			print('\n\nUnknown Error! You shouldent be seeing this!')
