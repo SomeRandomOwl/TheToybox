@@ -167,8 +167,8 @@ def statCheck(statWhat,statOpt,statUser):
 		if data['data']['errorLogs']['debug'] == 1 :
 			out+='\nCurrently in Debug Mode!'
 	elif statWhat.lower() == 'clear':
+		out+=optionsstatsclear
 		if statOpt.lower() == 'global':
-			out+=optionsstatsclear
 			debug('Global Stat Clear')
 			data['data']['logs']['totalPlay'] = 0
 			data['data']['timeCounters']['totalTime'] = "0 Days 0:0:0"
@@ -179,7 +179,6 @@ def statCheck(statWhat,statOpt,statUser):
 			out+='\nStat Clear Done!\n'
 			debug('Done')
 		elif statOpt.lower() == 'user':
-			out+=optionsstatsclear
 			debug('User Stat Clear')
 			data['data']['streamData'][statUser] = streamDataTemp
 			out+='\nStat clear done!'
@@ -548,7 +547,8 @@ def mainopenCLI():
 		times+=cmdwin(lvsting)
 		#Prints the elapsed time
 		debug('Setting ElapsedTime String')
-		elapsedTime = str(timeh) + ':' + str(timem) + ':' + str(times)
+		[timess,timem,timeh]=timeCalc(times,0,0)
+		elapsedTime = str(timeh) + ':' + str(timem) + ':' + str(timess)
 		print('')
 		print('Time elapsed: ' + elapsedTime)
 		print('')
@@ -560,7 +560,7 @@ def addCLI(username='',statAdd=0):
 	clearscreen()
 	print(optionsadd)
 	if username == '':
-		input('Name of the user to add?: ')
+		username=input('Name of the user to add?: ')
 	else:
 		print('Adding user: '+username)
 	while username=='':
