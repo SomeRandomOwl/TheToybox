@@ -633,8 +633,11 @@ def menuCLI():
 		checkCLI()
 	elif option.lower() == "list":
 		clearscreen()
-		print("This wight take a while...")
-		print(lvstList())
+		print(optionslist)
+		print("This might take a while...")
+		lvlistst = lvstList()
+		clearscreen()
+		print(lvlistst)
 	elif option.lower() == "open":
 		mainopenCLI()
 	elif option.lower() == "add":

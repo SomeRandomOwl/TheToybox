@@ -1,17 +1,17 @@
 {
     "data": {
         "errorLogs": {
-            "debug": 1,
-            "timesInterrupted": 18,
-            "unRecgonizedCmds": 11,
+            "debug": 0,
+            "timesInterrupted": 20,
+            "unRecgonizedCmds": 12,
             "unknownError": 17,
             "unsupportedServices": 5
         },
         "logs": {
-            "streamNum": 14,
-            "timesRestarted": 47,
-            "timesStarted": 121,
-            "totalPlay": 49
+            "streamNum": 13,
+            "timesRestarted": 55,
+            "timesStarted": 133,
+            "totalPlay": 50
         },
         "streamData": {
             "Spinninrecords": {
@@ -73,7 +73,7 @@
                 "hours": 3,
                 "mins": 23,
                 "musicStream": "true",
-                "playCount": 39,
+                "playCount": 40,
                 "secs": 59,
                 "totalTime": "0 Days 23:39:58"
             },
@@ -144,9 +144,9 @@
         "timeCounters": {
             "days": 1,
             "hours": 12,
-            "mins": 46,
-            "secs": 58,
-            "totalTime": "1 Days 12:46:58"
+            "mins": 47,
+            "secs": 10,
+            "totalTime": "1 Days 12:47:10"
         }
     },
     "streams": [
