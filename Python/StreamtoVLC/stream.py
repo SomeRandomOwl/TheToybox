@@ -890,6 +890,7 @@ def init():
 	readFromJson('config','config')
 
 	debug('--Start--')
+	print(data)
 	streamDataTemp = data['streamData']['streamTemplate']
 	startCount = config['logs']['timesStarted']
 	startCount = startCount + 1
