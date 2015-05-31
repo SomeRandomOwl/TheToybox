@@ -420,6 +420,8 @@ def stattracker(lvst,times,audio):
 ################
 
 def jsonWrite(d,f):
+	print("wrighting <"+d+"> to <"+f+">")
+	print("trace:"+str(traceback.extract_stack()))
 	with open(f+'.json', "w") as write_file:
 		write_file.write(json.dumps(globals()[d], sort_keys=True, indent=4, separators=(',', ': ')))
 
