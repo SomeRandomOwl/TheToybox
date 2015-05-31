@@ -445,6 +445,7 @@ def writeToJson(location,val,d='data',top=1):
 			jsonWrite()
 
 def readFromJson(d,f):
+	print("read <"+d+"> from <"+f+">")
 	with open(f+'.json') as dfile:
 		globals()[d]=json.load(dfile)
 		dfile.close()
@@ -878,7 +879,6 @@ def grfthing():
 #################################
 
 def init():
-	global data
 	listTemplate =  {"streamData":{"streamTemplate":{"days":0,"hours":0,"mins":0,"musicStream":1,"playCount":0,"secs":0,"totalTime":"0 Days 0:0:0"}},"streams":[]}
 	configTemplate = {"errorLogs":{"debug":0,"timesInterrupted":0,"unRecgonizedCmds":0,"unknownError":0,"unsupportedServices":0},"logs":{"streamNum":0,"timesRestarted":0,"timesStarted":0,"totalPlay":0}}
 
