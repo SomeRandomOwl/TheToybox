@@ -51,6 +51,8 @@ def debug(info,error=0):
 				elif error:
 					with open("debug.txt", "a") as myfile:
 						myfile.write(mes+'\n')
+	except:
+		pass
 
 #######################
 #  Data Manipulation  #
