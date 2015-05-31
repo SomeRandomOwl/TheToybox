@@ -421,7 +421,7 @@ def stattracker(lvst,times,audio):
 
 def jsonWrite(d,f):
 	with open(f+'.json', "w") as write_file:
-		write_file.write(json.dumps(d, sort_keys=True, indent=4, separators=(',', ': ')))
+		write_file.write(json.dumps(globals()[d], sort_keys=True, indent=4, separators=(',', ': ')))
 
 def jsonCheck(d,f):
 	exists = os.path.isfile(f+'.json')
