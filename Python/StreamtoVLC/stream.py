@@ -79,10 +79,10 @@ def check_user(user):
 
 #Defines the program to display the output from the check user as text
 def list(urc):
+	out=''
 	debug('Processing User Status')
 	debug('user: '+str(urc))
 	try:
-		out=''
 		if check_user(urc) == 0:
 			out=str(urc + ' Is ONLINE')
 		elif check_user(urc) == 1:
