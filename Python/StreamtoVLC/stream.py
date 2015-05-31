@@ -931,13 +931,13 @@ def main():
 			config['errorLogs']['timesInterrupted'] = timesInterrupted
 			restart = 0
 			
-		except:
-			print('\n\nUnknown Error! You shouldent be seeing this!')
-			unknownError = config['errorLogs']['unknownError']
-			unknownError = unknownError + 1
-			config['errorLogs']['unknownError'] = unknownError
-			restart = 0
-			debug([str(sys.exc_info()), str(traceback.extract_stack())],1)
+		#except:
+		#	print('\n\nUnknown Error! You shouldent be seeing this!')
+		#	unknownError = config['errorLogs']['unknownError']
+		#	unknownError = unknownError + 1
+		#	config['errorLogs']['unknownError'] = unknownError
+		#	restart = 0
+		#	debug([str(sys.exc_info()), str(traceback.extract_stack())],1)
 			
 		if restart:
 			debug('Restart Count Updating')
