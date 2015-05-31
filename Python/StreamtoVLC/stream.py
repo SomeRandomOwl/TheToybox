@@ -32,24 +32,25 @@ global datanum
 #Debug function to append time stamps and write to files
 #i made only outputting text depend on the switch and outputting to log always on
 def debug(info,error=0):
-	if config['errorLogs']['debug'] or error:
-		if type(info)==type([]):
-			for a in info:
-				debug(a,error)
-		else:
-			import datetime
-			if error:
-				dbg="ERROR: "
+	try:
+		if config['errorLogs']['debug'] or error:
+			if type(info)==type([]):
+				for a in info:
+					debug(a,error)
 			else:
-				dbg="DEBUG: "
-			mes=datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg +str(info)
-			if config['errorLogs']['debug']:
-				print(mes)
-				with open("debug.txt", "a") as myfile:
-					myfile.write(mes+'\n')
-			elif error:
-				with open("debug.txt", "a") as myfile:
-					myfile.write(mes+'\n')
+				import datetime
+				if error:
+					dbg="ERROR: "
+				else:
+					dbg="DEBUG: "
+				mes=datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg +str(info)
+				if config['errorLogs']['debug']:
+					print(mes)
+					with open("debug.txt", "a") as myfile:
+						myfile.write(mes+'\n')
+				elif error:
+					with open("debug.txt", "a") as myfile:
+						myfile.write(mes+'\n')
 
 #######################
 #  Data Manipulation  #
@@ -890,8 +891,6 @@ def init():
 	startCount = startCount + 1
 	writeToJson(['logs','timesStarted'],startCount,'config')
 	debug('Start Count Added Onto')
-		
-
 				
 def terminate():
 	#Script end confirmation
