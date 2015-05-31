@@ -26,7 +26,7 @@ global config
 data=['default empty data']
 config=['default empty config']
 
-#Menu Prompts
+global datanum
 
 #Debug function to append time stamps and write to files
 #i made only outputting text depend on the switch and outputting to log always on
@@ -90,10 +90,8 @@ def list(urc):
 	except KeyboardInterrupt:
 		pass
 	debug('User Status Processed')
-	listing = ""																		+"\n"+\
-			  "-------------"															+"\n"+\
-			  ""
-	return (listing+'\n'+out+'\n'+listing)
+	divider = "\n-------------\n"
+	return (divider+out+divider)
 
 #Function to add new tracked users
 def userAdd(username,statAdd):
@@ -110,16 +108,16 @@ def userAdd(username,statAdd):
 			#allRecords = allRecords + 1
 		allRecords+=len(data["streams"])
 		#why was this done as a for loop?
-	debug('Usernames Counted')
+	debug('User names Counted')
 	#debug('Username Count Printed')
 	array = data['streams']
 	array.append(username.lower())
 	data['streamData'][username.lower()] = streamDataTemp
 	debug('User added')
 	#why was this done as a loop?
-	datanum=len(data["streams"])
 	#for i in range(len(data["streams"])):
 		#datanum = i
+	datanum=len(data["streams"])
 	debug('User Music Status added')
 	datanum = datanum + 1
 	config['logs']['streamNum'] = datanum
@@ -141,26 +139,23 @@ def statCheck(statWhat,statOpt,statUser):
 			out+='\nThis stream is also marked as a music stream'
 		debug('Done')
 	elif statWhat.lower() == 'global':
-		out+=statscheckheader
 		debug('Checking Global Stats')
-		out+='\nThe total ammount of streams played is: ' + str(config['logs']['totalPlay'])
+		out+='\nThe total amount of streams played is: ' + str(config['logs']['totalPlay'])
 		out+='\nTheres a total of: ' + str(config['logs']['streamNum']) + ' streams being tracked.'
-		out+='\nThe total ammount of time the streams have been played for is: ' + data['timeCounters']['totalTime']
+		out+='\nThe total amount of time the streams have been played for is: ' + data['timeCounters']['totalTime']
 		out+='\nThe script has been started: ' + str(config['logs']['timesStarted']) + ' times.'
 		out+='\nThe script has been restarted: ' + str(config['logs']['timesRestarted']) + ' times.'
 		debug('Done')
 	elif statWhat.lower() == 'error':
-		out+=statscheckheader
 		debug('Checking Error Stats')
-		out+='\nThe total ammount of times the script has been interuppted is: ' + str(config['errorLogs']['timesInterrupted'])
+		out+='\nThe total amount of times the script has been interrupted is: ' + str(config['errorLogs']['timesInterrupted'])
 		out+='\nThe total of unsupported services entered is:  ' + str(config['errorLogs']['unsupportedServices'])
-		out+='\nThe total ammount of unrecgonized commands entered is: ' + str(config['errorLogs']['unRecgonizedCmds'])
+		out+='\nThe total amount of unrecognized commands entered is: ' + str(config['errorLogs']['unRecgonizedCmds'])
 		out+='\nThe total number of Unknown Errors encountered: ' + str(config['errorLogs']['unknownError'])
 		if config['errorLogs']['debug'] == 'True' :
 			out+='\nCurrently in Debug Mode!'
 	elif statWhat.lower() == 'clear':
 		if statOpt.lower() == 'global':
-			out+=optionsstatsclear
 			debug('Global Stat Clear')
 			config['logs']['totalPlay'] = 0
 			data['timeCounters']['totalTime'] = "0 Days 0:0:0"
@@ -171,12 +166,12 @@ def statCheck(statWhat,statOpt,statUser):
 			out+='\nStat Clear Done!\n'
 			debug('Done')
 		elif statOpt.lower() == 'user':
-			out+=optionsstatsclear
 			debug('User Stat Clear')
 			data['streamData'][statUser] = streamDataTemp
 			out+='\nStat clear done!'
 			debug('Done')
 		elif statOpt.lower() == 'erase':
+			#todo move up a level
 			debug('File Deleation')
 			os.system('del list.json')
 			out+='\nJson file deleted, regenerating json to default template...'
@@ -187,12 +182,10 @@ def statCheck(statWhat,statOpt,statUser):
 		else:
 			out+='\nStat clear aborted!'
 	elif not statWhat:
-		print('No command Entered!')
+		out+='No command Entered!'
 	else:
-		unrecgonizedCmd = config['errorLogs']['unRecgonizedCmds']
-		unrecgonizedCmd = unrecgonizedCmd + 1
-		config['errorLogs']['unRecgonizedCmds'] = unrecgonizedCmd
-		print("\n\n----------\nOption Not Recgonized\n-----------\n\n")
+		config['errorLogs']['unRecgonizedCmds'] +=1
+		out+="\n\n----------\nOption Not Recognized\n-----------\n\n"
 	debug('Stat Check Done')
 	return out
 
@@ -202,7 +195,6 @@ def lvstList():
 	global datanum
 	global data_file
 
-	out=optionslist
 	debug('User List started')
 	for i in range(len(data["streams"])):
 		if data['streams'][i] != "null":
@@ -216,9 +208,9 @@ def lvstList():
 	for i in range(len(data["streams"])):
 		if data["streams"][i] != "null":
 			if check_user(data["streams"][i]) != 1:
-				out+=list(data["streams"][i])
-	return out
+				out+=str(list(data["streams"][i]))
 	debug('List Done')
+	return out
 
 #Command to open a stream
 def openstream(service,lvst,audio):
@@ -232,20 +224,17 @@ def openstream(service,lvst,audio):
 	#Process to use for twitch streams
 	if service.lower() == 'twitch':
 		try:
-			audioOnly = data['streamData'][lvst.lower()]['musicStream']
-			if audioOnly == 'true':
-				clearscreen()
-				print(openaudioheader)
+			if audio or data['streamData'][lvst.lower()]['musicStream']:
 				debug('Music stream')
-				debug('Recived ' + audio)
-				if audio.lower() == 'yes':
-					lvsting = lsTwitch + lvst + ' audio'
-				else:
-					lvsting = lsTwitch + lvst + ' source'
-					
+				debug('Received 1')
+				lvsting = lsTwitch + lvst + ' audio'	
 			else:
+				debug('video stream')
+				debug('Received 0')
 				lvsting = lsTwitch + lvst + ' source'
 		except:
+			debug('video stream')
+			debug('Received 0')
 			lvsting = lsTwitch + lvst + ' source'
 		debug('Twitch Stream commands set')
 	#Process for youtube streams
@@ -264,7 +253,6 @@ def openstream(service,lvst,audio):
 	debug('Open stream done')
 
 #Starts timer and opens stream
-
 def cmdwin(lvsting):
 	debug('Opening Stream')
 	start = time.time()
@@ -279,22 +267,26 @@ def cmdwin(lvsting):
 #Timer calculation
 def timeCalc(times,timem,timeh):
 	debug('Time Calculation Started')
-	while times > 59:
-		debug('Calculating Minutes')
-		times = times - 60
-		timem = timem + 1
-	while timem > 59:
-		debug('Calculating Hours')
-		timem = timem - 60
-		timeh = timeh + 1
+	timem+=int(times)/60
+	times=times%60
+	timeh+=int(timem)/60
+	timem=timem%60
+	#while times > 59:
+	#	debug('Calculating Minutes')
+	#	times = times - 60
+	#	timem = timem + 1
+	#while timem > 59:
+	#	debug('Calculating Hours')
+	#	timem = timem - 60
+	#	timeh = timeh + 1
 	debug('Time Calculation done')
 	return [times,timem,timeh]
 
 #Updates Stats
 def stattracker(lvst,times,audio):
-	#Updates the play count on the active streamer
 	try:
-		debug('Updateing User play count') 
+		#why is this here?
+		debug('Updating User play count') 
 		playnum = data['streamData'][lvst]['playCount']
 		playnum = playnum + 1
 		data['streamData'][lvst]['playCount'] = playnum
@@ -323,16 +315,16 @@ def stattracker(lvst,times,audio):
 		   'TotalMinutes: ' + str(totalmin),
 		   'TotalHours: ' + str(totalhrs),
 		   'TotalDays: ' + str(totaldays)])
-	
+
 	debug('Calculating Carries')
-	
+
 	[totalsec,totalmin,totalhrs]=timeCalc(totalsec,totalmin,totalhrs)
 	while totalhrs > 23:
 		debug('one day over')
 		totalhrs = totalhrs - 24
 		totaldays = totaldays + 1
 		debug('one day added')
-		
+
 	debug(['TotalSeconds: ' + str(totalsec),
 		   'TotalMinutes: ' + str(totalmin),
 		   'TotalHours: ' + str(totalhrs),
@@ -457,7 +449,7 @@ def readFromJson(d,f):
 # User interface (CLI) #
 #                      #
 # print, input and     #
-# some controll logic  #
+# some control logic   #
 ########################
 
 def clearscreen():
@@ -612,7 +604,7 @@ def openCLI():
 		print('Opening ' + lvst + "'s stream on " + service + ".\n")
 		try:
 			print('Total times ' + lvst + " has been played: " + str(data['streamData'][lvst]['playCount']) + ".\n")
-			print('Total ammount of time ' + lvst + " Has been played for: " + data['streamData'][lvst]['totalTime'] + " \n")	
+			print('Total amount of time ' + lvst + " Has been played for: " + data['streamData'][lvst]['totalTime'] + " \n")	
 		except:
 			pass
 		times+=cmdwin(lvsting)
@@ -693,17 +685,13 @@ def statsClearCLI():
 def statsCLI():
 	clearscreen()
 	statscheckheader =  ""												+"\n"+\
-						"Available options:"							+"\n"+\
-						""												+"\n"+\
-						"----------"									+"\n"+\
-						""												+"\n"+\
 						"This is used to view the stats being tracked"	+"\n"+\
 						"You can view the stats of a individual user"	+"\n"+\
 						"You can also view the total global stats"		+"\n"+\
 						"You can also Clear the stats"					+"\n"+\
 						"You can also check the errorLogs"				+"\n"+\
 						""												+"\n"+\
-						"---------"										+"\n"+\
+						"Available options:"							+"\n"+\
 						""
 	print(statscheckheader)
 	statWhat = input('Which stats do you want to see? (User, Global, Error, or Clear): ')
@@ -748,16 +736,11 @@ def menuCLI():
 	#Option input
 	options =   ""																		+"\n"+\
 				"Available options:"													+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
-				""																		+"\n"+\
-				"Check (checks status of a specific user"								+"\n"+\
-				"List (Checks the status of a list of predefined users"					+"\n"+\
-				"Open (opens a stream)"													+"\n"+\
-				"Add (Adds a user to to the tracked user list)"							+"\n"+\
-				"Stats (Views the list of tracked stats)"								+"\n"+\
-				""																		+"\n"+\
-				"----------"															+"\n"+\
+				" - Check - (checks status of a specific user"							+"\n"+\
+				" - List  - (Checks the status of a list of predefined users"			+"\n"+\
+				" - Open  - (opens a stream)"											+"\n"+\
+				" - Add   - (Adds a user to to the tracked user list)"					+"\n"+\
+				" - Stats - (Views the list of tracked stats)"							+"\n"+\
 				""
 	print(options)
 	option = input('What do you want to do?: ')
