@@ -60,7 +60,7 @@ def debug(info,error=0):
 
 #Defines the program to check a users status
 def check_user(user):
-	debug('Retriveing User Status')
+	debug('Retrieving User Status')
 	""" returns 0: online, 1: offline, 2: not found, 3: error """
 	url = 'https://api.twitch.tv/kraken/streams/' + user
 	try:
@@ -74,7 +74,7 @@ def check_user(user):
 			status = 2
 		else:
 			status = 3
-	debug('User Status Retrived')
+	debug('User Status Retrieved')
 	return status
 
 #Defines the program to display the output from the check user as text
@@ -137,7 +137,7 @@ def statCheck(statWhat,statOpt,statUser):
 	debug('Stat Check Started')
 	statAdd = 0
 	if statWhat.lower() == 'user':
-		debug('Retriveing User Stats')
+		debug('Retrieving User Stats')
 		out+="\nThis stream has been played: " + str(data['streamData'][statUser.lower()]['playCount'])
 		out+="\nThis stream has been played for a total of: " + data['streamData'][statUser.lower()]['totalTime']
 		if data['streamData'][statUser.lower()]['musicStream'] == 'true':
@@ -177,7 +177,7 @@ def statCheck(statWhat,statOpt,statUser):
 			debug('Done')
 		elif statOpt.lower() == 'erase':
 			#todo move up a level
-			debug('File Deleation')
+			debug('File Deleted')
 			os.system('del list.json')
 			out+='\nJson file deleted, regenerating json to default template...'
 			data = jsonTemplate
@@ -205,7 +205,7 @@ def lvstList():
 	for i in range(len(data["streams"])):
 		if data['streams'][i] != "null":
 			datanum = i
-	debug('StreamNum Updateing')
+	debug('StreamNum Updating')
 	datanum = datanum + 1
 	datanum = str(datanum)
 	config['logs']['streamNum'] = int(datanum)
@@ -225,8 +225,8 @@ def openstream(service,lvst,audio):
 	lsYoutube = 'livestreamer youtube.com/watch?v='
 
 	debug('Opening Stream Started')
-	debug('Service Recived ' + service)
-	debug('Streamer Recived ' + lvst)
+	debug('Service Received ' + service)
+	debug('Streamer Received ' + lvst)
 	#Process to use for twitch streams
 	if service.lower() == 'twitch':
 		try:
@@ -257,8 +257,8 @@ def openstream(service,lvst,audio):
 		debug('Youtube commands set')
 	return lvsting
 	debug('Open stream done')
-
 #Starts timer and opens stream
+
 def cmdwin(lvsting):
 	debug('Opening Stream')
 	start = time.time()
@@ -289,7 +289,7 @@ def timeCalc(times,timem,timeh):
 	return [times,timem,timeh]
 
 #Updates Stats
-def stattracker(lvst,times,audio):
+def stattracker(lvst,times,audio):{
 	try:
 		#why is this here?
 		debug('Updating User play count') 
@@ -404,13 +404,13 @@ def stattracker(lvst,times,audio):
 				   'TotalUserHours: ' + str(totaluserhrs),
 				   'TotalUserDays: ' + str(totaluserdays)])
 
-			debug('Adding string togther')
+			debug('Adding string together')
 			totaluserelapsed = totaluserdays + " Days " + totaluserhrs + ":" + totalusermin + ":" + totalusersec
 			debug('Setting string in json')
 			data['streamData'][lvst]['totalTime'] = totaluserelapsed
 		except:
 			pass
-	debug('Stat Tracking Done')
+	debug('Stat Tracking Done')}
 
 
 ################ IO is not allowed above this line ################
@@ -421,7 +421,7 @@ def stattracker(lvst,times,audio):
 ################
 
 def jsonWrite(d,f):
-	#print("wrighting <"+d+"> to <"+f+">")
+	#print("writing <"+d+"> to <"+f+">")
 	#print("trace:"+str(traceback.extract_stack()))
 	with open(f+'.json', "w") as write_file:
 		write_file.write(json.dumps(globals()[d], sort_keys=True, indent=4, separators=(',', ': ')))
@@ -432,7 +432,7 @@ def jsonCheck(d,f):
 		debug(f+'.json Not Found, Creating...')
 		jsonWrite(d,f)
 	else:
-		debug(f+'.json Found, Continueing...')
+		debug(f+'.json Found, Continuing...')
 
 def writeToJson(location,val,d='data',top=1):
 	if location==[]:
@@ -499,7 +499,7 @@ def checkCLI():
 					"----------"															+"\n"+\
 					""																		+"\n"+\
 					"This is used to check the status of a individual twitch streamer"		+"\n"+\
-					"This is unavaliable for youtube unless it is otherwisse possible"		+"\n"+\
+					"This is unavailable for youtube unless it is otherwise possible"		+"\n"+\
 					"Might have youtube support in the future"								+"\n"+\
 					""																		+"\n"+\
 					"----------"															+"\n"+\
@@ -507,7 +507,7 @@ def checkCLI():
 	print(optionscheck)
 	user = input('User to check status of: ')	
 	if not user:
-		print('No Username entered!')
+		print('No User\'s name entered!')
 	else:
 		print('')
 		print(list(user))
@@ -565,7 +565,7 @@ def openCLI():
 					"----------"															+"\n"+\
 					""
 		print(optionsstream)
-		debug('Service Recived ' + service)
+		debug('Service Received ' + service)
 		lvst = input('What stream?: ')
 		if not lvst:
 			print('\nNo Stream Entered')
@@ -631,8 +631,20 @@ def openCLI():
 		print('\nThere was a error opening the stream!')
 
 def addCLI(username='',statAdd=0):
+	optionsadd =    ""																+"\n"+\
+					"Available options:"											+"\n"+\
+					""																+"\n"+\
+					"----------"													+"\n"+\
+					""																+"\n"+\
+					"This is used to add a user to the tracked list"				+"\n"+\
+					"This makes their status to be checked with the list command"	+"\n"+\
+					"It also allows statistic tracking for the user"				+"\n"+\
+					""																+"\n"+\
+					"----------"													+"\n"+\
+					""
 	if username == '':
 		clearscreen()
+		print(optionsadd)
 		input('Name of the user to add?: ')
 	else:
 		print('Adding user: '+username)
@@ -640,19 +652,8 @@ def addCLI(username='',statAdd=0):
 		print('Please type in a user-name and not leave the line blank.')
 		input('Name of the user to add?: ')
 	allRecords=userAdd(username,statAdd)
-
+	
 	clearscreen()
-	optionsadd = ""																		+"\n"+\
-					"Available options:"													+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""																		+"\n"+\
-					"This is used to add a user to the tracked list"						+"\n"+\
-					"This make ther status to be checked with the list command"				+"\n"+\
-					"It also allows statistic tracking for the user"						+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""
 	print(optionsadd)
 	if allRecords < 1:
 		print('\nThere are currently: no tracked users.' + '\n')
@@ -688,7 +689,7 @@ def statsClearCLI():
 					'(Global, User, Erase): ')
 	if statOpt:
 		if statOpt.lower()=='user':
-			statUser = input('Whos stats do you want to clear?: ')
+			statUser = input('Whose stats do you want to clear?: ')
 		clearscreen()
 		print(statCheck(statWhat,statOpt,statUser))
 	else:
@@ -718,7 +719,7 @@ def statsCLI():
 			print(statscheckheader)
 			print('\nThere are no stats for this user!\n')
 			debug('Done')
-			statAdd = ynQuestion('Whould you like to add this user to the tracked list?')
+			statAdd = ynQuestion('Would you like to add this user to the tracked list?')
 			if statAdd:
 				addCLI(statUser,statAdd)
 		else:
@@ -730,7 +731,7 @@ def statsCLI():
 	else:
 		clearscreen()
 		print(statscheckheader)
-		print (statCheck(statWhat,statOpt,statUser))
+		print(statCheck(statWhat,statOpt,statUser))
 
 def debugCLI():
 	if config['errorLogs']['debug']:
@@ -778,12 +779,12 @@ def menuCLI():
 	elif not option:
 		print('No command Entered!')
 	else:
-		debug('unrecgonized command: '+option)
+		debug('unrecognized command: '+option)
 		#unrecgonizedCmd = config['errorLogs']['unRecgonizedCmds']
 		#unrecgonizedCmd = unrecgonizedCmd + 1
 		#config['errorLogs']['unRecgonizedCmds'] = unrecgonizedCmd
 		config['errorLogs']['unRecgonizedCmds']+=1
-		print("\n\n----------\nOption Not Recgonized\n-----------\n\n")
+		print("\n\n----------\nOption Not Recognized\n-----------\n\n")
 		
 	print('')
 	restart = ynQuestion('Restart the Script?')
@@ -937,7 +938,7 @@ def main():
 			restart = 0
 			
 		#except:
-		#	print('\n\nUnknown Error! You shouldent be seeing this!')
+		#	print('\n\nUnknown Error! You shouldn't be seeing this!')
 		#	unknownError = config['errorLogs']['unknownError']
 		#	unknownError = unknownError + 1
 		#	config['errorLogs']['unknownError'] = unknownError
