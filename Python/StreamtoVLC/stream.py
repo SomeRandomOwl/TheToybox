@@ -289,7 +289,7 @@ def timeCalc(times,timem,timeh):
 	return [times,timem,timeh]
 
 #Updates Stats
-def stattracker(lvst,times,audio):{
+def stattracker(lvst,times,audio):
 	try:
 		#why is this here?
 		debug('Updating User play count') 
@@ -410,7 +410,7 @@ def stattracker(lvst,times,audio):{
 			data['streamData'][lvst]['totalTime'] = totaluserelapsed
 		except:
 			pass
-	debug('Stat Tracking Done')}
+	debug('Stat Tracking Done')
 
 
 ################ IO is not allowed above this line ################
@@ -648,9 +648,9 @@ def addCLI(username='',statAdd=0):
 		input('Name of the user to add?: ')
 	else:
 		print('Adding user: '+username)
-	while username=='':
-		print('Please type in a user-name and not leave the line blank.')
-		input('Name of the user to add?: ')
+	#while username=='':
+	#	print('Please type in a user-name and not leave the line blank.')
+	#	input('Name of the user to add?: ')
 	allRecords=userAdd(username,statAdd)
 	
 	clearscreen()
