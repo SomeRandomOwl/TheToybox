@@ -24,8 +24,8 @@ import signal
 
 global data
 global config
-data=['default empty data']
-config=['default empty config']
+#data=['default empty data']
+#config=['default empty config']
 
 global datanum
 
