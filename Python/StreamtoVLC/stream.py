@@ -420,8 +420,8 @@ def stattracker(lvst,times,audio):
 ################
 
 def jsonWrite(d,f):
-	print("wrighting <"+d+"> to <"+f+">")
-	print("trace:"+str(traceback.extract_stack()))
+	#print("wrighting <"+d+"> to <"+f+">")
+	#print("trace:"+str(traceback.extract_stack()))
 	with open(f+'.json', "w") as write_file:
 		write_file.write(json.dumps(globals()[d], sort_keys=True, indent=4, separators=(',', ': ')))
 
@@ -747,11 +747,11 @@ def menuCLI():
 	#Option input
 	options =   ""																		+"\n"+\
 				"Available options:"													+"\n"+\
-				" - Check - (checks status of a specific user"							+"\n"+\
-				" - List  - (Checks the status of a list of predefined users"			+"\n"+\
-				" - Open  - (opens a stream)"											+"\n"+\
-				" - Add   - (Adds a user to to the tracked user list)"					+"\n"+\
-				" - Stats - (Views the list of tracked stats)"							+"\n"+\
+				" - Check - checks status of a specific user"							+"\n"+\
+				" - List  - Checks the status of a list of predefined users"			+"\n"+\
+				" - Open  - opens a stream"												+"\n"+\
+				" - Add   - Adds a user to to the tracked user list"					+"\n"+\
+				" - Stats - Views the list of tracked stats"							+"\n"+\
 				""
 	print(options)
 	option = input('What do you want to do?: ')
