@@ -423,7 +423,7 @@ def jsonWrite(d,f):
 	with open(f+'.json', "w") as write_file:
 		write_file.write(json.dumps(d, sort_keys=True, indent=4, separators=(',', ': ')))
 
-def jzzsonCheck(d,f):
+def jsonCheck(d,f):
 	exists = os.path.isfile(f+'.json')
 	if not exists:
 		debug(f+'.json Not Found, Creating...')
