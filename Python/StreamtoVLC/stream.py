@@ -104,7 +104,7 @@ def userAdd(username,statAdd):
 	if statAdd:
 		array = data['streams']
 		array.append(statwho.lower())
-		data['streamData'][statwho.lower()] = streamDataTemp
+		#data['streamData'][statwho.lower()] = streamDataTemp
 		debug('Short User Add Done')
 		debug('Counting Users names')
 	else:
@@ -116,7 +116,7 @@ def userAdd(username,statAdd):
 	#debug('Username Count Printed')
 	array = data['streams']
 	array.append(username.lower())
-	data['streamData'][username.lower()] = streamDataTemp
+	#data['streamData'][username.lower()] = streamDataTemp
 	debug('User added')
 	#why was this done as a loop?
 	#for i in range(len(data["streams"])):
@@ -172,7 +172,7 @@ def statCheck(statWhat,statOpt,statUser):
 			debug('Done')
 		elif statOpt.lower() == 'user':
 			debug('User Stat Clear')
-			data['streamData'][statUser] = streamDataTemp
+			#data['streamData'][statUser] = streamDataTemp
 			out+='\nStat clear done!'
 			debug('Done')
 		elif statOpt.lower() == 'erase':
@@ -898,7 +898,7 @@ def init():
 	readFromJson('config','config')
 
 	debug('--Start--')
-	streamDataTemp = data['streamData']['streamTemplate']
+	#streamDataTemp = data['streamData']['streamTemplate']
 	startCount = config['logs']['timesStarted']
 	startCount = startCount + 1
 	writeToJson(['logs','timesStarted'],startCount,'config')
