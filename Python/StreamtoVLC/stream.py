@@ -903,7 +903,8 @@ def terminate():
 	print('')
 	input("Press Enter to continue...")
 
-	jsonWrite()
+	jsonWrite('data','list')
+	jsonWrite('config','config')
 
 	debug('Terminating')
 	debug('--End--')
