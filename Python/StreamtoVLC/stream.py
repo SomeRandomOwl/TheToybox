@@ -445,7 +445,6 @@ def writeToJson(location,val,d='data',top=1):
 			jsonWrite()
 
 def readFromJson(d,f):
-	print("read <"+d+"> from <"+f+">")
 	with open(f+'.json') as dfile:
 		globals()[d]=json.load(dfile)
 		dfile.close()
@@ -890,7 +889,6 @@ def init():
 	readFromJson('config','config')
 
 	debug('--Start--')
-	print(data)
 	streamDataTemp = data['streamData']['streamTemplate']
 	startCount = config['logs']['timesStarted']
 	startCount = startCount + 1
