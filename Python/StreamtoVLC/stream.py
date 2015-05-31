@@ -935,7 +935,7 @@ def main():
 			restart = 'no'
 			debug([str(sys.exc_info()), str(traceback.extract_stack())],1)
 			
-		if restart.lower() in ["yes","y"]:
+		if restart:
 			debug('Restart Count Updating')
 			timesRestarted = config['logs']['timesRestarted']
 			timesRestarted = timesRestarted + 1
