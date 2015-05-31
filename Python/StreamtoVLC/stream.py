@@ -84,11 +84,11 @@ def list(urc):
 	debug('user: '+str(urc))
 	try:
 		if check_user(urc) == 0:
-			out=str(urc + ' Is ONLINE')
+			out=str(urc + ' is ONLINE')
 		elif check_user(urc) == 1:
-			out=str(urc + ' Is offline')
+			out=str(urc + ' is OFFLINE')
 		elif check_user(urc) == 2:
-			out=str(urc + ' Is not found')
+			out=str(urc + ' is NOT FOUND')
 		elif check_user(urc) == 3:
 			out=str('Error in checking status')
 	except KeyboardInterrupt:
@@ -106,7 +106,7 @@ def userAdd(username,statAdd):
 		array.append(statwho.lower())
 		data['streamData'][statwho.lower()] = streamDataTemp
 		debug('Short User Add Done')
-		debug('Counting Usernames')
+		debug('Counting Users names')
 	else:
 		#for i in range(len(data["streams"])):
 			#allRecords = allRecords + 1
@@ -199,6 +199,7 @@ def lvstList():
 	global datanum
 	global data_file
 
+	out=''
 	debug('User List started')
 	for i in range(len(data["streams"])):
 		if data['streams'][i] != "null":
