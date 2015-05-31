@@ -723,6 +723,7 @@ def statsCLI():
 				addCLI(statUser,statAdd)
 		else:
 			clearscreen()
+			print(statscheckheader)
 			print(statCheck(statWhat,statOpt,statUser))
 	elif statWhat.lower() == 'clear':
 		statsClearCLI()
