@@ -442,7 +442,10 @@ def writeToJson(location,val,d='data',top=1):
 			d[location[0]]=writeToJson(location[1:],val,d[location[0]],0)
 			return d
 		if top:
-			jsonWrite()
+			if d=='data':
+				jsonWrite('data','list')
+			else:
+				jsonWrite(d,d)
 
 def readFromJson(d,f):
 	with open(f+'.json') as dfile:
