@@ -4,6 +4,7 @@
 ## This python program is used to open streams in vlc media player                                      ##
 ##------------------------------------------------------------------------------------------------------##
 
+gui=False
 
 #############################
 #  Imports and Debug tools  #
@@ -784,7 +785,7 @@ def menuCLI():
 ########################
 
 
-if config['gui']:
+if gui:
 	from tkinter import *
 
 def menuGUI():
