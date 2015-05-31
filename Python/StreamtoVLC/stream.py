@@ -525,6 +525,7 @@ def lvstListCLI():
 	print("This might take a while...")
 	lvlistst = lvstList()
 	clearscreen()
+	print(optionslist)
 	print(lvlistst)
 
 def openCLI():
@@ -932,7 +933,7 @@ def main():
 			unknownError = config['errorLogs']['unknownError']
 			unknownError = unknownError + 1
 			config['errorLogs']['unknownError'] = unknownError
-			restart = 'no'
+			restart = 0
 			debug([str(sys.exc_info()), str(traceback.extract_stack())],1)
 			
 		if restart:
