@@ -729,6 +729,7 @@ def statsCLI():
 		statsClearCLI()
 	else:
 		clearscreen()
+		print(statscheckheader)
 		print (statCheck(statWhat,statOpt,statUser))
 
 def debugCLI():
