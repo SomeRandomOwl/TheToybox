@@ -30,7 +30,6 @@ global config
 global datanum
 
 #Debug function to append time stamps and write to files
-#i made only outputting text depend on the switch and outputting to log always on
 def debug(info,error=0):
 	try:
 		if config['errorLogs']['debug'] or error:
@@ -52,7 +51,10 @@ def debug(info,error=0):
 					with open("debug.txt", "a") as myfile:
 						myfile.write(mes+'\n')
 	except:
-		pass
+		print(info)
+		print(error)
+		print("debug failed?")
+		print("have the debug information")
 
 #######################
 #  Data Manipulation  #
@@ -620,7 +622,7 @@ def openCLI():
 		except:
 			pass
 		times+=cmdwin(lvsting)
-		#Prints the elapsed time
+		[timess,timem,timeh]=timeCalc(times,0,0)
 		debug('Setting ElapsedTime String')
 		elapsedTime = str(timeh) + ':' + str(timem) + ':' + str(times)
 		print('')
@@ -929,14 +931,14 @@ def main():
 				restart=menuCLI()
 			if restart:
 				clearscreen()
-				
+		
 		except KeyboardInterrupt:
 			debug('Ending Script')
 			timesInterrupted = config['errorLogs']['timesInterrupted']
 			timesInterrupted = timesInterrupted + 1
 			config['errorLogs']['timesInterrupted'] = timesInterrupted
 			restart = 0
-			
+		
 		#except:
 		#	print('\n\nUnknown Error! You shouldn't be seeing this!')
 		#	unknownError = config['errorLogs']['unknownError']
@@ -944,7 +946,7 @@ def main():
 		#	config['errorLogs']['unknownError'] = unknownError
 		#	restart = 0
 		#	debug([str(sys.exc_info()), str(traceback.extract_stack())],1)
-			
+		
 		if restart:
 			debug('Restart Count Updating')
 			timesRestarted = config['logs']['timesRestarted']
