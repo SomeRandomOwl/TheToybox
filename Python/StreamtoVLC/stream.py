@@ -561,7 +561,7 @@ def openCLI():
 					"----------"															+"\n"+\
 					""																		+"\n"+\
 					"This is to specify a stream"											+"\n"+\
-					"Input a username if for Twitch"										+"\n"+\
+					"Input a user's name if for Twitch"										+"\n"+\
 					"Input a video id if for Youtube"										+"\n"+\
 					""																		+"\n"+\
 					"----------"															+"\n"+\
@@ -573,8 +573,8 @@ def openCLI():
 			print('\nNo Stream Entered')
 			streamError = True
 		else:
-			audio=''
-			if service.lower() == 'youtube':
+			audio=0
+			if service.lower() == 'youtube' or data["streamData"][lvst]["musicStream"]:
 				clearscreen()
 				openaudioheader = ""																+"\n"+\
 					"Available options:"													+"\n"+\
@@ -588,8 +588,7 @@ def openCLI():
 					"----------"															+"\n"+\
 					""
 				print(openaudioheader)
-				if lvst[1:32] == 'https://www.youtube.com/watch?v=':
-					audio = ynQuestion('Do you want to do audio only?')
+				audio = ynQuestion('Do you want to do audio only?')
 			lvsting=openstream(service,lvst,audio)
 	elif not service:
 		print('\nNo Stream Service Entered!')
