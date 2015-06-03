@@ -62,22 +62,27 @@ def debug(info,error=0):
 
 #Defines the program to check a users status
 def check_user(user):
-	debug('Retrieving User Status')
-	""" returns 0: online, 1: offline, 2: not found, 3: error """
-	url = 'https://api.twitch.tv/kraken/streams/' + user
 	try:
-		info = json.loads(urlopen(url, timeout = 15).read().decode('utf-8'))
-		if info['stream'] == None:
-			status = 1
-		else:
-			status = 0
-	except URLError as e:
-		if e.reason == 'Not Found' or e.reason == 'Unprocessable Entity':
-			status = 2
-		else:
-			status = 3
-	debug('User Status Retrieved')
-	return status
+		debug('Retrieving User Status')
+		""" returns 0: online, 1: offline, 2: not found, 3: error """
+		url = 'https://api.twitch.tv/kraken/streams/' + user
+		try:
+			info = json.loads(urlopen(url, timeout = 15).read().decode('utf-8'))
+			if info['stream'] == None:
+				status = 1
+			else:
+				status = 0
+		except URLError as e:
+			if e.reason == 'Not Found' or e.reason == 'Unprocessable Entity':
+				status = 2
+			else:
+				status = 3
+		debug('User Status Retrieved')
+		return status
+	except Exception, e:
+		debug("retrieving user <"+user+"> failed")
+		raise e
+
 
 #Defines the program to display the output from the check user as text
 def list(urc):
