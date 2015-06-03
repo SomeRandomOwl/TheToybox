@@ -274,10 +274,11 @@ def cmdwin(lvsting):
 
 #Timer calculation
 def timeCalc(times,timem,timeh):
+	from math import floor
 	debug('Time Calculation Started')
-	timem+=int(times)/60
+	timem+=floor(int(times)/60)
 	times=times%60
-	timeh+=int(timem)/60
+	timeh+=floor(int(timem)/60)
 	timem=timem%60
 	#while times > 59:
 	#	debug('Calculating Minutes')
