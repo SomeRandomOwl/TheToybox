@@ -552,7 +552,7 @@ def openCLI():
 					"----------"															+"\n"+\
 					""	
 	print(openheader)
-	service = input('Which service?\n(Youtube or Twitch).replace(' ',''): ')
+	service = input('Which service?\n(Youtube or Twitch): ').replace(' ','')
 	if service.lower() == 'youtube' or service.lower() == 'twitch':
 		clearscreen()
 		optionsstream = ""																	+"\n"+\
@@ -693,7 +693,7 @@ def statsClearCLI():
 					' - the stats of a specific user'	+'\n'+\
 					' - all tracked stats and users'	+'\n'+\
 					''									+'\n'+\
-					'(Global, User, Erase).replace(' ',''): ')
+					'(Global, User, Erase): ').replace(' ','')
 	if statOpt:
 		if statOpt.lower()=='user':
 			statUser = input('Whose stats do you want to clear?: ').replace(' ','')
@@ -714,7 +714,7 @@ def statsCLI():
 						"Available options:"							+"\n"+\
 						""
 	print(statscheckheader)
-	statWhat = input('Which stats do you want to see? (User, Global, Error, or Clear).replace(' ',''): ')
+	statWhat = input('Which stats do you want to see? (User, Global, Error, or Clear): ')
 	statOpt=''
 	statUser=''
 	if statWhat.lower() == 'user':
