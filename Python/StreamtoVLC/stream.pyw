@@ -973,7 +973,7 @@ def main():
 	terminate()
 
 def tests():
-	menuGUI()
+	grfthing()
 
 #main()
 
