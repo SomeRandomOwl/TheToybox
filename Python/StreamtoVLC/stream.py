@@ -232,7 +232,7 @@ def openstream(service,lvst,audio):
 	#Process to use for twitch streams
 	if service.lower() == 'twitch':
 		try:
-			if audio or data['streamData'][lvst.lower()]['musicStream']:
+			if audio:
 				debug('Music stream')
 				debug('Received 1')
 				lvsting = lsTwitch + lvst + ' audio'	
@@ -547,7 +547,7 @@ def openCLI():
 					"----------"															+"\n"+\
 					""																		+"\n"+\
 					"This is to open stream service The only two options available are:"	+"\n"+\
-					"Youtube -- Allows you to open a stream with a youtube url ir video id"	+"\n"+\
+					"Youtube -- Allows you to open a stream with a youtube url or video id"	+"\n"+\
 					"Twitch -- Opens a twitch stream when you input user"					+"\n"+\
 					""																		+"\n"+\
 					"----------"															+"\n"+\
@@ -593,6 +593,7 @@ def openCLI():
 						print(openaudioheader)
 						audio = ynQuestion('Do you want to do audio only?')
 				except:
+					#catches index error in if
 					print("unknown stream")
 			lvsting=openstream(service,lvst,audio)
 	elif not service:
