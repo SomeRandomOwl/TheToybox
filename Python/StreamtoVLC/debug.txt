@@ -5,3 +5,647 @@
 [2015-05-30T19:40:06] ERROR: [('E:\\SublimeProjects\\TheToyboxDev\\TheToybox\\Python\\StreamtoVLC\\stream.py', 950, '<module>', 'main()'), ('E:\\SublimeProjects\\TheToyboxDev\\TheToybox\\Python\\StreamtoVLC\\stream.py', 935, 'main', 'debug([str(sys.exc_info()), str(traceback.extract_stack())],1)')]
 [2015-05-30T19:40:06] DEBUG: Restarting Script
 [2015-05-30T19:40:06] DEBUG: Starting Main starter
+[2015-05-30T19:47:27] DEBUG: User List started
+[2015-05-30T19:47:27] DEBUG: StreamNum Updateing
+[2015-05-30T19:47:27] DEBUG: StreamNum Updated
+[2015-05-30T19:47:27] ERROR: (<class 'UnboundLocalError'>, UnboundLocalError("local variable 'out' referenced before assignment",), <traceback object at 0x020F34E0>)
+[2015-05-30T19:47:27] ERROR: [('E:\\SublimeProjects\\TheToyboxDev\\TheToybox\\Python\\StreamtoVLC\\stream.py', 950, '<module>', ''), ('E:\\SublimeProjects\\TheToyboxDev\\TheToybox\\Python\\StreamtoVLC\\stream.py', 935, 'main', "restart = 'no'")]
+[2015-05-30T19:47:27] DEBUG: Restarting Script
+[2015-05-30T19:47:27] DEBUG: Starting Main starter
+[2015-05-30T19:47:31] DEBUG: unrecgonized command: exit
+[2015-05-30T19:47:34] DEBUG: Main menuCLI end
+[2015-05-30T19:47:54] DEBUG: --Start--
+[2015-05-30T19:48:48] DEBUG: --Start--
+[2015-05-30T19:48:49] DEBUG: Start Count Added Onto
+[2015-05-30T19:48:49] DEBUG: Restarting Script
+[2015-05-30T19:48:49] DEBUG: Starting Main starter
+[2015-05-30T19:48:51] DEBUG: User List started
+[2015-05-30T19:48:51] DEBUG: StreamNum Updateing
+[2015-05-30T19:48:51] DEBUG: StreamNum Updated
+[2015-05-30T19:48:51] DEBUG: Retriveing User Status
+[2015-05-30T19:48:53] DEBUG: User Status Retrived
+[2015-05-30T19:48:53] DEBUG: Retriveing User Status
+[2015-05-30T19:48:53] DEBUG: User Status Retrived
+[2015-05-30T19:48:53] DEBUG: Processing User Status
+[2015-05-30T19:48:53] DEBUG: user: monstercat
+[2015-05-30T19:48:53] DEBUG: Retriveing User Status
+[2015-05-30T19:48:53] DEBUG: User Status Retrived
+[2015-05-30T19:48:53] DEBUG: User Status Processed
+[2015-05-30T19:48:53] DEBUG: Retriveing User Status
+[2015-05-30T19:48:54] DEBUG: User Status Retrived
+[2015-05-30T19:48:54] DEBUG: Processing User Status
+[2015-05-30T19:48:54] DEBUG: user: fixt
+[2015-05-30T19:48:54] DEBUG: Retriveing User Status
+[2015-05-30T19:48:54] DEBUG: User Status Retrived
+[2015-05-30T19:48:54] DEBUG: User Status Processed
+[2015-05-30T19:48:54] DEBUG: Retriveing User Status
+[2015-05-30T19:48:55] DEBUG: User Status Retrived
+[2015-05-30T19:48:55] DEBUG: Processing User Status
+[2015-05-30T19:48:55] DEBUG: user: spinninrecords
+[2015-05-30T19:48:55] DEBUG: Retriveing User Status
+[2015-05-30T19:48:55] DEBUG: User Status Retrived
+[2015-05-30T19:48:55] DEBUG: User Status Processed
+[2015-05-30T19:48:55] DEBUG: Retriveing User Status
+[2015-05-30T19:48:56] DEBUG: User Status Retrived
+[2015-05-30T19:48:56] DEBUG: Retriveing User Status
+[2015-05-30T19:48:56] DEBUG: User Status Retrived
+[2015-05-30T19:48:56] DEBUG: Retriveing User Status
+[2015-05-30T19:48:56] DEBUG: User Status Retrived
+[2015-05-30T19:48:56] DEBUG: Retriveing User Status
+[2015-05-30T19:48:57] DEBUG: User Status Retrived
+[2015-05-30T19:48:57] DEBUG: Retriveing User Status
+[2015-05-30T19:48:57] DEBUG: User Status Retrived
+[2015-05-30T19:48:57] DEBUG: Retriveing User Status
+[2015-05-30T19:48:58] DEBUG: User Status Retrived
+[2015-05-30T19:48:58] DEBUG: Retriveing User Status
+[2015-05-30T19:48:58] DEBUG: User Status Retrived
+[2015-05-30T19:48:58] DEBUG: Retriveing User Status
+[2015-05-30T19:48:58] DEBUG: User Status Retrived
+[2015-05-30T19:48:58] DEBUG: Retriveing User Status
+[2015-05-30T19:48:59] DEBUG: User Status Retrived
+[2015-05-30T19:48:59] DEBUG: List Done
+[2015-05-30T19:49:40] DEBUG: Main menuCLI end
+[2015-05-30T19:55:36] DEBUG: --Start--
+[2015-05-30T19:58:42] DEBUG: --Start--
+[2015-05-30T20:02:57] DEBUG: --Start--
+[2015-05-30T20:06:02] DEBUG: --Start--
+[2015-05-30T20:08:17] DEBUG: --Start--
+[2015-05-30T20:08:17] DEBUG: Start Count Added Onto
+[2015-05-30T20:08:17] DEBUG: Restarting Script
+[2015-05-30T20:08:17] DEBUG: Starting Main starter
+[2015-05-30T20:08:20] DEBUG: User List started
+[2015-05-30T20:08:20] DEBUG: StreamNum Updateing
+[2015-05-30T20:08:20] DEBUG: StreamNum Updated
+[2015-05-30T20:08:20] DEBUG: Retriveing User Status
+[2015-05-30T20:08:21] DEBUG: User Status Retrived
+[2015-05-30T20:08:21] DEBUG: Retriveing User Status
+[2015-05-30T20:08:21] DEBUG: User Status Retrived
+[2015-05-30T20:08:21] DEBUG: Processing User Status
+[2015-05-30T20:08:21] DEBUG: user: monstercat
+[2015-05-30T20:08:21] DEBUG: Retriveing User Status
+[2015-05-30T20:08:22] DEBUG: User Status Retrived
+[2015-05-30T20:08:22] DEBUG: User Status Processed
+[2015-05-30T20:08:22] DEBUG: Retriveing User Status
+[2015-05-30T20:08:23] DEBUG: User Status Retrived
+[2015-05-30T20:08:23] DEBUG: Processing User Status
+[2015-05-30T20:08:23] DEBUG: user: fixt
+[2015-05-30T20:08:23] DEBUG: Retriveing User Status
+[2015-05-30T20:08:23] DEBUG: User Status Retrived
+[2015-05-30T20:08:23] DEBUG: User Status Processed
+[2015-05-30T20:08:23] DEBUG: Retriveing User Status
+[2015-05-30T20:08:24] DEBUG: User Status Retrived
+[2015-05-30T20:08:24] DEBUG: Processing User Status
+[2015-05-30T20:08:24] DEBUG: user: spinninrecords
+[2015-05-30T20:08:24] DEBUG: Retriveing User Status
+[2015-05-30T20:08:24] DEBUG: User Status Retrived
+[2015-05-30T20:08:24] DEBUG: User Status Processed
+[2015-05-30T20:08:24] DEBUG: Retriveing User Status
+[2015-05-30T20:08:25] DEBUG: User Status Retrived
+[2015-05-30T20:08:25] DEBUG: Retriveing User Status
+[2015-05-30T20:08:25] DEBUG: User Status Retrived
+[2015-05-30T20:08:25] DEBUG: Retriveing User Status
+[2015-05-30T20:08:26] DEBUG: User Status Retrived
+[2015-05-30T20:08:26] DEBUG: Retriveing User Status
+[2015-05-30T20:08:26] DEBUG: User Status Retrived
+[2015-05-30T20:08:26] DEBUG: Retriveing User Status
+[2015-05-30T20:08:26] DEBUG: User Status Retrived
+[2015-05-30T20:08:27] DEBUG: Retriveing User Status
+[2015-05-30T20:08:27] DEBUG: User Status Retrived
+[2015-05-30T20:08:27] DEBUG: Retriveing User Status
+[2015-05-30T20:08:27] DEBUG: User Status Retrived
+[2015-05-30T20:08:27] DEBUG: Retriveing User Status
+[2015-05-30T20:08:28] DEBUG: User Status Retrived
+[2015-05-30T20:08:28] DEBUG: Retriveing User Status
+[2015-05-30T20:08:28] DEBUG: User Status Retrived
+[2015-05-30T20:08:28] DEBUG: List Done
+[2015-05-30T20:08:33] DEBUG: Main menuCLI end
+[2015-05-30T20:13:06] DEBUG: --Start--
+[2015-05-30T20:13:06] DEBUG: Start Count Added Onto
+[2015-05-30T20:13:06] DEBUG: Restarting Script
+[2015-05-30T20:13:06] DEBUG: Starting Main starter
+[2015-05-30T20:14:04] DEBUG: User List started
+[2015-05-30T20:14:04] DEBUG: StreamNum Updateing
+[2015-05-30T20:14:04] DEBUG: StreamNum Updated
+[2015-05-30T20:14:04] DEBUG: Retriveing User Status
+[2015-05-30T20:14:05] DEBUG: User Status Retrived
+[2015-05-30T20:14:05] DEBUG: Retriveing User Status
+[2015-05-30T20:14:05] DEBUG: User Status Retrived
+[2015-05-30T20:14:05] DEBUG: Processing User Status
+[2015-05-30T20:14:05] DEBUG: user: monstercat
+[2015-05-30T20:14:05] DEBUG: Retriveing User Status
+[2015-05-30T20:14:05] DEBUG: User Status Retrived
+[2015-05-30T20:14:05] DEBUG: User Status Processed
+[2015-05-30T20:14:05] DEBUG: Retriveing User Status
+[2015-05-30T20:14:06] DEBUG: User Status Retrived
+[2015-05-30T20:14:06] DEBUG: Processing User Status
+[2015-05-30T20:14:06] DEBUG: user: fixt
+[2015-05-30T20:14:06] DEBUG: Retriveing User Status
+[2015-05-30T20:14:06] DEBUG: User Status Retrived
+[2015-05-30T20:14:06] DEBUG: User Status Processed
+[2015-05-30T20:14:06] DEBUG: Retriveing User Status
+[2015-05-30T20:14:07] DEBUG: User Status Retrived
+[2015-05-30T20:14:07] DEBUG: Processing User Status
+[2015-05-30T20:14:07] DEBUG: user: spinninrecords
+[2015-05-30T20:14:07] DEBUG: Retriveing User Status
+[2015-05-30T20:14:07] DEBUG: User Status Retrived
+[2015-05-30T20:14:07] DEBUG: User Status Processed
+[2015-05-30T20:14:07] DEBUG: Retriveing User Status
+[2015-05-30T20:14:08] DEBUG: User Status Retrived
+[2015-05-30T20:14:08] DEBUG: Retriveing User Status
+[2015-05-30T20:14:08] DEBUG: User Status Retrived
+[2015-05-30T20:14:08] DEBUG: Retriveing User Status
+[2015-05-30T20:14:08] DEBUG: User Status Retrived
+[2015-05-30T20:14:08] DEBUG: Retriveing User Status
+[2015-05-30T20:14:09] DEBUG: User Status Retrived
+[2015-05-30T20:14:09] DEBUG: Retriveing User Status
+[2015-05-30T20:14:09] DEBUG: User Status Retrived
+[2015-05-30T20:14:09] DEBUG: Retriveing User Status
+[2015-05-30T20:14:10] DEBUG: User Status Retrived
+[2015-05-30T20:14:10] DEBUG: Retriveing User Status
+[2015-05-30T20:14:10] DEBUG: User Status Retrived
+[2015-05-30T20:14:10] DEBUG: Retriveing User Status
+[2015-05-30T20:14:11] DEBUG: User Status Retrived
+[2015-05-30T20:14:11] DEBUG: Retriveing User Status
+[2015-05-30T20:14:11] DEBUG: User Status Retrived
+[2015-05-30T20:14:11] DEBUG: List Done
+[2015-05-30T20:14:23] DEBUG: Main menuCLI end
+[2015-05-30T20:14:23] DEBUG: Restart Count Updating
+[2015-05-30T20:14:23] DEBUG: Restart Count updated
+[2015-05-30T20:14:23] DEBUG: Restarting Script
+[2015-05-30T20:14:23] DEBUG: Starting Main starter
+[2015-05-30T20:14:25] DEBUG: Individual User Status Check Started
+[2015-05-30T20:14:29] DEBUG: Processing User Status
+[2015-05-30T20:14:29] DEBUG: user: monstercat
+[2015-05-30T20:14:29] DEBUG: Retriveing User Status
+[2015-05-30T20:14:30] DEBUG: User Status Retrived
+[2015-05-30T20:14:30] DEBUG: User Status Processed
+[2015-05-30T20:14:30] DEBUG: Individual Check done
+[2015-05-30T20:14:32] DEBUG: Main menuCLI end
+[2015-05-30T20:14:32] DEBUG: Restart Count Updating
+[2015-05-30T20:14:32] DEBUG: Restart Count updated
+[2015-05-30T20:14:32] DEBUG: Restarting Script
+[2015-05-30T20:14:32] DEBUG: Starting Main starter
+[2015-05-30T20:14:44] DEBUG: Stat Check Started
+[2015-05-30T20:14:44] DEBUG: Retriveing User Stats
+[2015-05-30T20:14:44] ERROR: (<class 'UnboundLocalError'>, UnboundLocalError("local variable 'data' referenced before assignment",), <traceback object at 0x02088300>)
+[2015-05-30T20:14:44] ERROR: [('E:\\SublimeProjects\\TheToyboxDev\\TheToybox\\Python\\StreamtoVLC\\stream.py', 955, '<module>', 'main()'), ('E:\\SublimeProjects\\TheToyboxDev\\TheToybox\\Python\\StreamtoVLC\\stream.py', 940, 'main', 'debug([str(sys.exc_info()), str(traceback.extract_stack())],1)')]
+[2015-05-30T20:18:16] DEBUG: Terminating
+[2015-05-30T20:18:16] DEBUG: --End--
+[2015-05-30T20:19:08] DEBUG: --Start--
+[2015-05-30T20:20:37] DEBUG: --Start--
+[2015-05-30T20:20:37] DEBUG: Start Count Added Onto
+[2015-05-30T20:20:37] DEBUG: Restarting Script
+[2015-05-30T20:20:37] DEBUG: Starting Main starter
+[2015-05-30T20:20:45] DEBUG: Individual User Status Check Started
+[2015-05-30T20:20:47] DEBUG: Processing User Status
+[2015-05-30T20:20:47] DEBUG: user: monstercat
+[2015-05-30T20:20:47] DEBUG: Retriveing User Status
+[2015-05-30T20:20:50] DEBUG: User Status Retrived
+[2015-05-30T20:20:50] DEBUG: User Status Processed
+[2015-05-30T20:20:50] DEBUG: Individual Check done
+[2015-05-30T20:20:52] DEBUG: Main menuCLI end
+[2015-05-30T20:20:53] DEBUG: Terminating
+[2015-05-30T20:20:53] DEBUG: --End--
+[2015-05-30T20:23:49] DEBUG: --Start--
+[2015-05-30T20:23:49] DEBUG: Start Count Added Onto
+[2015-05-30T20:23:49] DEBUG: Restarting Script
+[2015-05-30T20:23:49] DEBUG: Starting Main starter
+[2015-05-30T20:24:43] DEBUG: Main menuCLI end
+[2015-05-30T20:24:44] DEBUG: Terminating
+[2015-05-30T20:24:44] DEBUG: --End--
+[2015-05-30T20:25:43] DEBUG: --Start--
+[2015-05-30T20:25:43] DEBUG: Start Count Added Onto
+[2015-05-30T20:25:43] DEBUG: Restarting Script
+[2015-05-30T20:25:43] DEBUG: Starting Main starter
+[2015-05-30T20:25:46] DEBUG: Individual User Status Check Started
+[2015-05-30T20:25:52] DEBUG: Processing User Status
+[2015-05-30T20:25:52] DEBUG: user: monstercat
+[2015-05-30T20:25:52] DEBUG: Retriveing User Status
+[2015-05-30T20:25:53] DEBUG: User Status Retrived
+[2015-05-30T20:25:53] DEBUG: User Status Processed
+[2015-05-30T20:25:53] DEBUG: Individual Check done
+[2015-05-30T20:25:55] DEBUG: Main menuCLI end
+[2015-05-30T20:25:56] DEBUG: Terminating
+[2015-05-30T20:25:56] DEBUG: --End--
+[2015-05-30T20:26:27] DEBUG: --Start--
+[2015-05-30T20:26:27] DEBUG: Start Count Added Onto
+[2015-05-30T20:26:27] DEBUG: Restarting Script
+[2015-05-30T20:26:27] DEBUG: Starting Main starter
+[2015-05-30T20:26:30] DEBUG: User List started
+[2015-05-30T20:26:30] DEBUG: StreamNum Updateing
+[2015-05-30T20:26:30] DEBUG: StreamNum Updated
+[2015-05-30T20:26:30] DEBUG: Retriveing User Status
+[2015-05-30T20:26:31] DEBUG: User Status Retrived
+[2015-05-30T20:26:31] DEBUG: Retriveing User Status
+[2015-05-30T20:26:31] DEBUG: User Status Retrived
+[2015-05-30T20:26:31] DEBUG: Processing User Status
+[2015-05-30T20:26:31] DEBUG: user: monstercat
+[2015-05-30T20:26:31] DEBUG: Retriveing User Status
+[2015-05-30T20:26:32] DEBUG: User Status Retrived
+[2015-05-30T20:26:32] DEBUG: User Status Processed
+[2015-05-30T20:26:32] DEBUG: Retriveing User Status
+[2015-05-30T20:26:33] DEBUG: User Status Retrived
+[2015-05-30T20:26:33] DEBUG: Processing User Status
+[2015-05-30T20:26:33] DEBUG: user: fixt
+[2015-05-30T20:26:33] DEBUG: Retriveing User Status
+[2015-05-30T20:26:33] DEBUG: User Status Retrived
+[2015-05-30T20:26:33] DEBUG: User Status Processed
+[2015-05-30T20:26:33] DEBUG: Retriveing User Status
+[2015-05-30T20:26:34] DEBUG: User Status Retrived
+[2015-05-30T20:26:34] DEBUG: Processing User Status
+[2015-05-30T20:26:34] DEBUG: user: spinninrecords
+[2015-05-30T20:26:34] DEBUG: Retriveing User Status
+[2015-05-30T20:26:34] DEBUG: User Status Retrived
+[2015-05-30T20:26:34] DEBUG: User Status Processed
+[2015-05-30T20:26:34] DEBUG: Retriveing User Status
+[2015-05-30T20:26:34] DEBUG: User Status Retrived
+[2015-05-30T20:26:34] DEBUG: Retriveing User Status
+[2015-05-30T20:26:35] DEBUG: User Status Retrived
+[2015-05-30T20:26:35] DEBUG: Retriveing User Status
+[2015-05-30T20:26:35] DEBUG: User Status Retrived
+[2015-05-30T20:26:35] DEBUG: Retriveing User Status
+[2015-05-30T20:26:36] DEBUG: User Status Retrived
+[2015-05-30T20:26:36] DEBUG: Retriveing User Status
+[2015-05-30T20:26:36] DEBUG: User Status Retrived
+[2015-05-30T20:26:36] DEBUG: Retriveing User Status
+[2015-05-30T20:26:36] DEBUG: User Status Retrived
+[2015-05-30T20:26:36] DEBUG: Retriveing User Status
+[2015-05-30T20:26:37] DEBUG: User Status Retrived
+[2015-05-30T20:26:37] DEBUG: Retriveing User Status
+[2015-05-30T20:26:37] DEBUG: User Status Retrived
+[2015-05-30T20:26:37] DEBUG: Retriveing User Status
+[2015-05-30T20:26:38] DEBUG: User Status Retrived
+[2015-05-30T20:26:38] DEBUG: List Done
+[2015-05-30T20:26:45] DEBUG: Main menuCLI end
+[2015-05-30T20:26:46] DEBUG: Terminating
+[2015-05-30T20:26:46] DEBUG: --End--
+[2015-05-30T20:26:54] DEBUG: --Start--
+[2015-05-30T20:26:54] DEBUG: Start Count Added Onto
+[2015-05-30T20:26:54] DEBUG: Restarting Script
+[2015-05-30T20:26:54] DEBUG: Starting Main starter
+[2015-05-30T20:26:59] DEBUG: Main menuCLI end
+[2015-05-30T20:27:01] DEBUG: Terminating
+[2015-05-30T20:27:01] DEBUG: --End--
+[2015-05-30T20:28:38] DEBUG: --Start--
+[2015-05-30T20:28:38] DEBUG: Start Count Added Onto
+[2015-05-30T20:28:38] DEBUG: Restarting Script
+[2015-05-30T20:28:38] DEBUG: Starting Main starter
+[2015-05-30T20:28:40] DEBUG: Individual User Status Check Started
+[2015-05-30T20:28:43] DEBUG: Processing User Status
+[2015-05-30T20:28:43] DEBUG: user: monstercat
+[2015-05-30T20:28:43] DEBUG: Retriveing User Status
+[2015-05-30T20:28:44] DEBUG: User Status Retrived
+[2015-05-30T20:28:44] DEBUG: User Status Processed
+[2015-05-30T20:28:44] DEBUG: Individual Check done
+[2015-05-30T20:28:46] DEBUG: Main menuCLI end
+[2015-05-30T20:28:47] DEBUG: Terminating
+[2015-05-30T20:28:47] DEBUG: --End--
+[2015-05-30T20:28:53] DEBUG: --Start--
+[2015-05-30T20:28:53] DEBUG: Start Count Added Onto
+[2015-05-30T20:28:53] DEBUG: Restarting Script
+[2015-05-30T20:28:53] DEBUG: Starting Main starter
+[2015-05-30T20:29:02] DEBUG: Stat Check Started
+[2015-05-30T20:29:02] DEBUG: Retriveing User Stats
+[2015-05-30T20:31:20] DEBUG: --Start--
+[2015-05-30T20:31:20] DEBUG: Start Count Added Onto
+[2015-05-30T20:31:20] DEBUG: Restarting Script
+[2015-05-30T20:31:20] DEBUG: Starting Main starter
+[2015-05-30T20:31:32] DEBUG: Stat Check Started
+[2015-05-30T20:31:32] DEBUG: Retriveing User Stats
+[2015-05-30T20:31:32] DEBUG: Done
+[2015-05-30T20:31:32] DEBUG: Stat Check Done
+[2015-05-30T20:33:26] DEBUG: Main menuCLI end
+[2015-05-30T20:33:27] DEBUG: Terminating
+[2015-05-30T20:33:27] DEBUG: --End--
+[2015-05-30T20:33:31] DEBUG: --Start--
+[2015-05-30T20:33:31] DEBUG: Start Count Added Onto
+[2015-05-30T20:33:31] DEBUG: Restarting Script
+[2015-05-30T20:33:31] DEBUG: Starting Main starter
+[2015-05-30T20:33:42] DEBUG: Stat Check Started
+[2015-05-30T20:33:42] DEBUG: Retriveing User Stats
+[2015-05-30T20:33:42] DEBUG: Done
+[2015-05-30T20:33:42] DEBUG: Stat Check Done
+[2015-05-30T20:33:49] DEBUG: Main menuCLI end
+[2015-05-30T20:33:49] DEBUG: Restart Count Updating
+[2015-05-30T20:33:49] DEBUG: Restart Count updated
+[2015-05-30T20:33:49] DEBUG: Restarting Script
+[2015-05-30T20:33:49] DEBUG: Starting Main starter
+[2015-05-30T20:33:53] DEBUG: Stat Check Started
+[2015-05-30T20:33:53] DEBUG: Checking Global Stats
+[2015-05-30T20:33:53] DEBUG: Done
+[2015-05-30T20:33:53] DEBUG: Stat Check Done
+[2015-05-30T20:42:33] DEBUG: Main menuCLI end
+[2015-05-30T20:42:34] DEBUG: Terminating
+[2015-05-30T20:42:34] DEBUG: --End--
+[2015-05-30T20:42:47] DEBUG: --Start--
+[2015-05-30T20:42:47] DEBUG: Start Count Added Onto
+[2015-05-30T20:42:47] DEBUG: Restarting Script
+[2015-05-30T20:42:47] DEBUG: Starting Main starter
+[2015-05-30T20:42:51] DEBUG: Stat Check Started
+[2015-05-30T20:42:51] DEBUG: Checking Global Stats
+[2015-05-30T20:42:51] DEBUG: Done
+[2015-05-30T20:42:51] DEBUG: Stat Check Done
+[2015-05-30T20:43:05] DEBUG: Main menuCLI end
+[2015-05-30T20:43:05] DEBUG: Restart Count Updating
+[2015-05-30T20:43:05] DEBUG: Restart Count updated
+[2015-05-30T20:43:05] DEBUG: Restarting Script
+[2015-05-30T20:43:05] DEBUG: Starting Main starter
+[2015-05-30T20:43:35] DEBUG: --Start--
+[2015-05-30T20:43:35] DEBUG: Start Count Added Onto
+[2015-05-30T20:43:35] DEBUG: Restarting Script
+[2015-05-30T20:43:35] DEBUG: Starting Main starter
+[2015-05-30T20:43:38] DEBUG: Ending Script
+[2015-05-30T20:43:39] DEBUG: Terminating
+[2015-05-30T20:43:39] DEBUG: --End--
+[2015-05-30T20:45:04] DEBUG: --Start--
+[2015-05-30T20:45:04] DEBUG: Start Count Added Onto
+[2015-05-30T20:45:04] DEBUG: Restarting Script
+[2015-05-30T20:45:04] DEBUG: Starting Main starter
+[2015-05-30T20:45:16] DEBUG: Ending Script
+[2015-05-30T20:45:17] DEBUG: Terminating
+[2015-05-30T20:45:17] DEBUG: --End--
+[2015-05-30T20:47:11] DEBUG: --Start--
+[2015-05-30T20:47:11] DEBUG: Start Count Added Onto
+[2015-05-30T20:47:11] DEBUG: Restarting Script
+[2015-05-30T20:47:11] DEBUG: Starting Main starter
+[2015-05-30T20:47:35] DEBUG: unrecognized command: ad
+[2015-05-30T20:47:38] DEBUG: Main menuCLI end
+[2015-05-30T20:47:38] DEBUG: Restart Count Updating
+[2015-05-30T20:47:38] DEBUG: Restart Count updated
+[2015-05-30T20:47:38] DEBUG: Restarting Script
+[2015-05-30T20:47:38] DEBUG: Starting Main starter
+[2015-05-30T20:47:42] DEBUG: Ending Script
+[2015-05-30T20:47:43] DEBUG: Terminating
+[2015-05-30T20:47:43] DEBUG: --End--
+[2015-05-30T20:49:11] DEBUG: --Start--
+[2015-05-30T20:49:11] DEBUG: Start Count Added Onto
+[2015-05-30T20:49:11] DEBUG: Restarting Script
+[2015-05-30T20:49:11] DEBUG: Starting Main starter
+[2015-05-30T20:49:13] DEBUG: User Add Started
+[2015-05-30T20:49:13] DEBUG: User names Counted
+[2015-06-01T20:15:06] DEBUG: --Start--
+[2015-06-01T20:15:06] DEBUG: Start Count Added Onto
+[2015-06-01T20:15:06] DEBUG: Restarting Script
+[2015-06-01T20:15:06] DEBUG: Starting Main starter
+[2015-06-01T20:17:51] DEBUG: --Start--
+[2015-06-01T20:17:51] DEBUG: Start Count Added Onto
+[2015-06-01T20:17:51] DEBUG: Restarting Script
+[2015-06-01T20:17:51] DEBUG: Starting Main starter
+[2015-06-01T20:17:54] DEBUG: Individual User Status Check Started
+[2015-06-01T20:17:57] DEBUG: Processing User Status
+[2015-06-01T20:17:57] DEBUG: user: monstercat
+[2015-06-01T20:17:57] DEBUG: Retrieving User Status
+[2015-06-01T20:17:58] DEBUG: User Status Retrieved
+[2015-06-01T20:17:58] DEBUG: User Status Processed
+[2015-06-01T20:17:58] DEBUG: Individual Check done
+[2015-06-01T20:18:03] DEBUG: Main menuCLI end
+[2015-06-01T20:18:03] DEBUG: Restart Count Updating
+[2015-06-01T20:18:03] DEBUG: Restart Count updated
+[2015-06-01T20:18:03] DEBUG: Restarting Script
+[2015-06-01T20:18:03] DEBUG: Starting Main starter
+[2015-06-01T20:18:06] DEBUG: User List started
+[2015-06-01T20:18:06] DEBUG: StreamNum Updating
+[2015-06-01T20:18:06] DEBUG: StreamNum Updated
+[2015-06-01T20:18:06] DEBUG: Retrieving User Status
+[2015-06-01T20:18:06] DEBUG: User Status Retrieved
+[2015-06-01T20:18:06] DEBUG: Retrieving User Status
+[2015-06-01T20:18:07] DEBUG: User Status Retrieved
+[2015-06-01T20:18:07] DEBUG: Processing User Status
+[2015-06-01T20:18:07] DEBUG: user: monstercat
+[2015-06-01T20:18:07] DEBUG: Retrieving User Status
+[2015-06-01T20:18:07] DEBUG: User Status Retrieved
+[2015-06-01T20:18:07] DEBUG: User Status Processed
+[2015-06-01T20:18:07] DEBUG: Retrieving User Status
+[2015-06-01T20:18:08] DEBUG: User Status Retrieved
+[2015-06-01T20:18:08] DEBUG: Processing User Status
+[2015-06-01T20:18:08] DEBUG: user: fixt
+[2015-06-01T20:18:08] DEBUG: Retrieving User Status
+[2015-06-01T20:18:08] DEBUG: User Status Retrieved
+[2015-06-01T20:18:08] DEBUG: User Status Processed
+[2015-06-01T20:18:08] DEBUG: Retrieving User Status
+[2015-06-01T20:18:09] DEBUG: User Status Retrieved
+[2015-06-01T20:18:09] DEBUG: Processing User Status
+[2015-06-01T20:18:09] DEBUG: user: spinninrecords
+[2015-06-01T20:18:09] DEBUG: Retrieving User Status
+[2015-06-01T20:18:09] DEBUG: User Status Retrieved
+[2015-06-01T20:18:09] DEBUG: User Status Processed
+[2015-06-01T20:18:09] DEBUG: Retrieving User Status
+[2015-06-01T20:18:09] DEBUG: User Status Retrieved
+[2015-06-01T20:18:09] DEBUG: Retrieving User Status
+[2015-06-01T20:18:10] DEBUG: User Status Retrieved
+[2015-06-01T20:18:10] DEBUG: Retrieving User Status
+[2015-06-01T20:18:10] DEBUG: User Status Retrieved
+[2015-06-01T20:18:10] DEBUG: Retrieving User Status
+[2015-06-01T20:18:11] DEBUG: User Status Retrieved
+[2015-06-01T20:18:11] DEBUG: Retrieving User Status
+[2015-06-01T20:18:11] DEBUG: User Status Retrieved
+[2015-06-01T20:18:11] DEBUG: Retrieving User Status
+[2015-06-01T20:18:12] DEBUG: User Status Retrieved
+[2015-06-01T20:18:12] DEBUG: Retrieving User Status
+[2015-06-01T20:18:12] DEBUG: User Status Retrieved
+[2015-06-01T20:18:12] DEBUG: Retrieving User Status
+[2015-06-01T20:18:12] DEBUG: User Status Retrieved
+[2015-06-01T20:18:12] DEBUG: Retrieving User Status
+[2015-06-01T20:18:13] DEBUG: User Status Retrieved
+[2015-06-01T20:18:13] DEBUG: List Done
+[2015-06-01T20:18:20] DEBUG: Main menuCLI end
+[2015-06-01T20:18:20] DEBUG: Restart Count Updating
+[2015-06-01T20:18:20] DEBUG: Restart Count updated
+[2015-06-01T20:18:20] DEBUG: Restarting Script
+[2015-06-01T20:18:20] DEBUG: Starting Main starter
+[2015-06-01T20:18:26] DEBUG: User Add Started
+[2015-06-01T20:18:26] DEBUG: User names Counted
+[2015-06-01T20:18:26] DEBUG: User added
+[2015-06-01T20:18:26] DEBUG: User Music Status added
+[2015-06-01T20:18:26] DEBUG: StreamNum Updated
+[2015-06-01T20:19:25] DEBUG: --Start--
+[2015-06-01T20:19:25] DEBUG: Start Count Added Onto
+[2015-06-01T20:19:25] DEBUG: Restarting Script
+[2015-06-01T20:19:25] DEBUG: Starting Main starter
+[2015-06-01T20:19:29] DEBUG: Ending Script
+[2015-06-01T20:19:30] DEBUG: Terminating
+[2015-06-01T20:19:30] DEBUG: --End--
+[2015-06-01T20:19:32] DEBUG: --Start--
+[2015-06-01T20:19:32] DEBUG: Start Count Added Onto
+[2015-06-01T20:19:32] DEBUG: Restarting Script
+[2015-06-01T20:19:32] DEBUG: Starting Main starter
+[2015-06-01T20:19:43] DEBUG: Stat Check Started
+[2015-06-01T20:19:43] DEBUG: Retrieving User Stats
+[2015-06-01T20:19:43] DEBUG: Done
+[2015-06-01T20:19:43] DEBUG: Stat Check Done
+[2015-06-01T20:19:44] DEBUG: Main menuCLI end
+[2015-06-01T20:19:44] DEBUG: Restart Count Updating
+[2015-06-01T20:19:44] DEBUG: Restart Count updated
+[2015-06-01T20:19:44] DEBUG: Restarting Script
+[2015-06-01T20:19:45] DEBUG: Starting Main starter
+[2015-06-01T20:19:51] DEBUG: Stat Check Started
+[2015-06-01T20:19:51] DEBUG: Retrieving User Stats
+[2015-06-01T20:19:51] DEBUG: Done
+[2015-06-01T20:19:51] DEBUG: Stat Check Done
+[2015-06-01T20:19:55] DEBUG: Main menuCLI end
+[2015-06-01T20:19:55] DEBUG: Restart Count Updating
+[2015-06-01T20:19:55] DEBUG: Restart Count updated
+[2015-06-01T20:19:55] DEBUG: Restarting Script
+[2015-06-01T20:19:55] DEBUG: Starting Main starter
+[2015-06-01T20:20:00] DEBUG: Stat Check Started
+[2015-06-01T20:20:00] DEBUG: Checking Global Stats
+[2015-06-01T20:20:00] DEBUG: Done
+[2015-06-01T20:20:00] DEBUG: Stat Check Done
+[2015-06-01T20:20:15] DEBUG: Main menuCLI end
+[2015-06-01T20:20:15] DEBUG: Restart Count Updating
+[2015-06-01T20:20:15] DEBUG: Restart Count updated
+[2015-06-01T20:20:15] DEBUG: Restarting Script
+[2015-06-01T20:20:15] DEBUG: Starting Main starter
+[2015-06-01T20:20:24] DEBUG: Service Received twitch
+[2015-06-01T20:20:32] DEBUG: Opening Stream Started
+[2015-06-01T20:20:32] DEBUG: Service Received twitch
+[2015-06-01T20:20:32] DEBUG: Streamer Received monstercat
+[2015-06-01T20:20:32] DEBUG: Music stream
+[2015-06-01T20:20:32] DEBUG: Received 1
+[2015-06-01T20:20:32] DEBUG: Twitch Stream commands set
+[2015-06-01T20:20:32] DEBUG: Opening Stream
+[2015-06-01T20:21:31] DEBUG: Stream Finished
+[2015-06-01T20:21:31] DEBUG: Duration Calculated
+[2015-06-01T20:21:31] DEBUG: Setting ElapsedTime String
+[2015-06-01T20:22:30] DEBUG: --Start--
+[2015-06-01T20:22:30] DEBUG: Start Count Added Onto
+[2015-06-01T20:22:30] DEBUG: Restarting Script
+[2015-06-01T20:22:30] DEBUG: Starting Main starter
+[2015-06-01T20:23:36] DEBUG: Service Received twitch
+[2015-06-01T20:23:40] DEBUG: Opening Stream Started
+[2015-06-01T20:23:40] DEBUG: Service Received twitch
+[2015-06-01T20:23:40] DEBUG: Streamer Received monstercat
+[2015-06-01T20:23:40] DEBUG: Music stream
+[2015-06-01T20:23:40] DEBUG: Received 1
+[2015-06-01T20:23:40] DEBUG: Twitch Stream commands set
+[2015-06-01T20:23:40] DEBUG: Opening Stream
+[2015-06-01T20:24:54] DEBUG: Stream Finished
+[2015-06-01T20:24:54] DEBUG: Duration Calculated
+[2015-06-01T20:24:54] DEBUG: Setting ElapsedTime String
+[2015-06-01T20:26:47] DEBUG: --Start--
+[2015-06-01T20:26:47] DEBUG: Start Count Added Onto
+[2015-06-01T20:26:47] DEBUG: Restarting Script
+[2015-06-01T20:26:47] DEBUG: Starting Main starter
+[2015-06-01T20:26:52] DEBUG: Service Received twitch
+[2015-06-01T20:26:54] DEBUG: Opening Stream Started
+[2015-06-01T20:26:54] DEBUG: Service Received twitch
+[2015-06-01T20:26:54] DEBUG: Streamer Received monstercat
+[2015-06-01T20:26:54] DEBUG: Music stream
+[2015-06-01T20:26:54] DEBUG: Received 1
+[2015-06-01T20:26:54] DEBUG: Twitch Stream commands set
+[2015-06-01T20:26:54] DEBUG: Opening Stream
+[2015-06-01T20:27:12] DEBUG: Stream Finished
+[2015-06-01T20:27:12] DEBUG: Duration Calculated
+[2015-06-01T20:27:12] DEBUG: Setting ElapsedTime String
+[2015-06-01T20:27:29] DEBUG: --Start--
+[2015-06-01T20:27:29] DEBUG: Start Count Added Onto
+[2015-06-01T20:27:29] DEBUG: Restarting Script
+[2015-06-01T20:27:29] DEBUG: Starting Main starter
+[2015-06-01T20:27:34] DEBUG: Service Received twitch
+[2015-06-01T20:27:38] DEBUG: Opening Stream Started
+[2015-06-01T20:27:38] DEBUG: Service Received twitch
+[2015-06-01T20:27:38] DEBUG: Streamer Received monstercat
+[2015-06-01T20:27:38] DEBUG: Music stream
+[2015-06-01T20:27:38] DEBUG: Received 1
+[2015-06-01T20:27:38] DEBUG: Twitch Stream commands set
+[2015-06-01T20:27:38] DEBUG: Opening Stream
+[2015-06-01T20:27:47] DEBUG: Stream Finished
+[2015-06-01T20:27:47] DEBUG: Duration Calculated
+[2015-06-01T20:27:47] DEBUG: Setting ElapsedTime String
+[2015-06-02T20:41:46] DEBUG: --Start--
+[2015-06-02T20:41:46] DEBUG: Start Count Added Onto
+[2015-06-02T20:41:46] DEBUG: Restarting Script
+[2015-06-02T20:41:46] DEBUG: Starting Main starter
+[2015-06-02T20:43:08] DEBUG: User List started
+[2015-06-02T20:43:08] DEBUG: StreamNum Updating
+[2015-06-02T20:43:08] DEBUG: StreamNum Updated
+[2015-06-02T20:43:08] DEBUG: Retrieving User Status
+[2015-06-02T20:43:09] DEBUG: User Status Retrieved
+[2015-06-02T20:43:09] DEBUG: Retrieving User Status
+[2015-06-02T20:43:09] DEBUG: User Status Retrieved
+[2015-06-02T20:43:09] DEBUG: Processing User Status
+[2015-06-02T20:43:09] DEBUG: user: monstercat
+[2015-06-02T20:43:09] DEBUG: Retrieving User Status
+[2015-06-02T20:43:10] DEBUG: User Status Retrieved
+[2015-06-02T20:43:10] DEBUG: User Status Processed
+[2015-06-02T20:43:10] DEBUG: Retrieving User Status
+[2015-06-02T20:43:10] DEBUG: User Status Retrieved
+[2015-06-02T20:43:10] DEBUG: Processing User Status
+[2015-06-02T20:43:10] DEBUG: user: fixt
+[2015-06-02T20:43:10] DEBUG: Retrieving User Status
+[2015-06-02T20:43:10] DEBUG: User Status Retrieved
+[2015-06-02T20:43:10] DEBUG: User Status Processed
+[2015-06-02T20:43:10] DEBUG: Retrieving User Status
+[2015-06-02T20:43:11] DEBUG: User Status Retrieved
+[2015-06-02T20:43:11] DEBUG: Processing User Status
+[2015-06-02T20:43:11] DEBUG: user: spinninrecords
+[2015-06-02T20:43:11] DEBUG: Retrieving User Status
+[2015-06-02T20:43:11] DEBUG: User Status Retrieved
+[2015-06-02T20:43:11] DEBUG: User Status Processed
+[2015-06-02T20:43:11] DEBUG: Retrieving User Status
+[2015-06-02T20:43:12] DEBUG: User Status Retrieved
+[2015-06-02T20:43:12] DEBUG: Retrieving User Status
+[2015-06-02T20:43:12] DEBUG: User Status Retrieved
+[2015-06-02T20:43:12] DEBUG: Retrieving User Status
+[2015-06-02T20:43:12] DEBUG: User Status Retrieved
+[2015-06-02T20:43:12] DEBUG: Retrieving User Status
+[2015-06-02T20:43:13] DEBUG: User Status Retrieved
+[2015-06-02T20:43:13] DEBUG: Retrieving User Status
+[2015-06-02T20:43:13] DEBUG: User Status Retrieved
+[2015-06-02T20:43:13] DEBUG: Retrieving User Status
+[2015-06-02T20:43:14] DEBUG: User Status Retrieved
+[2015-06-02T20:43:14] DEBUG: Retrieving User Status
+[2015-06-02T20:43:14] DEBUG: User Status Retrieved
+[2015-06-02T20:43:14] DEBUG: Retrieving User Status
+[2015-06-02T20:43:14] DEBUG: User Status Retrieved
+[2015-06-02T20:43:14] DEBUG: Retrieving User Status
+[2015-06-02T20:43:15] DEBUG: User Status Retrieved
+[2015-06-02T20:43:15] DEBUG: List Done
+[2015-06-02T20:43:20] DEBUG: Main menuCLI end
+[2015-06-02T20:43:20] DEBUG: Restart Count Updating
+[2015-06-02T20:43:20] DEBUG: Restart Count updated
+[2015-06-02T20:43:20] DEBUG: Restarting Script
+[2015-06-02T20:43:20] DEBUG: Starting Main starter
+[2015-06-02T20:43:24] DEBUG: Individual User Status Check Started
+[2015-06-02T20:43:30] DEBUG: Processing User Status
+[2015-06-02T20:43:30] DEBUG: user: monstercat
+[2015-06-02T20:43:30] DEBUG: Retrieving User Status
+[2015-06-02T20:43:30] DEBUG: User Status Retrieved
+[2015-06-02T20:43:30] DEBUG: User Status Processed
+[2015-06-02T20:43:30] DEBUG: Individual Check done
+[2015-06-02T20:43:33] DEBUG: Main menuCLI end
+[2015-06-02T20:43:33] DEBUG: Restart Count Updating
+[2015-06-02T20:43:33] DEBUG: Restart Count updated
+[2015-06-02T20:43:33] DEBUG: Restarting Script
+[2015-06-02T20:43:33] DEBUG: Starting Main starter
+[2015-06-02T20:43:46] DEBUG: Stat Check Started
+[2015-06-02T20:43:46] DEBUG: Checking Global Stats
+[2015-06-02T20:43:46] DEBUG: Done
+[2015-06-02T20:43:46] DEBUG: Stat Check Done
+[2015-06-02T20:43:49] DEBUG: Main menuCLI end
+[2015-06-02T20:43:49] DEBUG: Restart Count Updating
+[2015-06-02T20:43:49] DEBUG: Restart Count updated
+[2015-06-02T20:43:49] DEBUG: Restarting Script
+[2015-06-02T20:43:49] DEBUG: Starting Main starter
+[2015-06-02T20:44:02] DEBUG: Stat Check Started
+[2015-06-02T20:44:02] DEBUG: Retrieving User Stats
+[2015-06-02T20:44:02] DEBUG: Done
+[2015-06-02T20:44:02] DEBUG: Stat Check Done
+[2015-06-02T20:44:06] DEBUG: Main menuCLI end
+[2015-06-02T20:44:06] DEBUG: Restart Count Updating
+[2015-06-02T20:44:06] DEBUG: Restart Count updated
+[2015-06-02T20:44:06] DEBUG: Restarting Script
+[2015-06-02T20:44:06] DEBUG: Starting Main starter
+[2015-06-02T20:44:10] DEBUG: User Add Started
+[2015-06-02T20:44:10] DEBUG: User names Counted
+[2015-06-02T20:44:10] DEBUG: User added
+[2015-06-02T20:44:10] DEBUG: User Music Status added
+[2015-06-02T20:44:10] DEBUG: StreamNum Updated
+[2015-06-02T20:45:02] DEBUG: Main menuCLI end
+[2015-06-02T20:45:02] DEBUG: Restart Count Updating
+[2015-06-02T20:45:02] DEBUG: Restart Count updated
+[2015-06-02T20:45:02] DEBUG: Restarting Script
+[2015-06-02T20:45:02] DEBUG: Starting Main starter
+[2015-06-02T20:45:09] DEBUG: Main menuCLI end
+[2015-06-02T20:45:11] DEBUG: Terminating
+[2015-06-02T20:45:11] DEBUG: --End--

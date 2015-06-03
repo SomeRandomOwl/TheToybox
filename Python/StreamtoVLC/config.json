@@ -1,16 +1,16 @@
 {
-	"gui":0,
-	"errorLogs": {
-		"debug": 1,
-		"timesInterrupted": 18,
-		"unRecgonizedCmds": 8,
-		"unknownError": 11,
-		"unsupportedServices": 5
-	},
-	"logs": {
-		"streamNum": 14,
-		"timesRestarted": 43,
-		"timesStarted": 105,
-		"totalPlay": 49
-	}
+    "errorLogs": {
+        "debug": 1,
+        "timesInterrupted": 22,
+        "unRecgonizedCmds": 9,
+        "unknownError": 11,
+        "unsupportedServices": 5
+    },
+    "gui": 0,
+    "logs": {
+        "streamNum": 15,
+        "timesRestarted": 50,
+        "timesStarted": 126,
+        "totalPlay": 49
+    }
 }
