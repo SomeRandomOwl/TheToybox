@@ -291,7 +291,7 @@ def timeCalc(times,timem,timeh):
 	return [times,timem,timeh]
 
 #Updates Stats
-def stattracker(lvst,times,audio):
+def stattracker(lvst,times):
 	try:
 		#why is this here?
 		debug('Updating User play count') 
