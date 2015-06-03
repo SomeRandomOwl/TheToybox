@@ -476,11 +476,11 @@ def ynQuestion(prompt,default=''):
 	default=str(default)
 
 	if default.lower() in ['y','yes','1']:
-		answer = input(prompt+' [Yes/no]: ').replace(' ')
+		answer = input(prompt+' [Yes/no]: ').replace(' ','')
 	elif default.lower() in ['n','no','0']:
-		answer = input(prompt+' [yes/No]: ').replace(' ')
+		answer = input(prompt+' [yes/No]: ').replace(' ','')
 	else:
-		answer = input(prompt+' [yes/no]: ').replace(' ')
+		answer = input(prompt+' [yes/no]: ').replace(' ','')
 	
 	if answer=='':
 		answer=default
@@ -507,7 +507,7 @@ def checkCLI():
 					"----------"															+"\n"+\
 					""
 	print(optionscheck)
-	user = input('User to check status of: ').replace(' ')	
+	user = input('User to check status of: ').replace(' ','')	
 	if not user:
 		print('No User\'s name entered!')
 	else:
@@ -552,7 +552,7 @@ def openCLI():
 					"----------"															+"\n"+\
 					""	
 	print(openheader)
-	service = input('Which service?\n(Youtube or Twitch).replace(' '): ')
+	service = input('Which service?\n(Youtube or Twitch).replace(' ',''): ')
 	if service.lower() == 'youtube' or service.lower() == 'twitch':
 		clearscreen()
 		optionsstream = ""																	+"\n"+\
@@ -568,7 +568,7 @@ def openCLI():
 					""
 		print(optionsstream)
 		debug('Service Received ' + service)
-		lvst = input('What stream?: ').replace(' ')
+		lvst = input('What stream?: ').replace(' ','')
 		if not lvst:
 			print('\nNo Stream Entered')
 			streamError = True
@@ -650,12 +650,12 @@ def addCLI(username='',statAdd=0):
 	if username == '':
 		clearscreen()
 		print(optionsadd)
-		input('Name of the user to add?: ').replace(' ')
+		input('Name of the user to add?: ').replace(' ','')
 	else:
 		print('Adding user: '+username)
 	#while username=='':
 	#	print('Please type in a user-name and not leave the line blank.')
-	#	input('Name of the user to add?: ').replace(' ')
+	#	input('Name of the user to add?: ').replace(' ','')
 	if username=='':
 		return
 	allRecords=userAdd(username,statAdd)
@@ -693,10 +693,10 @@ def statsClearCLI():
 					' - the stats of a specific user'	+'\n'+\
 					' - all tracked stats and users'	+'\n'+\
 					''									+'\n'+\
-					'(Global, User, Erase).replace(' '): ')
+					'(Global, User, Erase).replace(' ',''): ')
 	if statOpt:
 		if statOpt.lower()=='user':
-			statUser = input('Whose stats do you want to clear?: ').replace(' ')
+			statUser = input('Whose stats do you want to clear?: ').replace(' ','')
 		clearscreen()
 		print(statCheck(statWhat,statOpt,statUser))
 	else:
@@ -714,13 +714,13 @@ def statsCLI():
 						"Available options:"							+"\n"+\
 						""
 	print(statscheckheader)
-	statWhat = input('Which stats do you want to see? (User, Global, Error, or Clear).replace(' '): ')
+	statWhat = input('Which stats do you want to see? (User, Global, Error, or Clear).replace(' ',''): ')
 	statOpt=''
 	statUser=''
 	if statWhat.lower() == 'user':
 		clearscreen()
 		print(statscheckheader)
-		statUser = input('Who do you want to check the stats of?: ').replace(' ')
+		statUser = input('Who do you want to check the stats of?: ').replace(' ','')
 		if statUser.lower() not in data['streamData']:
 			clearscreen()
 			print(statscheckheader)
@@ -765,7 +765,7 @@ def menuCLI():
 				" - Stats - Views the list of tracked stats"							+"\n"+\
 				""
 	print(options)
-	option = input('What do you want to do?: ').replace(' ')
+	option = input('What do you want to do?: ').replace(' ','')
 	#clearscreen()
 	#print(options)
 
@@ -914,7 +914,7 @@ def init():
 def terminate():
 	#Script end confirmation
 	print('')
-	input("Press Enter to continue...").replace(' ')
+	input("Press Enter to continue...").replace(' ','')
 
 	jsonWrite('data','list')
 	jsonWrite('config','config')
