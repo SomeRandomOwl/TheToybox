@@ -652,6 +652,8 @@ def addCLI(username='',statAdd=0):
 	#while username=='':
 	#	print('Please type in a user-name and not leave the line blank.')
 	#	input('Name of the user to add?: ')
+	if username=='':
+		return
 	allRecords=userAdd(username,statAdd)
 	
 	clearscreen()
