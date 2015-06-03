@@ -4,7 +4,7 @@
 ## This python program is used to open streams in vlc media player                                      ##
 ##------------------------------------------------------------------------------------------------------##
 
-gui=False
+gui=True
 
 #############################
 #  Imports and Debug tools  #
@@ -82,7 +82,6 @@ def check_user(user):
 	except Exception, e:
 		debug("retrieving user <"+user+"> failed")
 		raise e
-
 
 #Defines the program to display the output from the check user as text
 def list(urc):
@@ -974,7 +973,9 @@ def main():
 	terminate()
 
 def tests():
-	pass
-	#put tests here
+	menuGUI()
 
-main()
+#main()
+
+tests()
+
