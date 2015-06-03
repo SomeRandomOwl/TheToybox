@@ -576,24 +576,23 @@ def openCLI():
 			audio=0
 			if service.lower() == 'twitch':
 				try:
-					data["streamData"][lvst]["musicStream"]
+					if service.lower() == 'youtube' or data["streamData"][lvst]["musicStream"]:
+						clearscreen()
+						openaudioheader = ""														+"\n"+\
+							"Available options:"													+"\n"+\
+							""																		+"\n"+\
+							"----------"															+"\n"+\
+							""																		+"\n"+\
+							"This is if you want to listen to the audio only for the stream"		+"\n"+\
+							"Input yes to only get the audio and no video"							+"\n"+\
+							"Input no to have video as well as audio"								+"\n"+\
+							""																		+"\n"+\
+							"----------"															+"\n"+\
+							""
+						print(openaudioheader)
+						audio = ynQuestion('Do you want to do audio only?')
 				except:
 					print("unknown stream")
-			if service.lower() == 'youtube' or data["streamData"][lvst]["musicStream"]:
-				clearscreen()
-				openaudioheader = ""														+"\n"+\
-					"Available options:"													+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""																		+"\n"+\
-					"This is if you want to listen to the audio only for the stream"		+"\n"+\
-					"Input yes to only get the audio and no video"							+"\n"+\
-					"Input no to have video as well as audio"								+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""
-				print(openaudioheader)
-				audio = ynQuestion('Do you want to do audio only?')
 			lvsting=openstream(service,lvst,audio)
 	elif not service:
 		print('\nNo Stream Service Entered!')
