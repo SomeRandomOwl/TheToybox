@@ -291,7 +291,7 @@ def timeCalc(times,timem,timeh):
 	return [times,timem,timeh]
 
 #Updates Stats
-def stattracker(lvst,times):
+def stattracker(lvst,times,service):
 	try:
 		#why is this here?
 		debug('Updating User play count') 
@@ -631,7 +631,7 @@ def openCLI():
 		print('')
 		print('Time elapsed: ' + elapsedTime)
 		print('')
-		stattracker(lvst,times)
+		stattracker(lvst,times,service)
 	else:
 		print('\nThere was a error opening the stream!')
 
