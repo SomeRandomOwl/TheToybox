@@ -248,7 +248,8 @@ def openstream(service,lvst,audio):
 	#Process for youtube streams
 	elif service.lower() == 'youtube':
 		lvsting = lsYoutube
-		if lvst[1:32] == 'https://www.youtube.com/watch?v=':
+		lvst = lvst.replace('https://','')
+		if lvst[1:24] == 'www.youtube.com/watch?v=':
 			lvsting += lvst[32:]
 		else:
 			lvsting += lvst
@@ -755,7 +756,7 @@ def debugCLI():
 		print('Debug enabled')
 
 def menuCLI():
-
+	clearscreen()
 	debug('Starting Main starter')
 	#Option input
 	options =   ""																		+"\n"+\
