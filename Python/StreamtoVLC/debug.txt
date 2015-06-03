@@ -228,3 +228,55 @@
 [2015-06-02T23:13:42] DEBUG: Starting Main starter
 [2015-06-02T23:13:44] DEBUG: Logging disabled
 [2015-06-02T23:13:44] DEBUG: --End--
+[2015-06-02T23:41:24] DEBUG: --Start--
+[2015-06-02T23:41:24] DEBUG: Logging enabled
+[2015-06-02T23:41:27] DEBUG: Main menuCLI end
+[2015-06-02T23:41:27] DEBUG: Restart Count Updating
+[2015-06-02T23:41:27] DEBUG: Restart Count updated
+[2015-06-02T23:41:27] DEBUG: Restarting Script
+[2015-06-02T23:41:27] DEBUG: Starting Main starter
+[2015-06-02T23:42:07] DEBUG: User List started
+[2015-06-02T23:42:07] DEBUG: StreamNum Updating
+[2015-06-02T23:42:07] DEBUG: StreamNum Updated
+[2015-06-02T23:42:07] DEBUG: Retrieving User Status
+[2015-06-02T23:42:08] DEBUG: User Status Retrieved
+[2015-06-02T23:42:08] DEBUG: Retrieving User Status
+[2015-06-02T23:42:08] DEBUG: User Status Retrieved
+[2015-06-02T23:42:08] DEBUG: Processing User Status
+[2015-06-02T23:42:08] DEBUG: user: monstercat
+[2015-06-02T23:42:08] DEBUG: Retrieving User Status
+[2015-06-02T23:42:08] DEBUG: User Status Retrieved
+[2015-06-02T23:42:08] DEBUG: User Status Processed
+[2015-06-02T23:42:08] DEBUG: Retrieving User Status
+[2015-06-02T23:42:09] DEBUG: User Status Retrieved
+[2015-06-02T23:42:09] DEBUG: Processing User Status
+[2015-06-02T23:42:09] DEBUG: user: fixt
+[2015-06-02T23:42:09] DEBUG: Retrieving User Status
+[2015-06-02T23:42:09] DEBUG: User Status Retrieved
+[2015-06-02T23:42:09] DEBUG: User Status Processed
+[2015-06-02T23:42:09] DEBUG: Retrieving User Status
+[2015-06-02T23:42:10] DEBUG: User Status Retrieved
+[2015-06-02T23:42:10] DEBUG: Processing User Status
+[2015-06-02T23:42:10] DEBUG: user: spinninrecords
+[2015-06-02T23:42:10] DEBUG: Retrieving User Status
+[2015-06-02T23:42:10] DEBUG: User Status Retrieved
+[2015-06-02T23:42:10] DEBUG: User Status Processed
+[2015-06-02T23:42:10] DEBUG: Retrieving User Status
+[2015-06-02T23:42:10] DEBUG: User Status Retrieved
+[2015-06-02T23:42:10] DEBUG: Retrieving User Status
+[2015-06-02T23:42:11] DEBUG: User Status Retrieved
+[2015-06-02T23:42:11] DEBUG: Retrieving User Status
+[2015-06-02T23:42:11] DEBUG: User Status Retrieved
+[2015-06-02T23:42:11] DEBUG: Retrieving User Status
+[2015-06-02T23:42:12] DEBUG: User Status Retrieved
+[2015-06-02T23:42:12] DEBUG: Retrieving User Status
+[2015-06-02T23:42:12] DEBUG: User Status Retrieved
+[2015-06-02T23:42:12] DEBUG: Retrieving User Status
+[2015-06-02T23:42:12] DEBUG: User Status Retrieved
+[2015-06-02T23:42:12] DEBUG: Retrieving User Status
+[2015-06-02T23:42:13] DEBUG: User Status Retrieved
+[2015-06-02T23:42:13] DEBUG: Retrieving User Status
+[2015-06-02T23:42:13] DEBUG: User Status Retrieved
+[2015-06-02T23:42:13] DEBUG: Retrieving User Status
+[2015-06-02T23:42:14] DEBUG: User Status Retrieved
+[2015-06-02T23:42:14] DEBUG: Retrieving User Status
