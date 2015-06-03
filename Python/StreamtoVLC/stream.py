@@ -574,9 +574,14 @@ def openCLI():
 			streamError = True
 		else:
 			audio=0
+			if service.lower() == 'twitch':
+				try:
+					data["streamData"][lvst]["musicStream"]
+				except:
+					print("unknown stream")
 			if service.lower() == 'youtube' or data["streamData"][lvst]["musicStream"]:
 				clearscreen()
-				openaudioheader = ""																+"\n"+\
+				openaudioheader = ""														+"\n"+\
 					"Available options:"													+"\n"+\
 					""																		+"\n"+\
 					"----------"															+"\n"+\
