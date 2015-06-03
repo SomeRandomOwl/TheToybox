@@ -79,7 +79,7 @@ def check_user(user):
 				status = 3
 		debug('User Status Retrieved')
 		return status
-	except Exception e:
+	except Exception as e:
 		debug("retrieving user <"+user+"> failed")
 		raise e
 
