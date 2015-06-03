@@ -708,11 +708,13 @@ def statsClearCLI():
 def statsCLI():
 	clearscreen()
 	statscheckheader =  ""												+"\n"+\
+						"----------\n"									+"\n"+\
 						"This is used to view the stats being tracked"	+"\n"+\
 						"You can view the stats of a individual user"	+"\n"+\
 						"You can also view the total global stats"		+"\n"+\
 						"You can also Clear the stats"					+"\n"+\
 						"You can also check the errorLogs"				+"\n"+\
+						"\n----------"									+"\n"+\
 						""												+"\n"+\
 						"Available options:"							+"\n"+\
 						""
@@ -760,12 +762,14 @@ def menuCLI():
 	debug('Starting Main starter')
 	#Option input
 	options =   ""																		+"\n"+\
+				"----------\n"															+"\n"+\
 				"Available options:"													+"\n"+\
 				" - Check - checks status of a specific user"							+"\n"+\
 				" - List  - Checks the status of a list of predefined users"			+"\n"+\
 				" - Open  - opens a stream"												+"\n"+\
 				" - Add   - Adds a user to to the tracked user list"					+"\n"+\
 				" - Stats - Views the list of tracked stats"							+"\n"+\
+				"\n----------"															+"\n"+\
 				""
 	print(options)
 	option = input('What do you want to do?: ').replace(' ','')
