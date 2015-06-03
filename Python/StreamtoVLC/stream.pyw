@@ -847,7 +847,7 @@ def menuGUI():
 
 		def initUI(self):
 			self.centerWindow(290,150)
-			self.title("Stream to VLC")
+			#self.title("Stream to VLC")
 			self.style = ttk.Style()
 			self.style.theme_use("default")
 			self.pack(fill=BOTH, expand=1)

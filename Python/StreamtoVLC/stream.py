@@ -4,7 +4,7 @@
 ## This python program is used to open streams in vlc media player                                      ##
 ##------------------------------------------------------------------------------------------------------##
 
-gui=True
+gui=False
 
 #############################
 #  Imports and Debug tools  #
@@ -975,7 +975,5 @@ def main():
 def tests():
 	menuGUI()
 
-#main()
-
-tests()
+main()
 
