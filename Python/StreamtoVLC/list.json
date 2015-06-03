@@ -127,13 +127,6 @@
             "totalTime": "0 Days 0:22:16"
         }
     },
-    "timeCounters": {
-        "days": 1,
-        "hours": 12,
-        "mins": 47,
-        "secs": 10,
-        "totalTime": "1 Days 12:47:10"
-    },
     "streams": [
         "totalbiscuit",
         "monstercat",
@@ -147,6 +140,14 @@
         "scykoh",
         "naturalselection2",
         "gophergaming",
-        "haxmega"
-    ]
+        "haxmega",
+        ""
+    ],
+    "timeCounters": {
+        "days": 1,
+        "hours": 12,
+        "mins": 47,
+        "secs": 10,
+        "totalTime": "1 Days 12:47:10"
+    }
 }
