@@ -32,24 +32,23 @@ global datanum
 #Debug function to append time stamps and write to files
 def debug(info,error=0):
 	try:
-		if config['errorLogs']['debug'] or error:
-			if type(info)==type([]):
-				for a in info:
-					debug(a,error)
-			else:
-				import datetime
-				if error:
-					dbg="ERROR: "
+		if config['errorLogs']['debug'] or config['cli']['debug'] or error:
+			def i(inf):
+				if type(inf)==type([]):
+					for a in inf:
+						i(inf)
 				else:
-					dbg="DEBUG: "
-				mes=datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg +str(info)
-				if config['errorLogs']['debug']:
-					print(mes)
-					with open("debug.txt", "a") as myfile:
-						myfile.write(mes+'\n')
-				elif error:
-					with open("debug.txt", "a") as myfile:
-						myfile.write(mes+'\n')
+					import datetime
+					if error:
+						dbg="ERROR: "
+					else:
+						dbg="DEBUG: "
+					mes=datetime.datetime.now().strftime("[%Y-%m-%dT%H:%M:%S] ")+dbg +str(inf)
+					if config['errorLogs']['debug'] or error:
+						with open("debug.txt", "a") as myfile:
+							myfile.write(mes+'\n')
+					if config['cli']['debug'] or error:
+						print(mes)
 	except:
 		print(info)
 		print(error)
@@ -750,16 +749,25 @@ def statsCLI():
 		print(statCheck(statWhat,statOpt,statUser))
 
 def debugCLI():
-	if config['errorLogs']['debug']:
-		debug('Logging disabled')
-		debug('--End--')
-		config['errorLogs']['debug'] = 0
-		print('Debug disabled')
-	else:#if config['errorLogs']['debug'] == 'False':
-		config['errorLogs']['debug'] = 1
-		debug('--Start--')
-		debug('Logging enabled')
-		print('Debug enabled')
+	clearscreen()
+	print("\ntoggel logging for console or for file?")
+	i=input("(console, file): ").lower().replace(' ','')
+	if(i=='file'):
+		if config['errorLogs']['debug']:
+			debug('Logging disabled')
+			debug('--End--')
+			config['errorLogs']['debug'] = 0
+		else:
+			config['errorLogs']['debug'] = 1
+			debug('--Start--')
+			debug('Logging enabled')
+	elif(i=='console'):
+		if config['cli']['debug']:
+			debug('debugging disabled')
+			config['errorLogs']['debug'] = 0
+		else:
+			config['cli']['debug'] = 1
+			debug('debugging enabled')
 
 def menuCLI():
 	clearscreen()

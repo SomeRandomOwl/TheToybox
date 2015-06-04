@@ -1,6 +1,6 @@
 {
     "errorLogs": {
-        "debug": 0,
+        "debug": 1,
         "timesInterrupted": 22,
         "unRecgonizedCmds": 9,
         "unknownError": 11,
@@ -12,5 +12,8 @@
         "timesRestarted": 52,
         "timesStarted": 150,
         "totalPlay": 52
+    },
+    "cli": {
+        "debug":1
     }
 }
