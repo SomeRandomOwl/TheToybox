@@ -4,7 +4,7 @@
 ## This python program is used to open streams in vlc media player                                      ##
 ##------------------------------------------------------------------------------------------------------##
 
-gui=False
+guiEnabled=True
 
 #############################
 #  Imports and Debug tools  #
@@ -825,7 +825,7 @@ def menuCLI():
 ########################
 
 
-if gui:
+if guiEnabled:
 	from tkinter import *
 
 def menuGUI():
@@ -933,7 +933,8 @@ def init():
 def terminate():
 	#Script end confirmation
 	print('')
-	input("Press Enter to continue...").replace(' ','')
+        if config['cli']['debug']:
+                input("Press Enter to continue...")
 
 	jsonWrite('data','list')
 	jsonWrite('config','config')
