@@ -500,16 +500,16 @@ def ynQuestion(prompt,default=''):
 def checkCLI():
 	clearscreen()
 	debug('Individual User Status Check Started')
-	optionscheck =  ""																		+"\n"+\
-					"Available options:"													+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""																		+"\n"+\
-					"This is used to check the status of a individual twitch streamer"		+"\n"+\
-					"This is unavailable for youtube unless it is otherwise possible"		+"\n"+\
-					"Might have youtube support in the future"								+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
+	optionscheck =  ""																	+"\n"+\
+					"Available options:"												+"\n"+\
+					""																	+"\n"+\
+					"----------"														+"\n"+\
+					""																	+"\n"+\
+					"This is used to check the status of a individual twitch streamer"	+"\n"+\
+					"This is unavailable for youtube unless it is otherwise possible"	+"\n"+\
+					"Might have youtube support in the future"							+"\n"+\
+					""																	+"\n"+\
+					"----------"														+"\n"+\
 					""
 	print(optionscheck)
 	user = input('User to check status of: ').replace(' ','')	
@@ -523,16 +523,16 @@ def checkCLI():
 
 def lvstListCLI():
 	clearscreen()
-	optionslist =   ""																		+"\n"+\
-					"Available options:"													+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
-					""																		+"\n"+\
-					"This is used to list users present in the list.json"					+"\n"+\
-					"This only works for twitch streamers at the moment"					+"\n"+\
-					"Will maybe extend to youtube in the future"							+"\n"+\
-					""																		+"\n"+\
-					"----------"															+"\n"+\
+	optionslist =   ""														+"\n"+\
+					"Available options:"									+"\n"+\
+					""														+"\n"+\
+					"----------"											+"\n"+\
+					""														+"\n"+\
+					"This is used to list users present in the list.json"	+"\n"+\
+					"This only works for twitch streamers at the moment"	+"\n"+\
+					"Will maybe extend to youtube in the future"			+"\n"+\
+					""														+"\n"+\
+					"----------"											+"\n"+\
 					""
 	print(optionslist)
 	print("This might take a while...")

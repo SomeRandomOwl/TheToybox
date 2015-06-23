@@ -1,4 +1,7 @@
 {
+    "cli": {
+        "debug": 1
+    },
     "errorLogs": {
         "debug": 1,
         "timesInterrupted": 22,
@@ -10,10 +13,7 @@
     "logs": {
         "streamNum": 13,
         "timesRestarted": 52,
-        "timesStarted": 150,
+        "timesStarted": 151,
         "totalPlay": 52
-    },
-    "cli": {
-        "debug":1
     }
 }
