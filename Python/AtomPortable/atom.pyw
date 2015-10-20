@@ -1,13 +1,13 @@
-##########Notes Regarding what this code does##########
-#This functions mainly to run a few console commands  #
-#that helps increase the 'portability' of the atom    #
-#text editor from http://atom.io It needs to run in   #
-#instalation directory of atom and will help you keep #
-#a local copy of your configuration files and         #
-#installed packages, it uses xcopy to copy files      #
-#from %HOMEPATH% to the instalation directory of atom #
-#it is really ment for use with a flash drive         #
-#######################################################
+##---------Notes Regarding what this code does----------##
+## This functions mainly to run a few console commands  ##
+## that helps increase the 'portability' of the atom    ##
+## text editor from http://atom.io It needs to run in   ##
+## instalation directory of atom and will help you keep ##
+## a local copy of your configuration files and         ##
+## installed packages, it uses xcopy to copy files      ##
+## from %HOMEPATH% to the instalation directory of atom ##
+## it is really ment for use with a flash drive         ##
+##########################################################
 
 # Import Required Modules #
 import os
