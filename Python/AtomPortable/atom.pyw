@@ -7,7 +7,7 @@
 ## installed packages, it uses xcopy to copy files      ##
 ## from %HOMEPATH% to the instalation directory of atom ##
 ## it is really ment for use with a flash drive         ##
-##########################################################
+##------------------------------------------------------##
 
 # Import Required Modules #
 import os
