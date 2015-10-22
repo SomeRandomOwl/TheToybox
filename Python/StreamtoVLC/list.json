@@ -3,15 +3,15 @@
         "errorLogs": {
             "debug": 0,
             "timesInterrupted": 19,
-            "unRecgonizedCmds": 10,
-            "unknownError": 15,
+            "unRecgonizedCmds": 11,
+            "unknownError": 18,
             "unsupportedServices": 5
         },
         "logs": {
             "GUI": 0,
-            "streamNum": 14,
-            "timesRestarted": 50,
-            "timesStarted": 118,
+            "streamNum": 13,
+            "timesRestarted": 57,
+            "timesStarted": 128,
             "totalPlay": 53
         },
         "streamData": {
@@ -32,15 +32,6 @@
                 "playCount": 2,
                 "secs": 39,
                 "totalTime": "0 Days 0:0:39"
-            },
-            "blaaaaaa": {
-                "days": 0,
-                "hours": 0,
-                "mins": 0,
-                "musicStream": "true",
-                "playCount": 0,
-                "secs": 0,
-                "totalTime": "0 Days 0:0:0"
             },
             "fixt": {
                 "days": 0,
@@ -172,7 +163,6 @@
         "scykoh",
         "naturalselection2",
         "gophergaming",
-        "haxmega",
-        "blaaaaaa"
+        "haxmega"
     ]
 }

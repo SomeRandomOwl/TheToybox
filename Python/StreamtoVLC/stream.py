@@ -634,7 +634,8 @@ def menuCLI():
 	elif (option.lower() == 'list') or (option.lower() == 'l'):
 		clearscreen()
 		print(optionslist)
-		print('This might take a while...')
+		if data['data']['logs']['streamNum'] > 5:
+			print('This might take a while...')
 		lvlistst = lvstList()
 		clearscreen()
 		print(lvlistst)

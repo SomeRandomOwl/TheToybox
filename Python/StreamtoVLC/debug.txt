@@ -1,0 +1,2 @@
+[2015-10-22T09:56:52] ERROR: (<class 'NameError'>, NameError("global name 'statwho' is not defined",), <traceback object at 0x0280DD78>)
+[2015-10-22T09:56:52] ERROR: [('E:\\Coding\\TheToybox\\Python\\StreamtoVLC\\stream.py', 894, '<module>', 'main()'), ('E:\\Coding\\TheToybox\\Python\\StreamtoVLC\\stream.py', 879, 'main', 'debug([str(sys.exc_info()), str(traceback.extract_stack())],1)')]
