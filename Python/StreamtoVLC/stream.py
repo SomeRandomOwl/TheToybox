@@ -141,14 +141,14 @@ def statCheck(statWhat,statOpt,statUser):
 	out=''
 	debug('Stat Check Started')
 	statAdd = 0
-	if statWhat.lower() == 'user':
+	if (statWhat.lower() == 'user') or (statWhat.lower() == 'u'):
 		debug('Retriveing User Stats')
 		out+="\nThis stream has been played: " + str(data['data']['streamData'][statUser.lower()]['playCount'])
 		out+="\nThis stream has been played for a total of: " + data['data']['streamData'][statUser.lower()]['totalTime']
 		if data['data']['streamData'][statUser.lower()]['musicStream'] == 'true':
 			out+='\nThis stream is also marked as a music stream'
 		debug('Done')
-	elif statWhat.lower() == 'global':
+	elif (statWhat.lower() == 'global') or (statWhat.lower() == 'g'):
 		out+=optionsstatscheck
 		debug('Checking Global Stats')
 		out+='\nThe total ammount of streams played is: ' + str(data['data']['logs']['totalPlay'])
@@ -157,7 +157,7 @@ def statCheck(statWhat,statOpt,statUser):
 		out+='\nThe script has been started: ' + str(data['data']['logs']['timesStarted']) + ' times.'
 		out+='\nThe script has been restarted: ' + str(data['data']['logs']['timesRestarted']) + ' times.'
 		debug('Done')
-	elif statWhat.lower() == 'error':
+	elif (statWhat.lower() == 'error') or (statWhat.lower() == 'e'):
 		out+=optionsstatscheck
 		debug('Checking Error Stats')
 		out+='\nThe total ammount of times the script has been interuppted is: ' + str(data['data']['errorLogs']['timesInterrupted'])
@@ -166,7 +166,7 @@ def statCheck(statWhat,statOpt,statUser):
 		out+='\nThe total number of Unknown Errors encountered: ' + str(data['data']['errorLogs']['unknownError'])
 		if data['data']['errorLogs']['debug'] == 1 :
 			out+='\nCurrently in Debug Mode!'
-	elif statWhat.lower() == 'clear':
+	elif (statWhat.lower() == 'clear') or (statWhat.lower() == 'c'):
 		out+=optionsstatsclear
 		if statOpt.lower() == 'global':
 			debug('Global Stat Clear')
@@ -587,7 +587,7 @@ def statsCLI():
 	statWhat = input('Which stat do you want to see? (User, Global, Error or Clear): ')
 	statOpt=''
 	statUser=''
-	if statWhat.lower() == 'user':
+	if (statWhat.lower() == 'user') or (statWhat.lower() == 'u'):
 		clearscreen()
 		print(optionsstatscheck)
 		statUser = input('Who do you want to check the stats of?: ')
@@ -603,7 +603,7 @@ def statsCLI():
 			clearscreen()
 			print(optionsstatscheck)
 			print(statCheck(statWhat,statOpt,statUser))
-	elif statWhat.lower() == 'clear':
+	elif (statWhat.lower() == 'clear') or (statWhat.lower() == 'c'):
 		clearscreen()
 		print(optionsstatsclear)
 		debug('Clear Stats Started')
@@ -629,22 +629,22 @@ def menuCLI():
 	print(options)
 
 	#checks what option was chosen
-	if (option.lower() == "check") or (option.lower() == "c"):
+	if (option.lower() == 'check') or (option.lower() == 'c'):
 		checkCLI()
-	elif (option.lower() == "list") or (option.lower() == "l"):
+	elif (option.lower() == 'list') or (option.lower() == 'l'):
 		clearscreen()
 		print(optionslist)
-		print("This might take a while...")
+		print('This might take a while...')
 		lvlistst = lvstList()
 		clearscreen()
 		print(lvlistst)
-	elif (option.lower() == "open") or (option.lower() == "o"):
+	elif (option.lower() == 'open') or (option.lower() == 'o'):
 		mainopenCLI()
-	elif (option.lower() == "add") or (option.lower() == "a"):
+	elif (option.lower() == 'add') or (option.lower() == 'a'):
 		addCLI()
-	elif (option.lower() == "stats") or (option.lower() == "s"):
+	elif (option.lower() == 'stats') or (option.lower() == 's'):
 		statsCLI()
-	elif option.lower() == "debug":
+	elif option.lower() == 'debug':
 		if data['data']['errorLogs']['debug'] == 1:
 			debug('Logging disabled')
 			debug('--End--')
@@ -664,7 +664,7 @@ def menuCLI():
 		#unrecgonizedCmd = unrecgonizedCmd + 1
 		#data['data']['errorLogs']['unRecgonizedCmds'] = unrecgonizedCmd
 		data['data']['errorLogs']['unRecgonizedCmds']+=1
-		print("\n\n----------\nOption Not Recgonized\n-----------\n\n")
+		print('\n\n----------\nOption Not Recgonized\n-----------\n\n')
 
 	print('')
 	restart = ynQuestion('Restart the Script?')
