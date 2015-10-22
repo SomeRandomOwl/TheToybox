@@ -889,7 +889,7 @@ def main():
 	terminate()
 
 def tests():
-	pass
+	print('test')
 	#put tests here
 
 main()
