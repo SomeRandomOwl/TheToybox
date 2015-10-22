@@ -248,7 +248,7 @@ def openstream(service,lvst,audio):
 					lvsting = lsTwitch + lvst + ' audio'
 				else:
 					lvsting = lsTwitch + lvst + ' source'
-					
+
 			else:
 				lvsting = lsTwitch + lvst + ' source'
 		except:
@@ -302,7 +302,7 @@ def timeCalc(times,timem,timeh):
 def stattracker(lvst,times,service):
 	#Updates the play count on the active streamer
 	try:
-		debug('Updateing User play count') 
+		debug('Updateing User play count')
 		playnum = data['data']['streamData'][lvst]['playCount']
 		playnum = playnum + 1
 		data['data']['streamData'][lvst]['playCount'] = playnum
@@ -331,16 +331,16 @@ def stattracker(lvst,times,service):
 		   'TotalMinutes: ' + str(totalmin),
 		   'TotalHours: ' + str(totalhrs),
 		   'TotalDays: ' + str(totaldays)])
-	
+
 	debug('Calculating Carries')
-	
+
 	[totalsec,totalmin,totalhrs]=timeCalc(totalsec,totalmin,totalhrs)
 	while totalhrs > 23:
 		debug('one day over')
 		totalhrs = totalhrs - 24
 		totaldays = totaldays + 1
 		debug('one day added')
-		
+
 	debug(['TotalSeconds: ' + str(totalsec),
 		   'TotalMinutes: ' + str(totalmin),
 		   'TotalHours: ' + str(totalhrs),
@@ -381,7 +381,7 @@ def stattracker(lvst,times,service):
 				   'TotalUserMinutes: ' + str(totalusermin),
 				   'TotalUserHours: ' + str(totaluserhrs),
 				   'TotalUserDays: ' + str(totaluserdays)])
-			
+
 			debug('Calculating Carries')
 			[totalsec,totalmin,totalhrs]=timeCalc(totalsec,totalmin,totalhrs)
 			while totaluserhrs > 23:
@@ -389,7 +389,7 @@ def stattracker(lvst,times,service):
 				totaluserhrs = totaluserhrs - 24
 				totaluserdays = totaluserdays + 1
 				debug('One day added')
-				
+
 			debug(['TotalUserSeconds: ' + str(totalusersec),
 				   'TotalUserMinutes: ' + str(totalusermin),
 				   'TotalUserHours: ' + str(totaluserhrs),
@@ -435,7 +435,7 @@ def jsonCheck():
 		with open(fname, 'w') as fout:
 			fout.write(json.dumps(jsonTemplate, sort_keys=True, indent=4, separators=(',', ': ')))
 			fout.close()
-		
+
 	elif test:
 		debug('List.json Found, Continueing...')
 
@@ -479,10 +479,10 @@ def ynQuestion(prompt,default=''):
 		answer = input(prompt+' [yes/No]: ')
 	else:
 		answer = input(prompt+' [yes/no]: ')
-	
+
 	if answer=='':
 		answer=default
-	
+
 	if answer.lower() in ['y','yes','1']:
 		return 1
 	elif answer.lower() in ['n','no','0']:
@@ -494,7 +494,7 @@ def checkCLI():
 	clearscreen()
 	debug('Individual User Status Check Started')
 	print(optionscheck)
-	user = input('User to check status of: ')	
+	user = input('User to check status of: ')
 	if not user:
 		print('No Username entered!')
 	else:
@@ -541,7 +541,7 @@ def mainopenCLI():
 		print('Opening ' + lvst + "'s stream on " + service + ".\n")
 		try:
 			print('Total times ' + lvst + " has been played: " + str(data['data']['streamData'][lvst]['playCount']) + ".\n")
-			print('Total ammount of time ' + lvst + " Has been played for: " + data['data']['streamData'][lvst]['totalTime'] + " \n")	
+			print('Total ammount of time ' + lvst + " Has been played for: " + data['data']['streamData'][lvst]['totalTime'] + " \n")
 		except:
 			pass
 		times+=cmdwin(lvsting)
@@ -629,20 +629,20 @@ def menuCLI():
 	print(options)
 
 	#checks what option was chosen
-	if option.lower() == "check":
+	if (option.lower() == "check") or (option.lower() == "c"):
 		checkCLI()
-	elif option.lower() == "list":
+	elif (option.lower() == "list") or (option.lower() == "l"):
 		clearscreen()
 		print(optionslist)
 		print("This might take a while...")
 		lvlistst = lvstList()
 		clearscreen()
 		print(lvlistst)
-	elif option.lower() == "open":
+	elif (option.lower() == "open") or (option.lower() == "o"):
 		mainopenCLI()
-	elif option.lower() == "add":
+	elif (option.lower() == "add") or (option.lower() == "a"):
 		addCLI()
-	elif option.lower() == "stats":
+	elif (option.lower() == "stats") or (option.lower() == "s"):
 		statsCLI()
 	elif option.lower() == "debug":
 		if data['data']['errorLogs']['debug'] == 1:
@@ -665,7 +665,7 @@ def menuCLI():
 		#data['data']['errorLogs']['unRecgonizedCmds'] = unrecgonizedCmd
 		data['data']['errorLogs']['unRecgonizedCmds']+=1
 		print("\n\n----------\nOption Not Recgonized\n-----------\n\n")
-		
+
 	print('')
 	restart = ynQuestion('Restart the Script?')
 	debug('Main menu end')
@@ -683,12 +683,12 @@ def init():
 	global data
 	global jsonTemplate
 	jsonTemplate =  {"data": {"errorLogs": {"timesInterrupted": 0, "unRecgonizedCmds": 0, "unknownError": 0, "unsupportedServices": 0}, "logs": {"streamNum": 0, "timesRestarted": 0, "timesStarted": 0, "totalPlay": 0}, "streamData": {"streamTemplate": {"days": 0, "hours": 0, "mins": 0, "musicStream": "true", "playCount": 0, "secs": 0, "totalTime": "0 Days 0:0:0"}}}, "streams": []}
-	
+
 	#Opens the json file for the list of tracked streamers
 	with open('list.json') as data_file:
 		data = json.load(data_file)
 		data_file.close()
-	
+
 	clearscreen()
 	debug('--Start--')
 
@@ -739,7 +739,7 @@ def init():
 					"Twitch -- Opens a twitch stream when you input user"					+"\n"+\
 					""																		+"\n"+\
 					"----------"															+"\n"+\
-					""	
+					""
 
 		global optionsstream
 		optionsstream = ""																	+"\n"+\
@@ -819,7 +819,7 @@ def init():
 					"Continue if you sure of what you are doing!"							+"\n"+\
 					""																		+"\n"+\
 					"----------"															+"\n"+\
-					""	
+					""
 
 		global optionsadd
 		optionsadd = ""																		+"\n"+\
@@ -832,7 +832,7 @@ def init():
 					"It also allows statistic tracking for the user"						+"\n"+\
 					""																		+"\n"+\
 					"----------"															+"\n"+\
-					""	
+					""
 
 		global listing
 		listing = ""																		+"\n"+\
@@ -853,7 +853,7 @@ def terminate():
 
 def main():
 	init()
-	
+
 	restart = 1
 	#Restarts the script
 	while restart:
@@ -862,22 +862,22 @@ def main():
 			restart=menuCLI()
 			if restart:
 				clearscreen()
-				
+
 		except KeyboardInterrupt:
 			debug('Ending Script')
 			timesInterrupted = data['data']['errorLogs']['timesInterrupted']
 			timesInterrupted = timesInterrupted + 1
 			data['data']['errorLogs']['timesInterrupted'] = timesInterrupted
 			restart = 0
-			
-		#except:
-		#	print('\n\nUnknown Error! You shouldent be seeing this!')
-		#	unknownError = data['data']['errorLogs']['unknownError']
-		#	unknownError = unknownError + 1
-		#	data['data']['errorLogs']['unknownError'] = unknownError
-		#	restart = 0
-		#	debug([str(sys.exc_info()), str(traceback.extract_stack())],1)
-			
+
+		except:
+			print('\n\nUnknown Error! You shouldent be seeing this!')
+			unknownError = data['data']['errorLogs']['unknownError']
+			unknownError = unknownError + 1
+			data['data']['errorLogs']['unknownError'] = unknownError
+			restart = 0
+			debug([str(sys.exc_info()), str(traceback.extract_stack())],1)
+
 		if restart:
 			debug('Restart Count Updating')
 			timesRestarted = data['data']['logs']['timesRestarted']
