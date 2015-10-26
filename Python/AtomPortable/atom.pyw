@@ -24,7 +24,6 @@ def newframe():
     mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
     mainframe.columnconfigure(0, weight=1)
     mainframe.rowconfigure(0, weight=1)
-newframe()
 # Defining functions
 def oscmd(cmd):
     os.system(cmd)
@@ -74,6 +73,7 @@ def ui():
     button("Remove local configs from machine", remove, 1, 8)
     button("Start Atom, Then remove configs", sar, 1, 9)
     button("Copy Configs, then remove local copys", car, 1, 10)
+newframe()
 ui()
-for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
+#for child in mainframe.winfo_children(): child.grid_configure(padx=10, pady=10)
 root.mainloop()
