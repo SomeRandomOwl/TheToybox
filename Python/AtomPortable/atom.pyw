@@ -9,22 +9,21 @@
 ## it is really ment for use with a flash drive         ##
 ##------------------------------------------------------##
 
-# Import Required Modules #
+##-----------Import Required Modules-----------##
 import os
 from tkinter import *
 from tkinter import ttk
-# UI #
+##-----------Definineing Importent Ui Variables-----------##
 root = Tk()
 root.title("Atom Portrable")
 root.wm_iconbitmap(bitmap = "atom.ico")
-# UI Mainframe #
 mainframe = ''
 def newframe():
     mainframe = ttk.Frame(root, padding="5 5 5 5")
     mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
     mainframe.columnconfigure(0, weight=1)
     mainframe.rowconfigure(0, weight=1)
-# Defining functions
+##-----------Defining functions-----------##
 def oscmd(cmd):
     os.system(cmd)
 # Button Function to draw button #
@@ -62,7 +61,7 @@ def sar():
 def car():
     oscmd("xcopy C:%HOMEPATH%\.atom\* .atom\*  /E /Y")
     oscmd("rd /s /q C:%HOMEPATH%\.atom ")
-# Ui Buttons #
+##-----------Ui Buttons-----------##
 def ui():
     label("Avaliable options: ", 1, 1)
     button("Start Atom", start, 1, 3)
