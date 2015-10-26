@@ -18,10 +18,13 @@ root = Tk()
 root.title("Atom Portrable")
 root.wm_iconbitmap(bitmap = "atom.ico")
 # UI Mainframe #
-mainframe = ttk.Frame(root, padding="5 5 5 5")
-mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
-mainframe.columnconfigure(0, weight=1)
-mainframe.rowconfigure(0, weight=1)
+mainframe = ''
+def newframe():
+    mainframe = ttk.Frame(root, padding="5 5 5 5")
+    mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+    mainframe.columnconfigure(0, weight=1)
+    mainframe.rowconfigure(0, weight=1)
+newframe()
 # Defining functions
 def oscmd(cmd):
     os.system(cmd)
