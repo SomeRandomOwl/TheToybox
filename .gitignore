@@ -10,6 +10,8 @@ $RECYCLE.BIN/
 *.sublime-workspace
 list.json
 debug.txt
+list.*
+debug.*
 # Windows Installer files
 *.cab
 *.msi
