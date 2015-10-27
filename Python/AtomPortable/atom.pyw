@@ -17,7 +17,7 @@ from tkinter import ttk
 root = Tk()
 root.title("Atom Portrable")
 root.wm_iconbitmap(bitmap = "atom.ico")
-mainframe = ''
+global mainframe
 def newframe():
     mainframe = ttk.Frame(root, padding="5 5 5 5")
     mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
@@ -74,5 +74,5 @@ def ui():
     button("Copy Configs, then remove local copys", car, 1, 10)
 newframe()
 ui()
-#for child in mainframe.winfo_children(): child.grid_configure(padx=10, pady=10)
+for child in mainframe.winfo_children(): child.grid_configure(padx=10, pady=10)
 root.mainloop()
