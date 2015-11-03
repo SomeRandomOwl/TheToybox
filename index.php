@@ -98,9 +98,9 @@ $entries = get_grouped_entries($path);
     <meta name="author" content="seth177">
     <title>Testing</title>
     <link rel="stylesheet" type="text/css" href="/assets/main.css">
-    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/cover.css" rel="stylesheet">
-    <script src="/secret/TheToybox/JavaScript/Games/rock.js"></script>
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/cover.css" rel="stylesheet">
+    <script src="JavaScript/Games/rock.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -123,13 +123,6 @@ $entries = get_grouped_entries($path);
             <div class="masthead clearfix" id="head">
               <div class="inner">
                 <h3 class="masthead-brand">Seth177's Random place</h3>
-                <nav>
-                  <ul class="nav masthead-nav">
-                    <li><a href="/">Home</a></li>
-                    <li class="active"><a href="/secret/TheToybox">Scripts</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                  </ul>
-                </nav>
               </div>
               <hr color="#004466">
             </div>
@@ -181,14 +174,6 @@ $entries = get_grouped_entries($path);
     });
     });
     </script>
-    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-47261149-3', 'auto');
-    ga('send', 'pageview');
-    </script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>
