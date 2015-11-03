@@ -97,10 +97,10 @@ $entries = get_grouped_entries($path);
     <meta name="description" content="Stuff">
     <meta name="author" content="seth177">
     <title>Testing</title>
-    <link rel="stylesheet" type="text/css" href="/assets/main.css">
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/cover.css" rel="stylesheet">
-    <script src="JavaScript/Games/rock.js"></script>
+    <link rel="stylesheet" type="text/css" href="./assets/main.css">
+    <link href="./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/cover.css" rel="stylesheet">
+    <script src="./JavaScript/Games/rock.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
